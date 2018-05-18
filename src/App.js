@@ -11,6 +11,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+import StudentFeedback from './components/StudentFeedback/StudentFeedback';
+import StudentSchedule from './components/StudentSchedule/StudentSchedule';
+import StudentProgramView from './components/StudentProgramView/StudentProgramView';
 
 import './styles/main.css';
 
@@ -35,6 +38,18 @@ const App = () => (
         <Route
           path="/info"
           component={InfoPage}
+        />
+        <Route
+          path="/feedback"
+          component={StudentFeedback}
+        />
+        <Route
+          path="/schedule"
+          component={StudentSchedule}
+        />
+         <Route
+          path="/program_name"
+          component={StudentProgramView}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

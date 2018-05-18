@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Nav = () => (
+const StudentNav = () => (
   <div className="navbar">
     <div>
       <ul>
@@ -11,12 +11,22 @@ const Nav = () => (
           </Link>
         </li>
         <li>
-          <Link to="/info">
-            Info Page
+          <Link to="/feedback">
+            Feedback
           </Link>
         </li>
         <li>
-        <Link to="/info">
+          <Link to="/schedule">
+           Schedule
+          </Link>
+        </li>
+        <li>
+          <Link to="/program_name">
+           Program Name
+          </Link>
+        </li>
+        <li>
+          <Link to="/info">
             Info Page
           </Link>
         </li>
@@ -25,4 +35,4 @@ const Nav = () => (
   </div>
 );
 
-export default Nav;
+export default StudentNav;
