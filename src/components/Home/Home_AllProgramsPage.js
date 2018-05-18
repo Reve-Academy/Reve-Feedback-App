@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Nav from '../../components/Nav/Nav';
 
@@ -11,7 +12,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class UserPage extends Component {
+class Home_AllProgramsPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -28,15 +29,36 @@ class UserPage extends Component {
   }
 
   render() {
+
+
+
     let content = null;
 
     if (this.props.user.userName) {
       content = (
         <div>
-          <h1
-            id="welcome"
-          >
-            Welcome, { this.props.user.userName }!
+          <div className="managementNav">
+          <ul>
+            <li>
+              <Link to="/user">
+                All Programs
+              </Link>
+            </li>
+            <li>
+              <Link to="/manageAccounts">
+                Manage Accounts
+              </Link>
+            </li>
+            <li>
+              <Link to="/newProgram">
+                New Program
+              </Link>
+            </li>
+          </ul>
+          </div>
+
+          <h1>
+            THIS IS THE ALL/MANGE PROGRAMS VIEW
           </h1>
           <button
             onClick={this.logout}
@@ -50,12 +72,14 @@ class UserPage extends Component {
     return (
       <div>
         <Nav />
-        { content }
+        {content}
       </div>
     );
   }
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(Home_AllProgramsPage);
+
+
 
