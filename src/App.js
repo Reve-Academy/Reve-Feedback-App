@@ -9,9 +9,9 @@ import {
 import Header from './components/Header/Header';
 import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
-import Home_AllProgramsPage from './components/Home/Home_AllProgramsPage';
-import ManageAccountsPage from './components/Home/ManageAccountsPage';
-import NewProgramPage from './components/Home/NewProgramPage';
+import Home_AllProgramsPage from './components/Home/AllProgramsPage/Home_AllProgramsPage';
+import ManageAccountsPage from './components/Home/ManageAccountsPage/ManageAccountsPage';
+import NewProgramPage from './components/Home/NewProgramPage/NewProgramPage';
 import InstructorStudentPage from './components/InstructorProgramViews/InstructorStudentPage/InstructorStudentPage';
 import InstructorFeedbackPage from './components/InstructorProgramViews/InstructorFeedbackPage/InstructorFeedBackPage';
 import InstructorSchedulePage from './components/InstructorProgramViews/InstructorSchedulePage/InstructorSchedulePage';
