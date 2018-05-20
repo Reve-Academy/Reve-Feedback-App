@@ -12,7 +12,7 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home_AllProgramsPage from './components/Home/Home_AllProgramsPage';
 import ManageAccountsPage from './components/Home/ManageAccountsPage';
 import NewProgramPage from './components/Home/NewProgramPage';
-import InfoPage from './components/InfoPage/InfoPage';
+
 
 import './styles/main.css';
 
@@ -35,12 +35,16 @@ const App = () => (
           component={Home_AllProgramsPage}
         />
         <Route
-          path="/info"
-          component={InfoPage}
-        />
-        <Route
           path="/manageAccounts"
           component={ManageAccountsPage}
+        />
+        <Route
+          path="/newProgram"
+          component={NewProgramPage}
+        />
+        <Route
+          path="/newProgram"
+          component={NewProgramPage}
         />
         <Route
           path="/newProgram"

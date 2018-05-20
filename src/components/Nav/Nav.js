@@ -10,11 +10,6 @@ const Nav = () => (
             Home
           </Link>
         </li>
-        <li>
-          <Link to="/info">
-            Info Page
-          </Link>
-        </li>
       </ul>
     </div>
   </div>
