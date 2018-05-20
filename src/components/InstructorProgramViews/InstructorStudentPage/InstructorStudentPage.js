@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
+import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage';
+import StudentList from './StudentList';
 import Nav from '../../components/Nav/Nav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
@@ -60,7 +61,7 @@ class InstructorStudentPage extends Component {
 
           {/* Students Container */}
           <div>
-            This is where students will be sourced in.
+            <StudentList />
           </div>
           {/* End Students Container */}
         
