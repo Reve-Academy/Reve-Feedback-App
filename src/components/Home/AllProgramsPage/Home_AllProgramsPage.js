@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 
 
-import Nav from '../../components/Nav/Nav';
+import Nav from '../../Nav/Nav';
 
-import { USER_ACTIONS } from '../../redux/actions/userActions';
-import { triggerLogout } from '../../redux/actions/loginActions';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import { triggerLogout } from '../../../redux/actions/loginActions';
 
 
 const mapStateToProps = state => ({
