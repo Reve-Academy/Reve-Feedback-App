@@ -65,3 +65,4 @@ CREATE TABLE resources (
 	link VARCHAR (500),
 	TA_id INT REFERENCES tools_and_activities ON DELETE CASCADE
 );
+

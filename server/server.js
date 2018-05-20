@@ -10,6 +10,12 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const allProgramsRouter = require('./routes/allPrograms.router');
+const manageAccountsRouter = require('./routes/manageAccounts.router');
+const instructorFeedbackRouter = require('./routes/instructorFeedback.router');
+const instructorScheduleRouter = require('./routes/instructorSchedule.router');
+const studentFeedbackRouter = require('./routes/studentFeedback.router');
+const studentScheduleRouter = require('./routes/studentSchedule.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,6 +30,14 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/programs', allProgramsRouter);
+app.use('/api/manage', manageAccountsRouter);
+app.use('/api/instructorFeedback', instructorFeedbackRouter);
+app.use('/api/instructorSchedule', instructorScheduleRouter);
+app.use('/api/studentFeedback', studentFeedbackRouter);
+app.use('/api/studentSchedule', studentScheduleRouter);
+
+
 
 // Serve static files
 app.use(express.static('build'));
