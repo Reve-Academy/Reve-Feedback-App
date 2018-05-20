@@ -12,9 +12,9 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home_AllProgramsPage from './components/Home/Home_AllProgramsPage';
 import ManageAccountsPage from './components/Home/ManageAccountsPage';
 import NewProgramPage from './components/Home/NewProgramPage';
-import InstructorStudentPage from './components/InstructorProgramViews/InstructorStudentPage';
-import InstructorFeedbackPage from './components/InstructorProgramViews/InstructorFeedBackPage'
-import InstructorSchedulePage from './components/InstructorProgramViews/InstructorSchedulePage';
+import InstructorStudentPage from './components/InstructorProgramViews/InstructorStudentPage/InstructorStudentPage';
+import InstructorFeedbackPage from './components/InstructorProgramViews/InstructorFeedbackPage/InstructorFeedBackPage';
+import InstructorSchedulePage from './components/InstructorProgramViews/InstructorSchedulePage/InstructorSchedulePage';
 import StudentFeedbackPage from './components/StudentViews/StudentFeedbackPage';
 import StudentSchedulePage from './components/StudentViews/StudentSchedulePage';
 
