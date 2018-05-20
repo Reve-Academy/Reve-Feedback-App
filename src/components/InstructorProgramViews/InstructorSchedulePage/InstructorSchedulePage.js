@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InstructorFeedbackPage extends Component {
+class InstructorSchedulePage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -55,16 +55,22 @@ class InstructorFeedbackPage extends Component {
           </div>
 
           <h1>
-            INSTRUCTOR FEEDBACK PAGE
+            INSTRUCTOR SCHEDULE PAGE
           </h1>
-        
+
+          {/* Schedule Container */}
+          <div>
+            This is where schedule will be sourced in.
+          </div>
+          {/* End Schedule Container */}
+
         </div>
       );
     }
 
     return (
       <div>
-       <instructorNav />
+        <instructorNav />
         {content}
       </div>
     );
@@ -72,4 +78,4 @@ class InstructorFeedbackPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InstructorFeedbackPage);
+export default connect(mapStateToProps)(InstructorSchedulePage);

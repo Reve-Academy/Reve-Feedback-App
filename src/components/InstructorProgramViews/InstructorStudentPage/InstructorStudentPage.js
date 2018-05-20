@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+<<<<<<< HEAD:src/components/InstructorProgramViews/InstructorStudentPage.js
 import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
 import instructorNav from '../../components/Nav/instructorNav';
+=======
+import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage';
+import StudentList from './StudentList';
+import Nav from '../../components/Nav/Nav';
+>>>>>>> 98dbc8d8da4b9d6b40d3a0849d53a122bdfad5a1:src/components/InstructorProgramViews/InstructorStudentPage/InstructorStudentPage.js
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -13,7 +19,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InstructorSchedulePage extends Component {
+class InstructorStudentPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -55,8 +61,14 @@ class InstructorSchedulePage extends Component {
           </div>
 
           <h1>
-            INSTRUCTOR SCHEDULE PAGE
+            INSTRUCTOR STUDENTS PAGE
           </h1>
+
+          {/* Students Container */}
+          <div>
+            <StudentList />
+          </div>
+          {/* End Students Container */}
         
         </div>
       );
@@ -72,4 +84,4 @@ class InstructorSchedulePage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InstructorSchedulePage);
+export default connect(mapStateToProps)(InstructorStudentPage);

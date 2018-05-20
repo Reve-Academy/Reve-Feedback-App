@@ -52,7 +52,13 @@ class StudentFeedbackPage extends Component {
           <h1>
             STUDENT FEEDBACK
           </h1>
-        
+          
+          {/* Feedback Container */}
+          <div>
+            This is where feedback will be sourced in.
+          </div>
+          {/* End Feedback Container */}
+
         </div>
       );
     }

@@ -4,13 +4,13 @@ body {
 
 
 
- /* .instructions {
+ .instructions {
     background-color: #E02100;
     padding: 5px;
-    color: #ece7e7; */
+    color: #ece7e7; 
 
-  
-*/
+ }
+
 
 
 
@@ -52,6 +52,10 @@ input[type="submit"] {
   background-color: #E02100;
   width: 100%;
   border-radius: 0px;
+}
+
+.profileIcon {
+     /* placeholder styling  */
 }
 
 ul {
