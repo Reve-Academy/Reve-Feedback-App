@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import ManageAccountsPage from '../ManageAccountsPage/ManageAccountsPage';
 import Nav from '../../Nav/Nav';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
