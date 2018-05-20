@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import studentNav from '../../components/Nav/studentNav';
 
 
 
@@ -51,6 +52,12 @@ class StudentSchedulePage extends Component {
           <h1>
             STUDENT SCHEDULE 
           </h1>
+
+          {/* Schedule Container */}
+          <div>
+            This is where schedule will be sourced in.
+          </div>
+          {/* End Schedule Container */}
         
         </div>
       );
@@ -58,7 +65,7 @@ class StudentSchedulePage extends Component {
 
     return (
       <div>
-  
+        <studentNav />
         {content}
       </div>
     );

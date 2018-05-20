@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
-import Nav from '../../components/Nav/Nav';
+import instructorNav from '../../Nav/instructorNav';
+import StudentList from './StudentList';
 
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
 
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InstructorFeedbackPage extends Component {
+class InstructorStudentPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -55,8 +55,14 @@ class InstructorFeedbackPage extends Component {
           </div>
 
           <h1>
-            INSTRUCTOR FEEDBACK PAGE
+            INSTRUCTOR STUDENTS PAGE
           </h1>
+
+          {/* Students Container */}
+          <div>
+            <StudentList />
+          </div>
+          {/* End Students Container */}
         
         </div>
       );
@@ -64,7 +70,7 @@ class InstructorFeedbackPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <instructorNav />
         {content}
       </div>
     );
@@ -72,4 +78,4 @@ class InstructorFeedbackPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InstructorFeedbackPage);
+export default connect(mapStateToProps)(InstructorStudentPage);

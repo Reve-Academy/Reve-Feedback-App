@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import studentNav from '../../components/Nav/studentNav';
 
 
 
@@ -51,14 +52,20 @@ class StudentFeedbackPage extends Component {
           <h1>
             STUDENT FEEDBACK
           </h1>
-        
+          
+          {/* Feedback Container */}
+          <div>
+            This is where feedback will be sourced in.
+          </div>
+          {/* End Feedback Container */}
+
         </div>
       );
     }
 
     return (
       <div>
-  
+        <studentNav />
         {content}
       </div>
     );

@@ -2,30 +2,36 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
-import Nav from '../../components/Nav/Nav';
+import Nav from '../../Nav/Nav';
 
-import { USER_ACTIONS } from '../../redux/actions/userActions';
-
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import { triggerLogout } from '../../../redux/actions/loginActions';
 
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InstructorStudentPage extends Component {
+class Home_AllProgramsPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
+  //on logout, go to login page
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
     }
   }
 
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+    // this.props.history.push('home');
+  }
 
   render() {
+
+    console.log('ADMIN TEST!', this.props.user)
 
     let content = null;
 
@@ -34,30 +40,32 @@ class InstructorStudentPage extends Component {
         <div>
           <div className="managementNav">
           <ul>
-          
             <li>
-              <Link to="/InstructorStudent">
-                Students
+              <Link to="/user" >
+                All Programs
               </Link>
             </li>
             <li>
-              <Link to="/InstructorFeedback">
-                Feedback
+              <Link to="/manageAccounts" >
+                Manage Accounts
               </Link>
             </li>
             <li>
-              <Link to="/InstructorSchedule">
-                Schedule
+              <Link to="/newProgram" >
+                New Program
               </Link>
             </li>
-      
           </ul>
           </div>
 
           <h1>
-            INSTRUCTOR STUDENTS PAGE
+            THIS IS THE ALL/MANGE PROGRAMS VIEW
           </h1>
-        
+          <button
+            onClick={this.logout}
+          >
+            Log Out
+          </button>
         </div>
       );
     }
@@ -72,4 +80,7 @@ class InstructorStudentPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InstructorStudentPage);
+export default connect(mapStateToProps)(Home_AllProgramsPage);
+
+
+

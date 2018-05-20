@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
-import Nav from '../../components/Nav/Nav';
+import instructorNav from '../../Nav/instructorNav';
 
-import { USER_ACTIONS } from '../../redux/actions/userActions';
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
 
@@ -13,7 +12,7 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
-class ManageAccountsPage extends Component {
+class InstructorFeedbackPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -34,35 +33,43 @@ class ManageAccountsPage extends Component {
         <div>
           <div className="managementNav">
           <ul>
+          
             <li>
-              <Link to="/user">
-                All Programs
+              <Link to="/InstructorStudent">
+                Students
               </Link>
             </li>
             <li>
-              <Link to="/manageAccounts">
-                Manage Accounts
+              <Link to="/InstructorFeedback">
+                Feedback
               </Link>
             </li>
             <li>
-              <Link to="/newProgram">
-                New Program
+              <Link to="/InstructorSchedule">
+                Schedule
               </Link>
             </li>
+      
           </ul>
           </div>
 
           <h1>
-            THIS IS THE MANAGE ACCOUNTS PAGE
+            INSTRUCTOR FEEDBACK PAGE
           </h1>
         
+          {/* Feedback Container */}
+          <div>
+            This is where feedback will be sourced in.
+          </div>
+          {/* End Feedback Container */}
+
         </div>
       );
     }
 
     return (
       <div>
-        <Nav />
+       <instructorNav />
         {content}
       </div>
     );
@@ -70,4 +77,4 @@ class ManageAccountsPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(ManageAccountsPage);
+export default connect(mapStateToProps)(InstructorFeedbackPage);
