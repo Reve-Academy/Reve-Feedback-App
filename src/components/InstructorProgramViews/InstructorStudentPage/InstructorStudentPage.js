@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+<<<<<<< HEAD:src/components/InstructorProgramViews/InstructorStudentPage.js
+import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
+import instructorNav from '../../components/Nav/instructorNav';
+=======
 import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage';
 import StudentList from './StudentList';
 import Nav from '../../components/Nav/Nav';
+>>>>>>> 98dbc8d8da4b9d6b40d3a0849d53a122bdfad5a1:src/components/InstructorProgramViews/InstructorStudentPage/InstructorStudentPage.js
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -71,7 +76,7 @@ class InstructorStudentPage extends Component {
 
     return (
       <div>
-        <Nav />
+        <instructorNav />
         {content}
       </div>
     );
