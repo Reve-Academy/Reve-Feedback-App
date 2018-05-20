@@ -57,6 +57,12 @@ class InstructorStudentPage extends Component {
           <h1>
             INSTRUCTOR STUDENTS PAGE
           </h1>
+
+          {/* Students Container */}
+          <div>
+            This is where students will be sourced in.
+          </div>
+          {/* End Students Container */}
         
         </div>
       );
