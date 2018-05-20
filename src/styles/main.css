@@ -48,9 +48,13 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
-  width: 100%;
-  border-radius: 0px;
+    background-color: #00acb0;
+    width: 100%;
+    border-radius: 0px;
+}
+
+.profileIcon {
+    /* placeholder styling */
 }
 
 ul {
