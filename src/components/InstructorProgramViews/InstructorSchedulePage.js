@@ -57,7 +57,13 @@ class InstructorSchedulePage extends Component {
           <h1>
             INSTRUCTOR SCHEDULE PAGE
           </h1>
-        
+
+          {/* Schedule Container */}
+          <div>
+            This is where schedule will be sourced in.
+          </div>
+          {/* End Schedule Container */}
+
         </div>
       );
     }

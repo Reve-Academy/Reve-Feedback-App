@@ -54,7 +54,7 @@ class StudentSchedulePage extends Component {
 
           {/* Schedule Container */}
           <div>
-            This is where feedback will be sourced in.
+            This is where schedule will be sourced in.
           </div>
           {/* End Schedule Container */}
         
