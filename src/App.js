@@ -12,6 +12,12 @@ import RegisterPage from './components/RegisterPage/RegisterPage';
 import Home_AllProgramsPage from './components/Home/Home_AllProgramsPage';
 import ManageAccountsPage from './components/Home/ManageAccountsPage';
 import NewProgramPage from './components/Home/NewProgramPage';
+import InstructorStudentPage from './components/InstructorProgramViews/InstructorStudentPage';
+import InstructorFeedbackPage from './components/InstructorProgramViews/InstructorFeedBackPage'
+import InstructorSchedulePage from './components/InstructorProgramViews/InstructorSchedulePage';
+import StudentFeedbackPage from './components/StudentViews/StudentFeedbackPage';
+import StudentSchedulePage from './components/StudentViews/StudentSchedulePage';
+
 
 
 import './styles/main.css';
@@ -43,12 +49,24 @@ const App = () => (
           component={NewProgramPage}
         />
         <Route
-          path="/newProgram"
-          component={NewProgramPage}
+          path="/InstructorSchedule"
+          component={InstructorSchedulePage}
         />
         <Route
-          path="/newProgram"
-          component={NewProgramPage}
+          path="/InstructorFeedback"
+          component={InstructorFeedbackPage}
+        />
+        <Route
+          path="/InstructorStudent"
+          component={InstructorStudentPage}
+        />
+        <Route
+          path="/StudentFeedback"
+          component={StudentFeedbackPage}
+        />
+        <Route
+          path="/StudentSchedule"
+          component={StudentSchedulePage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />
