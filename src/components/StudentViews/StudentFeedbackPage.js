@@ -65,7 +65,7 @@ class StudentFeedbackPage extends Component {
 
     return (
       <div>
-  
+        <studentNav />
         {content}
       </div>
     );
