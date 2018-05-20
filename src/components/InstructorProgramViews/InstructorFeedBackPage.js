@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
-import Nav from '../../components/Nav/Nav';
+import instructorNav from '../../components/Nav/instructorNav';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -64,7 +64,7 @@ class InstructorFeedbackPage extends Component {
 
     return (
       <div>
-        <Nav />
+       <instructorNav />
         {content}
       </div>
     );

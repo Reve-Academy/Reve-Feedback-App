@@ -2,16 +2,17 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-.instructions h1 {
-    font-size: 24px;
-    font-weight: 700;
-}
 
-.instructions {
-    background-color: #00acb0;
+
+ /* .instructions {
+    background-color: #E02100;
     padding: 5px;
-    color: #ece7e7;
-}
+    color: #ece7e7; */
+
+  
+*/
+
+
 
 form {
     background-color: #dbd5d5;
@@ -48,7 +49,7 @@ input[type="submit"] {
 }
 
 .navbar {
-  background-color: #00acb0;
+  background-color: #E02100;
   width: 100%;
   border-radius: 0px;
 }
