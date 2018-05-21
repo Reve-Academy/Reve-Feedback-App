@@ -23,7 +23,7 @@ function* getProgramSaga(action){
 function* deleteProgramSaga(action){
     try{   
         console.log('delete Program payload is', action.payload)
-        yield call(axios.delete, `/api/notecard/${action.payload.name}`)
+        yield call(axios.delete, `/api/notecard/${action.payload.id}`)
         yield put({
             type: 'GET_PROGRAM_SAGA',
         })
@@ -35,7 +35,7 @@ function* deleteProgramSaga(action){
 function* updateProgramSaga(action){
     try{
         console.log('update Program payload is: ', action.payload)
-        yield call(axios.put, `/api/program/${action.payload.name}`, action.payload )
+        yield call(axios.put, `/api/program/${action.payload.id}`, action.payload )
         yield put({
             type:'GET_PROGRAM_SAGA'
         })
