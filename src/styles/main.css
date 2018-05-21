@@ -54,6 +54,7 @@ in
   background-color: #E02100;
   width: 100%;
   border-radius: 0px;
+  height: 100px;
 }
 
 .profileIcon {
@@ -67,12 +68,12 @@ ul {
 }
 
 li {
-    float: left;
+    float: right;
 }
 
 li a {
     display: block;
-    color: black;
+    color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -82,6 +83,17 @@ li a {
 /* Change the link color to #111 (black) on hover */
 li a:hover {
     text-decoration: underline;
-    color: #eee;
+    color: lightgrey;
+}
+
+.logo {
+    margin-left: 15px;
+    margin-top: 15px;
+    float: left;
+}
+
+.navItem    {
+    margin-top: 18px;
+    font-size: 20px;
 }
 
