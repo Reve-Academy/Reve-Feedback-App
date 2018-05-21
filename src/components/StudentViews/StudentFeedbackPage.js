@@ -30,7 +30,7 @@ class StudentFeedbackPage extends Component {
 
     let content = null;
 
-    if (this.props.user.userName) {
+    if (this.props.user.userName.instructor) {
       content = (
         <div>
           <div className="managementNav">

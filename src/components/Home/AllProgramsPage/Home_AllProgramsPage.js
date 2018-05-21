@@ -26,16 +26,15 @@ class Home_AllProgramsPage extends Component {
 
   logout = () => {
     this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
+    this.props.history.push('home');
   }
 
   render() {
 
-    console.log('ADMIN TEST!', this.props.user)
-
+  
     let content = null;
-
-    if (this.props.user.userName) {
+    
+    if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
           <div className="managementNav">
