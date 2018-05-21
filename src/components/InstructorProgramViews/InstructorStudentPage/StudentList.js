@@ -13,15 +13,17 @@ class StudentList extends Component {
   }
 
   render() {
-    let students = this.props.state.student.map(student => {
-      return (
-        <StudentItem key={student.id} student={student}/>
-      )
-    })
+    // let students = this.props.state.student.map((student) => {
+    //   return (
+    //     <StudentItem 
+    //     key={student.id} 
+    //     student={student}/>
+    //   )
+    // })
     
     return(
       <div>
-        {students}
+        {/* {students} */}
       </div>
     )
   }

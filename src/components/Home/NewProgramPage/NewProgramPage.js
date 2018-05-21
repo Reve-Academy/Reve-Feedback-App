@@ -28,7 +28,7 @@ class NewProgramPage extends Component {
 
     let content = null;
 
-    if (this.props.user.userName) {
+    if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
           <div className="managementNav">

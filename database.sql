@@ -15,9 +15,11 @@ CREATE TABLE person (
 	last VARCHAR (100),
 	photo VARCHAR (250),
 	email VARCHAR (200),
+	high_school VARCHAR (200),
 	instructor BOOLEAN DEFAULT FALSE,
 	active_profile BOOLEAN DEFAULT TRUE,
-	program_id INT REFERENCES program
+	program_id INT REFERENCES program ON DELETE SET NULL,
+	team VARCHAR (100)
 );
 
 CREATE TABLE weeks (
@@ -37,14 +39,14 @@ CREATE TABLE comments(
 	week_id INT REFERENCES weeks ON DELETE CASCADE
 );
 
-CREATE TABLE LIKES (
+CREATE TABLE likes (
 	person_id INT REFERENCES person ON DELETE CASCADE,
 	comment_id INT REFERENCES comments ON DELETE CASCADE
 );
 
-CREATE TABLE lesson(
+CREATE TABLE focus(
 	id SERIAL PRIMARY KEY,
-	title VARCHAR(100),
+	name VARCHAR(100),
 	summary VARCHAR(5000),
 	week_id INT REFERENCES weeks ON DELETE CASCADE,
 	x INT,
@@ -53,16 +55,16 @@ CREATE TABLE lesson(
 	h INT
 );
 
-CREATE TABLE tools_and_activities(
+CREATE TABLE strategies(
 	id SERIAL PRIMARY KEY,
 	title VARCHAR (100),
 	summary VARCHAR (1000),
-	lesson_id INT REFERENCES lesson ON DELETE CASCADE
+	focus_id INT REFERENCES focus ON DELETE CASCADE
 );
 
 CREATE TABLE resources (
 	id SERIAL PRIMARY KEY,
 	link VARCHAR (500),
-	TA_id INT REFERENCES tools_and_activities ON DELETE CASCADE
+	strategy_id INT REFERENCES strategies ON DELETE CASCADE
 );
 

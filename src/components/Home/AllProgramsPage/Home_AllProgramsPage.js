@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
-
 import Nav from '../../Nav/Nav';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
@@ -19,6 +17,7 @@ class Home_AllProgramsPage extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
 
+  //on logout, go to login page
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
@@ -27,16 +26,15 @@ class Home_AllProgramsPage extends Component {
 
   logout = () => {
     this.props.dispatch(triggerLogout());
-    // this.props.history.push('home');
+    this.props.history.push('home');
   }
 
   render() {
 
-
-
+  
     let content = null;
-
-    if (this.props.user.userName) {
+    
+    if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
           <div className="managementNav">
