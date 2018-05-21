@@ -5,7 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+// import AddNewUserModalForm from '../ManageAccountsPage/AddStudentForm'
 
 import Nav from '../../Nav/Nav';
 
@@ -49,7 +49,7 @@ class ManageAccountsPage extends Component {
     }
   }
 
-  handleCreateUserDialog = () => {
+  handleCreateUserModal = () => {
     this.setState({ open: true });
   };
 
@@ -90,7 +90,21 @@ class ManageAccountsPage extends Component {
           <h1>
             Manage Accounts
           </h1>
-          <button onClick={this.handleCreateUserDialog}>Create User</button><br/>
+          <button onClick={this.handleCreateUserModal}>Create User</button><br/>
+
+
+          <div>
+      
+        <Modal
+          aria-labelledby="Add New User"
+          open={this.state.open}
+          onClose={this.handleClose}
+        >
+          {/* <div style={getModalStyle()} className={classes.paper}> */}
+            {/* <AddNewUserModalForm /> */}
+          {/* </div> */}
+        </Modal>
+      </div>
 
           {/* STRETCH GOAL
           <input placeholder="Search and Add User"></input><button>Search</button> */}
