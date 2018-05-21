@@ -58,8 +58,26 @@ class InstructorStudentPage extends Component {
           <h1>
             INSTRUCTOR STUDENTS PAGE
           </h1>
-
           {/* Students Container */}
+          <table>
+            <thead>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Highschool</th>
+              <th>Team</th>
+              <th>Number of Comments</th>
+            </thead>
+            <tbody>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tbody>
+          </table>
+        
           <div>
             <StudentList />
           </div>

@@ -45,16 +45,26 @@ class NewProgramPage extends Component {
             </li>
             <li>
               <Link to="/newProgram">
-                New Program
+                Create New Program
               </Link>
             </li>
           </ul>
           </div>
 
           <h1>
-            THIS IS THE PAGE TO CREATE A NEW PROGRAM
+             New Program
           </h1>
-          <p>2018 Summer session</p>
+          Name of Program <br/>
+          <input placeholder="Name of Program"></input><br/>
+          Description <br/>
+          <input placeholder="Description"></input><br/>
+          Start Date <br/>
+          <input placeholder="mm/dd/yyyy"></input><br/>
+          End Date <br/>
+          <input placeholder="mm/dd/yyyy"></input><br/>
+          Number of Weeks <br/>
+          <input placeholder="Number of weeks"></input>
+          <button>Create Program</button>
         
         </div>
       );
