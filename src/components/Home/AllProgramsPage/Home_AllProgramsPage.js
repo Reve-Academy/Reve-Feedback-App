@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import Home_AllProgramsPage from '../../components/Home/Home_AllProgramsPage'
-import Nav from '../../components/Nav/Nav';
 
-import { USER_ACTIONS } from '../../redux/actions/userActions';
 
+import Nav from '../../Nav/Nav';
+
+import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import { triggerLogout } from '../../../redux/actions/loginActions';
 
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
-class InstructorFeedbackPage extends Component {
+class Home_AllProgramsPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -24,8 +25,14 @@ class InstructorFeedbackPage extends Component {
     }
   }
 
+  logout = () => {
+    this.props.dispatch(triggerLogout());
+    // this.props.history.push('home');
+  }
 
   render() {
+
+
 
     let content = null;
 
@@ -34,36 +41,32 @@ class InstructorFeedbackPage extends Component {
         <div>
           <div className="managementNav">
           <ul>
-          
             <li>
-              <Link to="/InstructorStudent">
-                Students
+              <Link to="/user" >
+                All Programs
               </Link>
             </li>
             <li>
-              <Link to="/InstructorFeedback">
-                Feedback
+              <Link to="/manageAccounts" >
+                Manage Accounts
               </Link>
             </li>
             <li>
-              <Link to="/InstructorSchedule">
-                Schedule
+              <Link to="/newProgram" >
+                New Program
               </Link>
             </li>
-      
           </ul>
           </div>
 
           <h1>
-            INSTRUCTOR FEEDBACK PAGE
+            THIS IS THE ALL/MANGE PROGRAMS VIEW
           </h1>
-        
-          {/* Feedback Container */}
-          <div>
-            This is where feedback will be sourced in.
-          </div>
-          {/* End Feedback Container */}
-
+          <button
+            onClick={this.logout}
+          >
+            Log Out
+          </button>
         </div>
       );
     }
@@ -78,4 +81,7 @@ class InstructorFeedbackPage extends Component {
 }
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InstructorFeedbackPage);
+export default connect(mapStateToProps)(Home_AllProgramsPage);
+
+
+
