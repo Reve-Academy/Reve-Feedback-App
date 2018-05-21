@@ -10,6 +10,7 @@ const Nav = () => (
           <img src="images/academylogo_white.png" alt="Reve logo" />
         </li>
         <li>
+          
           <Link to="/user">
             Home
           </Link>
