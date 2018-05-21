@@ -6,12 +6,25 @@ function* manageAccountsSaga(){
     yield takeEvery('UPDATE_ADMIN_STATUS', updateAdminStatusSaga);
     yield takeEvery('UPDATE_ACTIVE_STATUS', updateActivationStatusSaga);
     yield takeEvery('DELETE_ACCOUNT', deleteAccountSaga);
+    yield takeEvery('POST_ACCOUNT', postAccountSaga);
+}
+
+function* postAccountSaga(action){
+    try{
+        console.log('post Account payload: ', action.payload);
+        yield call(axios.post, '/api/manage', action.payload)
+        yield put({
+            type: 'GET_ACCOUNT_SAGA'
+        })
+    } catch (error){
+        console.log(`error on post: `, error);
+    }
 }
 
 function* deleteAccountSaga(action){
     try{   
         console.log('delete Account payload is', action.payload)
-        yield call(axios.delete, `/api/program/${action.payload.id}`)
+        yield call(axios.delete, `/api/manage/${action.payload.id}`)
         yield put({
             type: 'GET_PROGRAM_SAGA',
         })
@@ -35,7 +48,7 @@ function* getAccountSaga(){
 function* updateAdminStatusSaga(action){
     try{
         console.log('update adminstatus payload: ', action.payload)
-        yield call(axios.put, `/api/program/admin/${action.payload.id}`, action.payload )
+        yield call(axios.put, `/api/manage/admin/${action.payload.id}`, action.payload )
         yield put({
             type:'GET_ACCOUNT_SAGA'
         })
@@ -47,7 +60,7 @@ function* updateAdminStatusSaga(action){
 function* updateActivationStatusSaga(action){
     try{
         console.log('update active status payload: ', action.payload)
-        yield call(axios.put, `/api/program/activate/${action.payload.id}`, action.payload )
+        yield call(axios.put, `/api/manage/activate/${action.payload.id}`, action.payload )
         yield put({
             type:'GET_ACCOUNT_SAGA'
         })
