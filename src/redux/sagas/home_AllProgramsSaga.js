@@ -7,10 +7,9 @@ function* home_AllProgramSaga(){
     yield takeEvery('UPDATE_PROGRAM_SAGA', updateProgramSaga);
 }
 
-function* getProgramSaga(action){
+function* getProgramSaga(){
     try{
-        const programResponse = yield call(axios.get, `/api/program/${action.payload.name}`)
-        console.log('action payload of getProgramSaga', action.payload);
+        const programResponse = yield call(axios.get, `/api/program`)
         yield put({
             type:'SET_PROGRAM_REDUCER',
             payload: programResponse.data,
@@ -23,7 +22,7 @@ function* getProgramSaga(action){
 function* deleteProgramSaga(action){
     try{   
         console.log('delete Program payload is', action.payload)
-        yield call(axios.delete, `/api/notecard/${action.payload.id}`)
+        yield call(axios.delete, `/api/program/${action.payload.id}`)
         yield put({
             type: 'GET_PROGRAM_SAGA',
         })
