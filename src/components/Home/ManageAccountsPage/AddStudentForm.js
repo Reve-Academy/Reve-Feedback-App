@@ -11,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 const mapReduxStateToProps = reduxState => ({
     user: reduxState.user,
-    program: reduxState.home_AllProgramsReducer.allProgramsReducer
+    reduxState: reduxState
   });
 
 class AddStudentForm extends Component{
@@ -51,7 +51,7 @@ class AddStudentForm extends Component{
 
     render(){
         //mapping for selector drop down
-        let programMenuItem = this.props.program.map((program) => {
+        let programMenuItem = this.props.reduxState.home_AllProgramsPageReducer.allProgramsReducer.map((program) => {
             return <MenuItem key={program.id} value={program.id}>{program.name}</MenuItem>
         })
 
