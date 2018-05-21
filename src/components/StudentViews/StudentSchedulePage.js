@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import studentNav from '../../components/Nav/studentNav';
 
 
 
@@ -64,7 +65,7 @@ class StudentSchedulePage extends Component {
 
     return (
       <div>
-  
+        <studentNav />
         {content}
       </div>
     );
