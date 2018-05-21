@@ -23,7 +23,6 @@ function* deleteAccountSaga(action){
 function* getAccountSaga(){
     try{
         const accountResponse = yield call(axios.get, `/api/manage`)
-        console.log('action payload of getAccountSaga', action.payload);
         yield put({
             type:'SET_ACCOUNT_REDUCER',
             payload: accountResponse.data,
