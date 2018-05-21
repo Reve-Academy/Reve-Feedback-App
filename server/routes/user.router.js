@@ -10,6 +10,7 @@ const router = express.Router();
 router.get('/', rejectUnauthenticated, (req, res) => {
   // Send back user object from database
   res.send(req.user);
+  console.log(req.user);
 });
 
 // Handles POST request with new user data

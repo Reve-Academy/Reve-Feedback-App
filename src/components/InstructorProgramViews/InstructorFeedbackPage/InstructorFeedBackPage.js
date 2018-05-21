@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import instructorNav from '../../Nav/instructorNav';
+import InstructorNav from '../../Nav/instructorNav';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -28,7 +28,7 @@ class InstructorFeedbackPage extends Component {
 
     let content = null;
 
-    if (this.props.user.userName) {
+    if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
           <div className="managementNav">
@@ -69,7 +69,7 @@ class InstructorFeedbackPage extends Component {
 
     return (
       <div>
-       <instructorNav />
+       <InstructorNav />
         {content}
       </div>
     );
