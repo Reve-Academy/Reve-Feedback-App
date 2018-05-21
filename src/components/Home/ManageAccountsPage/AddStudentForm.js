@@ -64,7 +64,7 @@ class AddStudentForm extends Component{
                     margin="normal"
                     onChange={this.handleChangeFor("email")}
                  />
-                           <InputLabel htmlFor="age-simple">Age</InputLabel>
+                <InputLabel>Please Choose A Program</InputLabel>
                 <Select
                     value={this.state.newStudent.program}
                     onChange={this.handleChangeFor("program")}
