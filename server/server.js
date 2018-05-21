@@ -30,7 +30,7 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/programs', allProgramsRouter);
+app.use('/api/program', allProgramsRouter);
 app.use('/api/manage', manageAccountsRouter);
 app.use('/api/instructorFeedback', instructorFeedbackRouter);
 app.use('/api/instructorSchedule', instructorScheduleRouter);
