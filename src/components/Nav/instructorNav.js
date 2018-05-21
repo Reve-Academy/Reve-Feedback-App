@@ -6,12 +6,14 @@ const InstructorNav = () => (
 	<div className="navbar">
 		<div>
 			<ul>
+				{/* Reve Academy logo for nav bar */}
 				<li className="logo">
 					<img src="images/academylogo_white.png" alt="Reve logo" />
 				</li>
 
 				<li>
-          <Avatar />
+					{/* Avatar icon on right side for teacher */}
+					<Avatar />
 				</li>
 
 				<li className="navItem">

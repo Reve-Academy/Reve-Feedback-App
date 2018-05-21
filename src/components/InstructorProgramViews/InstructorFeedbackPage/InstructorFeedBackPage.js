@@ -30,6 +30,9 @@ class InstructorFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
+
+          {/* client-side routes for navbar */}
+
           <div className="managementNav">
           <ul>
           
@@ -51,6 +54,8 @@ class InstructorFeedbackPage extends Component {
       
           </ul>
           </div>
+          {/* End navbar routes */}
+
 
           <h1>
             INSTRUCTOR FEEDBACK PAGE

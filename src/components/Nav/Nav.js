@@ -7,6 +7,7 @@ const Nav = () => (
     <div>
       <ul>
         <li className="logo">
+          {/* Reve Academy logo */}
           <img src="images/academylogo_white.png" alt="Reve logo" />
         </li>
         <li>

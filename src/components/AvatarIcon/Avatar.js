@@ -11,19 +11,19 @@ const styles = {
   },
   avatar: {
     margin: 10,
-  },
-  
-  bigAvatar: {
-    width: 30,
-    height: 60,
+    marginTop: 20,
+    backgroundColor: "white",
+    color: "white",
+    src: "blank-avatar.png"
   },
 };
+
 
 function ImageAvatars(props) {
   const { classes } = props;
   return (
     <div className={classes.row}>
-      <Avatar img="/static/images/remy.jpg" className={classes.avatar} />
+      <Avatar img="blank-avatar.png" className={classes.avatar} />
       
     </div>
   );

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import InstructorNav from '../../Nav/instructorNav';
-
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
@@ -31,6 +29,9 @@ class InstructorSchedulePage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
+        
+        {/* client-side routes for navbar */}
+
           <div className="managementNav">
           <ul>
           
@@ -52,6 +53,8 @@ class InstructorSchedulePage extends Component {
       
           </ul>
           </div>
+        {/* End navbar routes */}
+
 
           <h1>
             INSTRUCTOR SCHEDULE PAGE
