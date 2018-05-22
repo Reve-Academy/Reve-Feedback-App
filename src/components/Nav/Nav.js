@@ -14,6 +14,7 @@ const Nav = () => (
           <Link to="/user">
             Home
           </Link>
+          
         </li>
       </ul>
     </div>

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 import Nav from '../../Nav/Nav';
+
+import ManageAccountsPage from '../../Home/ManageAccountsPage/ManageAccountsPage'
+import Home_AllProgramsPage from '../../Home/AllProgramsPage/Home_AllProgramsPage'
+
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -31,29 +34,36 @@ class NewProgramPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div className="managementNav">
-          <ul>
+
+          <div>
+            <ul>
             <li>
-              <Link to="/user">
-                All Programs
-              </Link>
-            </li>
-            <li>
-              <Link to="/manageAccounts">
-                Manage Accounts
-              </Link>
-            </li>
-            <li>
-              <Link to="/newProgram">
-                Create New Program
-              </Link>
-            </li>
-          </ul>
+                <Link to="/newProgram" >
+                  New Program
+                </Link>
+              </li>
+            
+              <li>
+                <Link to="/manageAccounts" >
+                  Manage Accounts
+                </Link>
+              </li>
+              <li>
+                <Link to="/user" >
+                  All Programs
+                </Link>
+              </li>
+            
+            </ul>
           </div>
 
+          <div>
           <h1>
              New Program
           </h1>
+          </div>
+
+          
           Name of Program <br/>
           <input placeholder="Name of Program"></input><br/>
           Description <br/>
