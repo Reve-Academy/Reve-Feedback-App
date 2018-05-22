@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
-
-
+import LoginNav from '../Nav/LoginNav'
 const mapStateToProps = state => ({
   user: state.user,
   login: state.login,
@@ -64,6 +63,9 @@ class LoginPage extends Component {
   render() {
     return (
       <div>
+      <LoginNav/>
+      
+      <div>
         { this.renderAlert() }
         <form onSubmit={this.login}>
           <h1>Login</h1>
@@ -99,7 +101,10 @@ class LoginPage extends Component {
           </div>
         </form>
       </div>
+      </div>
+    
     );
+   
   }
 }
 

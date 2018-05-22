@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import InstructorNav from '../../Nav/instructorNav';
+import InstructorNav from '../../Nav/InstructorNav';
 import StudentList from './StudentList';
-
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
@@ -17,7 +15,7 @@ class InstructorStudentPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
-
+//
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
@@ -30,9 +28,12 @@ class InstructorStudentPage extends Component {
     let content = null;
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
-      content = (
+      content = (          
         <div>
-          <div className="managementNav">
+
+            {/* client-side routes for navbar */}
+
+          <div>
           <ul>
           
             <li>
@@ -53,12 +54,30 @@ class InstructorStudentPage extends Component {
       
           </ul>
           </div>
-
+            {/* End navbar routes */}
           <h1>
             INSTRUCTOR STUDENTS PAGE
           </h1>
-
           {/* Students Container */}
+          <table>
+            <thead>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Highschool</th>
+              <th>Team</th>
+              <th>Number of Comments</th>
+            </thead>
+            <tbody>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tbody>
+          </table>
+        
           <div>
             <StudentList />
           </div>

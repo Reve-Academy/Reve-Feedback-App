@@ -1,28 +1,32 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const studentNav = () => (
+const StudentNav = () => (
+
   <div className="navbar">
-    <div>
+   
+      {/* Reve Academy logo */}
+			<img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
+     
+
       <ul>
-        <li>
-          <Link to="/feedback">
+        <li className="navItem">
+          <Link to="/StudentFeedback">
             Feedback
           </Link>
         </li>
-        <li>
-          <Link to="/schedule">
+        <li className="navItem">
+          <Link to="/StudentSchedule">
             Schedule
           </Link>
         </li>
-        <li>
+        <li className="navItem">
           <Link to="/program">
             Program Name
           </Link>
         </li>
       </ul>
-    </div>
   </div>
 );
 
-export default studentNav;
+export default StudentNav;
