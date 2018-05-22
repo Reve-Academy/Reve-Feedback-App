@@ -7,6 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
 const mapStateToProps = state => ({
@@ -37,7 +39,14 @@ class AddStudentForm extends Component{
     };
 
     // //FUNCTION FOR UPDATING INSTRUCTOR STATUS
-    // handleInstructorToggle =
+    handleInstructor = () => {
+        this.setState({
+            newStudent: {
+                ...this.state.newStudent,
+                instructor: !this.state.newStudent.instructor
+            }
+        })
+    }
 
 
     // FUNCTION FOR DISPATCHING ACTION TO ADD STUDENT
@@ -47,6 +56,11 @@ class AddStudentForm extends Component{
             payload: this.state.newStudent
         })
     };
+
+    componentDidMount() {
+        // use component did mount to dispatch an action to request the studentList from the API
+        this.props.dispatch({ type: 'GET_PROGRAM_SAGA'});
+    }
 
     render(){
         //mapping for selector drop down
@@ -78,6 +92,20 @@ class AddStudentForm extends Component{
                 </MenuItem>
                 {programMenuItem}
                 </Select>
+                <br />
+                <ListItem 
+                onClick={() => this.handleInstructor()}
+                dense
+                button
+                >
+                <ListItemText 
+                primary='Instructor: ' 
+                />
+                <Checkbox
+                tabIndex={-1}
+                disableRipple
+                />
+                </ListItem>
                 <br />
                 <Button variant="outlined" onClick={() => this.addStudent()}>
                     Add Student 
