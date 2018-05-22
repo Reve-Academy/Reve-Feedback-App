@@ -9,9 +9,8 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
 
-const mapReduxStateToProps = reduxState => ({
-    user: reduxState.user,
-    program: reduxState.home_AllProgramsReducer.allProgramsReducer
+const mapStateToProps = state => ({
+    state,
   });
 
 class AddStudentForm extends Component{
@@ -51,7 +50,7 @@ class AddStudentForm extends Component{
 
     render(){
         //mapping for selector drop down
-        let programMenuItem = this.props.program.map((program) => {
+        let programMenuItem = this.props.state.home_AllProgramPageReducer.allProgramsReducer.map((program) => {
             return <MenuItem key={program.id} value={program.id}>{program.name}</MenuItem>
         })
 
@@ -64,7 +63,8 @@ class AddStudentForm extends Component{
                     margin="normal"
                     onChange={this.handleChangeFor("email")}
                  />
-                           <InputLabel htmlFor="age-simple">Age</InputLabel>
+                <br />
+                <InputLabel>Please Choose A Program</InputLabel>
                 <Select
                     value={this.state.newStudent.program}
                     onChange={this.handleChangeFor("program")}
@@ -78,6 +78,7 @@ class AddStudentForm extends Component{
                 </MenuItem>
                 {programMenuItem}
                 </Select>
+                <br />
                 <Button variant="outlined" onClick={() => this.addStudent()}>
                     Add Student 
                 </Button>
@@ -86,4 +87,4 @@ class AddStudentForm extends Component{
     }
 }
 
-export default connect(mapReduxStateToProps)(AddStudentForm);
+export default connect(mapStateToProps)(AddStudentForm);

@@ -5,7 +5,8 @@ import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import AddNewUserModalForm from '../ManageAccountsPage/AddStudentForm'
+import AddNewUserModalForm from '../ManageAccountsPage/AddStudentForm';
+import AccountsList from './AccountsList';
 
 import Nav from '../../Nav/Nav';
 
@@ -39,6 +40,12 @@ const mapStateToProps = state => ({
 });
 
 class ManageAccountsPage extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      open: false 
+    }
+  }
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -99,10 +106,10 @@ class ManageAccountsPage extends Component {
           aria-labelledby="Add New User"
           open={this.state.open}
           onClose={this.handleClose}
-        >
-          {/* <div style={getModalStyle()} className={classes.paper}> */}
-            {/* <AddNewUserModalForm /> */}
-          {/* </div> */}
+        > 
+          <div style={getModalStyle()} className={classes.paper}>
+            <AddNewUserModalForm />
+          </div>
         </Modal>
       </div>
 
@@ -140,6 +147,6 @@ class ManageAccountsPage extends Component {
     );
   }
 }
-
+ let manageAccountWithStyle = withStyles(styles)(ManageAccountsPage)
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(ManageAccountsPage);
+export default connect(mapStateToProps)(manageAccountWithStyle);
