@@ -10,7 +10,7 @@ const store = combineReducers({
   user,
   login,
   home_AllProgramPageReducer,
-  manageAccountsReducer,
+  manageAccountsReducer
 });
 //hello
 export default store;
