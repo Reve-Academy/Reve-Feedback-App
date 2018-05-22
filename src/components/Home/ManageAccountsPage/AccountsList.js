@@ -36,7 +36,7 @@ class AccountsList extends Component {
                         <tr>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Admin</th>
+                            <th>Instructor</th>
                             <th>Active</th>
                             <th>Program</th>
                             <th>high_school</th>

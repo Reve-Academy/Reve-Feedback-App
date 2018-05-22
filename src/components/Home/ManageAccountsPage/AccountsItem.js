@@ -16,57 +16,94 @@ const mapStateToProps = state => ({
 });
 
 class AccountsItem extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            accounts: {
+                instructor: this.props.aItem.instructor,
+                active: this.props.aItem.active_profile
+            }
+        }
+    }
 
-    render(){
-        // console.log('active profile', this.props.aItem.active_profile)
-        // let active = this.props.aItem.active_profile 
 
-        let active;
-        
-         if (this.props.aItem.active_profile === true ) {
-             active = (<p>true</p>)
-          
-         } else {
-            active = (<p>false</p>)
-         }
+        handleActive = () => {
+    
+            let newActive = !this.props.aItem.active_profile
+            this.props.dispatch({
+                type: 'UPDATE_ACTIVE_STATUS', 
+                payload: this.state.
+            })
 
-         let instructor;
 
-         if (this.props.aItem.instructor === true ) {
-            instructor = (<p>true</p>)
-         
-        } else {
-           instructor = (<p>false</p>)
+
+            
         }
 
-         
+        // handleInstructor = () => {
+        //     console.log('before active update', this.state.instructor)
+        //     this.setState({
+        //         accounts: {
+        //             instructor: !this.props.aItem.instructor
+        //         }
+        //     })
+        //     console.log('after you clicked update active', this.state.accounts.instructor);
+        // }
 
-        return(
-    
+        render(){
            
-               
-            <tbody>
-           <tr>
-              <td>{this.props.aItem.first}</td>
-              <td>{this.props.aItem.last}</td>
-              <td>{active}</td>
-              <td>{instructor}</td>
-              <td>{this.props.aItem.name}</td>
-              <td>{this.props.aItem.high_school}</td>
-              <td>{this.props.aItem.team}</td>
-              <td><button>Delete</button></td>
-             
-            </tr>
-            </tbody>
-          
-           
-            
-         
-        )
+
+            console.log('this.state:', this.state.accounts.instructor)
 
 
-    }
+            //True and false to be displayed as checkboxes
+            let active;
+
+            if (this.state.accounts.active_profile === true) {
+                active = (<p>true</p>)
+
+            } else {
+                active = (<p>false</p>)
+            }
+
+            let instructor;
+
+            if (this.state.accounts.instructor === true) {
+                instructor = (<p>true</p>)
+
+            } else {
+                instructor = (<p>false</p>)
+            }
+
+
+
+            return (
+
+
+
+                <tbody>
+                    <tr>
+                        <td>{this.props.aItem.first}</td>
+                        <td>{this.props.aItem.last}</td>
+                        <td onClick={() => this.handleInstructor()}>{instructor}</td>
+                        <td onClick={() => this.handleActive()}>{active}</td>
+                        <td>{this.props.aItem.name}</td>
+                        <td>{this.props.aItem.high_school}</td>
+                        <td>{this.props.aItem.team}</td>
+                        <td><button>Delete</button></td>
+
+                    </tr>
+                </tbody>
+
+
+
+
+            )
+
+
+        }
     
+
 }
 
 export default connect(mapStateToProps)(AccountsItem)
