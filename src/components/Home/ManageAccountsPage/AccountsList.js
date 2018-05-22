@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AccountsItem from './AccountsItem';
+import AccountsItem from '../../Home/ManageAccountsPage/ManageAccountsPage';
 
 const mapStateToProps = state => ({
     state,
@@ -15,14 +15,23 @@ const mapStateToProps = state => ({
       render() {
           
         console.log('state', this.props.state);
-        // console.log('user', this.props.state.user);
-        // let programs = this.props.state.manageAccountsReducer.
+        //use map to display individual accounts for AccountsItem component
+        let accounts = this.props.state.manageAccountsReducer.allAccountsReducer.map(aItem => {
+            return (
+                <AccountsItem
+                key = {aItem.id}
+                aItem = {aItem}
+                
+                />
+            )
+        })
 
-        return (
+        return(
             <div>
-            <p>hi</p>
+                {accounts}
             </div>
         )
+
       }
   }
 
