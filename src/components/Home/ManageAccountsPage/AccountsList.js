@@ -16,23 +16,22 @@ class AccountsList extends Component {
 
     render() {
 
-        console.log('STATEEEE', this.props.state);
         //use map to display individual accounts for AccountsItem component
         let accounts = this.props.state.manageAccountsReducer.allAccountsReducer.map(aItem => {
             return (
-                
-                    <AccountsItem
-                        key={aItem.id}
-                        aItem={aItem}
 
-                    />
-                
+                <AccountsItem
+                    key={aItem.id}
+                    aItem={aItem}
+
+                />
+
             )
         })
 
         return (
             <div>
-                {accounts}
+            { accounts }
             </div>
         )
 

@@ -12,7 +12,7 @@ class AccountsItem extends Component {
         return(
     
             
-           
+        
               <tr>
               <td>{this.props.aItem.first}</td>
               <td>{this.props.aItem.last}</td>
@@ -21,6 +21,7 @@ class AccountsItem extends Component {
               <td>{this.props.aItem.program}</td>
               <td><button>Delete</button></td>
               </tr>
+           
             
          
         )
