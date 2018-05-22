@@ -13,10 +13,51 @@ const mapStateToProps = state => ({
 });
 
 class NewProgramPage extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      newProgram: {
+        name:'',
+        description:'',
+        start:'',
+        finish:'',
+        weeks:'',
+        active_program:true,
+      }
+    }
+  }
+
+  handleNewProgram = (property) => {
+    return (event) =>{
+      this.setState({
+        newProgram:{
+          ...this.state.newProgram,
+          [property]:event.target.value,
+        }
+      })
+    }
+  }
+  createNewProgram = event => {
+    event.preventDefault();
+    this.props.dispatch({
+      type: 'POST_NEW_PROGRAM',
+      payload: this.state.newProgram
+    })
+    this.setState({
+      newProgram:{
+        name:'',
+        description:'',
+        start:'',
+        finish:'',
+        weeks:'',
+        active_program:true,
+      }
+    })
+  }
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
-
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('home');
@@ -55,17 +96,16 @@ class NewProgramPage extends Component {
              New Program
           </h1>
           Name of Program <br/>
-          <input placeholder="Name of Program"></input><br/>
+          <input placeholder="Name of Program" value={this.state.newProgram.name} onChange={this.handleNewProgram('name')}></input><br/>
           Description <br/>
-          <input placeholder="Description"></input><br/>
+          <input placeholder="Description" value={this.state.newProgram.description} onChange={this.handleNewProgram('description')}></input><br/>
           Start Date <br/>
-          <input placeholder="mm/dd/yyyy"></input><br/>
+          <input placeholder="mm/dd/yyyy" value={this.state.newProgram.start} onChange={this.handleNewProgram('start')}></input><br/>
           End Date <br/>
-          <input placeholder="mm/dd/yyyy"></input><br/>
+          <input placeholder="mm/dd/yyyy" value={this.state.newProgram.finish} onChange={this.handleNewProgram('finish')}></input><br/>
           Number of Weeks <br/>
-          <input placeholder="Number of weeks"></input>
-          <button>Create Program</button>
-        
+          <input placeholder="Number of weeks" value={this.state.newProgram.weeks} onChange={this.handleNewProgram('weeks')}></input>
+          <button onClick={this.createNewProgram}>Create Program</button>
         </div>
       );
     }
