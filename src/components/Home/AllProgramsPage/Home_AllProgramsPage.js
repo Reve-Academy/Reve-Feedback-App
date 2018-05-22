@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
 });
 
 class Home_AllProgramsPage extends Component {
+  
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
   }
@@ -76,7 +77,7 @@ class Home_AllProgramsPage extends Component {
             >
               Log Out
             </button>
-            </div>
+          </div>
           {/* End Content Container */}
 
         </div>
