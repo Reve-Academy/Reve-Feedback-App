@@ -55,6 +55,13 @@ class AddStudentForm extends Component{
             type: 'POST_ACCOUNT',
             payload: this.state.newStudent
         })
+        this.setState({
+            newStudent: {
+                ...this.state.newStudent,
+                email: '',
+                program: ''
+            }
+        })
     };
 
     componentDidMount() {
@@ -76,6 +83,7 @@ class AddStudentForm extends Component{
                     placeholder="E-mail"
                     margin="normal"
                     onChange={this.handleChangeFor("email")}
+                    value={this.state.newStudent.email}
                  />
                 <br />
                 <InputLabel>Please Choose A Program</InputLabel>
@@ -97,6 +105,7 @@ class AddStudentForm extends Component{
                 onClick={() => this.handleInstructor()}
                 dense
                 button
+                value={this.state.newStudent.instructor}
                 >
                 <ListItemText 
                 primary='Instructor: ' 
