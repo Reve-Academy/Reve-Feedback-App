@@ -3,7 +3,7 @@ import userSaga from './userSaga';
 import loginSaga from './loginSaga';
 import home_AllProgramSaga from './home_AllProgramsSaga';
 import newProgramSaga from'./newProgramSaga';
-// import manageAccountsSaga from './manageAccountsSaga'
+import manageAccountsSaga from './manageAccountsSaga';
 
 
 export default function* rootSaga() {
@@ -12,7 +12,7 @@ export default function* rootSaga() {
     loginSaga(),
     home_AllProgramSaga(),
     newProgramSaga(),
-    // manageAccountsSaga(),
+    manageAccountsSaga(),
     // watchIncrementAsync()
   ]);
 }
