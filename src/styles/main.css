@@ -53,7 +53,7 @@ input[type="submit"] {
 	/* position: fixed; */
 	top: 0;
 	width: 100%;
-	/* overflow: hidden; */
+	overflow: hidden;
 	height: 70px;
 }
 

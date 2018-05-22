@@ -12,21 +12,21 @@ class StudentList extends Component {
 
   }
 
-  render() {
-    // let students = this.props.state.student.map((student) => {
-    //   return (
-    //     <StudentItem 
-    //     key={student.id} 
-    //     student={student}/>
-    //   )
-    // })
+   render() {
+//     // let students = this.props.state.student.map((student) => {
+//     //   return (
+//     //     <StudentItem 
+//         // key={student.id} 
+//         // student={students}/>
+//       )
+//     })
     
-    return(
-      <div>
-        {/* {students} */}
-      </div>
-    )
-  }
-}
+     return(
+       <div>
+         {/* {students} */}
+       </div>
+     )
+   }
+ }
 
 export default connect(mapStateToProps)(StudentList);

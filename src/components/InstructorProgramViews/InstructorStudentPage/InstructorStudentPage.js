@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
 import StudentList from './StudentList';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-
+import InstructorStudentTable from '../InstructorStudentPage/InstructorStudentTable';
 
 
 const mapStateToProps = state => ({
@@ -58,8 +58,13 @@ class InstructorStudentPage extends Component {
           <h1>
             INSTRUCTOR STUDENTS PAGE
           </h1>
+
+          <InstructorStudentTable/>
+
           {/* Students Container */}
-          <table>
+
+
+          {/* <table>
             <thead>
               <th>First Name</th>
               <th>Last Name</th>
@@ -76,7 +81,7 @@ class InstructorStudentPage extends Component {
               <td></td>
               <td></td>
             </tbody>
-          </table>
+          </table> */}
         
           <div>
             <StudentList />
