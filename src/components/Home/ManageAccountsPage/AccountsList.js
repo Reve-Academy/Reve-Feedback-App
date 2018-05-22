@@ -3,23 +3,24 @@ import { connect } from 'react-redux';
 import AccountsItem from './AccountsItem';
 
 const mapStateToProps = state => ({
-    user: state.user,
+    state,
   });
 
   class AccountsList extends Component {
       componentDidMount() {
           //use componentDidMount to dispatch an action to request the AccountsList from the API
-          this.props.dispatch({ type: 'GET_ACCOUNTSLIST'})
+          this.props.dispatch({ type: 'GET_ACCOUNT_SAGA'})
       }
 
       render() {
           
         console.log('state', this.props.state);
         // console.log('user', this.props.state.user);
+        // let programs = this.props.state.manageAccountsReducer.
 
         return (
             <div>
-                hi
+            <p>hi</p>
             </div>
         )
       }
