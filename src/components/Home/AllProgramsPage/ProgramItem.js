@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import EditProgramForm from './EditProgramForm';
 
@@ -32,11 +33,23 @@ const styles = theme => ({
   },
 });
 
+const mapStateToProps = state => ({
+  state,
+});
+
 class ProgramItem extends Component {
   constructor(props){
     super(props);
     this.state = {
-      open: false 
+      open: false,
+      editProgram: {
+          id: this.props.pItem.id,
+          name: this.props.pItem.name,
+          active_program: this.props.pItem.active_program,
+          description: this.props.pItem.description,
+          start: this.props.pItem.start,
+          finish: this.props.pItem.finish
+      }
     }
   }
 
@@ -48,7 +61,39 @@ class ProgramItem extends Component {
     this.setState({ open: false });
   };
 
+  // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
+  putProgram = () => {
+    this.props.dispatch({
+      type: 'UPDATE_PROGRAM_SAGA',
+      payload: this.state.editProgram
+    })
+  };
+
+  // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
+  programActive = () => {
+    this.setState({
+      editProgram: {
+      ...this.state.editProgram,
+      active_program: !this.state.editProgram.active_program
+      }
+    })
+    this.putProgram();
+  };
+
   render() {
+
+    // Activation Button
+    let programActiveSetting;
+    if (this.props.pItem.active_program === true ) {
+       programActiveSetting = (<Button variant="outlined" onClick={() => this.programActive()}>
+          Deactivate
+       </Button>)
+    } else {
+       programActiveSetting = (<Button variant="outlined" onClick={() => this.programActive()}>
+          Activate
+       </Button>)
+    }
+    // End Activation Button
 
     const { classes } = this.props;    
 
@@ -69,6 +114,7 @@ class ProgramItem extends Component {
             <Button onClick={this.handleEditProgram}>
               Edit
             </Button>
+            {programActiveSetting}
           </CardActions>
         </Card>
         {/* End Card Container */}
@@ -92,4 +138,4 @@ class ProgramItem extends Component {
 
 let programItemStyle = withStyles(styles)(ProgramItem)
 // this allows us to use <App /> in index.js
-export default programItemStyle;
+export default connect(mapStateToProps)(programItemStyle);
