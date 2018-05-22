@@ -48,9 +48,9 @@ input[type="submit"] {
     /* STYLING FOR NAV BAR */
 
 .navbar {
-	background-color: #e02100;
+	background-color: 	#D8441C;
 	margin-bottom: 25px;
-	position: fixed;
+	/* position: fixed; */
 	top: 0;
 	width: 100%;
 	overflow: hidden;
@@ -85,7 +85,7 @@ li a:hover {
 	color: white;
 	background-size: 100%;
 
-	background-color: #ca0200;
+	background-color: #D8441C;
 }
 
 .logo {
