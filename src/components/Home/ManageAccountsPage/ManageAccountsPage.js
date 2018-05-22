@@ -13,7 +13,7 @@ import Nav from '../../Nav/Nav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
-
+//Style properties for add new user modal
 function getModalStyle() {
   const top = 50;
   const left = 50 ;
@@ -34,6 +34,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
   },
 });
+//end styling properties 
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -42,6 +43,7 @@ const mapStateToProps = state => ({
 class ManageAccountsPage extends Component {
   constructor(props){
     super(props);
+    //open state of modal begins as false
     this.state = {
       open: false 
     }
@@ -56,10 +58,12 @@ class ManageAccountsPage extends Component {
     }
   }
 
+  //on click of new user button, open modal
   handleCreateUserModal = () => {
     this.setState({ open: true });
   };
 
+  //on click of outside modal, close modal
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -116,24 +120,29 @@ class ManageAccountsPage extends Component {
           {/* STRETCH GOAL
           <input placeholder="Search and Add User"></input><button>Search</button> */}
 
-          <table>
+          {/* <table>
             <thead>
+              <tr>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Admin</th>
               <th>Active</th>
               <th>Program</th>
               <th>Delete</th>
+              </tr>
             </thead>
             <tbody>
+              <tr>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
               <td></td>
+              </tr>
             </tbody>
-          </table>
+          </table> */}
+          <AccountsList/>
         
         </div>
       );
