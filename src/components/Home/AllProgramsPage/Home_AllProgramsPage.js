@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 
 import Nav from '../../Nav/Nav';
 import ProgramsList from './ProgramsList';
+import ManageAccountsPage from '../../Home/ManageAccountsPage/ManageAccountsPage';
+import NewProgramPage from '../../Home/NewProgramPage/NewProgramPage';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import { triggerLogout } from '../../../redux/actions/loginActions';
+
 
 
 const mapStateToProps = state => ({
@@ -39,23 +42,25 @@ class Home_AllProgramsPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div className="managementNav">
+          <div>
             <ul>
-              <li>
-                <Link to="/user" >
-                  All Programs
+            <li>
+                <Link to="/newProgram" >
+                  New Program
                 </Link>
               </li>
+            
               <li>
                 <Link to="/manageAccounts" >
                   Manage Accounts
                 </Link>
               </li>
               <li>
-                <Link to="/newProgram" >
-                  New Program
+                <Link to="/user" >
+                  All Programs
                 </Link>
               </li>
+            
             </ul>
           </div>
 

@@ -25,6 +25,7 @@ const InstructorNav = () => (
 			<li className="navItem">
 				<Link to="/InstructorSchedule">Schedule</Link>
 			</li>
+			{/* //not link to new page, display current program */}
 			<li className="navItem">
 				<Link to="newProgram">Program Name</Link>
 			</li>
