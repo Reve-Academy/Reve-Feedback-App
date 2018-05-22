@@ -11,12 +11,12 @@ const StudentNav = () => (
 
       <ul>
         <li className="navItem">
-          <Link to="/feedback">
+          <Link to="/StudentFeedback">
             Feedback
           </Link>
         </li>
         <li className="navItem">
-          <Link to="/schedule">
+          <Link to="/StudentSchedule">
             Schedule
           </Link>
         </li>

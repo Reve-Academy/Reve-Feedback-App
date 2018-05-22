@@ -26,10 +26,7 @@ class StudentSchedulePage extends Component {
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
 				<div>
-					<div className="navbar">
 						<ul>
-							{/* Reve Academy logo */}
-							<img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
 
 							<li>
 								<Link to="/StudentFeedback">Feedback</Link>
@@ -38,7 +35,7 @@ class StudentSchedulePage extends Component {
 								<Link to="/StudentSchedule">Schedule</Link>
 							</li>
 						</ul>
-					</div>
+					
 
 					<h1>STUDENT SCHEDULE</h1>
 
