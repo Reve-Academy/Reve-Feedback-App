@@ -28,11 +28,16 @@ class AccountsItem extends Component {
 
 
         handleActive = () => {
+            this.setState({
+                accounts: {
+                    active: !this.props.aItem.active_profile
+                }
+            })
     
-            let newActive = !this.props.aItem.active_profile
+          
             this.props.dispatch({
                 type: 'UPDATE_ACTIVE_STATUS', 
-                payload: this.state.
+                payload: 
             })
 
 
