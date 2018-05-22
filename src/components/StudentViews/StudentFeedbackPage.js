@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import studentNav from '../../components/Nav/studentNav';
+import StudentNav from '../../components/Nav/StudentNav';
 
 
 
@@ -33,9 +33,12 @@ class StudentFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor === false ) {
       content = (
         <div>
-          <div className="managementNav">
+          <div className="navbar">
           <ul>
-          
+          {/* Reve Academy logo */}
+          <li className="logo">
+          <img src="images/academylogo_white.png" alt="Reve logo" />
+        </li>
             <li>
               <Link to="/StudentFeedback">
                 Feedback
@@ -65,7 +68,7 @@ class StudentFeedbackPage extends Component {
 
     return (
       <div>
-        <studentNav />
+        <StudentNav />
         {content}
       </div>
     );

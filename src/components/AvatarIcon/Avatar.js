@@ -10,8 +10,8 @@ const styles = {
     justifyContent: 'center',
   },
   avatar: {
-    margin: 10,
-    marginTop: 20,
+    marginRight: 10,
+    
     backgroundColor: "white",
     color: "white",
     src: "blank-avatar.png"
@@ -29,8 +29,6 @@ function ImageAvatars(props) {
   );
 }
 
- ImageAvatars.propTypes = {
-   classes: PropTypes.object.isRequired,
- };
+
 
 export default withStyles(styles)(ImageAvatars);

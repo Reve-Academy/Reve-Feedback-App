@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import InstructorNav from '../../Nav/instructorNav';
+import InstructorNav from '../../Nav/InstructorNav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
@@ -32,7 +32,7 @@ class InstructorSchedulePage extends Component {
         
         {/* client-side routes for navbar */}
 
-          <div className="managementNav">
+          <div>
           <ul>
           
             <li>
