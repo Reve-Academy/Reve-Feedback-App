@@ -20,11 +20,26 @@ class AccountsItem extends Component {
     render(){
         // console.log('active profile', this.props.aItem.active_profile)
         // let active = this.props.aItem.active_profile 
+
+        let active;
         
-        // if (this.props.aItem.active_profile === true ) {
-        //     let active = ({<p>hi</p>})
+         if (this.props.aItem.active_profile === true ) {
+             active = (<p>true</p>)
           
-        // }
+         } else {
+            active = (<p>false</p>)
+         }
+
+         let instructor;
+
+         if (this.props.aItem.instructor === true ) {
+            instructor = (<p>true</p>)
+         
+        } else {
+           instructor = (<p>false</p>)
+        }
+
+         
 
         return(
     
@@ -34,8 +49,8 @@ class AccountsItem extends Component {
            <tr>
               <td>{this.props.aItem.first}</td>
               <td>{this.props.aItem.last}</td>
-              <td>{this.props.aItem.instrctor}</td>
-              <td>{this.props.aItem.active_profile}</td>
+              <td>{active}</td>
+              <td>{instructor}</td>
               <td>{this.props.aItem.name}</td>
               <td>{this.props.aItem.high_school}</td>
               <td>{this.props.aItem.team}</td>
