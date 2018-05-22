@@ -18,7 +18,12 @@ class EditProgramForm extends Component{
         super(props);
         this.state = {
             editProgram: {
+                id: this.props.pItem.id,
                 name: this.props.pItem.name,
+                active_program: this.props.pItem.active_program,
+                description: this.props.pItem.description,
+                start: this.props.pItem.start,
+                finish: this.props.pItem.finish
             }
         }
     }
@@ -36,12 +41,12 @@ class EditProgramForm extends Component{
 
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
-    // putProgram = () => {
-    //     this.props.dispatch({
-    //         type: 'PUT_PROGRAM',
-    //         payload: this.state.editProgram
-    //     })
-    // };
+    putProgram = () => {
+        this.props.dispatch({
+            type: 'UPDATE_PROGRAM_SAGA',
+            payload: this.state.editProgram
+        })
+    };
 
     render(){
 
@@ -49,10 +54,18 @@ class EditProgramForm extends Component{
             <div>
                 <TextField
                     id="programName"
-                    label="Program Name"
-                    placeholder={this.props.pItem.name}
+                    label={this.props.pItem.name}
+                    placeholder="New Program Title"
                     margin="normal"
                     onChange={this.handleChangeFor("name")}
+                 />
+                <br />
+                <TextField
+                    id="description"
+                    label={this.props.pItem.description}
+                    placeholder="New Description"
+                    margin="normal"
+                    onChange={this.handleChangeFor("description")}
                  />
                 <br />
                 <Button variant="outlined" onClick={() => this.putProgram()}>
