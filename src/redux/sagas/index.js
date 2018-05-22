@@ -11,6 +11,7 @@ export default function* rootSaga() {
     userSaga(),
     loginSaga(),
     home_AllProgramSaga(),
+    newProgramSaga(),
     // manageAccountsSaga(),
     // watchIncrementAsync()
   ]);
