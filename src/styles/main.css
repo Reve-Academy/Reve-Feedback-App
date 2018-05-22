@@ -1,113 +1,132 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	overflow: auto;
 }
 
-
-
- .instructions {
-    background-color: #E02100;
-    padding: 5px;
-    color: #ece7e7; 
-
- }
-
-
-
+html {
+	height: 100%;
+	width: 100%;
+	/* overflow: auto; */
+}
 
 form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 2px;
+	background-color: #dbd5d5;
+	width: 30%;
+	height: 250px;
+	margin: 150px auto;
+	padding: 25px;
+	border-radius: 2px;
 }
 
 input {
-    margin: 5px;
-    margin-bottom: 10px;
+	margin: 5px;
+	margin-bottom: 10px;
 }
 
 input[type="submit"] {
-    margin: 10px;
+	margin: 10px;
 }
 
-in
-
 .message {
-    padding: 10px 0;
+	padding: 10px 0;
 }
 
 .message p {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .message:nth-child(odd) {
-     background-color: #eeeeee;
+	background-color: whitesmoke;
 }
 
 .message:nth-child(even) {
-    background-color: #f8f8f8;
+	background-color: whitesmoke;
 }
+    /* STYLING FOR NAV BAR */
 
 .navbar {
-  background-color: #E02100;
-  width: 100%;
-  border-radius: 0px;
+	background-color: #e02100;
+	margin-bottom: 25px;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	overflow: hidden;
+	height: 70px;
 }
 
-.profileIcon {
+.active {
+	background-color: whitesmoke;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
+	list-style-type: none;
+	overflow: hidden;
 }
 
 li {
-    float: left;
+	float: right;
 }
 
 li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-
+	display: block;
+	color: #111;
+	text-align: center;
+	margin-right: 14px;
+	text-transform: uppercase;
+    font-weight: 600;
+	padding: 10px 16px;
+	text-decoration: none;
 }
 
-/* Change the link color to #111 (black) on hover */
 li a:hover {
-    text-decoration: underline;
-    color: #eee;
+	color: white;
+	background-size: 100%;
+
+	background-color: #ca0200;
 }
+
+.logo {
+	float: left;
+	width: 260px;
+	height: auto;
+	margin-left: 15px;
+	margin-bottom: 25px;
+	position: absolute;
+	top: 2px;
+}
+
+
+.navItem {
+	font-size: 13px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+        /* END NAV BAR STYLING */
 
 table {
-    display: block;
-    font-family: sans-serif;
-    -webkit-font-smoothing: antialiased;
-    font-size: 110%;
-    /* overflow: auto; */
-    margin: auto;  
-    width: 85%;  
-    margin-bottom: 50px;
-    align-content: center;
-    
-  }
+	display: block;
+	font-family: sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 110%;
+	/* overflow: auto; */
+	margin: auto;
+	width: 85%;
+	margin-bottom: 50px;
+	align-content: center;
+}
 
-  th {
-    background-color: #5d6777;
-    color: white;
-    font-weight: normal;
-    padding: 10px;
-    text-align: center;
-  }
-  td {
-    background-color: rgb(238, 238, 238);
-    color: rgb(111, 111, 111);
-    padding: 20px 30px;
-  }
-
+th {
+	background-color: #5d6777;
+	color: white;
+	font-weight: normal;
+	padding: 10px;
+	text-align: center;
+}
+td {
+	background-color: rgb(238, 238, 238);
+	color: rgb(111, 111, 111);
+	padding: 20px 30px;
+}

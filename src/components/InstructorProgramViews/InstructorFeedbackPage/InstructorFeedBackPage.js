@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import InstructorNav from '../../Nav/instructorNav';
+import InstructorNav from '../../Nav/InstructorNav';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -31,7 +30,10 @@ class InstructorFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div className="managementNav">
+
+          {/* client-side routes for navbar */}
+
+          <div>
           <ul>
           
             <li>
@@ -52,6 +54,8 @@ class InstructorFeedbackPage extends Component {
       
           </ul>
           </div>
+          {/* End navbar routes */}
+
 
           <h1>
             INSTRUCTOR FEEDBACK PAGE
