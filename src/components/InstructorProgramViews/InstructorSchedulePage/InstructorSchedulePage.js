@@ -23,7 +23,6 @@ class InstructorSchedulePage extends Component {
 
 
   render() {
-
     let content = null;
 
     if (this.props.user.userName && this.props.user.userName.instructor) {

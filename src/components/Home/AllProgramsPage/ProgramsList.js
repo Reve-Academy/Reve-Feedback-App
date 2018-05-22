@@ -14,6 +14,7 @@ class ProgramsList extends Component {
 
   render() {
       console.log(this.props.state.home_AllProgramPageReducer.allProgramsReducer);
+
       
     let programs = this.props.state.home_AllProgramPageReducer.allProgramsReducer.map(pItem => {
       return (
