@@ -50,31 +50,14 @@ class EditProgramForm extends Component{
     };
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
-    programActive = () => {
-        this.setState({
-            editProgram: {
-            ...this.state.editProgram,
-            active_program: !this.state.editProgram.active_program
-            }
-        })
-        this.putProgram();
-        console.log(this.state.editProgram.active_program);
-        
-    };
+    // delProgram = () => {
+    //     this.props.dispatch({
+    //         type: 'UPDATE_PROGRAM_SAGA',
+    //         payload: this.state.editProgram
+    //     })
+    // };
 
     render(){
-
-    let programActiveSetting;
-        
-         if (this.props.pItem.active_program === true ) {
-            programActiveSetting = (<Button variant="outlined" onClick={() => this.programActive()}>
-                Deactivate
-            </Button>)
-         } else {
-            programActiveSetting = (<Button variant="outlined" onClick={() => this.programActive()}>
-                Activate
-            </Button>)
-         }
 
         return(
             <div>
@@ -127,7 +110,6 @@ class EditProgramForm extends Component{
                 <Button variant="outlined" onClick={() => this.putProgram()}>
                     Save
                 </Button>
-                {programActiveSetting}
             </div>
         )
     }
