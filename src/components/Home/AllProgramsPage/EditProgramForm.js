@@ -50,12 +50,12 @@ class EditProgramForm extends Component{
     };
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
-    // delProgram = () => {
-    //     this.props.dispatch({
-    //         type: 'UPDATE_PROGRAM_SAGA',
-    //         payload: this.state.editProgram
-    //     })
-    // };
+    delProgram = () => {
+        this.props.dispatch({
+            type: 'DELETE_PROGRAM_SAGA',
+            payload: this.state.editProgram
+        })
+    };
 
     render(){
 
@@ -109,6 +109,9 @@ class EditProgramForm extends Component{
 
                 <Button variant="outlined" onClick={() => this.putProgram()}>
                     Save
+                </Button>
+                <Button variant="outlined" onClick={() => this.delProgram()}>
+                    Delete
                 </Button>
             </div>
         )
