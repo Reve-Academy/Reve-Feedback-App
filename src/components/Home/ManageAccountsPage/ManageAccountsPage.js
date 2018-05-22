@@ -7,6 +7,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AddNewUserModalForm from '../ManageAccountsPage/AddStudentForm';
 import AccountsList from './AccountsList';
+import Home_AllProgramsPage from '../NewProgramPage/NewProgramPage'
+import NewProgramPage from '../NewProgramPage/NewProgramPage'
 
 import Nav from '../../Nav/Nav';
 
@@ -74,24 +76,26 @@ class ManageAccountsPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div className="managementNav">
-          <ul>
+         <div>
+            <ul>
             <li>
-              <Link to="/user">
-                All Programs
-              </Link>
-            </li>
-            <li>
-              <Link to="/manageAccounts">
-                Manage Accounts
-              </Link>
-            </li>
-            <li>
-              <Link to="/newProgram">
-                New Program
-              </Link>
-            </li>
-          </ul>
+                <Link to="/newProgram" >
+                  New Program
+                </Link>
+              </li>
+            
+              <li>
+                <Link to="/manageAccounts" >
+                  Manage Accounts
+                </Link>
+              </li>
+              <li>
+                <Link to="/user" >
+                  All Programs
+                </Link>
+              </li>
+            
+            </ul>
           </div>
 
           <h1>
