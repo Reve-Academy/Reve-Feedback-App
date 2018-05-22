@@ -1,8 +1,8 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* newProgramSaga(){
-
+    yield takeEvery('POST_NEW_PROGRAM', postProgramSaga);
 }
 
 function* postProgramSaga(action){
