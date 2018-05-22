@@ -15,10 +15,10 @@ import Nav from '../../Nav/Nav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 
-
+//Style properties for add new user modal
 function getModalStyle() {
   const top = 50;
-  const left = 50 ;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -36,16 +36,18 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
   },
 });
+//end styling properties 
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
 class ManageAccountsPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
+    //open state of modal begins as false
     this.state = {
-      open: false 
+      open: false
     }
   }
   componentDidMount() {
@@ -58,10 +60,12 @@ class ManageAccountsPage extends Component {
     }
   }
 
+  //on click of new user button, open modal
   handleCreateUserModal = () => {
     this.setState({ open: true });
   };
 
+  //on click of outside modal, close modal
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -76,14 +80,14 @@ class ManageAccountsPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-         <div>
+          <div>
             <ul>
-            <li>
+              <li>
                 <Link to="/newProgram" >
                   New Program
                 </Link>
               </li>
-            
+
               <li>
                 <Link to="/manageAccounts" >
                   Manage Accounts
@@ -94,51 +98,35 @@ class ManageAccountsPage extends Component {
                   All Programs
                 </Link>
               </li>
-            
+
             </ul>
           </div>
 
           <h1>
             Manage Accounts
           </h1>
-          <button onClick={this.handleCreateUserModal}>Create User</button><br/>
+          <button onClick={this.handleCreateUserModal}>Create User</button><br />
 
 
           <div>
-      
-        <Modal
-          aria-labelledby="Add New User"
-          open={this.state.open}
-          onClose={this.handleClose}
-        > 
-          <div style={getModalStyle()} className={classes.paper}>
-            <AddNewUserModalForm />
+
+            <Modal
+              aria-labelledby="Add New User"
+              open={this.state.open}
+              onClose={this.handleClose}
+            >
+              <div style={getModalStyle()} className={classes.paper}>
+                <AddNewUserModalForm />
+              </div>
+            </Modal>
           </div>
-        </Modal>
-      </div>
 
           {/* STRETCH GOAL
           <input placeholder="Search and Add User"></input><button>Search</button> */}
+            <AccountsList 
+              
 
-          <table>
-            <thead>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Admin</th>
-              <th>Active</th>
-              <th>Program</th>
-              <th>Delete</th>
-            </thead>
-            <tbody>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tbody>
-          </table>
-        
+            />
         </div>
       );
     }
@@ -151,6 +139,6 @@ class ManageAccountsPage extends Component {
     );
   }
 }
- let manageAccountWithStyle = withStyles(styles)(ManageAccountsPage)
+let manageAccountWithStyle = withStyles(styles)(ManageAccountsPage)
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(manageAccountWithStyle);
