@@ -4,7 +4,12 @@ const router = express.Router();
 
 // GET all accounts
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM person';
+    const queryText = `SELECT "person"."first", "person"."last", 
+    "person"."instructor", "person"."active_profile", 
+    "person"."high_school", "person"."team", 
+    "person"."program_id", "program"."name" 
+    FROM "person" JOIN "program" 
+    ON "program"."id" = "person"."program_id";`;
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {

@@ -31,7 +31,21 @@ class AccountsList extends Component {
 
         return (
             <div>
-            { accounts }
+                <table>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Admin</th>
+                            <th>Active</th>
+                            <th>Program</th>
+                            <th>high_school</th>
+                            <th>team</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    {accounts}
+                </table>
             </div>
         )
 
