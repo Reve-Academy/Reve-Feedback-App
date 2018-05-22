@@ -36,9 +36,9 @@ class StudentFeedbackPage extends Component {
           <div className="navbar">
           <ul>
           {/* Reve Academy logo */}
-          <li className="logo">
-          <img src="images/academylogo_white.png" alt="Reve logo" />
-        </li>
+         
+          <img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
+        
             <li>
               <Link to="/StudentFeedback">
                 Feedback

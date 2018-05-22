@@ -35,10 +35,10 @@ class StudentSchedulePage extends Component {
         <div>
           <div className="navbar">
           <ul>
-          <li className="logo">
+          
           {/* Reve Academy logo */}
-          <img src="images/academylogo_white.png" alt="Reve logo" />
-        </li>
+          <img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
+        
             <li>
               <Link to="/StudentFeedback">
                 Feedback
