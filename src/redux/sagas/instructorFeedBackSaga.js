@@ -4,6 +4,19 @@ import axios from 'axios';
 function* instructorFeedBackSaga(){
     yield takeEvery('ADD_COMMENT', addCommentSaga);
     yield takeEvery('DELETE_COMMENT', deleteCommentSaga);
+    yield takeEvery('GET_COMMENTS', getAllCommentSaga);
+}
+
+function* getAllCommentSaga(action){
+    try{
+        const commentResponse = yield call(axios.get, `/api/instructorFeedback/${action.payload.id}`)
+        yield put({
+            type:'SET_COMMENT_FEEDBACK',
+            payload: commentResponse.data,
+        })
+    } catch(error){
+        console.log('error in getting comment: ', error);
+    }
 }
 
 function* addCommentSaga(action){
