@@ -1,7 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
-const Chance = require('chance');
-const chance = new Chance();
 
 function* manageAccountsSaga(){
     yield takeEvery('GET_ACCOUNT_SAGA', getAccountSaga);
@@ -13,10 +11,9 @@ function* manageAccountsSaga(){
 
 
 
-
-
-
 function* postAccountSaga(action){
+
+
     try{
         console.log('post Account payload: ', action.payload);
         yield call(axios.post, '/api/manage', action.payload)
@@ -26,6 +23,7 @@ function* postAccountSaga(action){
     } catch (error){
         console.log(`error on post: `, error);
     }
+
 }
 
 
