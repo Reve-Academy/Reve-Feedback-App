@@ -19,8 +19,6 @@ router.get('/', (req, res) => {
     
 });
 
-
-
 //UPDATE INSTRUCTOR AND ACTIVE STATUS FOR ACCOUNTS
 router.put('/:id', (req, res) => {
     // console.log('update activation and instructor statuses', req.body, req.params);
@@ -38,6 +36,7 @@ router.put('/:id', (req, res) => {
         })
 })
 
+//DELETE STUDENT OR INSTRUCTOR ACCOUNT
 router.delete('/:id', (req, res)=> {
     console.log('in delete')
     console.log(req.params.id)

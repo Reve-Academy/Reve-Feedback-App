@@ -21,6 +21,7 @@ class AddStudentForm extends Component{
         this.state = {
             newStudent: {
                 email: '',
+                team: '',
                 program: '',
                 instructor: false
             }
@@ -38,16 +39,6 @@ class AddStudentForm extends Component{
      }
     };
 
-    // //FUNCTION FOR UPDATING INSTRUCTOR STATUS
-    handleInstructor = () => {
-        this.setState({
-            newStudent: {
-                ...this.state.newStudent,
-                instructor: !this.state.newStudent.instructor
-            }
-        })
-    }
-
 
     // FUNCTION FOR DISPATCHING ACTION TO ADD STUDENT
     addStudent = () => {
@@ -59,7 +50,9 @@ class AddStudentForm extends Component{
             newStudent: {
                 ...this.state.newStudent,
                 email: '',
-                program: ''
+                team: '',
+                program: '',
+
             }
         })
     };
@@ -85,11 +78,20 @@ class AddStudentForm extends Component{
                     onChange={this.handleChangeFor("email")}
                     value={this.state.newStudent.email}
                  />
+                 <br/>
+                 <TextField
+                    id="teamInput"
+                    label="Team"
+                    placeholder="Team"
+                    margin="normal"
+                    onChange={this.handleChangeFor("team")}
+                    value={this.state.newStudent.team}
+                 />
                 <br />
-                <InputLabel>Please Choose A Program</InputLabel>
+                <InputLabel>Select Program   </InputLabel>
                 <Select
-                    value={this.state.newStudent.program}
                     onChange={this.handleChangeFor("program")}
+                    value={this.state.newStudent.program}
                     inputProps={{
                         name: 'ProgramSelector',
                         id: 'ProgramSelectorForm',
@@ -101,23 +103,8 @@ class AddStudentForm extends Component{
                 {programMenuItem}
                 </Select>
                 <br />
-                <ListItem 
-                onClick={() => this.handleInstructor()}
-                dense
-                button
-                value={this.state.newStudent.instructor}
-                >
-                <ListItemText 
-                primary='Instructor: ' 
-                />
-                <Checkbox
-                tabIndex={-1}
-                disableRipple
-                />
-                </ListItem>
-                <br />
                 <Button variant="outlined" onClick={() => this.addStudent()}>
-                    Add Student 
+                    Send Student Email
                 </Button>
             </div>
         )
