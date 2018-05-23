@@ -35,13 +35,12 @@ class AccountsItem extends Component {
         }
 
 
-        // handleInstructor = () => {
-        //     this.setState({
-        //             instructor: !this.props.aItem.instructor
-        //     })
-        //     console.log('new instructor status', this.state.instructor);
-           
-        // }
+        handleInstructor = () => {
+            this.props.dispatch({
+                type: 'UPDATE_ACTIVE_STATUS', 
+                payload: this.state
+            })
+        }
 
         render(){
            
