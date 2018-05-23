@@ -1,5 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
+const Chance = require('chance');
+const chance = new Chance();
 
 function* manageAccountsSaga(){
     yield takeEvery('GET_ACCOUNT_SAGA', getAccountSaga);
@@ -8,6 +10,11 @@ function* manageAccountsSaga(){
     yield takeEvery('DELETE_ACCOUNT', deleteAccountSaga);
     yield takeEvery('POST_ACCOUNT', postAccountSaga);
 }
+
+
+
+
+
 
 function* postAccountSaga(action){
     try{
@@ -21,6 +28,12 @@ function* postAccountSaga(action){
     }
 }
 
+
+
+
+
+
+//SAGA TO DELETE ACCOUNT
 function* deleteAccountSaga(action){
     try{   
         console.log('delete Account payload is', action.payload)
