@@ -7,59 +7,100 @@ import { Link } from 'react-router-dom';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import _ from 'lodash';
 
+//material-ui imports
+import Modal from '@material-ui/core/Modal';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
 import InstructorNav from '../../Nav/InstructorNav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
-const ReactGridLayout = WidthProvider(RGL);
+// const ReactGridLayout = WidthProvider(RGL);
 
 const mapStateToProps = state => ({
   user: state.user,
 });
 
+//Style properties for add new user modal
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+  },
+});
+//end styling properties 
+
 class InstructorSchedulePage extends Component {
 
-  static defaultProps = {
-    className: "layout",
-    items: 10,
-    rowHeight: 20,
-    onLayoutChange: function() {},
-    cols: 8
-  };
+  // static defaultProps = {
+  //   className: "layout",
+  //   items: 10,
+  //   rowHeight: 20,
+  //   onLayoutChange: function() {},
+  //   cols: 8
+  // };
 
   constructor(props) {
     super(props);
 
-    const layout = this.generateLayout();
-    this.state = { layout };
+  //   const layout = this.generateLayout();
+  //   this.state = { layout };
+    this.state = {
+      open: false
+    }
   }
 
-  generateDOM() {
-    return _.map(_.range(this.props.items), function(i) {
-      return (
-        <div key={i}>
-          <span className="text">{i}</span>
-        </div>
-      );
-    });
-  }
+  //on click of new user button, open modal
+  handleCreateLessonModal = () => {
+    this.setState({ open: true });
+  };
 
-  generateLayout() {
-    const p = this.props;
-    return _.map(new Array(p.items), function(item, i) {
-      const y = _.result(p, "y") || Math.ceil(Math.random() * 4) + 1;
-      return {
-        x: (i * 2) % 12,
-        y: Math.floor(i / 6) * y,
-        w: 2,
-        h: y,
-        i: i.toString()
-      };
-    });
-  }
+  //on click of outside modal, close modal
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
-  onLayoutChange(layout) {
-    this.props.onLayoutChange(layout);
-  }
+  // generateDOM() {
+  //   return _.map(_.range(this.props.items), function(i) {
+  //     return (
+  //       <div key={i}>
+  //         <span className="text">{i}</span>
+  //       </div>
+  //     );
+  //   });
+  // }
+
+  // generateLayout() {
+  //   const p = this.props;
+  //   return _.map(new Array(p.items), function(item, i) {
+  //     const y = _.result(p, "y") || Math.ceil(Math.random() * 4) + 1;
+  //     return {
+  //       x: (i * 2) % 12,
+  //       y: Math.floor(i / 6) * y,
+  //       w: 2,
+  //       h: y,
+  //       i: i.toString()
+  //     };
+  //   });
+  // }
+
+  // onLayoutChange(layout) {
+  //   this.props.onLayoutChange(layout);
+  // }
 
 
   componentDidMount() {
@@ -76,6 +117,8 @@ class InstructorSchedulePage extends Component {
   render() {
 
     let content = null;
+
+    const { classes } = this.props;
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -110,15 +153,28 @@ class InstructorSchedulePage extends Component {
           <h1>
             INSTRUCTOR SCHEDULE PAGE
           </h1>
+          <button onClick={this.handleCreateLessonModal}>Add Lesson</button><br />
+
+          <div>
+            <Modal
+            aria-labelledby="Add New User"
+            open={this.state.open}
+            onClose={this.handleClose}
+            >
+            <div style={getModalStyle()} className={classes.paper}>
+              {/* <AddNewLessonForm /> */}
+            </div>
+            </Modal>
+          </div>
 
           {/* Schedule Container */}
-            <ReactGridLayout
+            {/* <ReactGridLayout
             layout={this.state.layout}
             onLayoutChange={this.onLayoutChange}
             {...this.props}
             >
             {this.generateDOM()}
-            </ReactGridLayout>
+            </ReactGridLayout> */}
           {/* End Schedule Container */}
 
         </div>
@@ -134,5 +190,7 @@ class InstructorSchedulePage extends Component {
   }
 }
 
+const InstructorScheduleWithStyles = withStyles(styles)(InstructorSchedulePage)
+
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(InstructorSchedulePage);
+export default connect(mapStateToProps)(InstructorScheduleWithStyles);
