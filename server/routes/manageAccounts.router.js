@@ -40,8 +40,9 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res)=> {
     console.log('in delete')
+    console.log(req.params.id)
     const accountId = req.params.id;
-    const queryText = `DELETE FROM "person" WHERE "id" = 5;`
+    const queryText = `DELETE FROM "person" WHERE "id" = $1;`
     pool.query(queryText, [accountId]).then((response)=>{
         console.log(response);
         res.sendStatus(200);
@@ -49,7 +50,5 @@ router.delete('/:id', (req, res)=> {
         res.sendStatus(500);
     });
 });
-
-
 
 module.exports = router;
