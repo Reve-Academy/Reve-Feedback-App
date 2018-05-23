@@ -1,6 +1,8 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+// const Chance = require('chance');
+// const chance = new Chance();
 
 // GET all accounts
 router.get('/', (req, res) => {
@@ -19,6 +21,21 @@ router.get('/', (req, res) => {
     
 });
 
+// //POST NEW ACCOUNT
+// if(req.isAuthenticated()){
+//     const token = chance.hash();
+//     let queryText = 
+
+
+// }//if res.isAuthenticated
+
+
+
+
+
+
+
+
 //UPDATE INSTRUCTOR AND ACTIVE STATUS FOR ACCOUNTS
 router.put('/:id', (req, res) => {
     // console.log('update activation and instructor statuses', req.body, req.params);
@@ -34,7 +51,10 @@ router.put('/:id', (req, res) => {
             console.log('error updating statuses', error);
             res.sendStatus(500);
         })
+    
 })
+
+
 
 //DELETE STUDENT OR INSTRUCTOR ACCOUNT
 router.delete('/:id', (req, res)=> {
