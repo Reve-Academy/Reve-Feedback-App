@@ -55,7 +55,10 @@ class StudentItem extends Component {
 		listOfStudent: {
 			first: this.props.student.first;
 			last: this.props.student.last;
-			email: this.props.student.email;
+      email: this.props.student.email;
+      program_id: this.props.student.program_id;
+      team: this.props.student.team;
+      high_school: this.props.student.high_school;
 		}
 	}
 	render() {
@@ -67,11 +70,12 @@ class StudentItem extends Component {
 			<TableBody>
 				<TableRow>
 					<CustomTableCell>{this.props.student.first}  {this.props.student.last}</CustomTableCell>
+          <CustomTableCell>{this.props.student.email}</CustomTableCell>
           <CustomTableCell></CustomTableCell>
-          <CustomTableCell></CustomTableCell>
-          <CustomTableCell></CustomTableCell>
-          <CustomTableCell></CustomTableCell>
-          <CustomTableCell></CustomTableCell>   
+          <CustomTableCell>{this.props.student.program_id}</CustomTableCell>
+          <CustomTableCell>{this.props.student.team}</CustomTableCell>
+          <CustomTableCell>{this.props.student.high_school}</CustomTableCell>
+   
 			  </TableRow>
 			</TableBody>
     );
