@@ -6,6 +6,8 @@ import newProgramSaga from'./newProgramSaga';
 import studentListSaga from './studentListSaga';
 // import manageAccountsSaga from './manageAccountsSaga'
 
+import manageAccountsSaga from './manageAccountsSaga';
+
 
 export default function* rootSaga() {
   yield all([

@@ -26,10 +26,10 @@ function* deleteAccountSaga(action){
         console.log('delete Account payload is', action.payload)
         yield call(axios.delete, `/api/manage/${action.payload.id}`)
         yield put({
-            type: 'GET_PROGRAM_SAGA',
+            type: 'GET_ACCOUNT_SAGA',
         })
     }catch (error){
-        console.log('delete program error: ', error)
+        console.log('delete account error: ', error)
     }
 }
 
@@ -41,7 +41,7 @@ function* getAccountSaga(){
             payload: accountResponse.data,
         })
     } catch(error){
-        console.log('get program error: ', error);
+        console.log('get account error: ', error);
     }
 }
 

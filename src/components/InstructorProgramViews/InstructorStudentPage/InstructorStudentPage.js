@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
 import StudentList from '../InstructorStudentPage/StudentList';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-import InstructorStudentTable from '../InstructorStudentPage/InstructorStudentTable';
 
 
 const mapStateToProps = state => ({
   user: state.user,
 });
+
 
 class InstructorStudentPage extends Component {
   componentDidMount() {
@@ -59,18 +59,15 @@ class InstructorStudentPage extends Component {
       
           </ul>
          
-          <InstructorStudentTable />
-          </div>
+         </div>
          
             {/* End navbar routes */}
          
 
 
           {/* Students Container */}
-          <div>
           <StudentList />
 
-          </div>
           {/* End Students Container */}
         
         </div>
