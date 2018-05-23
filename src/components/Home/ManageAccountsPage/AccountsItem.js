@@ -37,7 +37,7 @@ class AccountsItem extends Component {
 
         handleInstructor = () => {
             this.props.dispatch({
-                type: 'UPDATE_ACTIVE_STATUS', 
+                type: 'UPDATE_ADMIN_STATUS', 
                 payload: this.state
             })
         }

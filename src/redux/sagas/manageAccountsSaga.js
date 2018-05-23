@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* manageAccountsSaga(){
     yield takeEvery('GET_ACCOUNT_SAGA', getAccountSaga);
-    // yield takeEvery('UPDATE_ADMIN_STATUS', updateAdminStatusSaga);
+    yield takeEvery('UPDATE_ADMIN_STATUS', updateAdminStatusSaga);
     yield takeEvery('UPDATE_ACTIVE_STATUS', updateActivationStatusSaga);
     yield takeEvery('DELETE_ACCOUNT', deleteAccountSaga);
     yield takeEvery('POST_ACCOUNT', postAccountSaga);
@@ -45,17 +45,18 @@ function* getAccountSaga(){
     }
 }
 
-// function* updateAdminStatusSaga(action){
-//     try{
-//         console.log('update adminstatus payload: ', action.payload)
-//         yield call(axios.put, `/api/manage/${action.payload.id}`, action.payload )
-//         yield put({
-//             type:'GET_ACCOUNT_SAGA'
-//         })
-//     } catch (error) {
-//         console.log('update admin error: ', error)
-//     }
-// }
+function* updateAdminStatusSaga(action){
+    action.payload.instructor= !action.payload.instructor
+    try{
+        console.log('update adminstatus payload: ', action.payload)
+        yield call(axios.put, `/api/manage/${action.payload.id}`, action.payload )
+        yield put({
+            type:'GET_ACCOUNT_SAGA'
+        })
+    } catch (error) {
+        console.log('update admin error: ', error)
+    }
+}
 
 function* updateActivationStatusSaga(action){
     action.payload.active= !action.payload.active
