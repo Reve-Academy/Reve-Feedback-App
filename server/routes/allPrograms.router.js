@@ -32,6 +32,17 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// DELETE FOR PROGRAMS
+router.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    const queryText = `DELETE FROM program WHERE id=$1`
+    pool.query(queryText, [id])
+    .then(result => { res.send(result.rows); })
+    .catch(err => {
+        console.log('Error completing DELETE program in router', err);
+        res.sendStatus(500);
+    })
+})
 
 /**
  * POST route template

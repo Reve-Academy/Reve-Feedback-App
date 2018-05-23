@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function* instructorFeedBackSaga(){
     yield takeEvery('ADD_COMMENT', addCommentSaga);
+    yield takeEvery('DELETE_COMMENT', deleteCommentSaga);
 }
 
 function* addCommentSaga(action){
@@ -13,6 +14,20 @@ function* addCommentSaga(action){
         console.log('error on post addComment: ', error);
     }
 }
+
+function* deleteCommentSaga(action){
+    try{
+        console.log('deleting comment id number: ', action.payload.comment.id);
+        yield call(axios.delete, `/api/instructorFeedback/${action.payload.comment.id}`)
+        yield put({
+            type: 'GET_COMMENTS',
+        })
+    } catch(error){
+        console.log('Error in delete comment saga: ', error)
+    }
+}
+
+
 
 
 
