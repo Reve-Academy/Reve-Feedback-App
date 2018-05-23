@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import EditProgramForm from './EditProgramForm';
 
@@ -69,15 +70,17 @@ class ProgramItem extends Component {
     })
   };
 
-  // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
+  // FUNCTION FOR PROGRAM
+  navProgram = () => {
+    this.props.history.push(`/program/${this.props.pItem.id}`)
+  }
+
+  // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM ACTIVE
   programActive = () => {
-    this.setState({
-      editProgram: {
-      ...this.state.editProgram,
-      active_program: !this.state.editProgram.active_program
-      }
+    this.props.dispatch({
+      type: 'UPDATE_PROGRAM_ACTIVE',
+      payload: this.state.editProgram
     })
-    this.putProgram();
   };
 
   render() {
@@ -111,6 +114,9 @@ class ProgramItem extends Component {
             </Typography>
           </CardContent>
           <CardActions>
+            <Button onClick={this.navProgram}>
+              Go To Program
+            </Button>
             <Button onClick={this.handleEditProgram}>
               Edit
             </Button>
@@ -137,5 +143,6 @@ class ProgramItem extends Component {
 }
 
 let programItemStyle = withStyles(styles)(ProgramItem)
+let programWithRouter = withRouter(programItemStyle)
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(programItemStyle);
+export default connect(mapStateToProps)(programWithRouter);

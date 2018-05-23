@@ -5,6 +5,7 @@ function* home_AllProgramSaga(){
     yield takeEvery('GET_PROGRAM_SAGA', getProgramSaga);
     yield takeEvery('DELETE_PROGRAM_SAGA', deleteProgramSaga);
     yield takeEvery('UPDATE_PROGRAM_SAGA', updateProgramSaga);
+    yield takeEvery('UPDATE_PROGRAM_ACTIVE', updateProgramActiveSaga);
 }
 
 
@@ -42,7 +43,19 @@ function* updateProgramSaga(action){
     } catch (error) {
         console.log('update program error: ', error)
     }
+}
 
+function* updateProgramActiveSaga(action){
+    action.payload.active_program= !action.payload.active_program
+    try{
+        console.log('update Program payload is: ', action.payload)
+        yield call(axios.put, `/api/program/${action.payload.id}`, action.payload )
+        yield put({
+            type:'GET_PROGRAM_SAGA'
+        })
+    } catch (error) {
+        console.log('update program error: ', error)
+    }
 }
 
 export default home_AllProgramSaga;

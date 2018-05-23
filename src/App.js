@@ -48,10 +48,10 @@ const App = () => (
           path="/newProgram"
           component={NewProgramPage}
         />
-        <Route
+        {/* <Route
           path="/InstructorSchedule"
           component={InstructorSchedulePage}
-        />
+        /> */}
         <Route
           path="/InstructorFeedback"
           component={InstructorFeedbackPage}
@@ -67,6 +67,10 @@ const App = () => (
         <Route
           path="/StudentSchedule"
           component={StudentSchedulePage}
+        />
+        <Route
+          path="/program/:id"
+          component={InstructorSchedulePage}
         />
         {/* OTHERWISE (no path!) */}
         <Route render={() => <h1>404</h1>} />

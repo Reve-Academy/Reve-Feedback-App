@@ -21,4 +21,17 @@ function* getStudentListSaga(){
     }
 }
 
+function* getStudentCommentCountSaga(){
+    try{
+        const commentResponse = yield call(axios.get, `/api/instructorStudentList`)
+        console.log(commentResponse)
+        yield put({
+            type:'SET-STUDENT_LIST_REDUCER',
+            payload: commentResponse.data,
+        })
+    }catch(error){
+        console.log('getComment error', error);
+    }
+}
+
 export default studentListSaga;
