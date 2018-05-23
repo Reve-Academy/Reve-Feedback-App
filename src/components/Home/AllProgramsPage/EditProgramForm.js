@@ -18,27 +18,26 @@ class EditProgramForm extends Component{
     constructor(props){
         super(props);
         this.state = {
-            editProgram: {
-                id: this.props.pItem.id,
-                name: this.props.pItem.name,
-                active_program: this.props.pItem.active_program,
-                description: this.props.pItem.description,
-                start: this.props.pItem.start,
-                finish: this.props.pItem.finish
-            }
+          open: false,
+          editProgram: {
+              id: this.props.pItem.id,
+              name: this.props.pItem.name,
+              description: this.props.pItem.description,
+              start: this.props.pItem.start,
+              finish: this.props.pItem.finish
+          }
         }
-    }
-    //FUNCTION FOR UPDATING STATE WITH INPUT FIELDS
-    handleChangeFor = (propertyName) => {
-        return (event) => {
-          this.setState({
+      }
+
+    // this handles editing property of each input field. note onBlur is when this is fired
+    handleChangeFor = propertyName => (event) => {
+        this.setState({
             editProgram: {
-            ...this.state.editProgram,
-            [propertyName]: event.target.value
+                ...this.state.editProgram,
+                [propertyName]: event.target.value
             }
-        })
-     }
-    };
+        })   
+    }
 
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
@@ -70,6 +69,7 @@ class EditProgramForm extends Component{
                     label={this.props.pItem.name}
                     placeholder="New Program Title"
                     margin="normal"
+                    defaultValue={this.props.pItem.name}
                     onChange={this.handleChangeFor("name")}
                 />
                 <br />
@@ -79,6 +79,7 @@ class EditProgramForm extends Component{
                     label={this.props.pItem.description}
                     placeholder="New Description"
                     margin="normal"
+                    defaultValue={this.props.pItem.description}
                     onChange={this.handleChangeFor("description")}
                 />
                 <br />
