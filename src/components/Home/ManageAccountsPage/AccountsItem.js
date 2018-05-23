@@ -37,6 +37,13 @@ class AccountsItem extends Component {
         })
     }
 
+    handleDelete = () => {
+        this.props.dispatch({
+            type: 'DELETE_ACCOUNT', 
+            payload: this.state
+        })
+    }
+
     render() {
         //True and false to be displayed as checkboxes
         let active;
@@ -70,7 +77,7 @@ class AccountsItem extends Component {
                     <td>{this.props.aItem.name}</td>
                     <td>{this.props.aItem.high_school}</td>
                     <td>{this.props.aItem.team}</td>
-                    <td><button>Delete</button></td>
+                    <td onClick={() => this.handleDelete()}><button>Delete</button></td>
                 </tr>
             </tbody>
         )
