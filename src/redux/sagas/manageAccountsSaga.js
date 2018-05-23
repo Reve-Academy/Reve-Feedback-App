@@ -33,6 +33,7 @@ function* deleteAccountSaga(action){
     }
 }
 
+//SAGA TO GET ALL ACCOUT INFORMATION
 function* getAccountSaga(){
     try{
         const accountResponse = yield call(axios.get, `/api/manage`)
@@ -45,6 +46,7 @@ function* getAccountSaga(){
     }
 }
 
+//SAGA TO UPDATE ACCOUNT ADMIN STATUS
 function* updateAdminStatusSaga(action){
     action.payload.instructor= !action.payload.instructor
     try{
@@ -58,6 +60,7 @@ function* updateAdminStatusSaga(action){
     }
 }
 
+//SAGA TO UPDATE ACCOUNT ACTIVE STATUS
 function* updateActivationStatusSaga(action){
     action.payload.active= !action.payload.active
     try{
