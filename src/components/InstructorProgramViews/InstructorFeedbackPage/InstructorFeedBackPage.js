@@ -59,7 +59,6 @@ class InstructorFeedbackPage extends Component {
       <div>
        <InstructorNav program_id={this.props.match.params.program_id}/>
         {content}
-        {studentComment}
       </div>
     );
   }
