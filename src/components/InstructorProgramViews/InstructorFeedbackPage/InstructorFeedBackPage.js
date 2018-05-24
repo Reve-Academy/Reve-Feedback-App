@@ -36,31 +36,6 @@ class InstructorFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-
-          {/* client-side routes for navbar */}
-
-          <div>
-          <ul>
-          
-            <li>
-              <Link to="/InstructorStudent">
-                Students
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorFeedback">
-                Feedback
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorSchedule">
-                Schedule
-              </Link>
-            </li>
-      
-          </ul>
-          </div>
-          {/* End navbar routes */}
         
           
 
@@ -82,7 +57,7 @@ class InstructorFeedbackPage extends Component {
 
     return (
       <div>
-       <InstructorNav />
+       <InstructorNav program_id={this.props.match.params.program_id}/>
         {content}
         {studentComment}
       </div>
