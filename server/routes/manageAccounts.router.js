@@ -1,8 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-// const Chance = require('chance');
-// const chance = new Chance();
+const Chance = require('chance');
+const chance = new Chance();
+
+//THESE ROUTES ARE PROTECTED by requiring authentication and admin verification on the ManageAccountsPage
 
 // GET all accounts
 router.get('/', (req, res) => {
@@ -21,51 +23,23 @@ router.get('/', (req, res) => {
     
 });
 
-// //POST NEW ACCOUNT
-// // THIS IS A PROTECTED ROUTE, ONLY ADMIN CAN ADD USERS
-// router.post('/', (req, res)=> {
-// if(req.isAuthenticated()){ //&& IS ADMIN _ TODO
-//     const token = chance.hash();
-//     let queryText = `INSERT into "person" 
-//     ("username", "password", 
-//     "first", "last", 
-//     "email", "high_school", 
-//     "program_id", "team") 
-//     VALUES ($1, $2, $3, $4, $5, $6, $7, $8);`
-// pool.query(queryText, [req.body.email, token ]).then((result)=>{
-//     console.log(`http://localhost: 3000/register/$[token]`); //Nodemailer goes here!!! _ TODO
-//     res.sendStatus(201);
-// }).catch((error)=> {
-//     console.log('Error', error);
-//     res.sendStatus(500);
-// })
+//ADMIN ONLY - POST NEW ACCOUNT
+router.post('/', (req, res)=> {
+    const token = chance.hash();
+    const username = req.body.username;
+    const team = req.body.team;
+    const password = req.body.password;
+    const program = req.body.program;
+    let queryText = `INSERT into "person" ("username", "team", "password", "program_id", "token") VALUES ($1, $2, $3, $4, $5);`
+pool.query(queryText, [username, team, password, program, token ]).then((result)=>{
+    console.log(`http://localhost: 3000/register/$[token]`); //Nodemailer goes here!!! _ TODO
+    res.sendStatus(201);
+}).catch((error)=> {
+    console.log('Error', error);
+    res.sendStatus(500);
+})
 
-// } else {
-//     res.sendStatus(401);
-// }
-
-// })
-
-// //UPDATE PASSWORD WHERE TOKEN LINES UP
-// router.put('/newpassword', (req, res) => {
-//     const password = encryptLib.encryptPassward(req.body.password);
-//     //THIS IS WHERE WE WE VALIDATE THE EMAIL or CHECK TOKEN LENGTH 
-//     const queryText = `UPDATE "person" SET "password" = $1  WHERE "token" = $2`
-//     pool.query(queryText, [password, req.body.token]).then((result)=>{
-//         res.sendStatus(200);
-//     }).catch((error)=>{
-//         console.log('Error, error');
-//         res.sendStatus(500);
-//     })
-// })
-
-//helloo
-
-
-
-
-
-
+})
 
 
 //UPDATE INSTRUCTOR AND ACTIVE STATUS FOR ACCOUNTS

@@ -12,10 +12,13 @@ class RegisterPage extends Component {
 			high_school: '',
 			username: '',
 			password: '',
+			id: this.state.match.params.id,
+			token: this.state.match.params.token,
 			message: ''
 		};
 	}
 
+	//when a user registers it's actually an UPDATE
 	registerUser = (event) => {
 		event.preventDefault();
 
@@ -28,8 +31,12 @@ class RegisterPage extends Component {
 				method: 'POST',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
+					first: this.state.first,
+					last: this.state.last, 
+					high_school: this.state.high_school,
 					username: this.state.username,
-					password: this.state.password
+					password: this.state.password, 
+					id: this.state.id
 				})
 			});
 
@@ -51,6 +58,10 @@ class RegisterPage extends Component {
 				});
 		}
 	};
+
+
+
+	//this will be an update
 
 	handleInputChangeFor = (propertyName) => (event) => {
 		this.setState({

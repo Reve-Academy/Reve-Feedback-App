@@ -13,10 +13,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   console.log(req.user);
 });
 
-// Handles POST request with new user data
+
+
+
+
+
+// Handles UPDATE request with new user data
 // The only thing different from this and every other post we've seen
 // is that the password gets encrypted before being inserted
 router.post('/register', (req, res, next) => {
+  console.log('in')
   const first = req.body.first;
   const last = req.body.last;
   const high_school = req.body.high_school;
@@ -29,6 +35,37 @@ router.post('/register', (req, res, next) => {
     .then(() => { res.sendStatus(201); })
     .catch((err) => { next(err); });
 });
+
+
+
+// //USER - UPDATE PASSWORD WHERE TOKEN LINES UP
+// router.put('/register/:id/:token', (req, res, next) => {
+//   const first = req.body.first;
+//   const last = req.body.last;
+//   const highschool = req.body.high_school;
+//   const username = req.body.username;
+//   const password = encryptLib.encryptPassword(req.body.password);
+//   const id = req.body.id
+//   const token = req.body.token;
+
+//   //THIS IS WHERE WE WE VALIDATE THE EMAIL or CHECK TOKEN LENGTH 
+//   const queryText = `UPDATE "person" SET "first" = $1, "last" = $2, "high_school" = $3, "username" = $4, "password" = $5 WHERE "token" = $6 AND "id" = $7;`
+//   pool.query(queryText, [first, last, highschool, username, password, token, id]).then((result)=>{
+//       res.sendStatus(200);
+//   }).catch((error)=>{
+//       console.log('Error', error);
+//       res.sendStatus(500);
+//   })
+// })
+
+
+
+
+
+
+
+
+
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route
