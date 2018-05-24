@@ -115,6 +115,8 @@ class InstructorSchedulePage extends Component {
 
 
   render() {
+    console.log('instructor schedule page', this.props.match.params.program_id);
+    
     let content = null;
 
     const { classes } = this.props;
@@ -123,30 +125,7 @@ class InstructorSchedulePage extends Component {
       content = (
         <div>
         
-        {/* client-side routes for navbar */}
-
-          <div>
-          <ul>
-          
-            <li>
-              <Link to="/InstructorStudent">
-                Students
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorFeedback">
-                Feedback
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorSchedule">
-                Schedule
-              </Link>
-            </li>
-      
-          </ul>
-          </div>
-        {/* End navbar routes */}
+        
 
 
           <h1>
@@ -182,7 +161,7 @@ class InstructorSchedulePage extends Component {
 
     return (
       <div>
-        <InstructorNav />
+        <InstructorNav program_id={this.props.match.params.program_id}/>
         {content}
       </div>
     );

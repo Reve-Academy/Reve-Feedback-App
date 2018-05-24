@@ -69,7 +69,7 @@ const App = () => (
           component={StudentSchedulePage}
         />
         <Route
-          path="/program/:id"
+          path="/InstructorSchedulePage/:program_id"
           component={InstructorSchedulePage}
         />
         {/* OTHERWISE (no path!) */}
