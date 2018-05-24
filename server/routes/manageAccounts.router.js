@@ -21,19 +21,6 @@ router.get('/', (req, res) => {
     
 });
 
-// //POST NEW ACCOUNT
-// if(req.isAuthenticated()){
-//     const token = chance.hash();
-//     let queryText = 
-
-
-// }//if res.isAuthenticated
-
-
-
-
-
-
 
 
 //UPDATE INSTRUCTOR AND ACTIVE STATUS FOR ACCOUNTS
