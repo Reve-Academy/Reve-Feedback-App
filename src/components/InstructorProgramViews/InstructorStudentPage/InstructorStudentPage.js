@@ -24,6 +24,7 @@ class InstructorStudentPage extends Component {
 //git 
 
   render() {
+    // console.log('hey dude', getCommentCountReducer)
 
 
 
@@ -35,33 +36,7 @@ class InstructorStudentPage extends Component {
         <div>
           <h1>
         INSTRUCTOR STUDENTS PAGE
-      </h1>   
-            {/* client-side routes for navbar */}
-
-          <div>
-          <ul>
-          
-            <li>
-              <Link to="/InstructorStudent">
-                Students
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorFeedback">
-                Feedback
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorSchedule">
-                Schedule
-              </Link>
-            </li>
-      
-          </ul>
-         
-         </div>
-         
-            {/* End navbar routes */}
+      </h1>
          
 
 
@@ -77,7 +52,7 @@ class InstructorStudentPage extends Component {
 
     return (
       <div>
-        <InstructorNav />
+        <InstructorNav program_id={this.props.match.params.program_id}/>
         {content}
       </div>
     );

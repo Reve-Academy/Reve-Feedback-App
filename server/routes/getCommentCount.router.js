@@ -5,7 +5,7 @@ const router = express.Router();
 // GET route template
  
   router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM person';
+    const queryText = 'SELECT * FROM comments';
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {

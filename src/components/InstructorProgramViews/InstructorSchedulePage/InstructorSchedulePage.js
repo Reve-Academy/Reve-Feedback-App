@@ -11,7 +11,6 @@ import _ from 'lodash';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
 import InstructorNav from '../../Nav/InstructorNav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -109,12 +108,13 @@ class InstructorSchedulePage extends Component {
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('/home');
     }
   }
 
 
   render() {
+    
     let content = null;
 
     const { classes } = this.props;
@@ -123,30 +123,7 @@ class InstructorSchedulePage extends Component {
       content = (
         <div>
         
-        {/* client-side routes for navbar */}
-
-          <div>
-          <ul>
-          
-            <li>
-              <Link to="/InstructorStudent">
-                Students
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorFeedback">
-                Feedback
-              </Link>
-            </li>
-            <li>
-              <Link to="/InstructorSchedule">
-                Schedule
-              </Link>
-            </li>
-      
-          </ul>
-          </div>
-        {/* End navbar routes */}
+        
 
 
           <h1>
@@ -182,7 +159,7 @@ class InstructorSchedulePage extends Component {
 
     return (
       <div>
-        <InstructorNav />
+        <InstructorNav program_id={this.props.match.params.program_id}/>
         {content}
       </div>
     );
