@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
 
 //ADMIN ONLY - POST NEW ACCOUNT
 router.post('/', (req, res)=> {
+    console.log('in post account')
     const token = chance.hash();
     const username = req.body.username;
     const team = req.body.team;
