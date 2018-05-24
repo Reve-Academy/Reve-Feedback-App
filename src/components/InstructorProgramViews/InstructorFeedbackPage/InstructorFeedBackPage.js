@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import CommentItem from './StudentCommentItem';
 
 
 
 const mapStateToProps = state => ({
   user: state.user,
+  state,
 });
 
 class InstructorFeedbackPage extends Component {
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.props.dispatch({ type: 'GET_COMMENTS'});
   }
 
   componentDidUpdate() {
@@ -26,6 +29,9 @@ class InstructorFeedbackPage extends Component {
   render() {
 
     let content = null;
+    let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
+      return(<CommentItem key={comment.id} comment={comment}/>)
+    })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -55,15 +61,18 @@ class InstructorFeedbackPage extends Component {
           </ul>
           </div>
           {/* End navbar routes */}
-
+        
+          
 
           <h1>
             INSTRUCTOR FEEDBACK PAGE
           </h1>
         
           {/* Feedback Container */}
+
+
           <div>
-            This is where feedback will be sourced in.
+            {studentComment}
           </div>
           {/* End Feedback Container */}
 
@@ -75,6 +84,7 @@ class InstructorFeedbackPage extends Component {
       <div>
        <InstructorNav />
         {content}
+        {studentComment}
       </div>
     );
   }
