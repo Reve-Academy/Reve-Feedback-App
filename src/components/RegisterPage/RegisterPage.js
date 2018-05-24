@@ -7,6 +7,9 @@ class RegisterPage extends Component {
 		super(props);
 
 		this.state = {
+			first: '',
+			last: '',
+			high_school: '',
 			username: '',
 			password: '',
 			message: ''
@@ -76,8 +79,38 @@ class RegisterPage extends Component {
 					<form onSubmit={this.registerUser}>
 						<h1>Register User</h1>
 						<div>
+							<label htmlFor="first">
+								First Name:
+              					<input
+									type="text"
+									name="first"
+									value={this.state.first}
+									onChange={this.handleInputChangeFor('first')}
+								/>
+							</label>
+							<br />
+							<label htmlFor="last">
+								Last Name:
+              					<input
+									type="text"
+									name="last"
+									value={this.state.last}
+									onChange={this.handleInputChangeFor('last')}
+								/>
+							</label>
+							<br />
+							<label htmlFor="high_school">
+								High School:
+              					<input
+									type="text"
+									name="high_school"
+									value={this.state.high_school}
+									onChange={this.handleInputChangeFor('high_school')}
+								/>
+							</label>
+							<br />
 							<label htmlFor="username">
-								Username:
+								Email:
 								<input
 									type="text"
 									name="username"
