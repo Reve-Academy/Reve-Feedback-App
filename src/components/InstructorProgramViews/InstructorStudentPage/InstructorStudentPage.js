@@ -24,6 +24,7 @@ class InstructorStudentPage extends Component {
 //git 
 
   render() {
+    // console.log('hey dude', getCommentCountReducer)
 
 
 

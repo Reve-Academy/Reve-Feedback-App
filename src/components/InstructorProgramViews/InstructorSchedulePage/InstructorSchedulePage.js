@@ -11,7 +11,6 @@ import _ from 'lodash';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-
 import InstructorNav from '../../Nav/InstructorNav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -125,7 +124,7 @@ class InstructorSchedulePage extends Component {
     const { classes } = this.props;
 
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<span key={week.id}>{week.number} </span>)
+      return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
     })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
