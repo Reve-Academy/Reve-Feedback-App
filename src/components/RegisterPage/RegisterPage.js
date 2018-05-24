@@ -12,6 +12,8 @@ class RegisterPage extends Component {
 			high_school: '',
 			username: '',
 			password: '',
+			id: this.props.match.params.id,
+			token: this.props.match.params.token,
 			message: ''
 		};
 	}
@@ -25,16 +27,19 @@ class RegisterPage extends Component {
 				message: 'Choose a username and password!'
 			});
 		} else {
-			const request = new Request('api/user/register', {
-				method: 'POST',
+			const request = new Request('/api/user/register/:id/:token', {
+				method: 'PUT',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
 					first: this.state.first,
 					last: this.state.last, 
 					high_school: this.state.high_school,
 					username: this.state.username,
-					password: this.state.password
+					password: this.state.password, 
+					id: this.state.id,
+					token: this.state.token
 				})
+				
 			});
 
 			// making the request to the server to post the country
@@ -64,6 +69,7 @@ class RegisterPage extends Component {
 		this.setState({
 			[propertyName]: event.target.value
 		});
+		console.log('this.props:', this.props)
 	};
 
 	renderAlert() {

@@ -10,8 +10,8 @@ function* manageAccountsSaga(){
 }
 
 
-
 function* postAccountSaga(action){
+    console.log('in post account saga')
     try{
         console.log('post Account payload: ', action.payload);
         yield call(axios.post, '/api/manage', action.payload)
