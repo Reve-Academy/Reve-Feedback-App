@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import AddFocusForm from './AddFocusForm';
 
 //library import
 import RGL, { WidthProvider } from 'react-grid-layout';
@@ -13,8 +14,6 @@ import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import InstructorNav from '../../Nav/InstructorNav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-
-// const ReactGridLayout = WidthProvider(RGL);
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -46,19 +45,9 @@ const styles = theme => ({
 
 class InstructorSchedulePage extends Component {
 
-  // static defaultProps = {
-  //   className: "layout",
-  //   items: 10,
-  //   rowHeight: 20,
-  //   onLayoutChange: function() {},
-  //   cols: 8
-  // };
-
   constructor(props) {
     super(props);
 
-  //   const layout = this.generateLayout();
-  //   this.state = { layout };
     this.state = {
       open: false
     }
@@ -73,35 +62,6 @@ class InstructorSchedulePage extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
-
-  // generateDOM() {
-  //   return _.map(_.range(this.props.items), function(i) {
-  //     return (
-  //       <div key={i}>
-  //         <span className="text">{i}</span>
-  //       </div>
-  //     );
-  //   });
-  // }
-
-  // generateLayout() {
-  //   const p = this.props;
-  //   return _.map(new Array(p.items), function(item, i) {
-  //     const y = _.result(p, "y") || Math.ceil(Math.random() * 4) + 1;
-  //     return {
-  //       x: (i * 2) % 12,
-  //       y: Math.floor(i / 6) * y,
-  //       w: 2,
-  //       h: y,
-  //       i: i.toString()
-  //     };
-  //   });
-  // }
-
-  // onLayoutChange(layout) {
-  //   this.props.onLayoutChange(layout);
-  // }
-
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -148,19 +108,13 @@ class InstructorSchedulePage extends Component {
             onClose={this.handleClose}
             >
             <div style={getModalStyle()} className={classes.paper}>
-              {/* <AddNewLessonForm /> */}
+              <AddFocusForm />
             </div>
             </Modal>
           </div>
 
           {/* Schedule Container */}
-            {/* <ReactGridLayout
-            layout={this.state.layout}
-            onLayoutChange={this.onLayoutChange}
-            {...this.props}
-            >
-            {this.generateDOM()}
-            </ReactGridLayout> */}
+
           {/* End Schedule Container */}
 
         </div>

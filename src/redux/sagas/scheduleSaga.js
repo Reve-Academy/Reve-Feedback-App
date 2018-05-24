@@ -8,7 +8,7 @@ function* scheduleSaga(){
 function* programWeekSaga(action){
     try{
         //dispatch action to get specific weeks that are related to program
-        const weekResponse = yield call(axios.get, `/api/instructorSchedule/weeks/?id=${action.payload.id}`)
+        const weekResponse = yield call(axios.get, `/api/instructorSchedule/weeks/?id=${action.payload.program_id}`)
 
         //dispatch action to set reducer 
         yield put({
