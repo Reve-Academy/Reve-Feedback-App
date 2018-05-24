@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import StudentItem from './StudentItem';
 import { withStyles } from '@material-ui/core/styles';
 
+//Material UI Table
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -41,62 +42,45 @@ const styles = (theme) => ({
 	}
 });
 
-
-
-
-
-const mapStateToProps = state => ({
-    state,
+const mapStateToProps = (state) => ({
+	state
 });
 
 class StudentList extends Component {
-  componentDidMount() {
-    // use component did mount to dispatch an action to request the studentList from the API
-    this.props.dispatch({ type: 'GET_STUDENT_LIST_SAGA'});
-    this.props.dispatch({ type: 'GET_COMMENT_COUNT_SAGA'})
-  }
+	componentDidMount() {
+		// use component did mount to dispatch an action to request the studentList from the API
+		this.props.dispatch({ type: 'GET_STUDENT_LIST_SAGA' });
+		this.props.dispatch({ type: 'GET_COMMENT_COUNT_SAGA' });
+	}
 
-  render() {
+	render() {
+		// MAPPING OVER GET RESPONSE FROM GET STUDENT LIST REQUEST
+		let listOfStudents = this.props.state.studentListReducer.studentListReducer.map((student) => {
+				return <StudentItem key={student.id} student={student} />;
+			});
+		
 
-    // MAPPING OVER GET RESPONSE FROM GET STUDENT LIST REQUEST
-    let listOfStudents = this.props.state.studentListReducer.studentListReducer.map(student => {
-      let commentNumber = this.props.state.getCommentCountReducer.getCommentCountReducer.map(count => {
-
-       return (
-        <StudentItem
-          key={student.id} 
-          student = {student}
-          key={count.id}
-          count = {count}
-        />
-    
-    )
-  })
-      })
-
-  
-     
-    return(
-      <div>
-              {/* TABLE HEADER */}
-          <Table>
-            <TableHead>
-              <TableRow>
-              <CustomTableCell>Student Name</CustomTableCell>
-              <CustomTableCell>Email</CustomTableCell>
-            	<CustomTableCell>Current Program</CustomTableCell>
- 							<CustomTableCell>Team Name</CustomTableCell>
+		return (
+			<div>
+				{/* TABLE HEADER */}
+				<Table>
+					<TableHead>
+						<TableRow>
+							<CustomTableCell>Student Name</CustomTableCell>
+							<CustomTableCell>Email</CustomTableCell>
+							<CustomTableCell>Current Program</CustomTableCell>
+							<CustomTableCell>Team Name</CustomTableCell>
 							<CustomTableCell>Highschool</CustomTableCell>
- 							<CustomTableCell>Total Comments</CustomTableCell>
-              </TableRow>
-            </TableHead>
-         {listOfStudents}
-         </Table>
+							{/* <CustomTableCell>Total Comments</CustomTableCell> */}
+						</TableRow>
+					</TableHead>
+					{listOfStudents}
+				</Table>
 
-              {/* END TABLE HEADER */}
-      </div>
-    )
-  }
+				{/* END TABLE HEADER */}
+			</div>
+		);
+	}
 }
 
 export default connect(mapStateToProps)(StudentList);

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core/styles';
- import TableBody from '@material-ui/core/TableBody';
- import TableCell from '@material-ui/core/TableCell';
- import TableHead from '@material-ui/core/TableHead';
- import TableRow from '@material-ui/core/TableRow';
+
+//Material UI Table
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 // MATERIAL UI TABLE STYLING
 
@@ -24,8 +26,8 @@ const styles = (theme) => ({
 	root: {
 		width: '80%',
 		marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-    textAlign: 'right',
+		overflowX: 'auto',
+		textAlign: 'right',
 
 		marginLeft: 140
 	},
@@ -39,7 +41,7 @@ const styles = (theme) => ({
 		}
 	}
 });
- 
+
 // END MATERIAL UI TABLE STYLING
 
 const mapStateToProps = (state) => ({
@@ -48,33 +50,30 @@ const mapStateToProps = (state) => ({
 
 class StudentItem extends Component {
 	constructor(props) {
-    super(props);
-    
-    
-		}
-	
+		super(props);
+	}
+
 	render() {
 		console.log(this.props);
 		const { classes } = this.props;
 
-    // STUDENT DATA TABLE
+		// STUDENT DATA TABLE
 		return (
 			<TableBody>
 				<TableRow>
-					<CustomTableCell>{this.props.student.first}  {this.props.student.last}</CustomTableCell>
+					<CustomTableCell>
+						{this.props.student.first} {this.props.student.last}
+					</CustomTableCell>
 					<CustomTableCell>{this.props.student.email}</CustomTableCell>
 					<CustomTableCell>{this.props.student.program_id}</CustomTableCell>
 					<CustomTableCell>{this.props.student.team}</CustomTableCell>
 					<CustomTableCell>{this.props.student.high_school}</CustomTableCell>
-					<CustomTableCell>{this.props.count.comment}</CustomTableCell>
-
-
-   
-			  </TableRow>
+					{/* <CustomTableCell>{this.props.count.comment}</CustomTableCell> */}
+				</TableRow>
 			</TableBody>
-    );
-    
-    //END STUDENT DATA TABLE
+		);
+
+		//END STUDENT DATA TABLE
 	}
 }
 
