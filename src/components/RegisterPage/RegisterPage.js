@@ -7,12 +7,16 @@ class RegisterPage extends Component {
 		super(props);
 
 		this.state = {
+			first: '',
+			last: '',
+			high_school: '',
 			username: '',
 			password: '',
 			message: ''
 		};
 	}
 
+	//when a user registers it's actually an UPDATE
 	registerUser = (event) => {
 		event.preventDefault();
 
@@ -25,6 +29,9 @@ class RegisterPage extends Component {
 				method: 'POST',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
+					first: this.state.first,
+					last: this.state.last, 
+					high_school: this.state.high_school,
 					username: this.state.username,
 					password: this.state.password
 				})
@@ -48,6 +55,10 @@ class RegisterPage extends Component {
 				});
 		}
 	};
+
+
+
+	//this will be an update
 
 	handleInputChangeFor = (propertyName) => (event) => {
 		this.setState({
@@ -76,8 +87,38 @@ class RegisterPage extends Component {
 					<form onSubmit={this.registerUser}>
 						<h1>Register User</h1>
 						<div>
+							<label htmlFor="first">
+								First Name:
+              					<input
+									type="text"
+									name="first"
+									value={this.state.first}
+									onChange={this.handleInputChangeFor('first')}
+								/>
+							</label>
+							<br />
+							<label htmlFor="last">
+								Last Name:
+              					<input
+									type="text"
+									name="last"
+									value={this.state.last}
+									onChange={this.handleInputChangeFor('last')}
+								/>
+							</label>
+							<br />
+							<label htmlFor="high_school">
+								High School:
+              					<input
+									type="text"
+									name="high_school"
+									value={this.state.high_school}
+									onChange={this.handleInputChangeFor('high_school')}
+								/>
+							</label>
+							<br />
 							<label htmlFor="username">
-								Username:
+								Email:
 								<input
 									type="text"
 									name="username"

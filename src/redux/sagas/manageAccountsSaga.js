@@ -12,8 +12,6 @@ function* manageAccountsSaga(){
 
 
 function* postAccountSaga(action){
-
-
     try{
         console.log('post Account payload: ', action.payload);
         yield call(axios.post, '/api/manage', action.payload)
@@ -21,14 +19,9 @@ function* postAccountSaga(action){
             type: 'GET_ACCOUNT_SAGA'
         })
     } catch (error){
-        console.log(`error on post: `, error);
+        console.log(`error on posting a started account that will require verification:`, error);
     }
-
 }
-
-
-
-
 
 
 //SAGA TO DELETE ACCOUNT

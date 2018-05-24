@@ -20,10 +20,10 @@ class AddStudentForm extends Component{
         super(props);
         this.state = {
             newStudent: {
-                email: '',
+                username: '',
                 team: '',
                 program: '',
-                instructor: false
+                password: ''
             }
         }
     }
@@ -40,7 +40,7 @@ class AddStudentForm extends Component{
     };
 
 
-    // FUNCTION FOR DISPATCHING ACTION TO ADD STUDENT
+    // on CLICK, CREATES NEW STUDENT ACCOUNT - TODO: with random password instead of empty string
     addStudent = () => {
         this.props.dispatch({
             type: 'POST_ACCOUNT',
@@ -49,7 +49,7 @@ class AddStudentForm extends Component{
         this.setState({
             newStudent: {
                 ...this.state.newStudent,
-                email: '',
+                username: '',
                 team: '',
                 program: '',
 
@@ -71,12 +71,12 @@ class AddStudentForm extends Component{
         return(
             <div>
                 <TextField
-                    id="emailInput"
+                    id="usernameInput"
                     label="E-mail"
                     placeholder="E-mail"
                     margin="normal"
-                    onChange={this.handleChangeFor("email")}
-                    value={this.state.newStudent.email}
+                    onChange={this.handleChangeFor("username")}
+                    value={this.state.newStudent.username}
                  />
                  <br/>
                  <TextField
