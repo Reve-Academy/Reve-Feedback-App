@@ -26,13 +26,13 @@ class Home_AllProgramsPage extends Component {
   //on logout, go to login page
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('/home');
     }
   }
 
   logout = () => {
     this.props.dispatch(triggerLogout());
-    this.props.history.push('home');
+    this.props.history.push('/home');
   }
 
   render() {

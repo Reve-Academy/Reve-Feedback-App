@@ -9,7 +9,11 @@ function* manageAccountsSaga(){
     yield takeEvery('POST_ACCOUNT', postAccountSaga);
 }
 
+
+
 function* postAccountSaga(action){
+
+
     try{
         console.log('post Account payload: ', action.payload);
         yield call(axios.post, '/api/manage', action.payload)
@@ -19,8 +23,15 @@ function* postAccountSaga(action){
     } catch (error){
         console.log(`error on post: `, error);
     }
+
 }
 
+
+
+
+
+
+//SAGA TO DELETE ACCOUNT
 function* deleteAccountSaga(action){
     try{   
         console.log('delete Account payload is', action.payload)
