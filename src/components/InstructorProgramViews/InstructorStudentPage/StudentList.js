@@ -53,22 +53,27 @@ class StudentList extends Component {
   componentDidMount() {
     // use component did mount to dispatch an action to request the studentList from the API
     this.props.dispatch({ type: 'GET_STUDENT_LIST_SAGA'});
+    this.props.dispatch({ type: 'GET_COMMENT_COUNT_SAGA'})
   }
 
   render() {
 
     // MAPPING OVER GET RESPONSE FROM GET STUDENT LIST REQUEST
     let listOfStudents = this.props.state.studentListReducer.studentListReducer.map(student => {
-
+      let commentNumber = this.props.state.getCommentCountReducer.getCommentCountReducer.map(count => {
 
        return (
         <StudentItem
           key={student.id} 
           student = {student}
+          key={count.id}
+          count = {count}
         />
     
     )
   })
+      })
+
   
      
     return(

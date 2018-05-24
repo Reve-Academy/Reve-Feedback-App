@@ -5,7 +5,7 @@ const router = express.Router();
 // GET route template
  
   router.get('/', (req, res) => {
-    const queryText = 'Get SUM FROM comments WHERE id = $1';
+    const queryText = 'SELECT * FROM comments';
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {
