@@ -70,9 +70,9 @@ class ProgramItem extends Component {
     })
   };
 
-  // FUNCTION FOR PROGRAM
+  // FUNCTION FOR PROGRAM NAVIGATION
   navProgram = () => {
-    this.props.history.push(`/program/${this.props.pItem.id}`)
+    this.props.history.push(`/InstructorSchedule/${this.props.pItem.id}`)
   }
 
   // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM ACTIVE

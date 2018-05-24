@@ -33,7 +33,7 @@ const App = () => (
           component={LoginPage}
         />
         <Route
-          path="/register/:id/:token"
+          path="/register"
           component={RegisterPage}
         />
         <Route
@@ -53,11 +53,11 @@ const App = () => (
           component={InstructorSchedulePage}
         /> */}
         <Route
-          path="/InstructorFeedback"
+          path="/InstructorFeedback/:program_id"
           component={InstructorFeedbackPage}
         />
         <Route
-          path="/InstructorStudent"
+          path="/InstructorStudent/:program_id"
           component={InstructorStudentPage}
         />
         <Route
@@ -69,7 +69,7 @@ const App = () => (
           component={StudentSchedulePage}
         />
         <Route
-          path="/program/:id"
+          path="/InstructorSchedule/:program_id"
           component={InstructorSchedulePage}
         />
         {/* OTHERWISE (no path!) */}

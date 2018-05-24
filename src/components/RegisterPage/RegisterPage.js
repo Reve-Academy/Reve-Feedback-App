@@ -12,8 +12,6 @@ class RegisterPage extends Component {
 			high_school: '',
 			username: '',
 			password: '',
-			id: this.state.match.params.id,
-			token: this.state.match.params.token,
 			message: ''
 		};
 	}
@@ -35,8 +33,7 @@ class RegisterPage extends Component {
 					last: this.state.last, 
 					high_school: this.state.high_school,
 					username: this.state.username,
-					password: this.state.password, 
-					id: this.state.id
+					password: this.state.password
 				})
 			});
 
