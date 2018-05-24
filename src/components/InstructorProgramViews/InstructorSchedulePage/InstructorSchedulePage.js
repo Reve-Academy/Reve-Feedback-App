@@ -162,7 +162,7 @@ class InstructorSchedulePage extends Component {
             INSTRUCTOR SCHEDULE PAGE
           </h1>
           <div>{weekList}</div>
-          <button onClick={this.handleCreateLessonModal}>Add Lesson</button><br />
+          <Button variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
 
           <div>
             <Modal

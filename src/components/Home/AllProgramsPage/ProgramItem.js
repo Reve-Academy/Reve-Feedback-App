@@ -75,15 +75,12 @@ class ProgramItem extends Component {
     this.props.history.push(`/program/${this.props.pItem.id}`)
   }
 
-  // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
+  // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM ACTIVE
   programActive = () => {
-    this.setState({
-      editProgram: {
-      ...this.state.editProgram,
-      active_program: !this.state.editProgram.active_program
-      }
+    this.props.dispatch({
+      type: 'UPDATE_PROGRAM_ACTIVE',
+      payload: this.state.editProgram
     })
-    this.putProgram();
   };
 
   render() {

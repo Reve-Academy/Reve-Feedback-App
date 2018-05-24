@@ -4,7 +4,8 @@ import login from './loginReducer';
 import home_AllProgramPageReducer from './home_AllProgramsReducer';
 import manageAccountsReducer from './manageAccountsReducer';
 import studentListReducer from './studentListReducer';
-import scheduleReducer from './scheduleReducer'
+import scheduleReducer from './scheduleReducer';
+import studentCommentCountReducer from './studentCommentCountReducer';
 
 
 const store = combineReducers({
@@ -13,7 +14,8 @@ const store = combineReducers({
   home_AllProgramPageReducer,
   manageAccountsReducer,
   studentListReducer,
-  scheduleReducer
+  scheduleReducer,
+  studentCommentCountReducer
 });
 //hello
 export default store;
