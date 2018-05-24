@@ -5,6 +5,7 @@ import home_AllProgramSaga from './home_AllProgramsSaga';
 import newProgramSaga from'./newProgramSaga';
 import studentListSaga from './studentListSaga';
 import manageAccountsSaga from './manageAccountsSaga';
+import scheduleSaga from './scheduleSaga';
 
 
 export default function* rootSaga() {
@@ -14,7 +15,8 @@ export default function* rootSaga() {
     home_AllProgramSaga(),
     newProgramSaga(),
     studentListSaga(),
-    manageAccountsSaga()
+    manageAccountsSaga(),
     // watchIncrementAsync()
+    scheduleSaga()
   ]);
 }

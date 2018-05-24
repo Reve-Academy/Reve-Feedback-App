@@ -19,6 +19,7 @@ import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
 const mapStateToProps = state => ({
   user: state.user,
+  state
 });
 
 //Style properties for add new user modal
@@ -105,11 +106,15 @@ class InstructorSchedulePage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.props.dispatch({
+      type: 'FETCH_PROGRAM_WEEKS',
+      payload: this.props.match.params
+    })
   }
 
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
-      this.props.history.push('home');
+      this.props.history.push('/home');
     }
   }
 
@@ -118,6 +123,10 @@ class InstructorSchedulePage extends Component {
     let content = null;
 
     const { classes } = this.props;
+
+    let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
+      return (<span key={week.id}>{week.number} </span>)
+    })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -152,6 +161,7 @@ class InstructorSchedulePage extends Component {
           <h1>
             INSTRUCTOR SCHEDULE PAGE
           </h1>
+          <div>{weekList}</div>
           <button onClick={this.handleCreateLessonModal}>Add Lesson</button><br />
 
           <div>
