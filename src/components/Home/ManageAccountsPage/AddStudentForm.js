@@ -13,45 +13,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
-
-
-
 const mapStateToProps = state => ({
     state,
   });
-
-// //Nodemailer
-//   var smtpTransport = nodemailer.createTransport("SMTP", {
-//     service: "Gmail",
-//     auth: {
-//       XOAuth2: {
-//         user: "melody.massard8988@gmail.com", // Your gmail address.
-//                                               // Not @developer.gserviceaccount.com
-//         clientId: "854064104990-tc8sdduk70trjlj27g16vpk6te595ed2.apps.googleusercontent.com",
-//         clientSecret: "NohG1b8S4myFGL5Wqx236WC8",
-//         refreshToken: "1/v1sfUNC0_2J26yR1exXcRTnYlM6kmLko_xs4p5VdvM0"//"expires_in": 3600, 
-//       }
-//     }
-//   });
-  
-//   var mailOptions = {
-//     from: "melody.massard8988@gmail.com",
-//     to: "kamkubesh@gmail.com",
-//     subject: "Hello",
-//     generateTextFromHTML: true,
-//     html: "<b>Hello world</b>"
-//   };
-  
-//   smtpTransport.sendMail(mailOptions, function(error, response) {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log(response);
-//     }
-//     smtpTransport.close();
-//   });
-//   //End Nodemailer code
-
 
 
 class AddStudentForm extends Component{
@@ -63,7 +27,6 @@ class AddStudentForm extends Component{
                 team: '',
                 program: '',
                 password: '', 
-              
             }
         }
     }

@@ -1,20 +1,6 @@
 const nodemailer = require('nodemailer');
 var xoauth2 = require('xoauth2');
 
-// //Nodemailer
-// var smtpTransport = nodemailer.createTransport("SMTP", {
-//     service: "Gmail",
-//     auth: {
-//       XOAuth2: {
-//         user: "melody.massard8988@gmail.com", // Your gmail address.
-//                                               // Not @developer.gserviceaccount.com
-//         clientId: "854064104990-tc8sdduk70trjlj27g16vpk6te595ed2.apps.googleusercontent.com",
-//         clientSecret: "NohG1b8S4myFGL5Wqx236WC8",
-//         refreshToken: "1/v1sfUNC0_2J26yR1exXcRTnYlM6kmLko_xs4p5VdvM0"//"expires_in": 3600, 
-//       }
-//     }
-//   });
-
 let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -31,7 +17,7 @@ let transporter = nodemailer.createTransport({
   
   let mailOptions = {
     from: "melody.massard8988@gmail.com",
-    to: "kamkubesh@gmail.com",
+    to: "kamkubesh@gmail.com", //input 
     subject: "Hello",
     generateTextFromHTML: true,
     html: "<b>Hello world</b>"
