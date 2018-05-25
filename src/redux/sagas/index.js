@@ -8,8 +8,6 @@ import studentListSaga from './studentListSaga';
 import getCommentCountSaga from './getCommentCountSaga';
 import manageAccountsSaga from './manageAccountsSaga';
 
-//
-
 export default function* rootSaga() {
   yield all([
     userSaga(),
@@ -19,7 +17,7 @@ export default function* rootSaga() {
     instructorFeedBackSaga(),
     studentListSaga(),
     getCommentCountSaga(),
-    manageAccountsSaga(),
+    manageAccountsSaga()
     //   watchIncrementAsync()
   ]);
 }

@@ -7,12 +7,18 @@ class RegisterPage extends Component {
 		super(props);
 
 		this.state = {
+			first: '',
+			last: '',
+			high_school: '',
 			username: '',
 			password: '',
+			id: this.props.match.params.id,
+			token: this.props.match.params.token,
 			message: ''
 		};
 	}
 
+	//when a user registers it's actually an UPDATE
 	registerUser = (event) => {
 		event.preventDefault();
 
@@ -21,13 +27,19 @@ class RegisterPage extends Component {
 				message: 'Choose a username and password!'
 			});
 		} else {
-			const request = new Request('api/user/register', {
-				method: 'POST',
+			const request = new Request('/api/user/register/:id/:token', {
+				method: 'PUT',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
+					first: this.state.first,
+					last: this.state.last, 
+					high_school: this.state.high_school,
 					username: this.state.username,
-					password: this.state.password
+					password: this.state.password, 
+					id: this.state.id,
+					token: this.state.token
 				})
+				
 			});
 
 			// making the request to the server to post the country
@@ -49,10 +61,15 @@ class RegisterPage extends Component {
 		}
 	};
 
+
+
+	//this will be an update
+
 	handleInputChangeFor = (propertyName) => (event) => {
 		this.setState({
 			[propertyName]: event.target.value
 		});
+		console.log('this.props:', this.props)
 	};
 
 	renderAlert() {
@@ -76,8 +93,38 @@ class RegisterPage extends Component {
 					<form onSubmit={this.registerUser}>
 						<h1>Register User</h1>
 						<div>
+							<label htmlFor="first">
+								First Name:
+              					<input
+									type="text"
+									name="first"
+									value={this.state.first}
+									onChange={this.handleInputChangeFor('first')}
+								/>
+							</label>
+							<br />
+							<label htmlFor="last">
+								Last Name:
+              					<input
+									type="text"
+									name="last"
+									value={this.state.last}
+									onChange={this.handleInputChangeFor('last')}
+								/>
+							</label>
+							<br />
+							<label htmlFor="high_school">
+								High School:
+              					<input
+									type="text"
+									name="high_school"
+									value={this.state.high_school}
+									onChange={this.handleInputChangeFor('high_school')}
+								/>
+							</label>
+							<br />
 							<label htmlFor="username">
-								Username:
+								Email:
 								<input
 									type="text"
 									name="username"

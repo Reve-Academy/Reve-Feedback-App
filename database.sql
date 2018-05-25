@@ -14,7 +14,6 @@ CREATE TABLE person (
 	first VARCHAR (100),
 	last VARCHAR (100),
 	photo VARCHAR (250),
-	email VARCHAR (200),
 	high_school VARCHAR (200),
 	instructor BOOLEAN DEFAULT FALSE,
 	active_profile BOOLEAN DEFAULT TRUE,
