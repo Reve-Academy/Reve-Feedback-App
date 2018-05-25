@@ -4,9 +4,8 @@ const router = express.Router();
 
 // GET route 
   router.get('/', (req, res) => {
-    const queryText = `SELECT person.*, count (person.id) as total_comments FROM comments
-    JOIN * ON person`
-
+    const queryText = `SELECT person.*, count (comments.person_id) AS total_comments FROM person
+    JOIN comments ON person.id=comments.person_id GROUP BY person.id`;
 
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
@@ -20,7 +19,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     
 });
-
+//end get route
 
 //  * POST route template
 //  */

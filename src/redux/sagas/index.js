@@ -6,7 +6,7 @@ import newProgramSaga from'./newProgramSaga';
 import instructorFeedBackSaga from './instructorFeedBackSaga';
 import studentListSaga from './studentListSaga';
 import getStudentCommentCountSaga from './studentListSaga';
-git import manageAccountsSaga from './manageAccountsSaga';
+import manageAccountsSaga from './manageAccountsSaga';
 import scheduleSaga from './scheduleSaga';
 import getCommentCountSaga from './getCommentCountSaga';
 
