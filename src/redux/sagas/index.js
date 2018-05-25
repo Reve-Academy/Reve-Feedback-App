@@ -6,7 +6,7 @@ import newProgramSaga from'./newProgramSaga';
 import instructorFeedBackSaga from './instructorFeedBackSaga';
 import studentListSaga from './studentListSaga';
 import getCommentCountSaga from './getCommentCountSaga';
-import manageAccountsSaga from './manageAccountsSaga'
+import manageAccountsSaga from './manageAccountsSaga';
 
 export default function* rootSaga() {
   yield all([
