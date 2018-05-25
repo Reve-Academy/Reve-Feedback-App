@@ -9,6 +9,16 @@ const weekReducer = (state = [], action) => {
     }
 }
 
+const FocusReducer = (state= [], action) => {
+    switch(action.type){
+        case 'ADD_FOCUS':
+            return [...state, action.payload];
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
-    weekReducer
+    weekReducer,
+    FocusReducer
 })

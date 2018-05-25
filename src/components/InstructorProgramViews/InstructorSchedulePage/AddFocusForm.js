@@ -45,9 +45,31 @@ class AddFocusForm extends Component{
                 newFocus: {
                 ...this.state.newFocus,
                 [propertyName]: event.target.value
-                },
+                }
+            })
+        }
+    };
+
+    //FUNCTION FOR UPDATING NEWSTRATEGY STATE WITH INPUT FIELDS
+    handleStrategyChangeFor = (propertyName) => {
+        return (event) => {
+            this.setState({
+                newStrategy: {
                 ...this.state.newStrategy,
-                ...this.state.newResource
+                [propertyName]: event.target.value
+                },
+            })
+        }
+    };
+
+    //FUNCTION FOR UPDATING NEWSTRATEGY STATE WITH INPUT FIELDS
+    handleResourceChangeFor = (propertyName) => {
+        return (event) => {
+            this.setState({
+                newResource: {
+                ...this.state.newResource,
+                [propertyName]: event.target.value
+                },
             })
         }
     };
@@ -65,8 +87,6 @@ class AddFocusForm extends Component{
                         w: 2,
                         h: 1
                     },
-                    ...this.state.newStrategy,
-                    ...this.state.newResource
                 })
             )
         } else if(event.target.value === 'tuesday'){
@@ -80,8 +100,6 @@ class AddFocusForm extends Component{
                         w: 2,
                         h: 1
                     },
-                    ...this.state.newStrategy,
-                    ...this.state.newResource
                 })
             )
         } else if(event.target.value === 'wednesday'){
@@ -95,8 +113,6 @@ class AddFocusForm extends Component{
                         w: 2,
                         h: 1
                     },
-                    ...this.state.newStrategy,
-                    ...this.state.newResource
                 })
             )
         } else if(event.target.value === 'thursday'){
@@ -110,8 +126,6 @@ class AddFocusForm extends Component{
                         w: 2,
                         h: 1
                     },
-                    ...this.state.newStrategy,
-                    ...this.state.newResource
                 })
             )
         } else if(event.target.value === 'friday'){
@@ -125,8 +139,6 @@ class AddFocusForm extends Component{
                         w: 2,
                         h: 1
                     },
-                    ...this.state.newStrategy,
-                    ...this.state.newResource
                 })
             )
         }
@@ -135,7 +147,7 @@ class AddFocusForm extends Component{
     addNewFocus = () => {
         this.props.dispatch({
             type: 'ADD_FOCUS',
-            payload: this.state.newFocus
+            payload: this.state
         })
     }
 
@@ -143,28 +155,36 @@ class AddFocusForm extends Component{
     render(){
         return(
             <div>
+            <form onSubmit={() => this.addNewFocus()} className="focusForm">
                 <h3>Focus</h3>
                 <TextField
                     id="focusName"
                     label="Focus"
+                    fullWidth
                     placeholder="Name"
                     margin="normal"
                     onChange={this.handleFocusChangeFor("name")}
                     value={this.state.newFocus.name}
                 />
+                <br />
                 <TextField
                     id="focusSummary"
                     label="Summary"
+                    multiline
+                    fullWidth
+                    rowsMax="20"
                     placeholder="Summary"
                     margin="normal"
                     onChange={this.handleFocusChangeFor("summary")}
                     value={this.state.newFocus.summary}
                 />
                 <br />
-                <InputLabel>Select Start Date</InputLabel>
+                <InputLabel>Select Start Day</InputLabel>
                 <Select
                     onChange={this.handleStartChangeFor}
                     value={this.state.newFocus.startDay}
+                    autoWidth
+                    display="flex"
                     inputProps={{
                         name: 'StartDaySelector',
                         id: 'StartDaySelectorForm',
@@ -190,8 +210,42 @@ class AddFocusForm extends Component{
                     </MenuItem>
                 </Select>
                 <h3>Strategy</h3>
+                <TextField
+                    id="strategyTitle"
+                    label="Strategy"
+                    fullWidth
+                    placeholder="title"
+                    margin="normal"
+                    onChange={this.handleStrategyChangeFor("title")}
+                    value={this.state.newStrategy.title}
+                />
+                <br />
+                <TextField
+                    id="strategySummary"
+                    label="Summary"
+                    multiline
+                    fullWidth
+                    rowsMax="20"
+                    placeholder="Summary"
+                    margin="normal"
+                    onChange={this.handleStrategyChangeFor("summary")}
+                    value={this.state.newStrategy.summary}
+                />
                 <h3>Resources</h3>
-                <Button variant="outlined" color="primary" onClick={() => this.addNewFocus()}>Add Focus</Button>          
+                <TextField
+                    id="resourceLink"
+                    label="Link"
+                    multiline
+                    fullWidth
+                    rowsMax="20"
+                    placeholder="Resource Link"
+                    margin="normal"
+                    onChange={this.handleResourceChangeFor("link")}
+                    value={this.state.newResource.link}
+                />
+                <br />
+                <Button variant="outlined" color="primary" type="submit">Add Focus</Button>
+            </form>          
             </div>
         )
     }

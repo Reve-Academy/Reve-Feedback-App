@@ -100,7 +100,7 @@ class InstructorSchedulePage extends Component {
           </h1>
           <div>{weekList}</div>
           <Button variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-
+          <Button variant="outlined" color="primary">Finalize Schedule</Button>
           <div>
             <Modal
             aria-labelledby="Add New User"
