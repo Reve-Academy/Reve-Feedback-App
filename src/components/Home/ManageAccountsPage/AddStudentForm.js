@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// const nodemailer = require('nodemailer');
+
 
 //import material-ui
 import Button from '@material-ui/core/Button'
@@ -15,6 +17,7 @@ const mapStateToProps = state => ({
     state,
   });
 
+
 class AddStudentForm extends Component{
     constructor(props){
         super(props);
@@ -24,7 +27,6 @@ class AddStudentForm extends Component{
                 team: '',
                 program: '',
                 password: '', 
-              
             }
         }
     }
