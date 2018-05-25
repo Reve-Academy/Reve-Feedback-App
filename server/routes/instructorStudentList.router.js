@@ -2,10 +2,12 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET route template
- 
+// GET route 
   router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM person';
+    const queryText = `SELECT person.*, count (person.id) as total_comments FROM comments
+    JOIN * ON person`
+
+
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {
