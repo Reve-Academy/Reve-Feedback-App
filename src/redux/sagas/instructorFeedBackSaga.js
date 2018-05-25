@@ -24,6 +24,9 @@ function* addCommentSaga(action){
     try{
         console.log('post comment payload: ', action.payload);
         yield call(axios.post, '/api/instructorFeedback', action.payload);
+        yield put({
+            type:'GET_COMMENTS',
+        })
     } catch(error){
         console.log('error on post addComment: ', error);
     }
@@ -31,8 +34,8 @@ function* addCommentSaga(action){
 
 function* deleteCommentSaga(action){
     try{
-        console.log('deleting comment id number: ', action.payload.comment.id);
-        yield call(axios.delete, `/api/instructorFeedback/${action.payload.comment.id}`)
+        console.log('deleting comment id number: ', action.payload.item.id);
+        yield call(axios.delete, `/api/instructorFeedback/${action.payload.item.id}`)
         yield put({
             type: 'GET_COMMENTS',
         })

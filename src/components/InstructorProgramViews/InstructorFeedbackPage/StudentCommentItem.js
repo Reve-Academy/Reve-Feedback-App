@@ -20,11 +20,21 @@ const styles = theme => ({
   });
 
 class StudentComment extends Component {
+    deleteComment = () => {
+        this.props.dispatch({
+            type: 'DELETE_COMMENT',
+            payload: {
+                item: this.props.comment
+            }
+        });
+    }
+
     render(){
         return(
             <Card>
                 <CardContent>
-                    <div>{this.props.comment.comment}</div>
+                    <div> Author: {this.props.comment.first}{this.props.comment.last}: <br/> {this.props.comment.comment}</div> <br/> <button onClick={this.deleteComment}>delete</button>
+                    
                 </CardContent>
             </Card>
         )

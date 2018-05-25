@@ -14,6 +14,27 @@ const mapStateToProps = state => ({
 });
 
 class InstructorFeedbackPage extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      newComment:'',
+    }
+  }
+
+  handleComment = (event) => {
+    this.setState({
+      newComment: event.target.value,
+    })
+  }
+
+  addComment = () => {
+    this.props.dispatch({
+      type: 'ADD_COMMENT',
+      payload: this.state,
+    })
+    this.setState
+  }
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({ type: 'GET_COMMENTS'});
@@ -36,21 +57,16 @@ class InstructorFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-        
-          
-
           <h1>
             INSTRUCTOR FEEDBACK PAGE
           </h1>
-        
           {/* Feedback Container */}
-
-
+            <textarea style={{fontSize:'25px'}} value={this.state.newComment} onChange={this.handleComment}></textarea>
+            <button onClick={this.addComment}>SEND</button>
           <div>
             {studentComment}
           </div>
           {/* End Feedback Container */}
-
         </div>
       );
     }
