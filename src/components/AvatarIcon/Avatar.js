@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 
+
 const styles = {
   row: {
     display: 'flex',
@@ -13,7 +14,7 @@ const styles = {
     
     backgroundColor: "white",
     color: "white",
-    src: "blank-avatar.png"
+    src: "account_circle.png"
   },
 };
 
@@ -22,7 +23,7 @@ function ImageAvatars(props) {
   const { classes } = props;
   return (
     <div className={classes.row}>
-      <Avatar img="blank-avatar.png" className={classes.avatar} />
+      <Avatar src="images/account_circle.png" />
       
     </div>
   );

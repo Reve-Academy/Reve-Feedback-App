@@ -16,14 +16,14 @@ class InstructorNav extends Component {
 		let instructorStudentPath = `/InstructorStudent/${this.props.program_id}`;
 
 		return (
-		<div className="navbar">
+		<div className="navbar" id="active">
 
 
 			{/* Reve Academy logo for nav bar */}
 
     <img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
 
-			<ul>
+			<ul clasName="active">
 				<li className="avatar">
 					{/* Avatar icon on right side for teacher */}
 					<Avatar />
