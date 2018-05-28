@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import LoginNav from '../Nav/LoginNav'
+
+// Material-UI
+import TextField from '@material-ui/core/TextField';
+
+
+
+
+
+
 const mapStateToProps = state => ({
   user: state.user,
   login: state.login,
@@ -69,20 +78,20 @@ class LoginPage extends Component {
       <div>
         { this.renderAlert() }
         <form onSubmit={this.login}>
-          <h1 className='loginTitle'>Sign in to <b className="">Rêve Voices</b></h1>
+          <h1 className='loginTitle'>Sign in to <b className="reveVoices">Rêve Voices</b></h1>
           <div>
-            <label htmlFor="username">
-              Email:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
+           
+            Email: <TextField className="inputColor"
+                    id="emailInput"
+                    // label="Email"
+                    // placeholder="Email"
+                    margin="normal"
+                    onChange={this.handleInputChangeFor('username')}
+                    value={this.state.username}
+                 />
           </div>
           <div>
-            <label htmlFor="password">
+            {/* <label htmlFor="password">
               Password:
               <input
                 type="password"
@@ -90,7 +99,15 @@ class LoginPage extends Component {
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
+            </label> */}
+            Password: <TextField className="inputColor"
+                    id="passwordInput"
+                    // label="Email"
+                    // placeholder="Email"
+                    margin="normal"
+                    onChange={this.handleInputChangeFor('password')}
+                    value={this.state.password}
+                 />
           </div>
           <div>
             <input
