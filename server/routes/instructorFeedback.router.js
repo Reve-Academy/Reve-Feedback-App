@@ -5,7 +5,18 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/weeks', (req, res) =>{
+    const queryText = `SELECT * FROM "lesson";`
+    pool.query(queryText)
+        .then(result => { 
+            res.send(result.rows); 
+        }).catch(err => {
+            console.log('Error GET weeks in feedback', err);
+            res.sendStatus(500);
+        });
+})
+
+router.get('/comment', (req, res) => {
     const queryText = `SELECT "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."email", "person"."program_id" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" ORDER BY id DESC;
     `;
     pool.query(queryText)
