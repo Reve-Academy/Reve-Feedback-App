@@ -95,10 +95,8 @@ li a {
 }
 
 li a:hover {
-	color: white;
+	color: #D8441C;
 	background-size: 100%;
-
-	background-color: #D8441C;
 }
 
 .logo {
