@@ -102,6 +102,7 @@ class LoginPage extends Component {
             </label> */}
             Password: <TextField className="inputColor"
                     id="passwordInput"
+                    type="password"
                     // label="Email"
                     // placeholder="Email"
                     margin="normal"
