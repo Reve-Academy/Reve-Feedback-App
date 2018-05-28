@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
+import Button from '@material-ui/core/Button';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
@@ -50,6 +51,11 @@ class InstructorFeedbackPage extends Component {
   render() {
 
     let content = null;
+
+    let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
+      return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
+    })
+
     let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
       return(<CommentItem key={comment.id} comment={comment}/>)
     })
@@ -58,8 +64,10 @@ class InstructorFeedbackPage extends Component {
       content = (
         <div>
           <h1>
-            INSTRUCTOR FEEDBACK PAGE
+            INSTRUCTOR FEEDBACK PAGE <br/>
+            Week #
           </h1>
+          <div>{weekList}</div>
           {/* Feedback Container */}
             <textarea style={{fontSize:'25px'}} value={this.state.newComment} onChange={this.handleComment}></textarea>
             <button onClick={this.addComment}>SEND</button>

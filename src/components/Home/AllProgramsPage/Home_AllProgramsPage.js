@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom';
 
 import Nav from '../../Nav/Nav';
 import ProgramsList from './ProgramsList';
-import ManageAccountsPage from '../../Home/ManageAccountsPage/ManageAccountsPage';
-import NewProgramPage from '../../Home/NewProgramPage/NewProgramPage';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import { triggerLogout } from '../../../redux/actions/loginActions';
 
-
+const itemStyle = ({
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center'
+  }
+})
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -43,47 +46,49 @@ class Home_AllProgramsPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div>
+          <div style={itemStyle.centerContent}>
+          
             <ul>
-            <li>
+            <li style={{border: '2px solid #a0a0a0', margin: '0px 0px 0px -2px'}}>
                 <Link to="/newProgram" >
                   New Program
                 </Link>
               </li>
             
-              <li>
+              <li style={{border: '2px solid #a0a0a0'}}>
                 <Link to="/manageAccounts" >
                   Manage Accounts
                 </Link>
               </li>
-              <li>
+              <li style={{border: '2px solid #a0a0a0', margin: '0px -2px 0px 0px'}}>
                 <Link to="/user" >
                   All Programs
                 </Link>
               </li>
-            
             </ul>
+            
           </div>
 
           {/* Content Container */}
           <div>
-            <h1>
-              THIS IS THE ALL/MANGE PROGRAMS VIEW
+            <h1 className="ManageTitle">
+              ALL PROGRAMS
             </h1>
 
             {/* Programs List */}
-            <div>
+            <div style={itemStyle.centerContent}>
               <ProgramsList />
             </div>
             {/* End Programs List */}
 
-            <button
+          </div>
+          {/* End Content Container */}
+
+          {/* <button
               onClick={this.logout}
             >
               Log Out
-            </button>
-          </div>
-          {/* End Content Container */}
+          </button> */}
 
         </div>
       );
