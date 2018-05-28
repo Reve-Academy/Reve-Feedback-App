@@ -14,34 +14,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 
-
-
-
-
-// Handles UPDATE request with new user data
-// The only thing different from this and every other post we've seen
-// is that the password gets encrypted before being inserted
-// router.post('/register/:id/:token', (req, res, next) => {
-//   console.log('in')
-//   const first = req.body.first;
-//   const last = req.body.last;
-//   const high_school = req.body.high_school;
-//   const username = req.body.username;
-//   const password = encryptLib.encryptPassword(req.body.password);
-
-
-//   const queryText = 'INSERT INTO person (username, password, first, last, high_school) VALUES ($1, $2, $3, $4, $5) RETURNING id';
-//   pool.query(queryText, [username, password, first, last, high_school])
-//     .then(() => { res.sendStatus(201); })
-//     .catch((err) => { next(err); });
-// });
-
-
-
 //USER - UPDATE PASSWORD WHERE TOKEN LINES UP
 router.put('/register/:id/:token', (req, res, next) => {
-  const first = req.body.first;
-  const last = req.body.last;
+
   const highschool = req.body.high_school;
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
@@ -49,8 +24,8 @@ router.put('/register/:id/:token', (req, res, next) => {
   const token = req.body.token;
 
   //THIS IS WHERE WE WE VALIDATE THE EMAIL or CHECK TOKEN LENGTH 
-  const queryText = `UPDATE "person" SET "first" = $1, "last" = $2, "high_school" = $3, "username" = $4, "password" = $5 WHERE "token" = $6 AND "id" = $7;`
-  pool.query(queryText, [first, last, highschool, username, password, token, id]).then((result)=>{
+  const queryText = `UPDATE "person" SET "high_school" = $1, "username" = $2, "password" = $3 WHERE "token" = $4 AND "id" = $5;`
+  pool.query(queryText, [highschool, username, password, token, id]).then((result)=>{
       res.sendStatus(201);
   }).catch((error)=>{
       console.log('Error', error);

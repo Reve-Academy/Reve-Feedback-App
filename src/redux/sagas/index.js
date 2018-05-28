@@ -19,6 +19,7 @@ export default function* rootSaga() {
     instructorFeedBackSaga(),
     studentListSaga(),
     manageAccountsSaga(),
+    scheduleSaga(),
     // watchIncrementAsync()
   ]);
 }

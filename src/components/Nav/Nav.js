@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import reveLogo from '../../styles/images/ReveAcademy_Logo.png'
 
 
 const Nav = () => (

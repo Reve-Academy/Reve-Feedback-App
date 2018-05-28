@@ -62,14 +62,15 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      
+      <div className='loginBackground'>
       <LoginNav/>
       
       <div>
         { this.renderAlert() }
        
         <form onSubmit={this.login}>
-          <h1>Login</h1>
+          <h1 className='loginTitle'>Sign in to <b className="">Rêve Voices</b></h1>
           <div>
             <label htmlFor="username">
               Email:
@@ -98,7 +99,7 @@ class LoginPage extends Component {
               name="submit"
               value="Log In"
             />
-            <Link to="/register">Register</Link>
+            {/* <Link to="/register">Register</Link> */}
           </div>
         </form>
         </div>
