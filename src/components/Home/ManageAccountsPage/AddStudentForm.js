@@ -23,6 +23,8 @@ class AddStudentForm extends Component{
         super(props);
         this.state = {
             newStudent: {
+                first: '',
+                last: '',
                 username: '',
                 team: '',
                 program: '',
@@ -52,6 +54,8 @@ class AddStudentForm extends Component{
         this.setState({
             newStudent: {
                 ...this.state.newStudent,
+                first: '',
+                last: '',
                 username: '',
                 team: '',
                 program: '',
@@ -73,6 +77,25 @@ class AddStudentForm extends Component{
 
         return(
             <div>
+                <h1>Create New Student Account</h1>
+                <TextField
+                    id="firtnameInput"
+                    label="First Name"
+                    placeholder="First Name"
+                    margin="normal"
+                    onChange={this.handleChangeFor("first")}
+                    value={this.state.newStudent.first}
+                 />
+                 <br/>
+                 <TextField
+                    id="lastnameInput"
+                    label="Last Name"
+                    placeholder="Last Name"
+                    margin="normal"
+                    onChange={this.handleChangeFor("last")}
+                    value={this.state.newStudent.last}
+                 />
+                 <br/>
                 <TextField
                     id="usernameInput"
                     label="E-mail"
