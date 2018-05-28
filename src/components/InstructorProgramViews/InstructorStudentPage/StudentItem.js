@@ -12,13 +12,15 @@ import TableRow from '@material-ui/core/TableRow';
 
 const CustomTableCell = withStyles((theme) => ({
 	head: {
-		backgroundColor: theme.palette.common.black,
+		backgroundColor: theme.palette.common.red,
 		color: theme.palette.common.white,
-		textAlign: 'center',
-		paddingLeft: 45
+		fontSize: 12,
+		fontStyle: 'bold'
 	},
 	body: {
-		fontSize: 14
+		fontSize: 18,
+		textAlign: 'center',
+		marginLeft: 20
 	}
 }))(TableCell);
 
@@ -27,19 +29,22 @@ const styles = (theme) => ({
 		width: '80%',
 		marginTop: theme.spacing.unit * 3,
 		overflowX: 'auto',
-		textAlign: 'right',
-
-		marginLeft: 140
+	
 	},
 	table: {
-		minWidth: 700
+		minWidth: 700,
+		marginLeft: 20
+	
+		
 	},
 	row: {
 		'&:nth-of-type(odd)': {
 			backgroundColor: theme.palette.background.default,
-			textAlign: 'left'
+			// textAlign: 'left'
 		}
-	}
+	},
+
+	
 });
 
 // END MATERIAL UI TABLE STYLING

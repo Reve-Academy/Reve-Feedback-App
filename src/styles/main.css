@@ -13,8 +13,9 @@ html {
 	/* overflow: auto; */
 }
 
-/* LOGIN PAGE */
-
+h1{
+	margin-left: 20px;
+}
 form {
 	background-color: white;
 	width: 30%;
@@ -140,3 +141,4 @@ li a:hover {
 	margin: auto;
 	background-color: whitesmoke;
 }
+ 
