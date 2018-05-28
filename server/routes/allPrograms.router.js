@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET ROUTER FOR PROGRAMS LIST
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM program';
+    const queryText = 'SELECT * FROM program ORDER BY "active_program" DESC';
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {
