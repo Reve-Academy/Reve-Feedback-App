@@ -13,10 +13,11 @@ class InstructorNav extends Component {
 	// }
 
 	render(){
-		let instructorSchedulePath = `/InstructorSchedule/${this.props.program_id}`;
-		let instructorFeedbackPath = `/InstructorFeedback/${this.props.program_id}`;
-		let instructorStudentPath = `/InstructorStudent/${this.props.program_id}`;
-
+		let instructorSchedulePath = `/InstructorSchedule/${this.props.program_id}/${this.props.program_name}`;
+		let instructorFeedbackPath = `/InstructorFeedback/${this.props.program_id}/${this.props.program_name}`;
+		let instructorStudentPath = `/InstructorStudent/${this.props.program_id}/${this.props.program_name}`;
+		console.log(this.props);
+		
 		return (
 		<div className="navbar" id="active">
 
@@ -24,7 +25,6 @@ class InstructorNav extends Component {
 			{/* Reve Academy logo for nav bar */}
 			<img className="logo" src={reveLogo} alt="Reve logo" />
 			<img className = "avatar" src={avatarLogo} />
-
 
 
 			<ul clasName="active">
@@ -41,12 +41,12 @@ class InstructorNav extends Component {
 				<li className="navItem">
 					<Link to={instructorSchedulePath}>Schedule</Link>
 				</li>
-				{/* //not link to new page, display current program */}
-				<li className="navItem">
-					<Link to="newProgram">Program Name</Link>
-				</li>
 				<li className="navItem">
 					<Link to="/user">Home</Link>
+				</li>
+				{/* //not link to new page, display current program */}
+				<li>
+					<Link className="programName" to={instructorSchedulePath}>{this.props.match.params.program_name}</Link>
 				</li>
 			</ul>
 		</div>
