@@ -14,7 +14,7 @@ class InstructorNav extends Component {
 		let instructorSchedulePath = `/InstructorSchedule/${this.props.program_id}`;
 		let instructorFeedbackPath = `/InstructorFeedback/${this.props.program_id}`;
 		let instructorStudentPath = `/InstructorStudent/${this.props.program_id}`;
-
+		
 		return (
 		<div className="navbar">
 

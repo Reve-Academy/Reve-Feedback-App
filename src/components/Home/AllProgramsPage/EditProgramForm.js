@@ -24,7 +24,8 @@ class EditProgramForm extends Component{
               name: this.props.pItem.name,
               description: this.props.pItem.description,
               start: this.props.pItem.start,
-              finish: this.props.pItem.finish
+              finish: this.props.pItem.finish,
+              active_program: this.props.pItem.active_program
           }
         }
       }
@@ -76,7 +77,7 @@ class EditProgramForm extends Component{
                 {/* Description of Program */}
                 <TextField
                     id="description"
-                    label={this.props.pItem.description}
+                    label="Description"
                     placeholder="New Description"
                     margin="normal"
                     defaultValue={this.props.pItem.description}
