@@ -6,7 +6,7 @@ import reveLogo from '../../styles/images/ReveAcademy_Logo.png'
 const Nav = () => (
   <div className="navbar">
     <div>
-   <a href="/user"> <img className="logo" src="images/academylogo_white.png" alt="Reve logo"  /> </a>
+    <img className="logo" src={reveLogo} alt="Reve logo" />
 
       <ul>
 

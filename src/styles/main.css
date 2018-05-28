@@ -118,6 +118,11 @@ li a:hover {
 	top: 2px;
 }
 
+.avatar{
+	float: right;
+	margin-right: 10px;
+	margin-top: 19px;
+}
 
 .navItem {
 	font-size: 13px;
