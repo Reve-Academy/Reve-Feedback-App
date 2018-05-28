@@ -12,7 +12,15 @@ import { Typography } from '@material-ui/core';
 
 const mapStateToProps = state => ({
     state,
-  });
+});
+
+const itemStyle = ({
+btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    margin: '10px',
+    }
+})
 
 class EditProgramForm extends Component{
     constructor(props){
@@ -61,60 +69,63 @@ class EditProgramForm extends Component{
 
         return(
             <div>
-                <Typography variant="headline" component="h2">
-                    Edit Program
-                </Typography>
-                {/* Program Name */}
-                <TextField
-                    id="programName"
-                    label={this.props.pItem.name}
-                    placeholder="New Program Title"
-                    margin="normal"
-                    defaultValue={this.props.pItem.name}
-                    onChange={this.handleChangeFor("name")}
-                />
-                <br />
-                {/* Description of Program */}
-                <TextField
-                    id="description"
-                    label="Description"
-                    placeholder="New Description"
-                    margin="normal"
-                    defaultValue={this.props.pItem.description}
-                    onChange={this.handleChangeFor("description")}
-                />
-                <br />
-                {/* Start Date of Program */}
-                <TextField
-                    id="startDate"
-                    label="Program Start"
-                    type="date"
-                    defaultValue={this.props.pItem.start}
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                    onChange={this.handleChangeFor("start")}
-                />
-                <br />
-                {/* End Date of Program */}
-                <TextField
-                    id="endDate"
-                    label="Program End"
-                    type="date"
-                    defaultValue={this.props.pItem.finish}
-                    InputLabelProps={{
-                    shrink: true,
-                    }}
-                    onChange={this.handleChangeFor("finish")}
-                />
-                <br />
-
-                <Button variant="outlined" onClick={() => this.putProgram()}>
-                    Save
-                </Button>
-                <Button variant="outlined" onClick={() => this.delProgram()}>
-                    Delete
-                </Button>
+                <div>
+                    <Typography variant="headline" component="h2">
+                        Edit Program
+                    </Typography>
+                    {/* Program Name */}
+                    <TextField
+                        id="programName"
+                        label={this.props.pItem.name}
+                        placeholder="New Program Title"
+                        margin="normal"
+                        defaultValue={this.props.pItem.name}
+                        onChange={this.handleChangeFor("name")}
+                    />
+                    <br />
+                    {/* Description of Program */}
+                    <TextField
+                        id="description"
+                        label="Description"
+                        placeholder="New Description"
+                        margin="normal"
+                        defaultValue={this.props.pItem.description}
+                        onChange={this.handleChangeFor("description")}
+                    />
+                    <br />
+                    {/* Start Date of Program */}
+                    <TextField
+                        id="startDate"
+                        label="Program Start"
+                        type="date"
+                        defaultValue={this.props.pItem.start}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        onChange={this.handleChangeFor("start")}
+                    />
+                    <br />
+                    {/* End Date of Program */}
+                    <TextField
+                        id="endDate"
+                        label="Program End"
+                        type="date"
+                        defaultValue={this.props.pItem.finish}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        onChange={this.handleChangeFor("finish")}
+                    />
+                    <br />
+                </div>
+                <div>
+                    <Button variant="outlined" style={itemStyle.btn} onClick={() => this.putProgram()}>
+                        Save
+                    </Button>
+                    <Button variant="outlined" style={itemStyle.btn} onClick={() => this.delProgram()}>
+                        Delete
+                    </Button>
+                </div>
             </div>
         )
     }

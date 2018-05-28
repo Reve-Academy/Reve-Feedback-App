@@ -70,13 +70,13 @@ class Home_AllProgramsPage extends Component {
           </div>
 
           {/* Content Container */}
-          <div style={itemStyle.centerContent}>
-            <h1>
-              THIS IS THE ALL/MANGE PROGRAMS VIEW
+          <div>
+            <h1 className="ManageTitle">
+              ALL PROGRAMS
             </h1>
 
             {/* Programs List */}
-            <div style={{maxWidth: '800px'}}>
+            <div style={itemStyle.centerContent}>
               <ProgramsList />
             </div>
             {/* End Programs List */}
