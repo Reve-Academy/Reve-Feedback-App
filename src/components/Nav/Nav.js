@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Nav = () => (
   <div className="navbar">
     <div>
-    <img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
+   <a href="/user"> <img className="logo" src="images/academylogo_white.png" alt="Reve logo"  /> </a>
 
       <ul>
 

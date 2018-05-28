@@ -12,6 +12,9 @@ html {
 	/* overflow: auto; */
 }
 
+h1{
+	margin-left: 20px;
+}
 form {
 	background-color: #dbd5d5;
 	width: 30%;
@@ -138,3 +141,4 @@ td {
 	margin: auto;
 	background-color: whitesmoke;
 }
+ 
