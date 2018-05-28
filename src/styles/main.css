@@ -106,7 +106,6 @@ li a {
 
 li a:hover {
 	color: #D8441C;
-	background-size: 100%;
 }
 
 .logo {
@@ -123,6 +122,16 @@ li a:hover {
 .navItem {
 	font-size: 13px;
 	font-family: 'Montserrat', sans-serif;
+}
+
+.programName {
+	color: black;
+	font-size: 13px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.programName:hover {
+	color: #000000;
 }
 
         /* END NAV BAR STYLING */
