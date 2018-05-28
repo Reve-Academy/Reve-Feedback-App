@@ -7,7 +7,6 @@ const Nav = () => (
 		<div>
 			{/* Reve Academy logo */}
 			<img className="logo" src={reveLogo} alt="Reve logo" />
-			<img className = "avatar" src={avatarLogo} />
 		</div>
 	</div>
 );
