@@ -79,8 +79,9 @@ class AccountsList extends Component {
                 <Table style={styles.test}>
                 <TableHead>
                         <TableRow>
-                        <CustomTableCell>First Name</CustomTableCell>
                         <CustomTableCell>Last Name</CustomTableCell>
+                        <CustomTableCell>First Name</CustomTableCell>
+                        
                         <CustomTableCell>Instructor</CustomTableCell>
                         <CustomTableCell>Active</CustomTableCell>
                         <CustomTableCell>Program</CustomTableCell>

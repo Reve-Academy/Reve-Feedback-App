@@ -110,8 +110,9 @@ class AccountsItem extends Component {
         return (
             <TableBody>
                 <TableRow >
+                <CustomTableCell>{this.props.aItem.last}</CustomTableCell>
                 <CustomTableCell>{this.props.aItem.first}</CustomTableCell>
-                     <CustomTableCell>{this.props.aItem.last}</CustomTableCell>
+                     
                      <CustomTableCell>{instructor}</CustomTableCell>
                      <CustomTableCell>{active}</CustomTableCell>
                      <CustomTableCell>{this.props.aItem.name}</CustomTableCell>

@@ -42,7 +42,7 @@ router.get('/', (req, res) => {
     "person"."high_school", "person"."team", 
     "person"."program_id", "program"."name" 
     FROM "person" JOIN "program" 
-    ON "program"."id" = "person"."program_id";`;
+    ON "program"."id" = "person"."program_id" ORDER BY "first" DESC;`;
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {
