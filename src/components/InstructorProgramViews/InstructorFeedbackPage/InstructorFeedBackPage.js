@@ -85,7 +85,7 @@ class InstructorFeedbackPage extends Component {
 
     return (
       <div>
-       <InstructorNav program_id={this.props.match.params.program_id}/>
+       <InstructorNav program_id={this.props.match.params.program_id} program_name={this.props.match.params.program_name} />
         {content}
       </div>
     );

@@ -5,8 +5,6 @@ import home_AllProgramPageReducer from './home_AllProgramsReducer';
 import manageAccountsReducer from './manageAccountsReducer';
 import studentListReducer from './studentListReducer';
 import scheduleReducer from './scheduleReducer';
-// import studentCommentCountReducer from './studentCommentCountReducer';
-import getCommentCountReducer from './getCommentCountReducer';
 import instructorFeedBackReducer from './instructorFeedBackReducer';
 
 
@@ -17,8 +15,6 @@ const store = combineReducers({
   manageAccountsReducer,
   studentListReducer,
   scheduleReducer,
-  // studentCommentCountReducer,
-  getCommentCountReducer,
   instructorFeedBackReducer,
 });
 

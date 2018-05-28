@@ -4,6 +4,7 @@ body {
 	height: 100%;
 	margin: 0px;
 	/* overflow: auto; */
+	
 }
 
 html {
@@ -12,13 +13,39 @@ html {
 	/* overflow: auto; */
 }
 
+h1{
+	margin-left: 20px;
+}
 form {
-	background-color: #dbd5d5;
+	background-color: white;
 	width: 30%;
 	height: 250px;
-	margin: 150px auto;
+	margin: 150px auto 700px;
 	padding: 25px;
 	border-radius: 2px;
+	
+}
+.loginBackground{
+	background-color: #D4D4D4;
+	width: 100%;
+	height: 100%;
+	
+}
+
+.reactRoot{
+	height: 100%;
+}
+
+.loginTitle{
+	text-align: center;
+	font-family: Lato, sans-serif;
+	font-weight: 150;
+}
+.reveVoices{
+	font-weight: 400;
+}
+.inputColor{
+	color: black;
 }
 
 input {
@@ -48,7 +75,7 @@ input[type="submit"] {
     /* STYLING FOR NAV BAR */
 
 .navbar {
-	background-color: 	#D8441C;
+	background-color: #e0e0e0;
 	margin-bottom: 25px;
 	/* position: fixed; */
 	top: 0;
@@ -57,9 +84,6 @@ input[type="submit"] {
 	height: 70px;
 }
 
-.active {
-	background-color: whitesmoke;
-}
 
 ul {
 	list-style-type: none;
@@ -72,9 +96,8 @@ li {
 
 li a {
 	display: block;
-	color: #111;
+	color: #717473;
 	text-align: center;
-	margin-right: 14px;
 	text-transform: uppercase;
     font-weight: 600;
 	padding: 10px 16px;
@@ -82,10 +105,7 @@ li a {
 }
 
 li a:hover {
-	color: white;
-	background-size: 100%;
-
-	background-color: #D8441C;
+	color: #D8441C;
 }
 
 .logo {
@@ -104,31 +124,32 @@ li a:hover {
 	font-family: 'Montserrat', sans-serif;
 }
 
+.programName {
+	color: black;
+	font-size: 13px;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.programName:hover {
+	color: #000000;
+}
+
         /* END NAV BAR STYLING */
 
-table {
-	display: block;
-	font-family: sans-serif;
-	-webkit-font-smoothing: antialiased;
-	font-size: 110%;
-	/* overflow: auto; */
-	margin: auto;
-	width: 85%;
-	margin-bottom: 50px;
-	align-content: center;
+
+
+/* MANAGE ACCOUNTS PAGE STYLING  */
+.ManageTitle {
+	text-align: center;
+	font-family: Lato, sans-serif;
+	font-weight: 150;
 }
 
-th {
-	background-color: #5d6777;
-	color: white;
-	font-weight: normal;
-	padding: 10px;
-	text-align: center;
-}
-td {
-	background-color: rgb(238, 238, 238);
-	color: rgb(111, 111, 111);
-	padding: 20px 30px;
+.addUserBtn{
+	
+	/* float: right; */
+	margin-left: 20%;
+	
 }
 
 .focusForm {
@@ -138,3 +159,4 @@ td {
 	margin: auto;
 	background-color: whitesmoke;
 }
+ 
