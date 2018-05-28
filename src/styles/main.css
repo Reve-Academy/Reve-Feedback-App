@@ -4,6 +4,7 @@ body {
 	height: 100%;
 	margin: 0px;
 	/* overflow: auto; */
+	
 }
 
 html {
@@ -12,13 +13,26 @@ html {
 	/* overflow: auto; */
 }
 
+/* LOGIN PAGE */
+
 form {
-	background-color: #dbd5d5;
+	background-color: white;
 	width: 30%;
 	height: 250px;
 	margin: 150px auto;
 	padding: 25px;
 	border-radius: 2px;
+}
+.loginBackground{
+	background-color: #D4D4D4;
+	width: 100%;
+	height: 100%;
+}
+
+.loginTitle{
+	text-align: center;
+	font-family: Lato, sans-serif;
+	font-weight: 150;
 }
 
 input {
@@ -105,29 +119,20 @@ li a:hover {
 
         /* END NAV BAR STYLING */
 
-table {
-	display: block;
-	font-family: sans-serif;
-	-webkit-font-smoothing: antialiased;
-	font-size: 110%;
-	/* overflow: auto; */
-	margin: auto;
-	width: 85%;
-	margin-bottom: 50px;
-	align-content: center;
+
+
+/* MANAGE ACCOUNTS PAGE STYLING  */
+.ManageTitle {
+	text-align: center;
+	font-family: Lato, sans-serif;
+	font-weight: 150;
 }
 
-th {
-	background-color: #5d6777;
-	color: white;
-	font-weight: normal;
-	padding: 10px;
-	text-align: center;
-}
-td {
-	background-color: rgb(238, 238, 238);
-	color: rgb(111, 111, 111);
-	padding: 20px 30px;
+.addUserBtn{
+	
+	/* float: right; */
+	margin-left: 20%;
+	
 }
 
 .focusForm {
