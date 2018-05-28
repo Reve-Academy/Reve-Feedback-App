@@ -26,6 +26,12 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
+const itemStyle = ({
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center'
+  }
+})
 
 const styles = theme => ({
   paper: {
@@ -39,6 +45,8 @@ const styles = theme => ({
     
   }
 });
+
+
 //end model styling properties 
 
 const mapStateToProps = state => ({
@@ -83,9 +91,9 @@ class ManageAccountsPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div>
+          <div style={itemStyle.centerContent}>
             <ul>
-              <li>
+              <li style={{border: '2px solid #a0a0a0', margin: '0px 0px 0px -2px'}}>
                 <Link to="/newProgram" >
                   New Program
                 </Link>
