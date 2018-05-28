@@ -16,6 +16,10 @@ class DayItem extends Component {
             type:'GET_COMMENTS',
             payload: this.props.week.id
         })
+        this.props.dispatch({
+            type:'WEEK_ID_LOCALSTATE',
+            payload: this.props.week.number
+        })
     }
 
     render(){

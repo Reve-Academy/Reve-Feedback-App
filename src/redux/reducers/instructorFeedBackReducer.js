@@ -9,7 +9,17 @@ const allCommentsReducer = (state = [], action) =>{
     }
 }
 
+const weekNumberReducer = (state = [1], action) =>{
+    switch(action.type){
+        case 'WEEK_ID_LOCALSTATE':
+            return action.payload
+        default:
+            return state
+    }
+}
+
 
 export default combineReducers({
-    allCommentsReducer
+    allCommentsReducer,
+    weekNumberReducer
   });
