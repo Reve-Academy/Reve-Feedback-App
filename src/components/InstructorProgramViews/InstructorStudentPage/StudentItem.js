@@ -68,7 +68,7 @@ class StudentItem extends Component {
 					<CustomTableCell>{this.props.student.program_id}</CustomTableCell>
 					<CustomTableCell>{this.props.student.team}</CustomTableCell>
 					<CustomTableCell>{this.props.student.high_school}</CustomTableCell>
-					{/* <CustomTableCell>{this.props.count.comment}</CustomTableCell> */}
+					<CustomTableCell>{this.props.student.total_comments}</CustomTableCell>
 				</TableRow>
 			</TableBody>
 		);
