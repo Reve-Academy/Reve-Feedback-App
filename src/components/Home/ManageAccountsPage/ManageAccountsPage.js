@@ -9,8 +9,8 @@ import AddNewUserModalForm from '../ManageAccountsPage/AddStudentForm';
 import AccountsList from './AccountsList';
 import Home_AllProgramsPage from '../NewProgramPage/NewProgramPage'
 import NewProgramPage from '../NewProgramPage/NewProgramPage'
-
 import Nav from '../../Nav/Nav';
+
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -35,8 +35,11 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
   },
+  createBtn: {
+    
+  }
 });
-//end styling properties 
+//end model styling properties 
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -102,10 +105,10 @@ class ManageAccountsPage extends Component {
             </ul>
           </div>
 
-          <h1>
+          <h1 className='ManageTitle'>
             Manage Accounts
           </h1>
-          <button onClick={this.handleCreateUserModal}>Create User</button><br />
+          <Button variant="outlined" className='addUserBtn'onClick={this.handleCreateUserModal}>Create User</Button><br />
 
 
           <div>
