@@ -21,6 +21,7 @@ export default function* rootSaga() {
     studentListSaga(),
     getCommentCountSaga(),
     manageAccountsSaga(),
+    scheduleSaga(),
     // watchIncrementAsync()
   ]);
 }
