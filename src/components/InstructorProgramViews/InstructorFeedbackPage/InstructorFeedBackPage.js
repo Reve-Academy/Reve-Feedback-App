@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
-import Button from '@material-ui/core/Button';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
+import DayItem from './DayItem';
 
 
 
@@ -18,7 +18,7 @@ class InstructorFeedbackPage extends Component {
   constructor(props){
     super(props);
     this.state={
-      newComment:'',
+      newComment:''
     }
   }
 
@@ -36,9 +36,15 @@ class InstructorFeedbackPage extends Component {
     this.setState
   }
 
+ 
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({ type: 'GET_COMMENTS'});
+    this.props.dispatch({
+      type: 'FETCH_PROGRAM_WEEKS',
+      payload: this.props.match.params
+    })
   }
 
   componentDidUpdate() {
@@ -49,11 +55,9 @@ class InstructorFeedbackPage extends Component {
 
 
   render() {
-
     let content = null;
-
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
+      return (<DayItem  key ={week.id} week={week}/>)
     })
 
     let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
@@ -71,10 +75,10 @@ class InstructorFeedbackPage extends Component {
           {/* Feedback Container */}
             <textarea style={{fontSize:'25px'}} value={this.state.newComment} onChange={this.handleComment}></textarea>
             <button onClick={this.addComment}>SEND</button>
+          {/* End Feedback Container */}
           <div>
             {studentComment}
           </div>
-          {/* End Feedback Container */}
         </div>
       );
     }

@@ -8,9 +8,9 @@ function* instructorFeedBackSaga(){
 }
 
 function* getAllCommentSaga(action){
-    try{
-        const commentResponse = yield call(axios.get, `/api/instructorFeedback/comment`);
-        console.log(commentResponse);
+    try{ 
+        const commentResponse = yield call(axios.get, `/api/instructorFeedback/comment/?id=${action.payload}`);
+        console.log('hello ', commentResponse);
         yield put({
             type:'SET_COMMENT_FEEDBACK',
             payload: commentResponse.data,
@@ -38,6 +38,7 @@ function* deleteCommentSaga(action){
         yield call(axios.delete, `/api/instructorFeedback/${action.payload.item.id}`)
         yield put({
             type: 'GET_COMMENTS',
+            payload: action.payload.item.week_id,
         })
     } catch(error){
         console.log('Error in delete comment saga: ', error)
