@@ -9,7 +9,7 @@ function* instructorFeedBackSaga(){
 
 function* getAllCommentSaga(action){
     try{
-        const commentResponse = yield call(axios.get, `/api/instructorFeedback`);
+        const commentResponse = yield call(axios.get, `/api/instructorFeedback/comment`);
         console.log(commentResponse);
         yield put({
             type:'SET_COMMENT_FEEDBACK',
