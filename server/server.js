@@ -15,7 +15,6 @@ const manageAccountsRouter = require('./routes/manageAccounts.router');
 const instructorFeedbackRouter = require('./routes/instructorFeedback.router');
 const instructorScheduleRouter = require('./routes/instructorSchedule.router');
 const instructorStudentListRouter = require('./routes/instructorStudentList.router');
-const getCommentCountRouter = require('./routes/getCommentCount.router')
 const studentFeedbackRouter = require('./routes/studentFeedback.router');
 const studentScheduleRouter = require('./routes/studentSchedule.router');
 const newProgramRouter = require('./routes/newProgram.router');
@@ -39,7 +38,6 @@ app.use('/api/newProgram', newProgramRouter);
 app.use('/api/instructorFeedback', instructorFeedbackRouter);
 app.use('/api/instructorSchedule', instructorScheduleRouter);
 app.use('/api/instructorStudentList', instructorStudentListRouter);
-app.use('/api/getCommentCount', getCommentCountRouter);
 app.use('/api/studentFeedback', studentFeedbackRouter);
 app.use('/api/studentSchedule', studentScheduleRouter);
 

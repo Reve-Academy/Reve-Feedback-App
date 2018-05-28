@@ -13,8 +13,9 @@ html {
 	/* overflow: auto; */
 }
 
-/* LOGIN PAGE */
-
+h1{
+	margin-left: 20px;
+}
 form {
 	background-color: white;
 	width: 30%;
@@ -83,9 +84,6 @@ input[type="submit"] {
 	height: 70px;
 }
 
-.active {
-	background-color: whitesmoke;
-}
 
 ul {
 	list-style-type: none;
@@ -152,3 +150,4 @@ li a:hover {
 	margin: auto;
 	background-color: whitesmoke;
 }
+ 
