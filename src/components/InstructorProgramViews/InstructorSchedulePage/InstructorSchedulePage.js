@@ -56,7 +56,7 @@ class InstructorSchedulePage extends Component {
     width: '100%',
     onLayoutChange: function () { },
     // This turns off compaction so you can place items wherever.
-    verticalCompact: false
+    verticalCompact: null
   };
 
   constructor(props) {
@@ -134,13 +134,13 @@ class InstructorSchedulePage extends Component {
       return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
     })
 
-    let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
-      return (
-        <div key={item.newFocus.name} className="ian">
-          <span className="text">{item.newFocus.name}</span>
-        </div>
-      );
-    });
+    // let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
+    //   return (
+    //     <div key={item.newFocus.name} className="ian">
+    //       <span className="text">{item.newFocus.name}</span>
+    //     </div>
+    //   );
+    // });
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -162,7 +162,7 @@ class InstructorSchedulePage extends Component {
             onClose={this.handleClose}
             >
             <div style={getModalStyle()} className={classes.paper}>
-              <AddFocusForm  />
+              <AddFocusForm />
             </div>
             </Modal>
           </div>
