@@ -23,7 +23,7 @@ function ImageAvatars(props) {
   const { classes } = props;
   return (
     <div className={classes.row}>
-      <Avatar src="images/account_circle.png" />
+      <Avatar src="styles/images/avatar.png" />
       
     </div>
   );
