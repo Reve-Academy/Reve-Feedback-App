@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Avatar from '.././AvatarIcon/Avatar';
 import avatarLogo from '../../styles/images/avatar.png';
 import reveLogo from '../../styles/images/ReveAcademy_Logo.png'
 
