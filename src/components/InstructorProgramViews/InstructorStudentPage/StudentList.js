@@ -24,6 +24,9 @@ const CustomTableCell = withStyles((theme) => ({
 	}
 }))(TableCell);
 
+
+  
+
 const styles = (theme) => ({
 	root: {
 		marginTop: theme.spacing.unit * 3,
@@ -31,15 +34,19 @@ const styles = (theme) => ({
     
 	},
 	table: {
+		width: '60%',
+		marginLeft: '20%',
+		marginRight: '20%',
+},
 
-	},
 	row: {
 		'&:nth-of-type(odd)': {
       backgroundColor: theme.palette.background.default,
    
 
 		}
-  }
+  },
+  
  
 });
 
@@ -67,7 +74,7 @@ class StudentList extends Component {
 		return (
 			<div>
 				{/* TABLE HEADER */}
-				<Table>
+				<Table style={styles.table}>
 					<TableHead>
 						<TableRow>
 							<CustomTableCell>Student Name</CustomTableCell>
