@@ -2,15 +2,27 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* instructorFeedBackSaga(){
+    yield takeEvery('GET_FIRST_COMMENT', getFirstCommentSaga);
     yield takeEvery('ADD_COMMENT', addCommentSaga);
     yield takeEvery('DELETE_COMMENT', deleteCommentSaga);
     yield takeEvery('GET_COMMENTS', getAllCommentSaga);
 }
 
+function* getFirstCommentSaga(action){
+    try{
+        const firstResponse = yield call(axios.get, `/api/instructorFeedback/first/?id=${action.payload}` );
+        yield put({
+            type: 'SET_COMMENT_FEEDBACK',
+            payload: firstResponse.data,
+        })
+    } catch(error){
+        console.log('error in getting first comment: ', error);
+    }
+}
+
 function* getAllCommentSaga(action){
     try{ 
         const commentResponse = yield call(axios.get, `/api/instructorFeedback/comment/?id=${action.payload}`);
-        console.log('hello ', commentResponse);
         yield put({
             type:'SET_COMMENT_FEEDBACK',
             payload: commentResponse.data,

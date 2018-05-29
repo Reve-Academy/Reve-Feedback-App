@@ -7,8 +7,6 @@ import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
 import DayItem from './DayItem';
 
-
-
 const mapStateToProps = state => ({
   user: state.user,
   state,
@@ -36,11 +34,12 @@ class InstructorFeedbackPage extends Component {
     this.setState
   }
 
- 
-
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    this.props.dispatch({ type: 'GET_COMMENTS'});
+    this.props.dispatch({ 
+      type: 'GET_FIRST_COMMENT',
+      payload: this.props.match.params
+    });
     this.props.dispatch({
       type: 'FETCH_PROGRAM_WEEKS',
       payload: this.props.match.params

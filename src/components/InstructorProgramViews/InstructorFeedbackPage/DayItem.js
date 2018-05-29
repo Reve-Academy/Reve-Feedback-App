@@ -11,6 +11,7 @@ const mapStateToProps = (state) => ({
 });
 
 class DayItem extends Component {
+
     newComment = () =>{
         this.props.dispatch({
             type:'GET_COMMENTS',
