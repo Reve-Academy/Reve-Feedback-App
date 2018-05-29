@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import Avatar from '.././AvatarIcon/Avatar';
-import reveLogo from '../../styles/images/ReveAcademy_Logo.png';
-	
+import avatarLogo from '../../styles/images/avatar.png';
+import reveLogo from '../../styles/images/ReveAcademy_Logo.png'
+
 
 class InstructorNav extends Component {
 
@@ -18,17 +19,17 @@ class InstructorNav extends Component {
 		console.log(this.props);
 		
 		return (
-		<div className="navbar">
+		<div className="navbar" id="active">
 
 
 			{/* Reve Academy logo for nav bar */}
+			<img className="logo" src={reveLogo} alt="Reve logo" />
+			<img className = "avatar" src={avatarLogo} />
 
-    <img className="logo" src={reveLogo} alt="Reve logo" />
 
-			<ul>
+			<ul clasName="active">
 				<li className="avatar">
-					{/* Avatar icon on right side for teacher */}
-					<Avatar />
+				{/* Avatar icon on right side for teacher */}
 				</li>
 
 				<li onClick={this.navInstructor} className="navItem">
