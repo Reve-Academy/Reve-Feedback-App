@@ -68,31 +68,6 @@ class InstructorSchedulePage extends Component {
       layout: []
     }
   }
-  
-  // //function for generating schedule items
-  // generateDOM() {
-  //   return (this.props.state.scheduleReducer.focusReducer.map((item) => {
-  //     return (
-  //       <div key={item.newFocus.name} className="ian">
-  //         <span className="text">{item.newFocus.name}</span>
-  //       </div>
-  //     );
-  //   }));
-  // }
-
-  // //function for generating items location on dom
-  // generateLayout() {
-  //   return (this.props.state.scheduleReducer.focusReducer.map((item, i) => {
-  //     console.log(item);
-  //     return {
-  //       x: item.newFocus.x,
-  //       y: item.newFocus.y,
-  //       w: item.newFocus.w,
-  //       h: item.newFocus.h,
-  //       i: item.newFocus.name
-  //     };
-  //   }));
-  // }
 
   //function for changing layout
   onLayoutChange = (newLayout) => {  
@@ -108,7 +83,10 @@ class InstructorSchedulePage extends Component {
   finalSchedule = () => {
     this.props.dispatch({
       type: 'ADD_SCHEDULE',
-      payload: this.state.layout
+      payload: {
+        layout: this.state.layout,
+        focus: this.props.state.scheduleReducer.focusReducer
+      }
     })
   }
 
@@ -145,6 +123,7 @@ class InstructorSchedulePage extends Component {
 
     const { classes } = this.props;
 
+    //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
       return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
     })
