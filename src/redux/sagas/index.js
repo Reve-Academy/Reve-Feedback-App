@@ -8,6 +8,7 @@ import studentListSaga from './studentListSaga';
 import getStudentCommentCountSaga from './studentListSaga';
 import manageAccountsSaga from './manageAccountsSaga';
 import scheduleSaga from './scheduleSaga';
+import studentFeedbackSaga from './studentFeedbackSaga';
 
 
 export default function* rootSaga() {
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     manageAccountsSaga(),
     scheduleSaga(),
     // watchIncrementAsync()
+    studentFeedbackSaga(),
   ]);
 }
