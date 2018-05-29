@@ -32,7 +32,6 @@ class InstructorNav extends Component {
 	
 	handleClose = () => {
 		this.setState({ anchorEl: null });
-		this.logout();		
 	};
 
 
@@ -62,7 +61,7 @@ class InstructorNav extends Component {
 				open={Boolean(anchorEl)}
 				onClose={this.handleClose}
 			>
-				<MenuItem onClick={this.handleClose}>Logout</MenuItem>
+				<MenuItem onClick={this.logout}>Logout</MenuItem>
 			</Menu>
 			<div>
 				<AccountCircle 
