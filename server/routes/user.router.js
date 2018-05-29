@@ -3,6 +3,8 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
+const Chance = require('chance');
+const chance = new Chance();
 
 const router = express.Router();
 
@@ -15,28 +17,31 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 
 //USER - UPDATE PASSWORD WHERE TOKEN LINES UP
+
 router.put('/register/:token', (req, res, next) => {
 
   const highschool = req.body.high_school;
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
   const token = req.body.token;
-  console.log('in PUT account!!!!', highschool, username, password)
+  //New token, because the old one gets expired 
+  const newToken = chance.hash();
+  
+ 
 
   //THIS IS WHERE WE WE VALIDATE THE EMAIL by checking the TOKEN 
-  const queryText = `UPDATE "person" SET "high_school" = $1, "username" = $2, "password" = $3 WHERE "token" = $4;`
-  pool.query(queryText, [highschool, username, password, token]).then((result)=>{
-      res.sendStatus(201);
+  const queryText = `UPDATE "person" SET "high_school" = $1, "username" = $2, "password" = $3, "token" = $4 WHERE "token" = $5;`
+  pool.query(queryText, [highschool, username, password, newToken, token]).then((result)=>{
+      // res.sendStatus(201);
+      if(result.rows == 0){
+        return res.sendStatus(401)
+      }
   }).catch((error)=>{
       console.log('Error', error);
       res.sendStatus(500);
   })
+
 })
-
-
-
-
-
 
 
 

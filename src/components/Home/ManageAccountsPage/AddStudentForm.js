@@ -28,7 +28,7 @@ class AddStudentForm extends Component{
                 username: '',
                 team: '',
                 program: '',
-                password: '', 
+                password: 'toBeEncrypted', 
             }
         }
     }

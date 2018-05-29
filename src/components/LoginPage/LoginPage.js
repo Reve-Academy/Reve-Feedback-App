@@ -3,12 +3,40 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import LoginNav from '../Nav/LoginNav'
+import ForgotPasswordModal from '../LoginPage/ForgotPassword';
 
 // Material-UI
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+import Modal from '@material-ui/core/Modal';
+import { withStyles } from '@material-ui/core/styles';
 
 
 
+//Style properties for forgot password modal
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+    borderRadius: 25,
+    border: '2px solid #595959',
+  };
+}
+
+//Modal Styling
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 50,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    outline: 'none',
+  },
+});
 
 
 
@@ -24,6 +52,7 @@ class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
+      open: false,
     };
   }
 
@@ -34,7 +63,7 @@ class LoginPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       this.props.history.push('/user');
-    } else if (this.props.user.userName && this.props.user.userName.instructor === false ){
+    } else if (this.props.user.userName && this.props.user.userName.instructor === false) {
       this.props.history.push('/StudentFeedback')
     }
   }
@@ -55,6 +84,16 @@ class LoginPage extends Component {
     });
   }
 
+
+  //on click of 'forgot password?', open modal
+  handleResetModal = () => {
+    this.setState({ open: true });
+  };
+  //on click of outside modal, close modal
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+
   renderAlert() {
     if (this.props.login.message !== '') {
       return (
@@ -62,7 +101,7 @@ class LoginPage extends Component {
           className="alert"
           role="alert"
         >
-          { this.props.login.message }
+          {this.props.login.message}
         </h2>
       );
     }
@@ -70,63 +109,69 @@ class LoginPage extends Component {
   }
 
   render() {
+    const { classes } = this.props;
+    
     return (
-      
+
       <div className='loginBackground'>
-      <LoginNav/>
-      
-      <div>
-        { this.renderAlert() }
-       
-        <form onSubmit={this.login}>
-          <h1 className='loginTitle'>Sign in to <b className="reveVoices">Rêve Voices</b></h1>
-          <div>
-           
-            Email: <TextField className="inputColor"
-                    id="emailInput"
-                    // label="Email"
-                    // placeholder="Email"
-                    margin="normal"
-                    onChange={this.handleInputChangeFor('username')}
-                    value={this.state.username}
-                 />
-          </div>
-          <div>
-            {/* <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
+        <LoginNav />
+
+        <div>
+          {this.renderAlert()}
+
+          <form onSubmit={this.login}>
+            <h1 className='loginTitle'>Sign in to <b className="reveVoices">Rêve Voices</b></h1>
+            <div>
+
+              Email: <TextField className="inputColor"
+                id="emailInput"
+                // label="Email"
+                // placeholder="Email"
+                margin="normal"
+                onChange={this.handleInputChangeFor('username')}
+                value={this.state.username}
               />
-            </label> */}
-            Password: <TextField className="inputColor"
-                    id="passwordInput"
-                    type="password"
-                    // label="Email"
-                    // placeholder="Email"
-                    margin="normal"
-                    onChange={this.handleInputChangeFor('password')}
-                    value={this.state.password}
-                 />
-          </div>
-          <div>
-            <input
-              type="submit"
-              name="submit"
-              value="Log In"
-            />
-            {/* <Link to="/register">Register</Link> */}
-          </div>
-        </form>
+            </div>
+            <div>
+              Password: <TextField className="inputColor"
+                id="passwordInput"
+                type="password"
+                // label="Email"
+                // placeholder="Email"
+                margin="normal"
+                onChange={this.handleInputChangeFor('password')}
+                value={this.state.password}
+              />
+            </div>
+            <div>
+              <input
+                type="submit"
+                name="submit"
+                value="Log In"
+              />
+              {/* <Link to="/register">Register</Link> */}
+              <Button onClick={this.handleResetModal}>Forgot Password?</Button>
+              <div>
+                <Modal
+                  aria-labelledby="Forgot Password?"
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                >
+                  <div style={getModalStyle()} className={classes.paper}>
+                    <ForgotPasswordModal />
+                  </div>
+                </Modal>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-     
     );
-    
-   
   }
 }
 
-export default connect(mapStateToProps)(LoginPage);
+let loginWithStyle = withStyles(styles)(LoginPage)
+export default connect(mapStateToProps)(loginWithStyle);
+
+
+
