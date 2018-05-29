@@ -68,7 +68,7 @@ class InstructorFeedbackPage extends Component {
         <div>
           <h1>
             INSTRUCTOR FEEDBACK PAGE <br/>
-            Week {this.props.state.instructorFeedBackReducer.weekNumberReducer}
+            Week {this.props.state.studentCommentReducer.weekNumberReducer}
           </h1>
           <div>{weekList}</div>
           {/* Feedback Container */}

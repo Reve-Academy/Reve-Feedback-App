@@ -28,7 +28,10 @@ const styles = theme => ({
         return(
             <Card>
                 <CardContent>
-                    <div> Author: {this.props.comment.date}<br/> {this.props.comment.comment}</div> <br/> 
+
+                    <div> Student: {this.props.comments.comment}<br/></div> 
+                    <div> Week: {this.props.comments.week_id}<br/></div>
+
                     
                 </CardContent>
             </Card>
