@@ -6,7 +6,6 @@ import Nav from '../../Nav/Nav';
 import ProgramsList from './ProgramsList';
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-import { triggerLogout } from '../../../redux/actions/loginActions';
 
 const itemStyle = ({
   centerContent: {
@@ -31,11 +30,6 @@ class Home_AllProgramsPage extends Component {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
       this.props.history.push('/home');
     }
-  }
-
-  logout = () => {
-    this.props.dispatch(triggerLogout());
-    this.props.history.push('/home');
   }
 
   render() {
