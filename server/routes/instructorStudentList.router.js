@@ -2,10 +2,11 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// GET route template
- 
+// GET route 
   router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM person';
+    const queryText = `SELECT person.*, count (comments.person_id) AS total_comments FROM person
+    JOIN comments ON person.id=comments.person_id GROUP BY person.id`;
+
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {
@@ -18,7 +19,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     
 });
-
+//end get route
 
 //  * POST route template
 //  */

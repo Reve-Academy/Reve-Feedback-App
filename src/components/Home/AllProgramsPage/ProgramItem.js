@@ -21,6 +21,8 @@ function getModalStyle() {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
+    borderRadius: 25,
+    border: '2px solid #595959',
   };
 }
 
@@ -31,8 +33,22 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+    outline: 'none',
   },
 });
+
+const itemStyle = ({
+  reveCard: {
+    padding: '10px',
+	  margin: '10px',
+	  border: '1px solid #D8441C',
+	  borderRadius: '25px',
+  },
+  btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+  }
+})
 
 const mapStateToProps = state => ({
   state,
@@ -72,7 +88,7 @@ class ProgramItem extends Component {
 
   // FUNCTION FOR PROGRAM NAVIGATION
   navProgram = () => {
-    this.props.history.push(`/InstructorSchedule/${this.props.pItem.id}`)
+    this.props.history.push(`/InstructorSchedule/${this.props.pItem.id}/${this.props.pItem.name}`)
   }
 
   // FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM ACTIVE
@@ -88,11 +104,11 @@ class ProgramItem extends Component {
     // Activation Button
     let programActiveSetting;
     if (this.props.pItem.active_program === true ) {
-       programActiveSetting = (<Button variant="outlined" onClick={() => this.programActive()}>
+       programActiveSetting = (<Button variant="outlined" style={itemStyle.btn} onClick={() => this.programActive()}>
           Deactivate
        </Button>)
     } else {
-       programActiveSetting = (<Button variant="outlined" onClick={() => this.programActive()}>
+       programActiveSetting = (<Button variant="outlined" style={itemStyle.btn} onClick={() => this.programActive()}>
           Activate
        </Button>)
     }
@@ -104,20 +120,31 @@ class ProgramItem extends Component {
       <div>
 
         {/* Card Container */}
-        <Card>
+        <Card style={itemStyle.reveCard}>
           <CardContent>
-            <Typography variant="headline" component="h2">
+            <Typography 
+              variant="headline" 
+              component="h2"
+              >
               {this.props.pItem.name}
             </Typography>
             <Typography component="p">
-              Description to be filled
+              {this.props.pItem.description}
             </Typography>
           </CardContent>
           <CardActions>
-            <Button onClick={this.navProgram}>
-              Go To Program
+            <Button  
+              onClick={this.navProgram} 
+              variant="raised" 
+              style={{borderRadius: "15px"}}
+              >
+              Program
             </Button>
-            <Button onClick={this.handleEditProgram}>
+            <Button 
+              onClick={this.handleEditProgram}
+              variant="outlined"
+              style={itemStyle.btn}
+              >
               Edit
             </Button>
             {programActiveSetting}
@@ -131,8 +158,13 @@ class ProgramItem extends Component {
           open={this.state.open}
           onClose={this.handleClose}
           > 
-          <div style={getModalStyle()} className={classes.paper}>
-            <EditProgramForm pItem={this.props.pItem}/>
+          <div 
+            style={getModalStyle()} 
+            className={classes.paper}
+            >
+            <EditProgramForm 
+              pItem={this.props.pItem}
+            />
           </div>
         </Modal>
         {/* End Modal Edit */}

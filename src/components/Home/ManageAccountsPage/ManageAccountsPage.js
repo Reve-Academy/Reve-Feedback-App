@@ -9,8 +9,8 @@ import AddNewUserModalForm from '../ManageAccountsPage/AddStudentForm';
 import AccountsList from './AccountsList';
 import Home_AllProgramsPage from '../NewProgramPage/NewProgramPage'
 import NewProgramPage from '../NewProgramPage/NewProgramPage'
-
 import Nav from '../../Nav/Nav';
+
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 
@@ -27,6 +27,15 @@ function getModalStyle() {
   };
 }
 
+//Style mini navigation 
+const itemStyle = ({
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center'
+  }
+})
+
+//Modal Styling
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -35,9 +44,10 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
   },
+  
 });
-//end styling properties 
 
+//Recieve from Redux
 const mapStateToProps = state => ({
   user: state.user,
 });
@@ -80,20 +90,20 @@ class ManageAccountsPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <div>
+          <div style={itemStyle.centerContent}>
             <ul>
-              <li>
+              <li style={{border: '2px solid #a0a0a0', margin: '0px 0px 0px -2px'}}>
                 <Link to="/newProgram" >
                   New Program
                 </Link>
               </li>
 
-              <li>
+              <li style={{border: '2px solid #a0a0a0'}}>
                 <Link to="/manageAccounts" >
                   Manage Accounts
                 </Link>
               </li>
-              <li>
+              <li style={{border: '2px solid #a0a0a0', margin: '0px -2px 0px 0px'}}>
                 <Link to="/user" >
                   All Programs
                 </Link>
@@ -102,10 +112,10 @@ class ManageAccountsPage extends Component {
             </ul>
           </div>
 
-          <h1>
+          <h1 className='ManageTitle'>
             Manage Accounts
           </h1>
-          <button onClick={this.handleCreateUserModal}>Create User</button><br />
+          <Button variant="outlined" color="primary" className='addUserBtn' onClick={this.handleCreateUserModal}>Create User</Button><br />
 
 
           <div>

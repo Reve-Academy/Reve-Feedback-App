@@ -7,8 +7,7 @@ class RegisterPage extends Component {
 		super(props);
 
 		this.state = {
-			first: '',
-			last: '',
+			
 			high_school: '',
 			username: '',
 			password: '',
@@ -27,12 +26,11 @@ class RegisterPage extends Component {
 				message: 'Choose a username and password!'
 			});
 		} else {
-			const request = new Request('/api/user/register/:id/:token', {
+			const request = new Request('/api/user/register/:token', {
 				method: 'PUT',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
-					first: this.state.first,
-					last: this.state.last, 
+					
 					high_school: this.state.high_school,
 					username: this.state.username,
 					password: this.state.password, 
@@ -58,6 +56,7 @@ class RegisterPage extends Component {
 						message: 'Ooops! Something went wrong! Is the server running?'
 					});
 				});
+				
 		}
 	};
 
@@ -69,7 +68,7 @@ class RegisterPage extends Component {
 		this.setState({
 			[propertyName]: event.target.value
 		});
-		console.log('this.props:', this.props)
+	
 	};
 
 	renderAlert() {
@@ -93,26 +92,7 @@ class RegisterPage extends Component {
 					<form onSubmit={this.registerUser}>
 						<h1>Register User</h1>
 						<div>
-							<label htmlFor="first">
-								First Name:
-              					<input
-									type="text"
-									name="first"
-									value={this.state.first}
-									onChange={this.handleInputChangeFor('first')}
-								/>
-							</label>
-							<br />
-							<label htmlFor="last">
-								Last Name:
-              					<input
-									type="text"
-									name="last"
-									value={this.state.last}
-									onChange={this.handleInputChangeFor('last')}
-								/>
-							</label>
-							<br />
+							
 							<label htmlFor="high_school">
 								High School:
               					<input

@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 
-
-const getCommentCountReducer = (state = [], action) => {
+const studentFeedbackReducer = (state = [], action) =>{
     switch(action.type){
-        case 'SET_COMMENT_COUNT_REDUCER':
+        case 'SET_STUDENT_COMMENTS':
             return action.payload
         default:
             return state
@@ -11,17 +10,6 @@ const getCommentCountReducer = (state = [], action) => {
 }
 
 
-
-
-
-
-
-
-
 export default combineReducers({
-    getCommentCountReducer
+    studentFeedbackReducer
   });
-
-
-
-
