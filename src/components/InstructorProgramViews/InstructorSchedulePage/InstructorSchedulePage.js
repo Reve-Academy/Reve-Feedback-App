@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AddFocusForm from './AddFocusForm';
 
 //library import
-import RGL, { WidthProvider } from 'react-grid-layout';
+import RGL, { WidthProvider, onLayoutChange } from 'react-grid-layout';
 
 //material-ui imports
 import Modal from '@material-ui/core/Modal';
@@ -54,49 +54,62 @@ class InstructorSchedulePage extends Component {
     cols: 5,
     rowHeight: 30,
     width: '100%',
-    onLayoutChange: function () { },
+    onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
-    verticalCompact: null
+    compactType: null
   };
 
   constructor(props) {
     super(props);
 
-    const layout = this.generateLayout();
+    // const layout = this.generateLayout();
     this.state = {
       open: false,
-      layout: { layout }
+      layout: []
     }
   }
   
-  //function for generating schedule items
-  generateDOM() {
-    return (this.props.state.scheduleReducer.focusReducer.map((item) => {
-      return (
-        <div key={item.newFocus.name} className="ian">
-          <span className="text">{item.newFocus.name}</span>
-        </div>
-      );
-    }));
-  }
+  // //function for generating schedule items
+  // generateDOM() {
+  //   return (this.props.state.scheduleReducer.focusReducer.map((item) => {
+  //     return (
+  //       <div key={item.newFocus.name} className="ian">
+  //         <span className="text">{item.newFocus.name}</span>
+  //       </div>
+  //     );
+  //   }));
+  // }
 
-  //function for generating items location on dom
-  generateLayout() {
-    return (this.props.state.scheduleReducer.focusReducer.map((item, i) => {
-      console.log(item);
-      return {
-        x: item.newFocus.x,
-        y: item.newFocus.y,
-        w: item.newFocus.w,
-        h: item.newFocus.h,
-        i: item.newFocus.name
-      };
-    }));
-  }
+  // //function for generating items location on dom
+  // generateLayout() {
+  //   return (this.props.state.scheduleReducer.focusReducer.map((item, i) => {
+  //     console.log(item);
+  //     return {
+  //       x: item.newFocus.x,
+  //       y: item.newFocus.y,
+  //       w: item.newFocus.w,
+  //       h: item.newFocus.h,
+  //       i: item.newFocus.name
+  //     };
+  //   }));
+  // }
 
   //function for changing layout
-  onLayoutChange(layout) {
-    this.props.onLayoutChange(layout);
+  onLayoutChange = (newLayout) => {  
+    this.props.onLayoutChange(newLayout);
+    this.setState({
+      ...this.state,
+      layout: newLayout
+    })
+    console.log('newLayout: ', newLayout);
+  }
+
+  //function for dispatching to newlayout to database
+  finalSchedule = () => {
+    this.props.dispatch({
+      type: 'ADD_SCHEDULE',
+      payload: this.state.layout
+    })
   }
 
   //on click of new user button, open modal
@@ -108,6 +121,8 @@ class InstructorSchedulePage extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -134,13 +149,26 @@ class InstructorSchedulePage extends Component {
       return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
     })
 
-    // let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
-    //   return (
-    //     <div key={item.newFocus.name} className="ian">
-    //       <span className="text">{item.newFocus.name}</span>
-    //     </div>
-    //   );
-    // });
+    //map for getting schedule items from reducer
+    //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
+    let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
+      return (
+        <div key={item.newFocus.name} className="ian">
+          <span className="text">{item.newFocus.name}</span>
+        </div>
+      );
+    })
+
+    //map for placing schedule items on grid list
+    let scheduleLayout = this.props.state.scheduleReducer.focusReducer.map((item, i) => {
+      return {
+        x: item.newFocus.x,
+        y: item.newFocus.y,
+        w: item.newFocus.w,
+        h: item.newFocus.h,
+        i: item.newFocus.name
+      };
+    })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -154,7 +182,7 @@ class InstructorSchedulePage extends Component {
           </h1>
           <div>{weekList}</div>
           <Button variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-          <Button variant="outlined" color="primary">Finalize Schedule</Button>
+          <Button variant="outlined" color="primary" onClick={() => this.finalSchedule()}>Finalize Schedule</Button>
           <div>
             <Modal
             aria-labelledby="Add New Focus"
@@ -173,7 +201,7 @@ class InstructorSchedulePage extends Component {
             <thead>
               <tr id="tableHeader">
                 <th>Monday</th>
-                <th>Tueday</th>
+                <th>Tuesday</th>
                 <th>Wednesday</th>
                 <th>Thursday</th>
                 <th>Friday</th>
@@ -181,11 +209,12 @@ class InstructorSchedulePage extends Component {
             </thead>
             </table>
             <ReactGridLayout
-              layout={this.state.layout.layout}
-              onLayoutChange={this.onLayoutChange}
+              layout={scheduleLayout}
+              onDragStop={this.onLayoutChange}
+              onResizeStop={this.onLayoutChange}
               {...this.props}
             >
-              {this.generateDOM()}
+              {scheduleItem}
             </ReactGridLayout>
           </div>
           {/* End Schedule Container */}
@@ -202,6 +231,7 @@ class InstructorSchedulePage extends Component {
     );
   }
 }
+
 
 const InstructorScheduleWithStyles = withStyles(styles)(InstructorSchedulePage)
 
