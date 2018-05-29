@@ -14,31 +14,28 @@ import Paper from '@material-ui/core/Paper';
 
 //Style properties for accounts table
 const CustomTableCell = withStyles(theme => ({
-    head: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    // table: {
-    //     width: '30%',
-    //   },
-    // body: {
-    //   fontSize: 100,
+    // head: {
+    //   backgroundColor: '#D8441C',
+    //   color: theme.palette.common.white,
     // },
+   
   }))(TableCell);
 
   const styles = {
+      
     test: {
        
         width: '60%',
-        marginLeft: '20%',
-        marginRight: '20%',
-        
-        
+      
+          
     },
+    table: {
+        display: 'flex',
+        justifyContent: 'center',
 
+    }
 };
-  
- 
+
 
 //Recieve from Redux
 const mapStateToProps = state => ({
@@ -74,7 +71,7 @@ class AccountsList extends Component {
         return (
             
     
-            <div>
+            <div style={styles.table}>
                
                 <Table style={styles.test}>
                 <TableHead>

@@ -26,7 +26,7 @@ class RegisterPage extends Component {
 				message: 'Choose a username and password!'
 			});
 		} else {
-			const request = new Request('/api/user/register/:id/:token', {
+			const request = new Request('/api/user/register/:token', {
 				method: 'PUT',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
@@ -56,6 +56,7 @@ class RegisterPage extends Component {
 						message: 'Ooops! Something went wrong! Is the server running?'
 					});
 				});
+				
 		}
 	};
 
