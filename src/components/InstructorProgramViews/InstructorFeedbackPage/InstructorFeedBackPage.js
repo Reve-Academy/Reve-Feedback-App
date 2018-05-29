@@ -38,7 +38,7 @@ class InstructorFeedbackPage extends Component {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({ 
       type: 'GET_FIRST_COMMENT',
-      payload: this.props.match.params
+      payload: this.props.match.params.program_id
     });
     this.props.dispatch({
       type: 'FETCH_PROGRAM_WEEKS',

@@ -21,5 +21,5 @@ const weekNumberReducer = (state = [1], action) =>{
 
 export default combineReducers({
     allCommentsReducer,
-    weekNumberReducer
+    weekNumberReducer,
   });
