@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AddFocusForm from './AddFocusForm';
 
 //library import
-import RGL, { WidthProvider, onLayoutChange } from 'react-grid-layout';
+import RGL, { WidthProvider } from 'react-grid-layout';
 
 //material-ui imports
 import Modal from '@material-ui/core/Modal';
