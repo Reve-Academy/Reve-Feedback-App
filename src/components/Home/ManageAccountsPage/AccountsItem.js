@@ -89,7 +89,7 @@ class AccountsItem extends Component {
         let active;
 
         if (this.props.aItem.active_profile === true) {
-            active = (<CheckBox onClick={() => this.handleActive()}/>)
+            active = (<CheckBox color="primary" onClick={() => this.handleActive()}/>)
 
         } else {
             active = (<CheckBoxOutlineBlank onClick={() => this.handleActive()}/>)
@@ -98,7 +98,7 @@ class AccountsItem extends Component {
         let instructor;
 
         if (this.props.aItem.instructor === true) {
-            instructor = (<CheckBox onClick={() => this.handleInstructor()}/>)
+            instructor = (<CheckBox color="primary" onClick={() => this.handleInstructor()}/>)
 
         } else {
             instructor = (<CheckBoxOutlineBlank onClick={() => this.handleInstructor()}/>)

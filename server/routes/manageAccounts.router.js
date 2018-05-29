@@ -12,12 +12,11 @@ let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
        
-            user: 'melody.massard8988@gmail.com',
+            user: 'reveacademy.register@gmail.com',
             type: 'OAuth2',
-            clientId: '1051165033570-r1h74iu0l7h154v74aaemh6uqqkdlskb.apps.googleusercontent.com',
-            clientSecret: 'lfrWo258-cmZA3XQ67SAaKWZ',
-            refreshToken: '1/XMCIheP4rvia32AtKLXFt7VK6efvhWDijjl5X-EDs-Q',
-            accessToken: 'ya29.GlvJBZ95dfYZXaeZa4xuyWHaDZyfJiwD4U67vT1IiCRGO1ulInDlgiL1iYGa231BHctz46ZiR-_NFbCkQcP3IoMKllaMRH79EP431fnnHnGHZU9G39TPqZzaoUS0',
+            clientId: process.env.CLIENT_ID,
+            clientSecret: process.env.CLIENT_SECRET,
+            refreshToken: process.env.REFRESH_TOKEN,
             accessUrl: 'https://www.googleapis.com/oauth2/v4/token',
             expires: 1
        
@@ -63,16 +62,16 @@ router.post('/', (req, res)=> {
     const password = req.body.password;
     const program = req.body.program;
     let mailOptions = {
-        from: "melody.massard8988@gmail.com",
-        to: "melody.massard8988@gmail.com",
-        subject: "Rêve Academy Feedback Portal - Create Account!",
+        from: "reveacademy.register@gmail.com",
+        to: req.body.username,
+        subject: "Rêve Academy - Create Your Account!",
         generateTextFromHTML: true,
-        html: `<b> hello </b>`, 
+        html: `<href>http://localhost:3000/register/` + passwordToken + `</href>`, 
       };
 
     let queryText = `INSERT into "person" ("first", "last", "username", "team", "password", "program_id", "token") VALUES ($1, $2, $3, $4, $5, $6, $7);`
 pool.query(queryText, [first, last, username, team, password, program, passwordToken ]).then((result)=>{
-    console.log(`http://localhost: 3000/register/$[token]`); 
+  
     //Nodemailer SEND EMAIL
     transporter.sendMail(mailOptions, function(error, response) {
         if (error) {

@@ -15,17 +15,17 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 
 //USER - UPDATE PASSWORD WHERE TOKEN LINES UP
-router.put('/register/:id/:token', (req, res, next) => {
+router.put('/register/:token', (req, res, next) => {
 
   const highschool = req.body.high_school;
   const username = req.body.username;
   const password = encryptLib.encryptPassword(req.body.password);
-  const id = req.body.id
   const token = req.body.token;
+  console.log('in PUT account!!!!', highschool, username, password)
 
-  //THIS IS WHERE WE WE VALIDATE THE EMAIL or CHECK TOKEN LENGTH 
-  const queryText = `UPDATE "person" SET "high_school" = $1, "username" = $2, "password" = $3 WHERE "token" = $4 AND "id" = $5;`
-  pool.query(queryText, [highschool, username, password, token, id]).then((result)=>{
+  //THIS IS WHERE WE WE VALIDATE THE EMAIL by checking the TOKEN 
+  const queryText = `UPDATE "person" SET "high_school" = $1, "username" = $2, "password" = $3 WHERE "token" = $4;`
+  pool.query(queryText, [highschool, username, password, token]).then((result)=>{
       res.sendStatus(201);
   }).catch((error)=>{
       console.log('Error', error);
