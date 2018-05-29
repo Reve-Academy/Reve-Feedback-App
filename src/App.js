@@ -33,7 +33,7 @@ const App = () => (
           component={LoginPage}
         />
         <Route
-          path="/register/:id/:token"
+          path="/register/:token"
           component={RegisterPage}
         />
         <Route
