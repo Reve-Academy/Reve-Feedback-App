@@ -26,6 +26,8 @@ function getModalStyle() {
     transform: `translate(-${top}%, -${left}%)`,
   };
 }
+
+//Style mini navigation 
 const itemStyle = ({
   centerContent: {
     display: 'flex', 
@@ -33,6 +35,7 @@ const itemStyle = ({
   }
 })
 
+//Modal Styling
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -41,14 +44,10 @@ const styles = theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
   },
-  createBtn: {
-    
-  }
+  
 });
 
-
-//end model styling properties 
-
+//Recieve from Redux
 const mapStateToProps = state => ({
   user: state.user,
 });
@@ -99,12 +98,12 @@ class ManageAccountsPage extends Component {
                 </Link>
               </li>
 
-              <li>
+              <li style={{border: '2px solid #a0a0a0'}}>
                 <Link to="/manageAccounts" >
                   Manage Accounts
                 </Link>
               </li>
-              <li>
+              <li style={{border: '2px solid #a0a0a0', margin: '0px -2px 0px 0px'}}>
                 <Link to="/user" >
                   All Programs
                 </Link>
@@ -116,7 +115,7 @@ class ManageAccountsPage extends Component {
           <h1 className='ManageTitle'>
             Manage Accounts
           </h1>
-          <Button variant="outlined" className='addUserBtn'onClick={this.handleCreateUserModal}>Create User</Button><br />
+          <Button variant="outlined" color="primary" className='addUserBtn' onClick={this.handleCreateUserModal}>Create User</Button><br />
 
 
           <div>
