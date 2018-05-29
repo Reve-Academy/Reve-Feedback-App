@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AddFocusForm from './AddFocusForm';
 
+//import component
+import WeekItem from './WeekItem'
+
 //library import
 import RGL, { WidthProvider } from 'react-grid-layout';
 
@@ -85,7 +88,8 @@ class InstructorSchedulePage extends Component {
       type: 'ADD_SCHEDULE',
       payload: {
         layout: this.state.layout,
-        focus: this.props.state.scheduleReducer.focusReducer
+        focus: this.props.state.scheduleReducer.focusReducer,
+        week: this.props.state.scheduleReducer.thisWeekReducer 
       }
     })
   }
@@ -125,7 +129,7 @@ class InstructorSchedulePage extends Component {
 
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
+      return (<WeekItem key={week.id} week={week}/>)
     })
 
     //map for getting schedule items from reducer

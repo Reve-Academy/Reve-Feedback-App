@@ -20,7 +20,12 @@ router.get('/weeks/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
+    const focus = req.body.focus;
+    const weekId = req.body.week.weekId;
+    const layout = req.body.layout;
+    console.log('this is focus: ', focus);
+    console.log('this is weekId: ', weekId);
+    console.log('this is layout: ', layout);
 });
 
 module.exports = router;
