@@ -84,7 +84,7 @@ class AddFocusForm extends Component{
                         startDay: 'monday',
                         x: 0,
                         y: 0,
-                        w: 2,
+                        w: 1,
                         h: 1
                     },
                 })
@@ -95,9 +95,9 @@ class AddFocusForm extends Component{
                     newFocus: {
                         ...this.state.newFocus,
                         startDay: 'tuesday',
-                        x: 2,
+                        x: 1,
                         y: 0,
-                        w: 2,
+                        w: 1,
                         h: 1
                     },
                 })
@@ -108,9 +108,9 @@ class AddFocusForm extends Component{
                     newFocus:{
                         ...this.state.newFocus,
                         startDay: 'wednesday',
-                        x: 4,
+                        x: 2,
                         y: 0,
-                        w: 2,
+                        w: 1,
                         h: 1
                     },
                 })
@@ -121,9 +121,9 @@ class AddFocusForm extends Component{
                     newFocus:{
                         ...this.state.newFocus,
                         startDay: 'thursday',
-                        x: 6,
+                        x: 3,
                         y: 0,
-                        w: 2,
+                        w: 1,
                         h: 1
                     },
                 })
@@ -134,9 +134,9 @@ class AddFocusForm extends Component{
                     newFocus:{
                         ...this.state.newFocus,
                         startDay: 'friday',
-                        x: 8,
+                        x: 4,
                         y: 0,
-                        w: 2,
+                        w: 1,
                         h: 1
                     },
                 })
@@ -149,13 +149,16 @@ class AddFocusForm extends Component{
             type: 'ADD_FOCUS',
             payload: this.state
         })
+        // this.props.generateLayout();
+        // this.props.generateDOM();
     }
 
 
     render(){
         return(
             <div>
-            <form onSubmit={() => this.addNewFocus()} className="focusForm">
+            {/* <form onSubmit={() => this.addNewFocus()} className="focusForm"> */}
+            <div>
                 <h3>Focus</h3>
                 <TextField
                     id="focusName"
@@ -190,9 +193,9 @@ class AddFocusForm extends Component{
                         id: 'StartDaySelectorForm',
                     }}
                 >
-                    {/* <MenuItem value="">
+                    <MenuItem value="">
                         <em>None</em>
-                    </MenuItem> */}
+                    </MenuItem>
                     <MenuItem value="monday">
                         <em>Monday</em>
                     </MenuItem>
@@ -244,8 +247,9 @@ class AddFocusForm extends Component{
                     value={this.state.newResource.link}
                 />
                 <br />
-                <Button variant="outlined" color="primary" type="submit">Add Focus</Button>
-            </form>          
+                <Button onClick={() => this.addNewFocus()} variant="outlined" color="primary" type="submit">Add Focus</Button>
+            {/* </form>           */}
+            </div>
             </div>
         )
     }

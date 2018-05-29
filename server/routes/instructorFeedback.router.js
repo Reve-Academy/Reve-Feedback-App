@@ -5,21 +5,34 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/weeks', (req, res) =>{
-    const queryText = `SELECT * FROM "lesson";`
-    pool.query(queryText)
-        .then(result => { 
-            res.send(result.rows); 
-        }).catch(err => {
-            console.log('Error GET weeks in feedback', err);
+
+router.get('/weeks/', (req, res) => {
+    const programId = req.query.id;
+    let queryText = 'SELECT * FROM weeks WHERE program_id = $1;' ; 
+    pool.query(queryText, [programId]).then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('ERROR IN GET WEEKS IN instructorSchedule.router: ', error);
+    })
+});
+
+
+router.get('/first/', (req, res) => {
+    const firstWeek = req.query.id;
+    const queryText = `SELECT "comments"."id" as "commentId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id","weeks"."program_id", "weeks"."number", "person"."first", "person"."last" FROM "weeks" JOIN "comments" ON "weeks"."id" = "comments"."week_id" JOIN "person" ON "person"."id" = "comments"."person_id"  WHERE "weeks"."program_id"= $1 AND "number" = 1 ORDER BY id DESC;`
+    pool.query(queryText, [firstWeek])
+        .then(result => { res.send(result.rows); })
+        .catch(err => {
+            console.log('Error completing GET person in router', err);
             res.sendStatus(500);
         });
-})
+});
 
-router.get('/comment', (req, res) => {
-    const queryText = `SELECT "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."email", "person"."program_id" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" ORDER BY id DESC;
-    `;
-    pool.query(queryText)
+router.get('/comment/', (req, res) => {
+    const weekNumber = req.query.id;
+    console.log(weekNumber);
+    const queryText = `SELECT "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."email" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" JOIN "weeks" ON "weeks"."id" = "comments"."week_id" WHERE "week_id" = $1 ORDER BY id DESC;`
+    pool.query(queryText, [weekNumber])
         .then(result => { res.send(result.rows); })
         .catch(err => {
             console.log('Error completing GET person in router', err);

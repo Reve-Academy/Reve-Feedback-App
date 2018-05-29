@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 
+
 const mapStateToProps = (state) => ({
 	state
 });
@@ -19,25 +20,20 @@ const styles = theme => ({
     },
   });
 
-class StudentComment extends Component {
-    deleteComment = () => {
-        this.props.dispatch({
-            type: 'DELETE_COMMENT',
-            payload: {
-                item: this.props.comment
-            }
-        });
-    };
+    class StudentComments extends Component {
+   
     
+
     render(){
         return(
             <Card>
                 <CardContent>
-                    <div> Author: {this.props.comment.first}{this.props.comment.last}: <br/> {this.props.comment.comment}</div> <br/> <button onClick={this.deleteComment}>delete</button> 
+                    <div> Author: {this.props.comment.date}<br/> {this.props.comment.comment}</div> <br/> 
+                    
                 </CardContent>
             </Card>
         )
     }
 }
 
-export default connect(mapStateToProps) (StudentComment);
+export default connect(mapStateToProps) (StudentComments);
