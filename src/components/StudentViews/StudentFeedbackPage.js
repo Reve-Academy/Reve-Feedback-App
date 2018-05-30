@@ -12,6 +12,16 @@ const mapStateToProps = (state) => ({
 	state,
 });
 
+const itemStyle = ({
+	centerContent: {
+	display: 'flex', 
+	alignContent: 'center',
+	justifyContent: 'center',
+	flexDirection: 'column'
+  }
+})
+
+
 class StudentFeedbackPage extends Component {
 	
 	constructor(props){
@@ -71,11 +81,15 @@ class StudentFeedbackPage extends Component {
 					{/* Feedback Container */}
 					<textarea style={{fontSize:'25px'}} value={this.state.newComment} onChange={this.handleComment}></textarea>
             <button onClick={this.postComment}>SEND</button>
-				
+				<div style={{display: 'flex', justifyContent: 'center'}}>
+					<div style= {itemStyle.centerContent}>
 					{/* {studentComments} */}
 					{theComments}
+					</div>
 				
 					{/* End Feedback Container */}
+				</div>
+
 				</div>
 			);
 		}

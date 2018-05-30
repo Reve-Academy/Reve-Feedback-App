@@ -18,11 +18,26 @@ const styles = theme => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing.unit * 4,
     },
+});
 
-    card: {
-        maxidth: 15,
-    }
-  });
+const itemStyle = ({
+    feedbackField: {
+      padding: '10px',
+        margin: '10px',
+        border: '1px solid #D8441C',
+        borderRadius: '25px',
+        width: 970
+    },
+    btn: {
+      borderRadius: '15px',
+      border: '1px solid #D8441C',
+    },
+
+
+  
+    
+  })
+  
 
     class StudentComments extends Component {
    
@@ -35,7 +50,7 @@ const styles = theme => ({
             <img className = "star" src={star} /> 
            
 
-            <Card style={{width:120}}>
+            <Card style={itemStyle.feedbackField}>
                 <CardContent>
                     <div> Student: {this.props.comments.comment}<br/></div> 
                     <div> Week: {this.props.comments.week_id}<br/></div>
