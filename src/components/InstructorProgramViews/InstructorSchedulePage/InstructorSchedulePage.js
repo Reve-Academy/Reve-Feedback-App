@@ -137,7 +137,9 @@ class InstructorSchedulePage extends Component {
     this.setState({ open: false });
   };
 
-
+  testRun = () => {
+    console.log('HELLO');
+  }
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -245,7 +247,7 @@ class InstructorSchedulePage extends Component {
           {/* End Schedule Container */}
           <div  style={itemStyle.centerContent}>
             <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-            <Button style={itemStyle.btn} variant="outlined" color="primary">Finalize Schedule</Button>
+            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={() => this.finalSchedule()}>Finalize Schedule</Button>
           </div>
         </div>
       );
