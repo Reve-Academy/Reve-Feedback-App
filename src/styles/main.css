@@ -120,8 +120,8 @@ li a:hover {
 
 .avatar{
 	float: right;
-	margin-right: 10px;
-	margin-top: 19px;
+	vertical-align: center;
+	padding: 5px
 }
 
 .navItem {
