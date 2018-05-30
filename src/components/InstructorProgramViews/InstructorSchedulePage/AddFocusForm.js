@@ -10,7 +10,14 @@ import Select from '@material-ui/core/Select';
 
 const mapStateToProps = state => ({
     state,
-  });
+});
+
+const itemStyle = ({
+    btn: {
+      borderRadius: '15px',
+      border: '1px solid #D8441C',
+    }
+})
 
 class AddFocusForm extends Component{
     constructor(props){
@@ -247,7 +254,7 @@ class AddFocusForm extends Component{
                     value={this.state.newResource.link}
                 />
                 <br />
-                <Button onClick={() => this.addNewFocus()} variant="outlined" color="primary" type="submit">Add Focus</Button>
+                <Button style={itemStyle.btn} onClick={() => this.addNewFocus()} variant="outlined" color="primary" type="submit">Add Focus</Button>
             {/* </form>           */}
             </div>
             </div>

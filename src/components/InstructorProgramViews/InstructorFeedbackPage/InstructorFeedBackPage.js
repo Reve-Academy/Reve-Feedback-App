@@ -19,7 +19,6 @@ class InstructorFeedbackPage extends Component {
       newComment:'',
       // week: this.props.state.instructorFeedBackReducer.weekNumberReducer
     }
-    // console.log('FINDING WEEK ID', this.props.state)
   }
 
   handleComment = (event) => {
@@ -30,7 +29,6 @@ class InstructorFeedbackPage extends Component {
 
   addComment = () => {
     console.log('this is state', this.state);
-    
     this.props.dispatch({
       type: 'ADD_COMMENT',
       payload: {
@@ -42,7 +40,6 @@ class InstructorFeedbackPage extends Component {
   }
 
   componentDidMount() {
-    console.log('DID MOUNT WEEK ID', )
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({ 
       type: 'GET_FIRST_COMMENT',
@@ -62,13 +59,12 @@ class InstructorFeedbackPage extends Component {
 
 
   render() {
-    console.log('this is the props state', this.props.state.scheduleReducer.weekReducer);
-    
     let content = null;
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
       return (<DayItem  key ={week.id} week={week}/>)
     })
-
+    
+    console.log('this is props weekreducer', this.props.state.scheduleReducer.weekReducer[0]);
     let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
       return(<CommentItem key={comment.id} comment={comment}/>)
     })
