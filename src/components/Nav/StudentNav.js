@@ -7,7 +7,7 @@ const StudentNav = () => (
   <div className="navbar">
    
       {/* Reve Academy logo */}
-			<img className="logo" src="images/academylogo_white.png" alt="Reve logo" />
+			<img className="logo" src={reveLogo} alt="Reve logo" />
      
 
       <ul>
