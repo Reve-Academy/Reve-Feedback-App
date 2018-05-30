@@ -19,6 +19,7 @@ export default function* rootSaga() {
     home_AllProgramSaga(),
     newProgramSaga(),
     instructorFeedBackSaga(),
+    studentFeedbackSaga(),
     studentListSaga(),
     manageAccountsSaga(),
     scheduleSaga(),

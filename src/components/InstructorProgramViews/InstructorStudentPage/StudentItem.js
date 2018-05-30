@@ -20,22 +20,23 @@ const CustomTableCell = withStyles((theme) => ({
 	body: {
 		fontSize: 18,
 		textAlign: 'center',
-		marginLeft: 20
+		marginLeft: 20,
+
 	}
 }))(TableCell);
 
 const styles = (theme) => ({
 	root: {
-		width: '80%',
 		marginTop: theme.spacing.unit * 3,
 		overflowX: 'auto',
 	
 	},
 	table: {
 		minWidth: 700,
-		marginLeft: 20
+		marginLeft: 20,
+		width: '60%',
+
 	
-		
 	},
 	row: {
 		'&:nth-of-type(odd)': {

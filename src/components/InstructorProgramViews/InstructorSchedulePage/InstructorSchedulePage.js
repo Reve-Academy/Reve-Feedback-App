@@ -24,6 +24,33 @@ const mapStateToProps = state => ({
   state
 });
 
+const itemStyle = ({
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center'
+  },
+  btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    margin: '10px',
+    maxHeight: '36px',    
+  },
+  editBtn: {
+    borderRadius: '15px',
+    border: '1px solid #D4D4D4',
+    margin: '15px',
+    maxHeight: '36px',  
+    color: 'black', 
+  },
+  weekBtn: {
+    border: '1px solid #D4D4D4',
+    borderRadius: '50%',
+    minWidth: '36px',
+    maxWidth: '37px',
+    margin: '5px',
+  }
+})
+
 //Style properties for add new user modal
 function getModalStyle() {
   const top = 50;
@@ -43,6 +70,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+    borderRadius: 25,
+    border: '2px solid #595959',
+    outline: 'none',    
   },
 });
 //end styling properties 
@@ -54,49 +84,40 @@ class InstructorSchedulePage extends Component {
     cols: 5,
     rowHeight: 30,
     width: '100%',
-    onLayoutChange: function () { },
+    onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
-    verticalCompact: null
+    compactType: null
   };
 
   constructor(props) {
     super(props);
 
-    const layout = this.generateLayout();
+    // const layout = this.generateLayout();
     this.state = {
       open: false,
-      layout: { layout }
+      layout: []
     }
-  }
-  
-  //function for generating schedule items
-  generateDOM() {
-    return (this.props.state.scheduleReducer.focusReducer.map((item) => {
-      return (
-        <div key={item.newFocus.name} className="ian">
-          <span className="text">{item.newFocus.name}</span>
-        </div>
-      );
-    }));
-  }
-
-  //function for generating items location on dom
-  generateLayout() {
-    return (this.props.state.scheduleReducer.focusReducer.map((item, i) => {
-      console.log(item);
-      return {
-        x: item.newFocus.x,
-        y: item.newFocus.y,
-        w: item.newFocus.w,
-        h: item.newFocus.h,
-        i: item.newFocus.name
-      };
-    }));
   }
 
   //function for changing layout
-  onLayoutChange(layout) {
-    this.props.onLayoutChange(layout);
+  onLayoutChange = (newLayout) => {  
+    this.props.onLayoutChange(newLayout);
+    this.setState({
+      ...this.state,
+      layout: newLayout
+    })
+    console.log('newLayout: ', newLayout);
+  }
+
+  //function for dispatching to newlayout to database
+  finalSchedule = () => {
+    this.props.dispatch({
+      type: 'ADD_SCHEDULE',
+      payload: {
+        layout: this.state.layout,
+        focus: this.props.state.scheduleReducer.focusReducer
+      }
+    })
   }
 
   //on click of new user button, open modal
@@ -108,6 +129,8 @@ class InstructorSchedulePage extends Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+
+
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
@@ -130,17 +153,31 @@ class InstructorSchedulePage extends Component {
 
     const { classes } = this.props;
 
+    //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<Button variant="fab" color="primary" key={week.id}>{week.number} </Button>)
+      return (<Button style={itemStyle.weekBtn} key={week.id}>{week.number} </Button>)
     })
 
-    // let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
-    //   return (
-    //     <div key={item.newFocus.name} className="ian">
-    //       <span className="text">{item.newFocus.name}</span>
-    //     </div>
-    //   );
-    // });
+    //map for getting schedule items from reducer
+    //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
+    let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
+      return (
+        <div key={item.newFocus.name} className="ian">
+          <span className="text">{item.newFocus.name}</span>
+        </div>
+      );
+    })
+
+    //map for placing schedule items on grid list
+    let scheduleLayout = this.props.state.scheduleReducer.focusReducer.map((item, i) => {
+      return {
+        x: item.newFocus.x,
+        y: item.newFocus.y,
+        w: item.newFocus.w,
+        h: item.newFocus.h,
+        i: item.newFocus.name
+      };
+    })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -149,12 +186,21 @@ class InstructorSchedulePage extends Component {
         
 
 
-          <h1>
-            INSTRUCTOR SCHEDULE PAGE
+          <h1 className="ManageTitle">
+            SCHEDULE
           </h1>
-          <div>{weekList}</div>
-          <Button variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-          <Button variant="outlined" color="primary">Finalize Schedule</Button>
+          <div style={itemStyle.centerContent}>{weekList}</div>
+          <div style={itemStyle.centerContent}>
+            <h2 className="ManageTitle">
+              WEEK #
+            </h2>
+          </div>
+          <div style={itemStyle.centerContent}>
+            <h2 className="ManageTitle">
+              <strong>Theme of This Week Name</strong>
+            </h2>
+            <Button style={itemStyle.editBtn} variant="outlined" color="primary">Edit Week</Button>
+          </div>
           <div>
             <Modal
             aria-labelledby="Add New Focus"
@@ -168,28 +214,32 @@ class InstructorSchedulePage extends Component {
           </div>
 
           {/* Schedule Container */}
-          <div>
+          <div style={{backgroundColor: "#D4D4D4", height: '400px'}}>
             <table id="scheduleTable">
             <thead>
               <tr id="tableHeader">
-                <th>Monday</th>
-                <th>Tueday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
+                <th style={{width: '20%'}}>Monday</th>
+                <th style={{width: '20%'}}>Tueday</th>
+                <th style={{width: '20%'}}>Wednesday</th>
+                <th style={{width: '20%'}}>Thursday</th>
+                <th style={{width: '20%'}}>Friday</th>
               </tr>
             </thead>
             </table>
             <ReactGridLayout
-              layout={this.state.layout.layout}
-              onLayoutChange={this.onLayoutChange}
+              layout={scheduleLayout}
+              onDragStop={this.onLayoutChange}
+              onResizeStop={this.onLayoutChange}
               {...this.props}
             >
-              {this.generateDOM()}
+              {scheduleItem}
             </ReactGridLayout>
           </div>
           {/* End Schedule Container */}
-
+          <div  style={itemStyle.centerContent}>
+            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
+            <Button style={itemStyle.btn} variant="outlined" color="primary">Finalize Schedule</Button>
+          </div>
         </div>
       );
     }
@@ -202,6 +252,7 @@ class InstructorSchedulePage extends Component {
     );
   }
 }
+
 
 const InstructorScheduleWithStyles = withStyles(styles)(InstructorSchedulePage)
 

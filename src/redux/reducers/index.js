@@ -6,7 +6,7 @@ import manageAccountsReducer from './manageAccountsReducer';
 import studentListReducer from './studentListReducer';
 import scheduleReducer from './scheduleReducer';
 import instructorFeedBackReducer from './instructorFeedBackReducer';
-import studentFeedbackReducer from './studentFeedbackReducer';
+import studentCommentReducer from './studentCommentReducer';
 import forgotPasswordReducer from './forgotPasswordReducer';
 
 const store = combineReducers({
@@ -17,8 +17,8 @@ const store = combineReducers({
   studentListReducer,
   scheduleReducer,
   instructorFeedBackReducer,
-  studentFeedbackReducer,
   forgotPasswordReducer,
+  studentCommentReducer
 });
 
 export default store;
