@@ -9,7 +9,7 @@ const allCommentsReducer = (state = [], action) =>{
     }
 }
 
-const weekIdReducer = (state = [], action) =>{
+const weekIdReducer = (state = 0, action) =>{
     switch(action.type){
         case 'ID_FOR_THE_WEEK':
             return action.payload
