@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LoginNav from '../Nav/LoginNav';
 
+
 class RegisterPage extends Component {
 	constructor(props) {
 		super(props);
@@ -26,6 +27,7 @@ class RegisterPage extends Component {
 				message: 'Choose a username and password!'
 			});
 		} else {
+
 			const request = new Request('/api/user/register/:token', {
 				method: 'PUT',
 				headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -45,11 +47,11 @@ class RegisterPage extends Component {
 				.then((response) => {
 					if (response.status === 201) {
 						this.props.history.push('/home');
-					} else {
+					} else if(response.status === 401){
 						this.setState({
-							message: "Ooops! That didn't work. The username might already be taken. Try again!"
+							message: "That link is expired"
 						});
-					}
+					} 
 				})
 				.catch(() => {
 					this.setState({
