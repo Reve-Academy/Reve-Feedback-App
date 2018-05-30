@@ -44,19 +44,24 @@
   .react-grid-item > .react-resizable-handle::after {
     content: "";
     position: absolute;
-    right: 3px;
-    bottom: 3px;
+    right: 6px;
+    bottom: 6px;
     width: 5px;
     height: 5px;
-    border-right: 2px solid rgba(0, 0, 0, 0.4);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.4);
+    border-right: 2px solid #00000066;
+    border-bottom: 2px solid #00000066;
   }
   
   .ian {
-    background-color: red;
-    color: #c6c6c6;
+    background-color: #e2e2e2;
+    color: #D8441C;
+    border: 1px solid #D8441C;
     border-radius: 12px;
-    text-align: center
+    text-align: center;
+  }
+
+  .text {
+    line-height: 28px;
   }
 
   #scheduleTable {
