@@ -77,7 +77,6 @@ transporter.on('token', token => {
 
 
 //USER - UPDATE PASSWORD WHEN TOKEN LINES UP
-
 router.put('/:username', (req, res, next) => {
 
 
@@ -95,26 +94,23 @@ router.put('/:username', (req, res, next) => {
 
     const queryText = `UPDATE "person" SET "token" = $1 WHERE "username" = $2;`
     pool.query(queryText, [newToken, username]).then((result) => {
-        //Nodemailer SEND EMAIL
-        transporter.sendMail(mailOptions, function (error, response) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(response);
-            }
-            transporter.close();
-        });
-
-
+        res.sendStatus(200)
         if (result.rows == 0) {
             return res.sendStatus(401)
         }
-
-
     }).catch((error) => {
         console.log('Error', error);
         res.sendStatus(500);
     })
+    //Nodemailer SEND EMAIL
+    transporter.sendMail(mailOptions, function (error, response) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(response);
+        }
+        transporter.close();
+    });
 
 })
 

@@ -17,5 +17,5 @@ function* updatePasswordTokenSaga(action){
     }
 }
 
-export default updatePasswordTokenSaga;
+export default forgotPasswordSaga;
 

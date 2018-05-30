@@ -52,7 +52,7 @@ class ForgotPasswordModal extends Component{
         this.setState({
             newPassword: {
                 ...this.state.newPassword,
-                email: '',
+                username: '',
             
             }
         })
