@@ -30,12 +30,12 @@ class DayItem extends Component {
         })
         this.props.dispatch({
             type:'WEEK_ID_LOCALSTATE',
-            payload: this.props.week
+            payload: this.props.week.number
         })
-        // this.props.dispatch({
-        //     type:'ID_FOR_THE_WEEK',
-        //     payload: this.props.week.number
-        // })
+        this.props.dispatch({
+            type:'ID_FOR_THE_WEEK',
+            payload: this.props.week.id
+        })
     }
     render(){
         return(

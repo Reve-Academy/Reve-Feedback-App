@@ -54,7 +54,7 @@ class InstructorFeedbackPage extends Component {
       payload: {
         newComment: this.state.newComment,
         date: '08/17/1993',
-        week: this.props.state.instructorFeedBackReducer.weekNumberReducer.id
+        week: this.props.state.instructorFeedBackReducer.weekIdReducer
       }
     })
   }
@@ -81,7 +81,7 @@ class InstructorFeedbackPage extends Component {
   render() {
     let content = null;
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<DayItem  key ={week.id} week={week}/>)
+      return (<DayItem  key={week.id} week={week}/>)
     })
     
     let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
