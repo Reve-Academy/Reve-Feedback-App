@@ -55,7 +55,7 @@ class InstructorNav extends Component {
 			
 			
 			
-			<img className="logo" src={reveLogo} alt="Reve logo" />
+			<a href="/user"> <img className="logo" src={reveLogo} alt="Reve logo"  /> </a>
 			<Menu
 				id="simple-menu"
 				anchorEl={anchorEl}
