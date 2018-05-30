@@ -33,7 +33,7 @@ class StudentComment extends Component {
         return(
             <Card>
                 <CardContent>
-                    <div> Author: {this.props.comment.first}{this.props.comment.last}: <br/> {this.props.comment.comment}</div> <br/> <button onClick={this.deleteComment}>delete</button> 
+                    <div> Author: {this.props.comment.first} {this.props.comment.last} <br/> <h2>{this.props.comment.comment}</h2></div> <br/> <button onClick={this.deleteComment}>delete</button> 
                 </CardContent>
             </Card>
         )

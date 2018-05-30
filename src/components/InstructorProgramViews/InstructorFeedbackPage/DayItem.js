@@ -23,6 +23,7 @@ const itemStyle = ({
 class DayItem extends Component {
 
     newComment = () =>{
+        console.log('HERE IS THE ID: ', this.props.week.id);
         this.props.dispatch({
             type:'GET_COMMENTS',
             payload: this.props.week.id
@@ -31,8 +32,11 @@ class DayItem extends Component {
             type:'WEEK_ID_LOCALSTATE',
             payload: this.props.week.number
         })
+        this.props.dispatch({
+            type:'ID_FOR_THE_WEEK',
+            payload: this.props.week.id
+        })
     }
-
     render(){
         return(
             <Button style={itemStyle.weekBtn} onClick={this.newComment}>{this.props.week.number} </Button>
@@ -40,4 +44,4 @@ class DayItem extends Component {
     }
 }
 
-export default connect(mapStateToProps) (DayItem);
+export default connect(mapStateToProps)(DayItem);
