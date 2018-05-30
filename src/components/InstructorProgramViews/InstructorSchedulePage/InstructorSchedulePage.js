@@ -174,8 +174,8 @@ class InstructorSchedulePage extends Component {
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
     let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
       return (
-        <div key={item.newFocus.ID} className="ian">
-          <span className="text">{item.newFocus.name}</span>
+        <div key={item.id} className="ian">
+          <span className="text">{item.name}</span>
         </div>
       );
     })
@@ -183,11 +183,11 @@ class InstructorSchedulePage extends Component {
     //map for placing schedule items on grid list
     let scheduleLayout = this.props.state.scheduleReducer.focusReducer.map((item, i) => {
       return {
-        x: item.newFocus.x,
-        y: item.newFocus.y,
-        w: item.newFocus.w,
-        h: item.newFocus.h,
-        i: item.newFocus.ID.toString()
+        x: item.x,
+        y: item.y,
+        w: item.w,
+        h: item.h,
+        i: item.id.toString()
       };
     })
 
