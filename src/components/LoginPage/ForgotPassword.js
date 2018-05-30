@@ -43,8 +43,9 @@ class ForgotPasswordModal extends Component{
 
     // on CLICK, send email
     sendEmail = () => {
+       
         this.props.dispatch({
-            type: 'POST_NEW_TOKEN',
+            type: 'UPDATE_NEW_TOKEN',
             payload: this.state.newPassword
         })
         console.log('send email')
@@ -55,7 +56,6 @@ class ForgotPasswordModal extends Component{
             
             }
         })
-        console.log('this.props', this.props)
     };
 
    

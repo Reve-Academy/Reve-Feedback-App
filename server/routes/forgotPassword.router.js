@@ -78,16 +78,16 @@ transporter.on('token', token => {
 
 //USER - UPDATE PASSWORD WHEN TOKEN LINES UP
 
-router.put('/', (req, res, next) => {
+router.put('/:username', (req, res, next) => {
 
 
-    const username = req.body.username
+    const username = req.params.username
     // const newPassword = encryptLib.encryptPassword(req.body.password);
     const newToken = chance.hash();
 
     let mailOptions = {
         from: "reveacademy.register@gmail.com",
-        to: req.body.username,
+        to: req.params.username,
         subject: "Rêve Academy - Reset Password!",
         generateTextFromHTML: true,
         html: `<href>http://localhost:3000/register/` + newToken + `</href>`,
