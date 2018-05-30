@@ -44,6 +44,7 @@ class InstructorNav extends Component {
 		let instructorSchedulePath = `/InstructorSchedule/${this.props.program_id}/${this.props.program_name}`;
 		let instructorFeedbackPath = `/InstructorFeedback/${this.props.program_id}/${this.props.program_name}`;
 		let instructorStudentPath = `/InstructorStudent/${this.props.program_id}/${this.props.program_name}`;
+		
 		const { anchorEl } = this.state;
 		
 		return (

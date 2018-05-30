@@ -49,11 +49,15 @@ class InstructorFeedbackPage extends Component {
   }
 
   addComment = () => {
+    console.log('this is state', this.state);
     this.props.dispatch({
       type: 'ADD_COMMENT',
-      payload: this.state,
+      payload: {
+        newComment: this.state.newComment,
+        date: '08/17/1993',
+        week: this.props.state.instructorFeedBackReducer.weekIdReducer
+      }
     })
-    this.setState
   }
 
   componentDidMount() {
@@ -78,9 +82,9 @@ class InstructorFeedbackPage extends Component {
   render() {
     let content = null;
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<DayItem  key ={week.id} week={week}/>)
+      return (<DayItem  key={week.id} week={week}/>)
     })
-
+    
     let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
       return(<CommentItem key={comment.id} comment={comment}/>)
     })
@@ -89,7 +93,7 @@ class InstructorFeedbackPage extends Component {
       content = (
         <div>
           <h1 className="ManageTitle">
-            FEEDBACK<br/>
+            FEEDBACK
           </h1>
           <div style={itemStyle.centerContent}>{weekList}</div>
           <h2 className="ManageTitle">
