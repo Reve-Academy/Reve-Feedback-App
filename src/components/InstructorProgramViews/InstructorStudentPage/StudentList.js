@@ -33,9 +33,10 @@ const styles = (theme) => ({
     
 	},
 	table: {
-		width: '60%',
+		 width: '60%',
 		marginLeft: '20%',
 		marginRight: '20%',
+
 },
 
 	row: {
