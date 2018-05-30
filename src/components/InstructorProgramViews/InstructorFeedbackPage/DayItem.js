@@ -22,7 +22,33 @@ const itemStyle = ({
 
 class DayItem extends Component {
 
-    newComment = () =>{
+    componentDidMount() {
+        // If props exist when the component mounts, check for the week id
+        if(this.props && this.props.state && this.props.state.instructorFeedBackReducer) {
+            console.log('CURRENT PROPS', this.props);
+            if(this.props.state.instructorFeedBackReducer.weekIdReducer == 0){
+                this.props.dispatch({
+                    type: 'ID_FOR_THE_WEEK',
+                    payload: this.props.state.scheduleReducer.weekReducer[0].id
+                })
+            }
+        }
+    }
+
+    // If props are updated after the component mounts, also check for the week id
+    shouldComponentUpdate = (nextProps, nextState) => {
+        if(nextProps.state.instructorFeedBackReducer.weekIdReducer == 0){
+            console.log('NEXT PROPS', nextProps);
+
+            this.props.dispatch({
+                type: 'ID_FOR_THE_WEEK',
+                payload: nextProps.state.scheduleReducer.weekReducer[0].id
+            })
+            return false;
+        }
+        return true;
+    }
+    newComment = () => {
         console.log('HERE IS THE ID: ', this.props.week.id);
         this.props.dispatch({
             type:'GET_COMMENTS',
@@ -37,7 +63,7 @@ class DayItem extends Component {
             payload: this.props.week.id
         })
     }
-    render(){
+    render() {
         return(
             <Button style={itemStyle.weekBtn} onClick={this.newComment}>{this.props.week.number} </Button>
         )
