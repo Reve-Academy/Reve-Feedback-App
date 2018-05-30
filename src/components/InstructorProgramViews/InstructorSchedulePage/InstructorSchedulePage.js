@@ -40,8 +40,7 @@ const itemStyle = ({
     border: '1px solid #D4D4D4',
     margin: '15px',
     maxHeight: '36px',  
-    color: 'black',
-      
+    color: 'black', 
   },
   weekBtn: {
     border: '1px solid #D4D4D4',
