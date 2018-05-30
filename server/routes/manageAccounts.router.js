@@ -6,6 +6,8 @@ const chance = new Chance();
 const nodemailer = require('nodemailer');
 var xoauth2 = require('xoauth2');
 const nodeoutlook = require('nodejs-nodemailer-outlook')
+const encryptLib = require('../modules/encryption');
+const userStrategy = require('../strategies/user.strategy');
 
 //Nodemailer specific account information
 let transporter = nodemailer.createTransport({
@@ -59,7 +61,7 @@ router.post('/', (req, res)=> {
     const last = req.body.last;
     const username = req.body.username;
     const team = req.body.team;
-    const password = req.body.password;
+    const password = encryptLib.encryptPassword(req.body.password);
     const program = req.body.program;
     let mailOptions = {
         from: "reveacademy.register@gmail.com",

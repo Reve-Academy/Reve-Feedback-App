@@ -6,6 +6,7 @@ function* newProgramSaga(){
 }
 
 function* postProgramSaga(action){
+    console.log('in post program saga')
     try{
         console.log('post Account payload: ', action.payload);
         yield call(axios.post, '/api/newProgram', action.payload)
