@@ -146,7 +146,10 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_PROGRAM_WEEKS',
       payload: this.props.match.params
-    })
+    });
+    this.props.dispatch({
+      type: 'FETCH_FOCUS_INFO'
+    });
   }
 
   componentDidUpdate() {
