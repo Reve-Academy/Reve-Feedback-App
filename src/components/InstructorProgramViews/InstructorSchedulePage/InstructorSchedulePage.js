@@ -87,8 +87,10 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'ADD_SCHEDULE',
       payload: {
-        layout: this.state.layout,
-        focus: this.props.state.scheduleReducer.focusReducer,
+        schedule: {
+          focus: this.props.state.scheduleReducer.focusReducer,
+          layout: this.state.layout
+        },
         week: this.props.state.scheduleReducer.thisWeekReducer 
       }
     })
