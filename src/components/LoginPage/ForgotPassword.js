@@ -11,6 +11,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 
+//Recieve from Redux
 const mapStateToProps = state => ({
     state,
   });
@@ -21,12 +22,13 @@ class ForgotPasswordModal extends Component{
         super(props);
         this.state = {
             newPassword: {
-            email: '', 
+            username: '', 
+        
             }
         }
         }
     
-    //FUNCTION FOR UPDATING STATE WITH INPUT FIELDS
+    //Upadate input field with email
     handleChangeFor = (propertyName) => {
         return (event) => {
           this.setState({
@@ -39,12 +41,13 @@ class ForgotPasswordModal extends Component{
     };
 
 
-    // on CLICK, CREATES NEW STUDENT ACCOUNT - TODO: with random password instead of empty string
-    addStudent = () => {
+    // on CLICK, send email
+    sendEmail = () => {
         this.props.dispatch({
-            type: 'POST_ACCOUNT',
-            payload: this.state.newStudent
+            type: 'POST_NEW_TOKEN',
+            payload: this.state.newPassword
         })
+        console.log('send email')
         this.setState({
             newPassword: {
                 ...this.state.newPassword,
@@ -52,6 +55,7 @@ class ForgotPasswordModal extends Component{
             
             }
         })
+        console.log('this.props', this.props)
     };
 
    
@@ -65,8 +69,8 @@ class ForgotPasswordModal extends Component{
                     label="Email"
                     placeholder="Email"
                     margin="normal"
-                    onChange={this.handleChangeFor("email")}
-                    value={this.state.newPassword.email}
+                    onChange={this.handleChangeFor("username")}
+                    value={this.state.newPassword.username}
                  />
                 <br />
                 <Button variant="outlined" onClick={() => this.sendEmail()}>

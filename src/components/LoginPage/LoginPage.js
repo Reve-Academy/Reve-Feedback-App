@@ -174,4 +174,3 @@ let loginWithStyle = withStyles(styles)(LoginPage)
 export default connect(mapStateToProps)(loginWithStyle);
 
 
-
