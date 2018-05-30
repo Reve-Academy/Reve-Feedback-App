@@ -8,6 +8,7 @@ import Home_AllProgramsPage from '../../Home/AllProgramsPage/Home_AllProgramsPag
 
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
+import { TextField } from '@material-ui/core';
 
 
 
@@ -105,16 +106,37 @@ class NewProgramPage extends Component {
           </div>
 
           
-          Name of Program <br/>
-          <input placeholder="Name of Program" value={this.state.newProgram.name} onChange={this.handleNewProgram('name')}></input><br/>
-          Description <br/>
-          <input placeholder="Description" value={this.state.newProgram.description} onChange={this.handleNewProgram('description')}></input><br/>
-          Start Date <br/>
-          <input placeholder="mm/dd/yyyy" value={this.state.newProgram.start} onChange={this.handleNewProgram('start')}></input><br/>
-          End Date <br/>
-          <input placeholder="mm/dd/yyyy" value={this.state.newProgram.finish} onChange={this.handleNewProgram('finish')}></input><br/>
-          Number of Weeks <br/>
-          <input placeholder="Number of weeks" value={this.state.newProgram.weeks} onChange={this.handleNewProgram('weeks')}></input>
+          <TextField 
+            label="Name of Program"
+            value={this.state.newProgram.name} 
+            margin="normal"
+            onChange={this.handleNewProgram('name')}
+          />
+          <TextField 
+            label="Description"           
+            value={this.state.newProgram.description} 
+            onChange={this.handleNewProgram('description')}
+          />
+          <TextField 
+            placeholder="mm/dd/yyyy" 
+            type="date"
+            margin="normal"
+            value={this.state.newProgram.start} 
+            onChange={this.handleNewProgram('start')}
+          />
+          <TextField 
+            placeholder="mm/dd/yyyy" 
+            type="date"
+            margin="normal"
+            value={this.state.newProgram.finish} 
+            onChange={this.handleNewProgram('finish')}
+          />
+          <TextField 
+            label="Number of weeks" 
+            margin="normal"
+            value={this.state.newProgram.weeks} 
+            onChange={this.handleNewProgram('weeks')}
+          />
           <button onClick={this.createNewProgram}>Create Program</button>
         </div>
       );
