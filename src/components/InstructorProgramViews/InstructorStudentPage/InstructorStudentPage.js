@@ -33,7 +33,7 @@ class InstructorStudentPage extends Component {
       content = (      
          
         <div>
-          <h1>
+      <h1>
         INSTRUCTOR STUDENTS PAGE
       </h1>
          
