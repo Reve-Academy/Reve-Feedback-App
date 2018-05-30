@@ -8,17 +8,18 @@ CREATE TABLE program (
 );
 
 CREATE TABLE person (
-	id SERIAL PRIMARY KEY,
-	username VARCHAR (80) UNIQUE NOT NULL,
-	password VARCHAR (1000) NOT NULL,
-	first VARCHAR (100),
-	last VARCHAR (100),
-	photo VARCHAR (250),
-	high_school VARCHAR (200),
-	instructor BOOLEAN DEFAULT FALSE,
-	active_profile BOOLEAN DEFAULT TRUE,
-	program_id INT REFERENCES program ON DELETE SET NULL,
-	team VARCHAR (100)
+    id SERIAL PRIMARY KEY,
+    username VARCHAR (80) UNIQUE NOT NULL,
+    password VARCHAR (1000) NOT NULL,
+    first VARCHAR (100),
+    last VARCHAR (100),
+    photo VARCHAR (250),
+    high_school VARCHAR (200) DEFAULT 'Pending',
+    instructor BOOLEAN DEFAULT FALSE,
+    active_profile BOOLEAN DEFAULT TRUE,
+    program_id INT REFERENCES program ON DELETE SET NULL,
+    team VARCHAR (100), 
+	token VARCHAR (100)
 );
 
 CREATE TABLE weeks (
