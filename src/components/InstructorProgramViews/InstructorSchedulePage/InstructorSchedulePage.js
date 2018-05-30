@@ -27,6 +27,33 @@ const mapStateToProps = state => ({
   state
 });
 
+const itemStyle = ({
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center'
+  },
+  btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    margin: '10px',
+    maxHeight: '36px',    
+  },
+  editBtn: {
+    borderRadius: '15px',
+    border: '1px solid #D4D4D4',
+    margin: '15px',
+    maxHeight: '36px',  
+    color: 'black', 
+  },
+  weekBtn: {
+    border: '1px solid #D4D4D4',
+    borderRadius: '50%',
+    minWidth: '36px',
+    maxWidth: '37px',
+    margin: '5px',
+  }
+})
+
 //Style properties for add new user modal
 function getModalStyle() {
   const top = 50;
@@ -46,6 +73,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+    borderRadius: 25,
+    border: '2px solid #595959',
+    outline: 'none',    
   },
 });
 //end styling properties 
@@ -55,7 +85,8 @@ class InstructorSchedulePage extends Component {
     className: "layout",
     items: 50,
     cols: 5,
-    rowHeight: 30,
+    rowHeight: 50,
+    maxRows: 6,
     width: '100%',
     onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
@@ -138,7 +169,7 @@ class InstructorSchedulePage extends Component {
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
     let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
       return (
-        <div key={item.newFocus.name} className="ian">
+        <div key={item.newFocus.ID} className="ian">
           <span className="text">{item.newFocus.name}</span>
         </div>
       );
@@ -151,7 +182,7 @@ class InstructorSchedulePage extends Component {
         y: item.newFocus.y,
         w: item.newFocus.w,
         h: item.newFocus.h,
-        i: item.newFocus.name
+        i: item.newFocus.ID.toString()
       };
     })
 
@@ -162,12 +193,21 @@ class InstructorSchedulePage extends Component {
         
 
 
-          <h1>
-            INSTRUCTOR SCHEDULE PAGE
+          <h1 className="ManageTitle">
+            SCHEDULE
           </h1>
-          <div>{weekList}</div>
-          <Button variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-          <Button variant="outlined" color="primary" onClick={() => this.finalSchedule()}>Finalize Schedule</Button>
+          <div style={itemStyle.centerContent}>{weekList}</div>
+          <div style={itemStyle.centerContent}>
+            <h2 className="ManageTitle">
+              WEEK #
+            </h2>
+          </div>
+          <div style={itemStyle.centerContent}>
+            <h2 className="ManageTitle">
+              <strong>Theme of This Week Name</strong>
+            </h2>
+            <Button style={itemStyle.editBtn} variant="outlined" color="primary">Edit Week</Button>
+          </div>
           <div>
             <Modal
             aria-labelledby="Add New Focus"
@@ -181,15 +221,15 @@ class InstructorSchedulePage extends Component {
           </div>
 
           {/* Schedule Container */}
-          <div>
+          <div style={{backgroundColor: "#D4D4D4", height: '400px'}}>
             <table id="scheduleTable">
             <thead>
               <tr id="tableHeader">
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
+                <th style={{width: '20%'}}>Monday</th>
+                <th style={{width: '20%'}}>Tueday</th>
+                <th style={{width: '20%'}}>Wednesday</th>
+                <th style={{width: '20%'}}>Thursday</th>
+                <th style={{width: '20%'}}>Friday</th>
               </tr>
             </thead>
             </table>
@@ -203,7 +243,10 @@ class InstructorSchedulePage extends Component {
             </ReactGridLayout>
           </div>
           {/* End Schedule Container */}
-
+          <div  style={itemStyle.centerContent}>
+            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
+            <Button style={itemStyle.btn} variant="outlined" color="primary">Finalize Schedule</Button>
+          </div>
         </div>
       );
     }

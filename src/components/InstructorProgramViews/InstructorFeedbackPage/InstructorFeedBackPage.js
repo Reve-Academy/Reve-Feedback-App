@@ -6,11 +6,32 @@ import InstructorNav from '../../Nav/InstructorNav';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
 import DayItem from './DayItem';
+import { Button } from '@material-ui/core'
 
 const mapStateToProps = state => ({
   user: state.user,
   state,
 });
+
+const itemStyle = ({
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center'
+  },
+  btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    margin: '10px',
+    maxHeight: '36px',    
+  },
+  commentArea: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    fontSize: '25px',
+    width: '400px',
+    height: '100px'
+  }
+})
 
 class InstructorFeedbackPage extends Component {
   constructor(props){
@@ -27,11 +48,15 @@ class InstructorFeedbackPage extends Component {
   }
 
   addComment = () => {
+    console.log('this is state', this.state);
     this.props.dispatch({
       type: 'ADD_COMMENT',
-      payload: this.state,
+      payload: {
+        newComment: this.state.newComment,
+        date: '08/17/1993',
+        week: this.props.state.instructorFeedBackReducer.weekIdReducer
+      }
     })
-    this.setState
   }
 
   componentDidMount() {
@@ -56,9 +81,9 @@ class InstructorFeedbackPage extends Component {
   render() {
     let content = null;
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<DayItem  key ={week.id} week={week}/>)
+      return (<DayItem  key={week.id} week={week}/>)
     })
-
+    
     let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
       return(<CommentItem key={comment.id} comment={comment}/>)
     })
@@ -66,14 +91,25 @@ class InstructorFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <h1>
-            INSTRUCTOR FEEDBACK PAGE <br/>
-            Week {this.props.state.instructorFeedBackReducer.weekNumberReducer}
+          <h1 className="ManageTitle">
+            FEEDBACK
           </h1>
-          <div>{weekList}</div>
+          <div style={itemStyle.centerContent}>{weekList}</div>
+          <h2 className="ManageTitle">
+              WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
+          </h2>
+          <div style={itemStyle.centerContent}>
+            <h2 className="ManageTitle">
+              <strong>Theme of This Week Name</strong>
+            </h2>
+          </div>  
           {/* Feedback Container */}
-            <textarea style={{fontSize:'25px'}} value={this.state.newComment} onChange={this.handleComment}></textarea>
-            <button onClick={this.addComment}>SEND</button>
+          <div style={itemStyle.centerContent}>
+            <textarea style={itemStyle.commentArea} value={this.state.newComment} onChange={this.handleComment}></textarea>
+          </div>
+          <div style={itemStyle.centerContent}>
+            <Button style={itemStyle.btn} onClick={this.addComment}>SEND</Button>
+          </div>
           {/* End Feedback Container */}
           <div>
             {studentComment}

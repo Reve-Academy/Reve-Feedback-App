@@ -38,6 +38,7 @@ function* addCommentSaga(action){
         yield call(axios.post, '/api/instructorFeedback', action.payload);
         yield put({
             type:'GET_COMMENTS',
+            payload: action.payload.week
         })
     } catch(error){
         console.log('error on post addComment: ', error);
