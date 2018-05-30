@@ -24,6 +24,7 @@ class AddFocusForm extends Component{
         super(props);
         this.state = {
             newFocus: {
+                ID: 0,
                 name: '',
                 summary: '',
                 weekId: '',
@@ -158,6 +159,12 @@ class AddFocusForm extends Component{
         })
         // this.props.generateLayout();
         // this.props.generateDOM();
+        this.setState({
+            newFocus:{
+                ...this.state.newFocus,
+                ID: this.state.newFocus.ID += 1
+            }
+        })
     }
 
 

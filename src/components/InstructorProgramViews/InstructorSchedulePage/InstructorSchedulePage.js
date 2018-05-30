@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AddFocusForm from './AddFocusForm';
 
+//import component
+import WeekItem from './WeekItem'
+
 //library import
 import RGL, { WidthProvider } from 'react-grid-layout';
 
@@ -82,7 +85,8 @@ class InstructorSchedulePage extends Component {
     className: "layout",
     items: 50,
     cols: 5,
-    rowHeight: 30,
+    rowHeight: 50,
+    maxRows: 6,
     width: '100%',
     onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
@@ -114,8 +118,11 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'ADD_SCHEDULE',
       payload: {
-        layout: this.state.layout,
-        focus: this.props.state.scheduleReducer.focusReducer
+        schedule: {
+          focus: this.props.state.scheduleReducer.focusReducer,
+          layout: this.state.layout
+        },
+        week: this.props.state.scheduleReducer.thisWeekReducer 
       }
     })
   }
@@ -155,14 +162,14 @@ class InstructorSchedulePage extends Component {
 
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<Button style={itemStyle.weekBtn} key={week.id}>{week.number} </Button>)
+      return (<WeekItem key={week.id} week={week}/>)
     })
 
     //map for getting schedule items from reducer
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
     let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
       return (
-        <div key={item.newFocus.name} className="ian">
+        <div key={item.newFocus.ID} className="ian">
           <span className="text">{item.newFocus.name}</span>
         </div>
       );
@@ -175,7 +182,7 @@ class InstructorSchedulePage extends Component {
         y: item.newFocus.y,
         w: item.newFocus.w,
         h: item.newFocus.h,
-        i: item.newFocus.name
+        i: item.newFocus.ID.toString()
       };
     })
 
