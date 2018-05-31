@@ -52,6 +52,12 @@ const itemStyle = ({
     minWidth: '36px',
     maxWidth: '37px',
     margin: '5px',
+  },
+  removeStyle: {
+    position: "absolute",
+    right: "2px",
+    top: 0,
+    cursor: "pointer"
   }
 })
 
@@ -91,7 +97,8 @@ class InstructorSchedulePage extends Component {
     width: '100%',
     onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
-    compactType: null
+    compactType: null,
+    preventCollision: true
   };
 
   constructor(props) {
@@ -107,9 +114,15 @@ class InstructorSchedulePage extends Component {
   //function for changing layout
   onLayoutChange = (newLayout) => {  
     this.props.onLayoutChange(newLayout);
-    this.setState({
-      ...this.state,
-      layout: newLayout
+    // this.setState({
+    //   ...this.state,
+    //   layout: newLayout
+    // })
+    this.props.dispatch({
+      type: 'UPDATE_SCHEDULE',
+      payload: {
+          layout: newLayout
+      }
     })
     console.log('newLayout: ', newLayout);
   }
@@ -123,6 +136,13 @@ class InstructorSchedulePage extends Component {
       }
     })
   }
+
+  onRemoveFocus = (item) => {
+    this.props.dispatch({
+      type: 'DELETE_FOCUS',
+      payload: item
+    })
+  };
 
   //on click of new user button, open modal
   handleCreateLessonModal = () => {
@@ -173,6 +193,12 @@ class InstructorSchedulePage extends Component {
     let scheduleItem = focusList.map((item) => {
       return (
         <div key={item.f_id} className="ian">
+          <span
+          style={itemStyle.removeStyle}
+          onClick={()=> this.onRemoveFocus({item})}
+          >
+          x
+          </span>
           <span className="text">{item.name}</span>
         </div>
       );

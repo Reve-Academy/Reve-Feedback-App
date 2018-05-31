@@ -115,4 +115,19 @@ router.post('/', (req, res) => {
 }
 });
 
+router.delete('/:id', (req, res) => {
+    if(req.isAuthenticated()) {
+        const focusId = req.params.id
+        let queryText = 'DELETE FROM focus WHERE "id" = $1;';
+        pool.query(queryText, [focusId]).then((result) => {
+            res.sendStatus(200);
+        }). catch((error) => {
+            console.log('ERROR IN DELETE instructorSchedule.router: ', error);
+            res.sendStatus(500);
+        })
+    } else{
+        res.sendStatus(403)
+    }
+});
+
 module.exports = router;
