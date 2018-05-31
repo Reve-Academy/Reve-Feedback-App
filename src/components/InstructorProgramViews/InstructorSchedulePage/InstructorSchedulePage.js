@@ -105,7 +105,8 @@ class InstructorSchedulePage extends Component {
 
     // const layout = this.generateLayout();
     this.state = {
-      open: false,
+      focusOpen: false,
+      infoOpen: false,
       layout: []
     }
   }
@@ -126,16 +127,6 @@ class InstructorSchedulePage extends Component {
     console.log('newLayout: ', newLayout);
   }
 
-  //function for dispatching updatedlayout to database
-  updateSchedule = () => {
-    this.props.dispatch({
-      type: 'UPDATE_SCHEDULE',
-      payload: {
-          layout: this.state.layout
-      }
-    })
-  }
-
   onRemoveFocus = (item) => {
     this.props.dispatch({
       type: 'DELETE_FOCUS',
@@ -144,13 +135,27 @@ class InstructorSchedulePage extends Component {
   };
 
   //on click of new user button, open modal
-  handleCreateLessonModal = () => {
-    this.setState({ open: true });
+  handleCreateFocusModal = () => {
+    this.setState({ focusOpen: true });
   };
 
   //on click of outside modal, close modal
-  handleClose = () => {
-    this.setState({ open: false });
+  handleCloseFocus = () => {
+    this.setState({ focusOpen: false });
+  };
+
+  //on click of new user button, open modal
+  handleInfoModal = (focus) => {
+    this.setState({ infoOpen: true });
+    this.props.dispatch({
+      type: 'GET_INFO',
+      payload: focus
+    })
+  };
+  
+  //on click of outside modal, close modal
+  handleCloseInfo = () => {
+    this.setState({ infoOpen: false });
   };
 
   componentDidMount() {
@@ -185,8 +190,17 @@ class InstructorSchedulePage extends Component {
     //set redux state equal to variable
     let allFocus = this.props.state.scheduleReducer.focusReducer;
     //filter so that only correct focus are on DOM
-    let focusList = allFocus.filter(focus => focus.week_id === this.props.state.scheduleReducer.thisWeekReducer.weekId)
-    
+    let focusList = allFocus.filter(focus => focus.week_id === this.props.state.scheduleReducer.thisWeekReducer.weekId);
+
+    let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
+      return (<div key={info.id}>
+              <h3>Strategy: {info.title}</h3>
+              <p>{info.summary}</p>
+              <h3>Resources</h3>
+              <p>{info.link}</p>
+            </div>)
+    })
+
     //map for getting filtered schedule items from reducer
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
     let scheduleItem = focusList.map((item) => {
@@ -199,6 +213,8 @@ class InstructorSchedulePage extends Component {
           x
           </span>
           <span className="text">{item.name}</span>
+          <br/>
+          <Button color="primary" onClick={() => this.handleInfoModal({item})}>View Info</Button>
         </div>
       );
     })
@@ -236,11 +252,13 @@ class InstructorSchedulePage extends Component {
             </h2>
             <Button style={itemStyle.editBtn} variant="outlined" color="primary">Edit Week</Button>
           </div>
+
+          {/* Modals */}
           <div>
             <Modal
             aria-labelledby="Add New Focus"
-            open={this.state.open}
-            onClose={this.handleClose}
+            open={this.state.focusOpen}
+            onClose={this.handleCloseFocus}
             >
             <div style={getModalStyle()} className={classes.paper}>
               <AddFocusForm />
@@ -248,6 +266,18 @@ class InstructorSchedulePage extends Component {
             </Modal>
           </div>
 
+          <div>
+            <Modal
+            aria-labelledby="Focus Info"
+            open={this.state.infoOpen}
+            onClose={this.handleCloseInfo}
+            >
+            <div style={getModalStyle()} className={classes.paper}>
+              {focusInfo}
+            </div>
+            </Modal>
+          </div>
+          {/* end of modals */}
           {/* Schedule Container */}
           <div style={{backgroundColor: "#D4D4D4", height: '400px'}}>
             <table id="scheduleTable">
@@ -272,8 +302,7 @@ class InstructorSchedulePage extends Component {
           </div>
           {/* End Schedule Container */}
           <div  style={itemStyle.centerContent}>
-            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={() => this.updateSchedule()}>Finalize Schedule</Button>
+            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateFocusModal}>Add Focus</Button>
           </div>
         </div>
       );

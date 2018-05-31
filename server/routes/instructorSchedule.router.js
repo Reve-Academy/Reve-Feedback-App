@@ -132,7 +132,7 @@ router.post('/', (req, res) => {
 router.delete('/:id', (req, res) => {
     if (req.isAuthenticated()) {
         const focusId = req.params.id
-        let queryText = 'DELETE FROM focus WHERE "id" = $1;';
+        let queryText = `DELETE FROM focus WHERE "id" = $1;`;
         pool.query(queryText, [focusId]).then((result) => {
             res.sendStatus(200);
         }).catch((error) => {
@@ -143,5 +143,22 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(403)
     }
 });
+
+router.get('/info/', (req, res) => {
+    if(req.isAuthenticated()) {
+        console.log(req.query.id);
+        const focusId = req.query.id
+        let queryText = `SELECT strategies.*, resources.id as resource_id, resources.link FROM strategies JOIN resources ON strategies.id = resources.strategy_id WHERE strategies.focus_id = $1;`;
+        pool.query(queryText, [focusId]).then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('ERROR IN GET INFO instructorSchedule.router: ', error);
+            res.sendStatus(500);
+            
+        })
+    } else {
+        res.sendStatus(403);
+    }
+})
 
 module.exports = router;
