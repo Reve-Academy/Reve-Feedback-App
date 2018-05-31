@@ -24,6 +24,10 @@ class WeekItem extends Component{
             type: 'THIS_WEEK',
             payload: week.id
         })
+        this.props.dispatch({
+            type: 'WEEK_NUMBER',
+            payload: week.number
+        })
     }
 
     render(){

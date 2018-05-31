@@ -185,6 +185,8 @@ class InstructorSchedulePage extends Component {
 
     const { classes } = this.props;
 
+    let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
+
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
       return (<WeekItem key={week.id} week={week}/>)
@@ -246,7 +248,7 @@ class InstructorSchedulePage extends Component {
           <div style={itemStyle.centerContent}>{weekList}</div>
           <div style={itemStyle.centerContent}>
             <h2 className="ManageTitle">
-              WEEK #
+              WEEK {weekNumber}
             </h2>
           </div>
           <div style={itemStyle.centerContent}>
