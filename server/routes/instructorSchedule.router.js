@@ -6,6 +6,7 @@ const router = express.Router();
  * GET route template
  */
 router.get('/weeks/', (req, res) => {
+    if(req.isAuthenticated()){
     const programId = req.query.id;
     let queryText = 'SELECT * FROM weeks WHERE program_id = $1;' ; 
     pool.query(queryText, [programId]).then((result) => {
@@ -13,7 +14,9 @@ router.get('/weeks/', (req, res) => {
     }).catch((error) => {
         console.log('ERROR IN GET WEEKS IN instructorSchedule.router: ', error);
     })
-    
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 router.get('/focus', (req, res) => {
