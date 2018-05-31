@@ -9,6 +9,15 @@ const studentLikeReducer = (state = [], action) => {
 	}
 };
 
+const getLikeReducer = (state = [], action) => {
+	switch (action.type) {
+		case 'SET_COMMENT_LIKE_REDUCER':
+			return action.payload;
+		default:
+			return state;
+	}
+};
+
 const unlikeReducer = (state = [], action) => {
 	switch (action.type) {
 		case 'DELETE_LIKE_REDUCER':
@@ -19,5 +28,6 @@ const unlikeReducer = (state = [], action) => {
 };
 
 export default combineReducers({
-	studentLikeReducer
+    studentLikeReducer,
+    getLikeReducer
 });

@@ -9,8 +9,8 @@ const router = express.Router();
 
  //ROUTE FOR GETTING/LOADING COMMENTS ONTO DOM FROM SERVER
 router.get('/', (req, res) => {
-	const queryText = `SELECT comment, week_id, person_id FROM comments
-        ORDER BY id DESC`;
+	const queryText = `SELECT comment, id, week_id, person_id FROM comments
+        ORDER BY week_id DESC`;
 
 	pool
 		.query(queryText)
@@ -50,7 +50,7 @@ router.post('/likes/', (req, res) => {
 	if (req.isAuthenticated()) {
 		console.log('this is req.body,', req.body);
 		const queryText = `INSERT INTO "likes" ("person_id", "comment_id") VALUES ($1, $2);`;
-		pool.query(queryText, [req.body.person_id, req.body.comment_id])
+		pool.query(queryText, [req.user.id, req.body.id])
 			.then((result) => {
 				res.sendStatus(200);
 			})
@@ -62,6 +62,18 @@ router.post('/likes/', (req, res) => {
 	}
 });
 //END ROUTE
+
+router.get('/likes/', (req, res) => {
+	const queryText = `SELECT * FROM likes`;
+	pool
+		.query(queryText)
+		.then((result) => {
+			res.send(result.rows);
+		})
+		.catch((error) => {
+			console.log('ERROR IN GET likes IN studentFeedback.router: ', error);
+		});
+});
 
 //ROUTE FOR POSTING COMMENTS INTO SERVER
 router.post('/',(req, res)=>{

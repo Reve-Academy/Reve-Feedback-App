@@ -42,23 +42,27 @@ class StudentFeedbackPage extends Component {
 			type: 'ADD_COMMENT',
 			payload: this.state
 		});
+		this.props.dispatch({ type: 'GET_WEEK_INFO'});
+
 	
-	};
+	}
 
 	componentDidMount() {
 		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT' });
-		this.props.dispatch({ type: 'GET_WEEK_INFO'});
+		this.props.dispatch({ type: 'GET_COMMENT_LIKE' });
 	}
 
 	componentDidUpdate() {
 		if (!this.props.user.isLoading && this.props.user.userName === null) {
 			this.props.history.push('home');
 		}
+
 		this.setState;
 	}
 
 	render() {
+		console.log(this.state.comment_id)
 		let content = null;
 
 		let theComments = this.props.state.studentCommentReducer.studentCommentReducer.map((comments, i) => {

@@ -42,12 +42,18 @@ class StudentFeedbackItem extends Component {
 
     
     
+  
+
+    
+    
     likeCommentMethod = () => {
 		console.log('Clicked');
 		this.props.dispatch({
-			type: 'SET_COMMENT_LIKE',
-			// payload: comment.id
+            type: 'SET_COMMENT_LIKE',
+            payload: this.props.comments
+
         });
+
     };
     
     unlikeCommentMethod = () => {
@@ -58,8 +64,8 @@ class StudentFeedbackItem extends Component {
     }
 
 	render() {
-    //     let commentItem =this.props.comment.id
-    //     let likeButton = null;
+        // let commentItem =this.props.comment.id
+        let likeButton = null;
     //     if (this.props.comment.find(function(val) {
     //         return(val.comment_id === commentItem);
     //     })

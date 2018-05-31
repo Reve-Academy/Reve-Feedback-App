@@ -4,7 +4,8 @@ import axios from 'axios';
 function* studentFeedbackSaga() {
 	// yield takeEvery('ADD_COMMENT', addCommentSaga);
 	yield takeEvery('GET_STUDENT_COMMENT', getStudentCommentSaga);
-	yield takeEvery('SET_COMMENT_LIKE', postLikeSaga);
+    yield takeEvery('SET_COMMENT_LIKE', postLikeSaga);
+    yield takeEvery('GET_COMMENT_LIKE', getLikeSaga);  
 	yield takeEvery('REMOVE_COMMENT_LIKE', deleteLikeSaga);
 	yield takeEvery('GET_WEEK_INFO', getWeekInfo);
 }
@@ -45,14 +46,28 @@ function* postCommentSaga(action) {
 	}
 }
 
+function* getLikeSaga() {
+	try {
+		const likeInfoResponse = yield call(axios.get, `/api/studentFeedback/likes/`);
+		yield put({
+			type: 'SET_COMMENT_LIKE_REDUCER',
+			payload: likeInfoResponse.data
+		});
+	} catch (error) {
+		console.log('error in getting comment: ', error);
+	}
+}
+
+
+
 function* postLikeSaga(action) {
     
 	try {
         const studentCommentLike = yield call(axios.post, `/api/studentFeedback/likes/`, action.payload);
-		yield put({
-			type: 'SET_LIKE_COMMENT_REDUCER',
-			payload: studentCommentLike.data
-		});
+		// yield put({
+		// 	type: 'SET_LIKE_COMMENT_REDUCER',
+		// 	// payload: studentCommentLike.data
+		// });
 	} catch (error) {
 		console.log('error in getting comment: ', error);
 	}
