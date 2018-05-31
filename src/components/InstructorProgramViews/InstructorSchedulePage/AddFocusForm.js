@@ -27,12 +27,10 @@ class AddFocusForm extends Component{
                 ID: 0,
                 name: '',
                 summary: '',
-                weekId: '',
-                startDay: '',
                 x: 0,
                 y: 0,
-                w: 2,
-                h: 1
+                w: 1,
+                h: 2
             },
             newStrategy: {
                 title: '',
@@ -82,96 +80,25 @@ class AddFocusForm extends Component{
         }
     };
 
-    //FUNCTION FOR SETTING START DAY SO FOCUS WILL POPULATE ON CORRECT DAY
-    handleStartChangeFor = (event) => {
-        if(event.target.value === 'monday'){
-            return (
-                this.setState({
-                    newFocus: {
-                        ...this.state.newFocus,
-                        startDay: 'monday',
-                        x: 0,
-                        y: 0,
-                        w: 1,
-                        h: 1
-                    },
-                })
-            )
-        } else if(event.target.value === 'tuesday'){
-            return (
-                this.setState({
-                    newFocus: {
-                        ...this.state.newFocus,
-                        startDay: 'tuesday',
-                        x: 1,
-                        y: 0,
-                        w: 1,
-                        h: 1
-                    },
-                })
-            )
-        } else if(event.target.value === 'wednesday'){
-            return (
-                this.setState({
-                    newFocus:{
-                        ...this.state.newFocus,
-                        startDay: 'wednesday',
-                        x: 2,
-                        y: 0,
-                        w: 1,
-                        h: 1
-                    },
-                })
-            )
-        } else if(event.target.value === 'thursday'){
-            return (
-                this.setState({
-                    newFocus:{
-                        ...this.state.newFocus,
-                        startDay: 'thursday',
-                        x: 3,
-                        y: 0,
-                        w: 1,
-                        h: 1
-                    },
-                })
-            )
-        } else if(event.target.value === 'friday'){
-            return (
-                this.setState({
-                    newFocus:{
-                        ...this.state.newFocus,
-                        startDay: 'friday',
-                        x: 4,
-                        y: 0,
-                        w: 1,
-                        h: 1
-                    },
-                })
-            )
-        }
-    }
-
     addNewFocus = () => {
         this.props.dispatch({
             type: 'ADD_FOCUS',
-            payload: this.state
-        })
-        // this.props.generateLayout();
-        // this.props.generateDOM();
-        this.setState({
-            newFocus:{
-                ...this.state.newFocus,
-                ID: this.state.newFocus.ID += 1
+            payload: {
+                infoToAdd: this.state,
+                week: this.props.state.scheduleReducer.thisWeekReducer 
             }
         })
+        //     newFocus:{
+        //         ...this.state.newFocus,
+        //         ID: this.state.newFocus.ID += 1
+        //     }
+        // })
     }
 
 
     render(){
         return(
             <div>
-            {/* <form onSubmit={() => this.addNewFocus()} className="focusForm"> */}
             <div>
                 <h3>Focus</h3>
                 <TextField
@@ -196,7 +123,7 @@ class AddFocusForm extends Component{
                     value={this.state.newFocus.summary}
                 />
                 <br />
-                <InputLabel>Select Start Day</InputLabel>
+                {/* <InputLabel>Select Start Day</InputLabel>
                 <Select
                     onChange={this.handleStartChangeFor}
                     value={this.state.newFocus.startDay}
@@ -225,7 +152,7 @@ class AddFocusForm extends Component{
                     <MenuItem value="friday">
                         <em>Friday</em>
                     </MenuItem>
-                </Select>
+                </Select> */}
                 <h3>Strategy</h3>
                 <TextField
                     id="strategyTitle"
