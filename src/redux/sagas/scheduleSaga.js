@@ -3,9 +3,10 @@ import axios from 'axios';
 
 function* scheduleSaga(){
     yield takeEvery('FETCH_PROGRAM_WEEKS', programWeekSaga);
-    yield takeEvery('ADD_SCHEDULE', addScheduleSaga);
+    yield takeEvery('UPDATE_SCHEDULE', updateScheduleSaga);
     yield takeEvery('FETCH_FOCUS_INFO', focusInfoSaga);
     yield takeEvery('ADD_FOCUS', addFocusSaga);
+    yield takeEvery('DELETE_FOCUS', deleteFocusSaga);
 }
 
 //saga for getting weeks for that program
@@ -25,12 +26,17 @@ function* programWeekSaga(action){
 }
 
 //saga for posting schedules to database
-function* addScheduleSaga(action){
+function* updateScheduleSaga(action){
     try{
         //dispatch call to post to database
-        yield call(axios.post, '/api/instructorSchedule', action.payload);
+        yield call(axios.put, '/api/instructorSchedule', action.payload);
+
+        //dispatch get to update dom display
+        yield put({
+            type: 'FETCH_FOCUS_INFO'
+        })
     } catch (err) {
-        console.log('ERROR IN addScheduleSaga: ', err);
+        console.log('ERROR IN updateScheduleSaga: ', err);
     }
 }
 
@@ -53,12 +59,28 @@ function* addFocusSaga(action){
     try{
         //dispatch call to post focus to database
         yield call(axios.post, '/api/instructorSchedule', action.payload);
+        //dispatch call to run get request
         yield put({
             type: 'FETCH_FOCUS_INFO',
         })
     } catch (err) {
         console.log('ERROR IN focusInfoSaga: ', err);
     }
-} 
+}
+
+//saga for deleting focus
+function* deleteFocusSaga(action){
+    try{
+        //dispatch call to delete focus from db
+        yield call(axios.delete, `/api/instructorSchedule/${action.payload.item.f_id}`);
+        //dispatch call to run get request
+        yield put({
+            type: 'FETCH_FOCUS_INFO'
+        })
+    } catch (err) {
+        console.log('ERROR IN deleteFocusSaga: ', err);
+        
+    }
+}
 
 export default scheduleSaga;

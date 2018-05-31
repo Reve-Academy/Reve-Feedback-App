@@ -52,6 +52,12 @@ const itemStyle = ({
     minWidth: '36px',
     maxWidth: '37px',
     margin: '5px',
+  },
+  removeStyle: {
+    position: "absolute",
+    right: "2px",
+    top: 0,
+    cursor: "pointer"
   }
 })
 
@@ -91,7 +97,8 @@ class InstructorSchedulePage extends Component {
     width: '100%',
     onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
-    compactType: null
+    compactType: null,
+    preventCollision: true
   };
 
   constructor(props) {
@@ -107,26 +114,35 @@ class InstructorSchedulePage extends Component {
   //function for changing layout
   onLayoutChange = (newLayout) => {  
     this.props.onLayoutChange(newLayout);
-    this.setState({
-      ...this.state,
-      layout: newLayout
+    // this.setState({
+    //   ...this.state,
+    //   layout: newLayout
+    // })
+    this.props.dispatch({
+      type: 'UPDATE_SCHEDULE',
+      payload: {
+          layout: newLayout
+      }
     })
     console.log('newLayout: ', newLayout);
   }
 
-  //function for dispatching to newlayout to database
-  finalSchedule = () => {
+  //function for dispatching updatedlayout to database
+  updateSchedule = () => {
     this.props.dispatch({
-      type: 'ADD_SCHEDULE',
+      type: 'UPDATE_SCHEDULE',
       payload: {
-        schedule: {
-          focus: this.props.state.scheduleReducer.focusReducer,
           layout: this.state.layout
-        },
-        week: this.props.state.scheduleReducer.thisWeekReducer 
       }
     })
   }
+
+  onRemoveFocus = (item) => {
+    this.props.dispatch({
+      type: 'DELETE_FOCUS',
+      payload: item
+    })
+  };
 
   //on click of new user button, open modal
   handleCreateLessonModal = () => {
@@ -176,7 +192,13 @@ class InstructorSchedulePage extends Component {
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
     let scheduleItem = focusList.map((item) => {
       return (
-        <div key={item.id} className="ian">
+        <div key={item.f_id} className="ian">
+          <span
+          style={itemStyle.removeStyle}
+          onClick={()=> this.onRemoveFocus({item})}
+          >
+          x
+          </span>
           <span className="text">{item.name}</span>
         </div>
       );
@@ -189,7 +211,7 @@ class InstructorSchedulePage extends Component {
         y: item.y,
         w: item.w,
         h: item.h,
-        i: item.id.toString()
+        i: item.f_id.toString()
       };
     })
 
@@ -254,7 +276,7 @@ class InstructorSchedulePage extends Component {
           {/* End Schedule Container */}
           <div  style={itemStyle.centerContent}>
             <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateLessonModal}>Add Lesson</Button><br />
-            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={() => this.finalSchedule()}>Finalize Schedule</Button>
+            <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={() => this.updateSchedule()}>Finalize Schedule</Button>
           </div>
         </div>
       );
