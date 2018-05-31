@@ -35,7 +35,6 @@ class RegisterPage extends Component {
 
 		this.state = {
 
-			high_school: '',
 			username: '',
 			password: '',
 			id: this.props.match.params.id,
@@ -59,7 +58,6 @@ class RegisterPage extends Component {
 				headers: new Headers({ 'Content-Type': 'application/json' }),
 				body: JSON.stringify({
 
-					high_school: this.state.high_school,
 					username: this.state.username,
 					password: this.state.password,
 					id: this.state.id,
@@ -117,16 +115,9 @@ class RegisterPage extends Component {
 					{this.renderAlert()}
 					<div >
 					<form className="RegisterForm" onSubmit={this.registerUser}>
-						<h1 className='loginTitle'>Register</h1>
+						<h2 className='loginTitle'>Please enter your email and type your new password</h2>
 						<div>
-							<TextField className="inputColor"
-								id="highschoolInput"
-								margin="normal"
-								label="High School"
-								placeholder="High School"
-								onChange={this.handleInputChangeFor('high_school')}
-								value={this.state.high_school}
-							/>
+							
 							<br />
 							<TextField className="inputColor"
 								id="emailInput"
@@ -141,8 +132,8 @@ class RegisterPage extends Component {
 							<TextField className="inputColor"
 								id="passwordInput"
 								margin="normal"
-								type="password"
-								label="Password"
+                                label="Password"
+                                type="password"
 								placeholder="Password"
 								onChange={this.handleInputChangeFor('password')}
 								value={this.state.password}
@@ -151,7 +142,7 @@ class RegisterPage extends Component {
 						<div>
 						<Link className={classes.cancel} to="/home">Cancel</Link>
 						<br/>
-							<Button type="submit" name="submit" className={classes.btn} variant="outlined" color="primary" >Register</Button>
+							<Button type="submit" name="submit" className={classes.btn} variant="outlined" color="primary" >Set as New Password</Button>
 							
 						</div>
 					</form>

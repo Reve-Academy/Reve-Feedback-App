@@ -18,6 +18,7 @@ const instructorStudentListRouter = require('./routes/instructorStudentList.rout
 const studentFeedbackRouter = require('./routes/studentFeedback.router');
 const studentScheduleRouter = require('./routes/studentSchedule.router');
 const newProgramRouter = require('./routes/newProgram.router');
+const forgotPasswordRouter = require('./routes/forgotPassword.router')
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -40,6 +41,7 @@ app.use('/api/instructorSchedule', instructorScheduleRouter);
 app.use('/api/instructorStudentList', instructorStudentListRouter);
 app.use('/api/studentFeedback', studentFeedbackRouter);
 app.use('/api/studentSchedule', studentScheduleRouter);
+app.use('/api/resetPassword', forgotPasswordRouter)
 
 
 
