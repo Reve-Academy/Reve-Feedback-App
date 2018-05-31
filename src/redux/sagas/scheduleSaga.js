@@ -7,6 +7,7 @@ function* scheduleSaga(){
     yield takeEvery('FETCH_FOCUS_INFO', focusInfoSaga);
     yield takeEvery('ADD_FOCUS', addFocusSaga);
     yield takeEvery('DELETE_FOCUS', deleteFocusSaga);
+    yield takeEvery('GET_INFO', getInfoSaga);
 }
 
 //saga for getting weeks for that program
@@ -80,6 +81,21 @@ function* deleteFocusSaga(action){
     } catch (err) {
         console.log('ERROR IN deleteFocusSaga: ', err);
         
+    }
+}
+
+//saga for getting focus info
+function* getInfoSaga(action){
+    try{
+        //dispatch call to get info for that specific focus
+        let infoResponse = yield call(axios.get, `/api/instructorSchedule/info/?id=${action.payload.item.f_id}`);
+        //dispatch action to set reducer
+        yield put({
+            type: 'SET_STRATEGY_INFO',
+            payload: infoResponse.data
+        })
+    } catch(err) {
+        console.log('ERROR IN getInfoSaga: ', err);    
     }
 }
 
