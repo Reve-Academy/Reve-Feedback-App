@@ -16,6 +16,15 @@ router.get('/weeks/', (req, res) => {
     })
 });
 
+router.get('/focus', (req, res) => {
+    let queryText = `SELECT focus.*, strategies.*, resources.* FROM focus JOIN strategies ON focus.id = strategies.focus_id JOIN resources ON strategies.id = resources.strategy_id;`;
+    pool.query(queryText).then((result) => {
+        res.send(result.rows);
+    }).catch((err) => {
+        console.log('ERROR IN GET FOCUS INFO IN instructorSchedule.router: ', err);
+    })
+});
+
 /**
  * POST route template
  */
@@ -25,9 +34,10 @@ router.post('/', (req, res) => {
     const weekId = req.body.week.weekId;
 
     (async () => {
+        //creates async
         const client = await pool.connect();
         try{
-            await client.query('BEGIN');
+            await client.query('BEGIN'); //alerts database multiple queries
             //FOR loop that creates new focuses that can be references in later query
             for(let i = 0; i < schedule.focus.length; i++){
                 console.log('length of focus: ', schedule.focus.length);
