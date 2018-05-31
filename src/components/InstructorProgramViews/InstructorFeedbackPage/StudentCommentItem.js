@@ -42,6 +42,12 @@ const itemStyle={
 };
 
 class StudentComment extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+          
+        }
+      }
     deleteComment = () => {
         this.props.dispatch({
             type: 'DELETE_COMMENT',
@@ -66,6 +72,7 @@ class StudentComment extends Component {
                         <div> Author: {this.props.comment.first} {this.props.comment.last}<br/><p>{this.props.comment.comment}</p></div>
                         <div>
                             <Stars style={{fontSize:'55px', color: 'black', marginTop: '8px', float: 'left'}}/>
+                            {this.props.comment.like_count}
                         </div>
                         <div>
                         <IconButton style={itemStyle.commentBtn}>
