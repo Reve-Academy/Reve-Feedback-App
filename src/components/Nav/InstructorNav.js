@@ -75,7 +75,7 @@ class InstructorNav extends Component {
 				style={{height: '60px', width: '60px'}}/>
 			</div>
 
-			<ul clasName="active">
+			<ul className="active">
 				<li className="avatar">
 				{/* Avatar icon on right side for teacher */}
 				</li>

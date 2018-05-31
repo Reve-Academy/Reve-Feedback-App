@@ -35,6 +35,8 @@ class StudentNav extends Component {
 	}
 
   render(){
+		let studentSchedulePath = `/StudentSchedule/${this.props.program_id}/${this.props.program_name}`;
+		let studentFeedbackPath = `/StudentFeedback/${this.props.program_id}/${this.props.program_name}`;
 
 		const { anchorEl } = this.state;    
 
@@ -42,7 +44,7 @@ class StudentNav extends Component {
     <div className="navbar">
   
       {/* Reve Academy logo */}
-      <a href="/user"> <img className="logo" src={reveLogo} alt="Reve logo"  /> </a>
+      <a href="/user"> <img className="logo" src={reveLogo} alt="Reve logo" /> </a>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
