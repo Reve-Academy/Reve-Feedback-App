@@ -168,8 +168,7 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_FOCUS_INFO'
     });
-    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer)
-   
+    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer) 
   }
 
   componentDidUpdate() {
