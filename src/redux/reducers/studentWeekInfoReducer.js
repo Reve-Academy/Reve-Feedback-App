@@ -1,11 +1,8 @@
 import { combineReducers } from 'redux';
 
-
-
-
-const studentCommentReducer = (state = [], action) =>{
+const studentWeekInfoReducer = (state = [], action) =>{
     switch(action.type){
-        case 'SET_STUDENT_COMMENT_REDUCER':
+        case 'SET_WEEK_INFO_REDUCER':
             return action.payload
         default:
             return state
@@ -14,6 +11,5 @@ const studentCommentReducer = (state = [], action) =>{
 
 
 export default combineReducers({
-    studentCommentReducer,
-
+   studentWeekInfoReducer
   });
