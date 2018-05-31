@@ -55,7 +55,7 @@ class InstructorNav extends Component {
 			
 			
 			
-			<img className="logo" src={reveLogo} alt="Reve logo" />
+			<a href="/user"> <img className="logo" src={reveLogo} alt="Reve logo"  /> </a>
 			<Menu
 				id="simple-menu"
 				anchorEl={anchorEl}
@@ -75,7 +75,7 @@ class InstructorNav extends Component {
 				style={{height: '60px', width: '60px'}}/>
 			</div>
 
-			<ul clasName="active">
+			<ul className="active">
 				<li className="avatar">
 				{/* Avatar icon on right side for teacher */}
 				</li>

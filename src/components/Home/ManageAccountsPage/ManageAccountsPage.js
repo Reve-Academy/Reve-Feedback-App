@@ -24,6 +24,8 @@ function getModalStyle() {
     top: `${top}%`,
     left: `${left}%`,
     transform: `translate(-${top}%, -${left}%)`,
+    borderRadius: 25,
+    border: '2px solid #595959',
   };
 }
 
@@ -43,6 +45,18 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
+    outline: 'none',
+  },
+  btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    margin: '10px',
+    maxHeight: '36px',  
+  },
+  centerContent: {
+    display: 'flex', 
+    justifyContent: 'center',
+    marginBottom: '30px',
   },
   
 });
@@ -113,9 +127,9 @@ class ManageAccountsPage extends Component {
           </div>
 
           <h1 className='ManageTitle'>
-            Manage Accounts
+            MANAGE ACCOUNTS
           </h1>
-          <Button variant="outlined" color="primary" className='addUserBtn' onClick={this.handleCreateUserModal}>Create User</Button><br />
+          <div className={classes.centerContent}><Button className={classes.btn} variant="outlined" color="primary" onClick={this.handleCreateUserModal}>Create User</Button><br /></div>
 
 
           <div>

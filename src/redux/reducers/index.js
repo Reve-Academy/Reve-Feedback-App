@@ -7,8 +7,8 @@ import studentListReducer from './studentListReducer';
 import scheduleReducer from './scheduleReducer';
 import instructorFeedBackReducer from './instructorFeedBackReducer';
 import studentCommentReducer from './studentCommentReducer';
-import studentWeekInfoReducer from './studentWeekInfoReducer';
-import studentLikeReducer from './studentLikeReducer';
+import forgotPasswordReducer from './forgotPasswordReducer';
+
 const store = combineReducers({
   user,
   login,
@@ -17,9 +17,8 @@ const store = combineReducers({
   studentListReducer,
   scheduleReducer,
   instructorFeedBackReducer,
-  studentCommentReducer,
-  studentWeekInfoReducer,
-  studentLikeReducer
+  forgotPasswordReducer,
+  studentCommentReducer
 });
 
 export default store;

@@ -6,6 +6,8 @@ const chance = new Chance();
 const nodemailer = require('nodemailer');
 var xoauth2 = require('xoauth2');
 const nodeoutlook = require('nodejs-nodemailer-outlook')
+const encryptLib = require('../modules/encryption');
+const userStrategy = require('../strategies/user.strategy');
 
 //Nodemailer specific account information
 let transporter = nodemailer.createTransport({
@@ -59,14 +61,14 @@ router.post('/', (req, res)=> {
     const last = req.body.last;
     const username = req.body.username;
     const team = req.body.team;
-    const password = req.body.password;
+    const password = encryptLib.encryptPassword(req.body.password);
     const program = req.body.program;
     let mailOptions = {
         from: "reveacademy.register@gmail.com",
         to: req.body.username,
         subject: "Rêve Academy - Create Your Account!",
         generateTextFromHTML: true,
-        html: `<href>http://localhost:3000/register/` + passwordToken + `</href>`, 
+        html: `<h3 className="ManageTitle" >Click the link below to finish registering with Rêve Voices!</h3><br /><href>http://localhost:3000/register/` + passwordToken + `</href>`, 
       };
 
     let queryText = `INSERT into "person" ("first", "last", "username", "team", "password", "program_id", "token") VALUES ($1, $2, $3, $4, $5, $6, $7);`

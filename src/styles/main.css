@@ -25,12 +25,26 @@ form {
 	border-radius: 2px;
 	
 }
+
+.RegisterForm{
+	background-color: white;
+	width: 30%;
+	height: 400px;
+	margin: 150px auto 700px;
+	padding: 25px;
+	border-radius: 2px;
+
+}
+
 .loginBackground{
 	background-color: #D4D4D4;
 	width: 100%;
 	height: 100%;
 	
 }
+
+
+
 
 .reactRoot{
 	height: 100%;
@@ -150,13 +164,6 @@ li a:hover {
 	font-weight: 150;
 }
 
-.addUserBtn{
-	
-	/* float: right; */
-	margin-left: 20%;
-	
-}
-
 .focusForm {
 	width: 100%;
 	height: 100%;
@@ -165,8 +172,11 @@ li a:hover {
 	background-color: whitesmoke;
 }
  
+<<<<<<< HEAD
 .star	{
 	float: left;
 	margin-right: 10px;
 	margin-top: 32px;
 }
+=======
+>>>>>>> 471100e3ec1df2b5e1357a0909ee44f576650b23

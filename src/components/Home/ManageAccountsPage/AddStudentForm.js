@@ -12,9 +12,23 @@ import Select from '@material-ui/core/Select';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
 
 const mapStateToProps = state => ({
     state,
+  });
+
+//Modal Styling
+const styles = theme => ({
+    
+    sendBtn: {
+      borderRadius: '15px',
+      border: '1px solid #D8441C',
+      marginTop: '30px',
+      maxHeight: '36px',  
+    },
+    
+    
   });
 
 
@@ -28,7 +42,7 @@ class AddStudentForm extends Component{
                 username: '',
                 team: '',
                 program: '',
-                password: '', 
+                password: 'toBeEncrypted', 
             }
         }
     }
@@ -70,6 +84,7 @@ class AddStudentForm extends Component{
     }
 
     render(){
+        const { classes } = this.props;
         //mapping for selector drop down
         let programMenuItem = this.props.state.home_AllProgramPageReducer.allProgramsReducer.map((program) => {
             return <MenuItem key={program.id} value={program.id}>{program.name}</MenuItem>
@@ -77,7 +92,7 @@ class AddStudentForm extends Component{
 
         return(
             <div>
-                <h1>Create New Student Account</h1>
+                <h3 className="ManageTitle">Create new student account</h3>
                 <TextField
                     id="firtnameInput"
                     label="First Name"
@@ -129,7 +144,7 @@ class AddStudentForm extends Component{
                 {programMenuItem}
                 </Select>
                 <br />
-                <Button variant="outlined" onClick={() => this.addStudent()}>
+                <Button className={classes.sendBtn} variant="outlined" color="primary" onClick={() => this.addStudent()}>
                     Send Student Email
                 </Button>
             </div>
@@ -137,4 +152,5 @@ class AddStudentForm extends Component{
     }
 }
 
-export default connect(mapStateToProps)(AddStudentForm);
+let addStudentFormWithStyle = withStyles(styles)(AddStudentForm)
+export default connect(mapStateToProps)(addStudentFormWithStyle);
