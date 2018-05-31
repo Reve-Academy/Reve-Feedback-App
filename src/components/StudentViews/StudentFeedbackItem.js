@@ -5,6 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import outline_star from '../../styles/images/outline_star.png';
+import star from '../../styles/images/star'
 
 const mapStateToProps = (state) => ({
 	state
@@ -39,17 +40,40 @@ class StudentComments extends Component {
 		super();
 	}
 
-	handleStarClick = (event) => {
+    
+    
+    likeCommentMethod = () => {
 		console.log('Clicked');
 		this.props.dispatch({
 			type: 'SET_COMMENT_LIKE',
-			payload: 
-				this.props.person_id
-			
-		});
-	};
+			payload: this.state.likeItem
+        });
+    };
+    
+    unlikeCommentMethod = () => {
+        this.props.dispatch({
+            type: 'REMOVE_COMMENT_LIKE',
+            payload:this.state.likeItem
+        })
+    }
 
 	render() {
+        let commentItem =this.props.comment.id
+        let likeButton = null;
+        if (this.props.comment.find(function(val) {
+            return(val.comment_id === commentItem);
+        })
+    ){
+        likeButton = 
+        <img src={outline_star} onClick={this.unlikeCommentMethod} />
+    }   
+        else{
+            likeButton =
+            <img src={star} onClick={this.likeCommentMethod} />
+
+
+        } 
+
 		return (
 			<div>
 				<img
