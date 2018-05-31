@@ -168,6 +168,8 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_FOCUS_INFO'
     });
+    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer)
+   
   }
 
   componentDidUpdate() {
@@ -182,6 +184,8 @@ class InstructorSchedulePage extends Component {
     let content = null;
 
     const { classes } = this.props;
+
+    let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
 
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
@@ -244,7 +248,7 @@ class InstructorSchedulePage extends Component {
           <div style={itemStyle.centerContent}>{weekList}</div>
           <div style={itemStyle.centerContent}>
             <h2 className="ManageTitle">
-              WEEK #
+              WEEK {weekNumber}
             </h2>
           </div>
           <div style={itemStyle.centerContent}>
@@ -287,7 +291,7 @@ class InstructorSchedulePage extends Component {
             <thead>
               <tr id="tableHeader">
                 <th style={{width: '20%'}}>Monday</th>
-                <th style={{width: '20%'}}>Tueday</th>
+                <th style={{width: '20%'}}>Tuesday</th>
                 <th style={{width: '20%'}}>Wednesday</th>
                 <th style={{width: '20%'}}>Thursday</th>
                 <th style={{width: '20%'}}>Friday</th>

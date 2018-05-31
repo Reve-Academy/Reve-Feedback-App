@@ -35,11 +35,21 @@ const viewFocusInfo = (state = [], action) => {
         default:
             return state;
     }
-} 
+}
+
+const weekNumberReducer = (state = {weekNumber: 1}, action) => {
+    switch(action.type){
+        case 'WEEK_NUMBER':
+            return {weekNumber: action.payload};
+        default:
+            return state;
+    }
+}
 
 export default combineReducers({
     weekReducer,
     focusReducer,
     thisWeekReducer,
-    viewFocusInfo
+    viewFocusInfo,
+    weekNumberReducer
 })
