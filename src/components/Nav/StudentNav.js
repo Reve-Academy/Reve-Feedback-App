@@ -32,7 +32,8 @@ class StudentNav extends Component {
 	logout = () => {
 		this.props.dispatch(triggerLogout());
 		this.props.history.push('/home');
-	}
+  }
+
 
   render(){
 		let studentSchedulePath = `/StudentSchedule/${this.props.program_id}/${this.props.program_name}`;

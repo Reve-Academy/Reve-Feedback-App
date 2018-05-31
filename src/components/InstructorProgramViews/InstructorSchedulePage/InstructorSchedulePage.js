@@ -163,6 +163,8 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_FOCUS_INFO'
     });
+    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer)
+   
   }
 
   componentDidUpdate() {
@@ -257,7 +259,7 @@ class InstructorSchedulePage extends Component {
             <thead>
               <tr id="tableHeader">
                 <th style={{width: '20%'}}>Monday</th>
-                <th style={{width: '20%'}}>Tueday</th>
+                <th style={{width: '20%'}}>Tuesday</th>
                 <th style={{width: '20%'}}>Wednesday</th>
                 <th style={{width: '20%'}}>Thursday</th>
                 <th style={{width: '20%'}}>Friday</th>

@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/weeks/', (req, res) => {
     if(req.isAuthenticated()){
     const programId = req.query.id;
-    let queryText = 'SELECT * FROM weeks WHERE program_id = $1;' ; 
+    let queryText = 'SELECT * FROM weeks WHERE program_id = $1 ORDER BY "number" ASC;' ; 
     pool.query(queryText, [programId]).then((result) => {
         res.send(result.rows);
     }).catch((error) => {
