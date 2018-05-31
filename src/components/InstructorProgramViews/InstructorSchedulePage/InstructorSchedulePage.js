@@ -147,7 +147,10 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_PROGRAM_WEEKS',
       payload: this.props.match.params
-    })
+    });
+    this.props.dispatch({
+      type: 'FETCH_FOCUS_INFO'
+    });
   }
 
   componentDidUpdate() {
@@ -168,24 +171,29 @@ class InstructorSchedulePage extends Component {
       return (<WeekItem key={week.id} week={week}/>)
     })
 
-    //map for getting schedule items from reducer
+    //set redux state equal to variable
+    let allFocus = this.props.state.scheduleReducer.focusReducer;
+    //filter so that only correct focus are on DOM
+    let focusList = allFocus.filter(focus => focus.week_id === this.props.state.scheduleReducer.thisWeekReducer.weekId)
+    
+    //map for getting filtered schedule items from reducer
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
-    let scheduleItem = this.props.state.scheduleReducer.focusReducer.map((item) => {
+    let scheduleItem = focusList.map((item) => {
       return (
-        <div key={item.newFocus.ID} className="ian">
-          <span className="text">{item.newFocus.name}</span>
+        <div key={item.id} className="ian">
+          <span className="text">{item.name}</span>
         </div>
       );
     })
 
     //map for placing schedule items on grid list
-    let scheduleLayout = this.props.state.scheduleReducer.focusReducer.map((item, i) => {
+    let scheduleLayout = focusList.map((item, i) => {
       return {
-        x: item.newFocus.x,
-        y: item.newFocus.y,
-        w: item.newFocus.w,
-        h: item.newFocus.h,
-        i: item.newFocus.ID.toString()
+        x: item.x,
+        y: item.y,
+        w: item.w,
+        h: item.h,
+        i: item.id.toString()
       };
     })
 
