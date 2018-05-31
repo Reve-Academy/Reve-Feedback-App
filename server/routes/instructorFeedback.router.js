@@ -5,6 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
+router.get('/likes/', (req, res) => {
+    const programId = req.query.id;
+    let queryText = ``
+})
 
 router.get('/weeks/', (req, res) => {
     const programId = req.query.id;
