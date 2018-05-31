@@ -32,20 +32,13 @@ router.put('/register/:token', (req, res, next) => {
   //THIS IS WHERE WE WE VALIDATE THE EMAIL by checking the TOKEN 
   const queryText = `UPDATE "person" SET "high_school" = $1, "username" = $2, "password" = $3, "token" = $4 WHERE "token" = $5;`
   pool.query(queryText, [highschool, username, password, newToken, token]).then((result)=>{
-      
-      
         res.sendStatus(201);
-      
-      
   }).catch((error)=>{
       console.log('Error', error);
       res.sendStatus(500);
   })
 
 })
-
-
-
 
 // Handles login form authenticate/login POST
 // userStrategy.authenticate('local') is middleware that we run on this route

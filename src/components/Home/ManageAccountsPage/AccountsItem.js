@@ -8,6 +8,7 @@ import CheckBoxOutlineBlank from '@material-ui/icons/CheckBoxOutlineBlank'
 //Material-UI Table
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -38,6 +39,12 @@ const CustomTableCell = withStyles(theme => ({
     row: {
       '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.background.default,
+      },
+      btn: {
+        borderRadius: '15px',
+        border: '1px solid #D8441C',
+        margin: '10px',
+        maxHeight: '36px',    
       },
     },
   });
@@ -118,7 +125,7 @@ class AccountsItem extends Component {
                      <CustomTableCell>{this.props.aItem.name}</CustomTableCell>
                      <CustomTableCell>{this.props.aItem.high_school}</CustomTableCell>
                      <CustomTableCell>{this.props.aItem.team}</CustomTableCell>
-                     <CustomTableCell onClick={() => this.handleDelete()}><button>Delete</button></CustomTableCell>
+                     <CustomTableCell onClick={() => this.handleDelete()}><Button style={styles.btn} variant="outlined" color="primary" >Delete</Button></CustomTableCell>
                 </TableRow>
                 </TableBody>
         )

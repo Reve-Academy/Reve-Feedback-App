@@ -12,9 +12,23 @@ import Select from '@material-ui/core/Select';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
 
 const mapStateToProps = state => ({
     state,
+  });
+
+//Modal Styling
+const styles = theme => ({
+    
+    sendBtn: {
+      borderRadius: '15px',
+      border: '1px solid #D8441C',
+      margin: '10px',
+      maxHeight: '36px',  
+    },
+    
+    
   });
 
 
@@ -129,7 +143,7 @@ class AddStudentForm extends Component{
                 {programMenuItem}
                 </Select>
                 <br />
-                <Button variant="outlined" onClick={() => this.addStudent()}>
+                <Button style={styles.sendBtn} variant="outlined" color="primary" onClick={() => this.addStudent()}>
                     Send Student Email
                 </Button>
             </div>
