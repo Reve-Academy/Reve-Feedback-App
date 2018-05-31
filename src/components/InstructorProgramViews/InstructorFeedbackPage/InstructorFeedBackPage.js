@@ -16,7 +16,11 @@ const mapStateToProps = state => ({
 const itemStyle = ({
   centerContent: {
     display: 'flex', 
-    justifyContent: 'center'
+    justifyContent: 'center',
+  },
+  centerComments: {
+    display: 'flex',
+    flexDirection: 'column'
   },
   btn: {
     borderRadius: '15px',
@@ -111,8 +115,10 @@ class InstructorFeedbackPage extends Component {
             <Button style={itemStyle.btn} onClick={this.addComment}>SEND</Button>
           </div>
           {/* End Feedback Container */}
-          <div>
-            {studentComment}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={itemStyle.centerComments}>
+              {studentComment}
+            </div>
           </div>
         </div>
       );
