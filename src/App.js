@@ -17,6 +17,7 @@ import InstructorFeedbackPage from './components/InstructorProgramViews/Instruct
 import InstructorSchedulePage from './components/InstructorProgramViews/InstructorSchedulePage/InstructorSchedulePage';
 import StudentFeedbackPage from './components/StudentViews/StudentFeedbackPage';
 import StudentSchedulePage from './components/StudentViews/StudentSchedulePage';
+import ResetPasswordPage from './components/LoginPage/ResetPasswordPage'
 
 
 
@@ -35,6 +36,10 @@ const App = () => (
         <Route
           path="/register/:token"
           component={RegisterPage}
+        />
+        <Route
+          path="/resetPassword/:token"
+          component={ResetPasswordPage}
         />
         <Route
           path="/user"

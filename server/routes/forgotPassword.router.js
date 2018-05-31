@@ -35,47 +35,6 @@ transporter.on('token', token => {
 });
 
 
-
-// //RESET PASSWORD, SEND EMAIL TO SELF - UPDATE PASSWORD
-// router.post('/', (req, res)=> {
-//     console.log('in post account')
-//     const passwordToken = chance.hash();
-//     const first = req.body.first;
-//     const last = req.body.last;
-//     const username = req.body.username;
-//     const team = req.body.team;
-//     const password = encryptLib.encryptPassword(req.body.password);
-//     const program = req.body.program;
-//     let mailOptions = {
-//         from: "reveacademy.register@gmail.com",
-//         to: req.body.username,
-//         subject: "Rêve Academy - Create Your Account!",
-//         generateTextFromHTML: true,
-//         html: `<href>http://localhost:3000/register/` + passwordToken + `</href>`, 
-//       };
-
-//     let queryText = `INSERT into "person" ("first", "last", "username", "team", "password", "program_id", "token") VALUES ($1, $2, $3, $4, $5, $6, $7);`
-// pool.query(queryText, [first, last, username, team, password, program, passwordToken ]).then((result)=>{
-
-//     //Nodemailer SEND EMAIL
-//     transporter.sendMail(mailOptions, function(error, response) {
-//         if (error) {
-//           console.log(error);
-//         } else {
-//           console.log(response);
-//         }
-//         transporter.close();
-//       });
-//     res.sendStatus(201);
-// }).catch((error)=> {
-//     console.log('Error', error);
-//     res.sendStatus(500);
-// })
-
-// })
-
-
-
 //USER - UPDATE PASSWORD WHEN TOKEN LINES UP
 router.put('/:username', (req, res, next) => {
 
@@ -89,7 +48,7 @@ router.put('/:username', (req, res, next) => {
         to: req.params.username,
         subject: "Rêve Academy - Reset Password!",
         generateTextFromHTML: true,
-        html: `<href>http://localhost:3000/register/` + newToken + `</href>`,
+        html: `<h3 className="ManageTitle">Click the link below to reset your password!</h3><br /><href>http://localhost:3000/resetPassword/` + newToken + `</href>`,
     };
 
     const queryText = `UPDATE "person" SET "token" = $1 WHERE "username" = $2;`
