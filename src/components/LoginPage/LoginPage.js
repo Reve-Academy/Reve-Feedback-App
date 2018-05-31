@@ -36,6 +36,12 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     outline: 'none',
   },
+  btn: {
+    borderRadius: '15px',
+    border: '1px solid #D8441C',
+    margin: '10px',
+    maxHeight: '36px',  
+  },
 });
 
 
@@ -144,13 +150,9 @@ class LoginPage extends Component {
               />
             </div>
             <div>
-              <input
-                type="submit"
-                name="submit"
-                value="Log In"
-              />
+              <Button type="submit" name="submit" className={classes.btn} variant="outlined" color="primary" >Log in</Button>
               {/* <Link to="/register">Register</Link> */}
-              <Button onClick={this.handleResetModal}>Forgot Password?</Button>
+              <Button className={classes.btn} variant="outlined" color="primary" onClick={this.handleResetModal}>Forgot Password?</Button>
               <div>
                 <Modal
                   aria-labelledby="Forgot Password?"
