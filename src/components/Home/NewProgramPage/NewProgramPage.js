@@ -82,6 +82,7 @@ class NewProgramPage extends Component {
         active_program:true,
       }
     })
+    
   }
 
   componentDidMount() {
