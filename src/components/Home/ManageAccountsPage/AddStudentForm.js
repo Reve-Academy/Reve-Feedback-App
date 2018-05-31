@@ -92,7 +92,7 @@ class AddStudentForm extends Component{
 
         return(
             <div>
-                <h1 className="ManageTitle">Create New Student Account</h1>
+                <h3 className="ManageTitle">Create new student account</h3>
                 <TextField
                     id="firtnameInput"
                     label="First Name"

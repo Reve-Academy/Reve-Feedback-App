@@ -10,11 +10,22 @@ import Select from '@material-ui/core/Select';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
 
 //Recieve from Redux
 const mapStateToProps = state => ({
     state,
   });
+
+  const styles = theme => ({
+    btn: {
+      borderRadius: '15px',
+      border: '1px solid #D8441C',
+      marginTop: '10px',
+      maxHeight: '36px',  
+    },
+  });
+
 
 
 class ForgotPasswordModal extends Component{
@@ -61,19 +72,20 @@ class ForgotPasswordModal extends Component{
    
 
     render(){
+        const { classes } = this.props;
         return(
             <div>
-                <h1>Enter Email to reset password</h1>
+                <h3 className="ManageTitle">Enter your email to reset password</h3>
                  <TextField
                     id="emailInput"
-                    label="Email"
+                  
                     placeholder="Email"
                     margin="normal"
                     onChange={this.handleChangeFor("username")}
                     value={this.state.newPassword.username}
                  />
                 <br />
-                <Button variant="outlined" onClick={() => this.sendEmail()}>
+                <Button className={classes.btn} variant="outlined" color="primary" onClick={() => this.sendEmail()}>
                     Send Student Email
                 </Button>
             </div>
@@ -81,4 +93,5 @@ class ForgotPasswordModal extends Component{
     }
 }
 
-export default connect(mapStateToProps)(ForgotPasswordModal);
+let forgotPasswordModalWithStyle = withStyles(styles)(ForgotPasswordModal)
+export default connect(mapStateToProps)(forgotPasswordModalWithStyle);
