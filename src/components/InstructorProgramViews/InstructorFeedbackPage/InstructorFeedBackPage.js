@@ -29,7 +29,8 @@ const itemStyle = ({
     border: '1px solid #D8441C',
     fontSize: '25px',
     width: '400px',
-    height: '100px'
+    height: '100px',
+    outline: 'none',    
   }
 })
 

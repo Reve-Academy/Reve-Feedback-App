@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AddFocusForm from './AddFocusForm';
+import EditWeekForm from './editWeekForm';
 
 //import component
 import WeekItem from './WeekItem'
@@ -216,7 +217,9 @@ class InstructorSchedulePage extends Component {
             <h2 className="ManageTitle">
               <strong>Theme of This Week Name</strong>
             </h2>
-            <Button style={itemStyle.editBtn} variant="outlined" color="primary">Edit Week</Button>
+            <div>
+              <EditWeekForm/>
+            </div>
           </div>
           <div>
             <Modal
