@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function* scheduleSaga(){
     yield takeEvery('FETCH_PROGRAM_WEEKS', programWeekSaga);
-    yield takeEvery('ADD_SCHEDULE', addScheduleSaga);
+    yield takeEvery('UPDATE_SCHEDULE', updateScheduleSaga);
     yield takeEvery('FETCH_FOCUS_INFO', focusInfoSaga);
     yield takeEvery('ADD_FOCUS', addFocusSaga);
 }
@@ -25,12 +25,17 @@ function* programWeekSaga(action){
 }
 
 //saga for posting schedules to database
-function* addScheduleSaga(action){
+function* updateScheduleSaga(action){
     try{
         //dispatch call to post to database
-        yield call(axios.post, '/api/instructorSchedule', action.payload);
+        yield call(axios.put, '/api/instructorSchedule', action.payload);
+
+        //dispatch get to update dom display
+        yield put({
+            type: 'FETCH_FOCUS_INFO'
+        })
     } catch (err) {
-        console.log('ERROR IN addScheduleSaga: ', err);
+        console.log('ERROR IN updateScheduleSaga: ', err);
     }
 }
 

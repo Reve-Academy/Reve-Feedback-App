@@ -24,7 +24,6 @@ class AddFocusForm extends Component{
         super(props);
         this.state = {
             newFocus: {
-                ID: 0,
                 name: '',
                 summary: '',
                 x: 0,
@@ -88,11 +87,6 @@ class AddFocusForm extends Component{
                 week: this.props.state.scheduleReducer.thisWeekReducer 
             }
         })
-        //     newFocus:{
-        //         ...this.state.newFocus,
-        //         ID: this.state.newFocus.ID += 1
-        //     }
-        // })
     }
 
 
@@ -123,36 +117,6 @@ class AddFocusForm extends Component{
                     value={this.state.newFocus.summary}
                 />
                 <br />
-                {/* <InputLabel>Select Start Day</InputLabel>
-                <Select
-                    onChange={this.handleStartChangeFor}
-                    value={this.state.newFocus.startDay}
-                    autoWidth
-                    display="flex"
-                    inputProps={{
-                        name: 'StartDaySelector',
-                        id: 'StartDaySelectorForm',
-                    }}
-                >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value="monday">
-                        <em>Monday</em>
-                    </MenuItem>
-                    <MenuItem value="tuesday">
-                        <em>Tuesday</em>
-                    </MenuItem>
-                    <MenuItem value="wednesday">
-                        <em>Wednesday</em>
-                    </MenuItem>
-                    <MenuItem value="thursday">
-                        <em>Thursday</em>
-                    </MenuItem>
-                    <MenuItem value="friday">
-                        <em>Friday</em>
-                    </MenuItem>
-                </Select> */}
                 <h3>Strategy</h3>
                 <TextField
                     id="strategyTitle"
