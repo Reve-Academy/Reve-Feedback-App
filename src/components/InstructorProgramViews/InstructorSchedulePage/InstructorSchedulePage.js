@@ -137,10 +137,6 @@ class InstructorSchedulePage extends Component {
     this.setState({ open: false });
   };
 
-  testRun = () => {
-    console.log('HELLO');
-  }
-
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({

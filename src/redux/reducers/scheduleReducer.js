@@ -12,8 +12,6 @@ const weekReducer = (state = [], action) => {
 
 const focusReducer = (state= [], action) => {
     switch(action.type){
-        case 'ADD_FOCUS':
-            return [...state, action.payload];
         case 'SET_FOCUS_INFO':
             return action.payload;
         default:
