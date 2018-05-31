@@ -8,6 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 
@@ -64,29 +65,39 @@ const mapStateToProps = state => ({
 });
 
 class EditWeek extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      open: false,
-    // Sample state will be used to file and update existing week data
-    //   editProgram: {
-    //       id: this.props.pItem.id,
-    //       name: this.props.pItem.name,
-    //       active_program: this.props.pItem.active_program,
-    //       description: this.props.pItem.description,
-    //       start: this.props.pItem.start,
-    //       finish: this.props.pItem.finish
-    //   }
+    constructor(props){
+        super(props);
+        this.state = {
+        open: false,
+        // Sample state will be used to file and update existing week data
+        //   editProgram: {
+        //       id: this.props.pItem.id,
+        //       name: this.props.pItem.name,
+        //       active_program: this.props.pItem.active_program,
+        //       description: this.props.pItem.description,
+        //       start: this.props.pItem.start,
+        //       finish: this.props.pItem.finish
+        //   }
+        }
     }
-  }
 
-  handleEditWeek = () => {
-    this.setState({ open: true });
-  };
+    handleEditWeek = () => {
+        this.setState({ open: true });
+    };
 
-  handleClose = () => {
-    this.setState({ open: false });
-  };
+    handleClose = () => {
+        this.setState({ open: false });
+    };
+
+    // this handles editing property of each input field. note onBlur is when this is fired
+    handleChangeFor = propertyName => (event) => {
+    this.setState({
+        editProgram: {
+            ...this.state.editProgram,
+            [propertyName]: event.target.value
+        }
+    })   
+    }
 
 // Sample dispatch will be used to update week
 //  FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
@@ -117,7 +128,28 @@ class EditWeek extends Component {
                     style={getModalStyle()} 
                     className={classes.paper}
                 >
-                    Stuff
+                    <Typography variant="headline" component="h2">
+                        Edit Week
+                    </Typography>
+                    {/* Program Name */}
+                    <TextField
+                        id="weekName"
+                        // label={this.props.pItem.name}
+                        placeholder="Week Title"
+                        margin="normal"
+                        // defaultValue={this.props.pItem.name}
+                        onChange={this.handleChangeFor("name")}
+                    />
+                    <br />
+                    {/* Description of Program */}
+                    <TextField
+                        id="description"
+                        label="Description"
+                        placeholder="Description"
+                        margin="normal"
+                        // defaultValue={this.props.pItem.description}
+                        onChange={this.handleChangeFor("description")}
+                    />
                 </div>
             </Modal>
             {/* End Modal Edit */}

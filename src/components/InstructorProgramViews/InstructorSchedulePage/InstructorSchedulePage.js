@@ -218,7 +218,7 @@ class InstructorSchedulePage extends Component {
               <strong>Theme of This Week Name</strong>
             </h2>
             <div>
-              <EditWeekForm/>
+              <EditWeekForm />
             </div>
           </div>
           <div>
