@@ -116,7 +116,7 @@ class EditWeek extends Component {
                 <div 
                     style={getModalStyle()} 
                     className={classes.paper}
-                    >
+                >
                     Stuff
                 </div>
             </Modal>
