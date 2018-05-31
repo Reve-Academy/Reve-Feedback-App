@@ -9,7 +9,7 @@ const router = express.Router();
 
  //ROUTE FOR GETTING/LOADING COMMENTS ONTO DOM FROM SERVER
 router.get('/', (req, res) => {
-	const queryText = `SELECT comment, week_id FROM comments
+	const queryText = `SELECT comment, week_id, person_id FROM comments
         ORDER BY id DESC`;
 
 	pool
@@ -79,5 +79,22 @@ router.post('/',(req, res)=>{
 })
 
 //END ROUTE
+
+
+router.delete('/:id', (req, res) => {
+    if(req.isAuthenticated()) {
+        const queryText = `DELETE FROM "likes" WHERE id = $1`; 
+        pool.query(queryText, [req.params.id])
+        .then((result)=> {
+            res.sendStatus(200);
+        }).catch((err)=>{
+            console.log('ERROR DELETE /api/collection', err)
+            res.sendStatus(500);
+        });
+    }
+    else {
+        res.sendStatus(403); 
+    }
+});
 
 module.exports = router;
