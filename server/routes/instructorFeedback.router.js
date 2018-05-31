@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get('/likes/', (req, res) => {
     const programId = req.query.id;
-    let queryText = ``
+    let queryText = `SELECT COUNT("person_id") as total_likes FROM "likes" WHERE "likes"."comment_id" = $1`
 })
 
 router.get('/weeks/', (req, res) => {

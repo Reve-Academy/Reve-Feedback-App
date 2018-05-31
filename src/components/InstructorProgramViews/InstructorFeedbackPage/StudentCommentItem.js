@@ -50,6 +50,14 @@ class StudentComment extends Component {
             }
         });
     };
+    componentDidMount = () => {
+        this.props.dispatch({
+            type: 'GET_LIKES_INSTRUCTOR',
+            payload: {
+                commentId: this.props.comment.id
+            }
+        })
+    }
     render(){
         return(
             <div>
