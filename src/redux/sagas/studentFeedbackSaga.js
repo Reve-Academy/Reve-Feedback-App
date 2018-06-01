@@ -73,16 +73,11 @@ function* deleteLikeSaga(action) {
 	try {
 		const unlikeComment = yield call(axios.delete, `/api/studentFeedback/likes/${action.payload}`);
 		yield put({
-			type: 'GET_STUDENT_COMMENT_LIKE',
+			type: 'GET_STUDENT_COMMENT_LIKE'
 		});
-
-		
 	} catch (error) {
 		console.log(' error in deleting like:', error);
 	}
 }
 
 export default studentFeedbackSaga;
-
-
-

@@ -53,7 +53,7 @@ class StudentFeedbackPage extends Component {
 			newComment: event.target.value
 		});
 	};
-
+//ADD COMMENT TO SERVER
 	postComment = () => {
 		this.props.dispatch({
 			type: 'ADD_STUDENT_COMMENT',
@@ -65,7 +65,7 @@ class StudentFeedbackPage extends Component {
 			newComment: ''
 		});
 	};
-
+//GET LIKE AND COMMENT INFO FROM SERVER TO DOM
 	componentDidMount() {
 		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT' });
@@ -82,12 +82,18 @@ class StudentFeedbackPage extends Component {
 		let content = null;
 
 		let theComments = this.props.state.studentCommentReducer.studentCommentReducer.map((comments, i) => {
-			return <CommentsItem key={i} comments={comments} commentsLiked={this.props.state.studentLikeReducer.studentLikeReducer} />;
+			return (
+				<CommentsItem
+					key={i}
+					comments={comments}
+					commentsLiked={this.props.state.studentLikeReducer.studentLikeReducer}
+				/>
+			);
 		});
 		let weekInfo = this.props.state.studentWeekInfoReducer.studentWeekInfoReducer.map((week) => {
 			return <DayItem key={week.id} week={week} />;
 		});
-		
+
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
 				<div>
@@ -100,8 +106,7 @@ class StudentFeedbackPage extends Component {
 							onChange={this.handleComment}
 						/>
 					</div>
-						{/* END TEXT AREA */}
-
+					{/* END TEXT AREA */}
 					<div style={itemStyle.centerContent}>
 						<Button style={itemStyle.btn} onClick={this.postComment}>
 							SEND
@@ -114,7 +119,6 @@ class StudentFeedbackPage extends Component {
 							{theComments}
 						</div>
 
-						{/* {weekInfo} */}
 					</div>
 					{/* End Feedback Container */}
 				</div>

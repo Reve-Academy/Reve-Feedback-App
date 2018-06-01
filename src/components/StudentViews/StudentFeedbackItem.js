@@ -41,13 +41,11 @@ class StudentFeedbackItem extends Component {
         commentItem: { 
             person_id: this.props.person_id,
             comment_id: this.props.comments.id
-            // bookmark_id: 
         }
     };
 
-    componentDidMount(){
-        // this.props.dispatch({ type:  });
-    }
+   
+//LOGIC FOR LIKING COMMENT
 
     likeCommentMethod = () => {
 		console.log('Clicked');
@@ -58,7 +56,9 @@ class StudentFeedbackItem extends Component {
         });
 
     };
-    
+//END LIKE LOGIC
+
+//LOGIC FOR UNLIKING COMMENT
     unlikeCommentMethod = () => {
         this.props.dispatch({
             type: 'REMOVE_COMMENT_LIKE',
@@ -66,6 +66,7 @@ class StudentFeedbackItem extends Component {
             
         })
     }
+//END UNLIKE LOGIC
 
 	render() {
         
@@ -73,12 +74,10 @@ class StudentFeedbackItem extends Component {
         let commentsLikedId = this.props.commentsLiked.comment_id;
         let itemId = this.props.comments.id;
         let likeButton = null;
-        // console.log(this.props);
 
         
         if (this.props.commentsLiked.find(function(val) {
-            // console.log(val.comment_id);
-            // console.log('each item', itemId);
+
             return(val.comment_id === itemId);
         })
     ){
@@ -101,7 +100,6 @@ class StudentFeedbackItem extends Component {
 					<CardContent>
 						<div>
 							{' '}
-							{/* Theme:  {this.props.week.theme}, */}
 							Student: {this.props.comments.comment}
 							<br />
 						</div>
