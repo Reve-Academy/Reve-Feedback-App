@@ -10,6 +10,7 @@ import manageAccountsSaga from './manageAccountsSaga';
 import scheduleSaga from './scheduleSaga';
 import studentFeedbackSaga from './studentFeedbackSaga';
 import forgotPasswordSaga from './forgotPasswordSaga'
+import weekSaga from './weekSaga';
 
 
 export default function* rootSaga() {
@@ -21,9 +22,9 @@ export default function* rootSaga() {
     instructorFeedBackSaga(),
     studentListSaga(),
     manageAccountsSaga(),
+    weekSaga(),
     scheduleSaga(),
     // watchIncrementAsync()
-    studentFeedbackSaga(),
     forgotPasswordSaga()
   ]);
 }

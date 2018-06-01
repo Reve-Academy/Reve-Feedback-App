@@ -5,11 +5,6 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/likes/', (req, res) => {
-    const programId = req.query.id;
-    let queryText = `SELECT COUNT("person_id") as total_likes FROM "likes" WHERE "likes"."comment_id" = $1`
-})
-
 router.get('/weeks/', (req, res) => {
     const programId = req.query.id;
     let queryText = 'SELECT * FROM weeks WHERE program_id = $1;' ; 

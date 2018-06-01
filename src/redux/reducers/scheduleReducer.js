@@ -14,12 +14,14 @@ const focusReducer = (state= [], action) => {
     switch(action.type){
         case 'SET_FOCUS_INFO':
             return action.payload;
+        case 'CLEAR_SCHEDULE':
+            return [];
         default:
             return state;
     }
 }
 
-const thisWeekReducer = (state = {weekId: 1}, action) => {
+const thisWeekReducer = (state = {weekId: 0}, action) => {
     switch(action.type){
         case 'THIS_WEEK':
             return {weekId: action.payload};
@@ -45,11 +47,21 @@ const weekNumberReducer = (state = {weekNumber: 1}, action) => {
             return state;
     }
 }
+const weekThemeReducer = (state = {weekTheme: 'Brainstorming'}, action) => {
+    switch(action.type){
+        case 'WEEK_THEME':
+            return {weekTheme: action.payload};
+        default:
+            return state;
+    }
+}
+
 
 export default combineReducers({
     weekReducer,
     focusReducer,
     thisWeekReducer,
     viewFocusInfo,
-    weekNumberReducer
+    weekNumberReducer, 
+    weekThemeReducer
 })
