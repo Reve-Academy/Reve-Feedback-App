@@ -241,11 +241,16 @@ class InstructorSchedulePage extends Component {
       };
     })
 
+    let themeWeekId = this.props.state.scheduleReducer.thisWeekReducer.weekId;
+    let weekThemeItems = this.props.state.scheduleReducer.weekReducer.filter(function(element) {
+      return (element.id === themeWeekId);
+    });
+    
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
           <h1 className="ManageTitle">
-            SCHEDULE
+            SCHEDULE 
           </h1>
           <div style={itemStyle.centerContent}>{weekList}</div>
           <div style={itemStyle.centerContent}>
@@ -255,11 +260,11 @@ class InstructorSchedulePage extends Component {
           </div>
           <div style={itemStyle.centerContent}>
             <h2 className="ManageTitle">
-              <strong>{weekTheme}</strong>
+              <strong>Theme: {weekTheme}</strong>
               
             </h2>
             <div>
-              <EditWeekForm/>
+              <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
             </div>
           </div>
 
