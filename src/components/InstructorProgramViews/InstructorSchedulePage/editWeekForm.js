@@ -57,6 +57,9 @@ const itemStyle = ({
         margin: '15px',
         maxHeight: '36px',  
         color: 'black', 
+        display: 'flex', 
+        justifyContent: 'center'
+        
     },
 })
 
@@ -120,8 +123,10 @@ class EditWeek extends Component {
     const { classes } = this.props;    
 
     return(
+        
         <div>
-            
+            <br/>
+         
             <Button style={itemStyle.editBtn} onClick={this.handleEditWeek} variant="outlined" color="primary">Edit Week</Button>
             
             {/* Modal Edit */}
@@ -135,7 +140,7 @@ class EditWeek extends Component {
                     className={classes.paper}
                 >
                     <Typography variant="headline" component="h2">
-                        Edit Week
+                        Edit WeeK
                     </Typography>
                     {/* Program Name */}
                     <TextField

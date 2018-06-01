@@ -27,6 +27,7 @@ function* getAllCommentSaga(action){
             type:'SET_COMMENT_FEEDBACK',
             payload: commentResponse.data,
         })
+        
     } catch(error){
         console.log('error in getting comment: ', error);
     }

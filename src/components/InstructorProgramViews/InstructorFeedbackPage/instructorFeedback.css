@@ -1,0 +1,25 @@
+.themeTitle {
+    text-align: center;
+    font-family: Lato, sans-serif;
+    font-weight: 150;
+  }
+
+  .commentFont {
+    font-family:  Plantin;
+    font-size: 30px;
+    font-weight: lighter;
+    margin: 1px;
+  }
+
+.commentNamesAndDates {
+	
+	font-family: Lato, sans-serif;
+	font-weight: 150;
+}
+
+.commentDates {
+	
+	font-family: Lato, sans-serif;
+    font-weight: 150;
+    font-size: 22px;
+}

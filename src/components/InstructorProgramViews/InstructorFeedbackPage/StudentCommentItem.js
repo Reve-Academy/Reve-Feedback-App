@@ -55,8 +55,12 @@ class StudentComment extends Component {
             <div>
                 <Card style={itemStyle.feedbackField}>
                     <CardContent>
-                        <div> {moment(new Date(this.props.comment.date)).format("MMMM DD, YYYY")}</div><br/>
-                        <div> Author: {this.props.comment.first} {this.props.comment.last}<br/><strong>{this.props.comment.comment}</strong></div>
+                       
+                        <p className="commentDates">{this.props.comment.first} {this.props.comment.last} </p>
+                        <p className="commentNamesAndDates"><i>{moment(new Date(this.props.comment.date)).format("MMMM DD, YYYY")}</i></p>
+                        <br/>
+                        <p className="commentFont">{this.props.comment.comment}</p>
+                        
                           <div style={{marginTop: '35px'}}>
                           <Badge badgeContent={this.props.comment.like_count}>
                             <Stars style={{fontSize:'55px', color: 'black', marginTop: '6px', float: 'left'}}/>
