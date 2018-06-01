@@ -7,6 +7,8 @@ import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
 import DayItem from './DayItem';
 import { Button } from '@material-ui/core'
+let moment = require('moment');
+
 
 const mapStateToProps = state => ({
   user: state.user,
@@ -58,9 +60,12 @@ class InstructorFeedbackPage extends Component {
       type: 'ADD_COMMENT',
       payload: {
         newComment: this.state.newComment,
-        date: '08/17/1993',
+        date: moment().format("MM DD YYYY"),
         week: this.props.state.instructorFeedBackReducer.weekIdReducer
       }
+    })
+    this.setState({
+      newComment:'',
     })
   }
 

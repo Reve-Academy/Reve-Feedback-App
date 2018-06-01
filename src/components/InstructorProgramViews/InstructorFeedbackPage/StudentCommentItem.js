@@ -7,21 +7,13 @@ import IconButton from '@material-ui/core/IconButton';
 import { withStyles} from '@material-ui/core/styles';
 import star from '../../../styles/images/star.png';
 import {Delete, StarBorder, Stars} from '@material-ui/icons';
+import Badge from '@material-ui/core/Badge';
+let moment = require('moment');
 
 
 const mapStateToProps = (state) => ({
 	state
 });
-
-const styles = theme => ({
-    paper: {
-      position: 'relative',
-      width: 20,
-      backgroundColor: theme.palette.background.paper,
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing.unit * 4,
-    },
-  });
 
 const itemStyle={
     feedbackField:{
@@ -50,19 +42,28 @@ class StudentComment extends Component {
             }
         });
     };
+    componentDidMount = () => {
+        this.props.dispatch({
+            type: 'GET_LIKES_INSTRUCTOR',
+            payload: {
+                commentId: this.props.comment.id
+            }
+        })
+    }
     render(){
         return(
             <div>
                 <Card style={itemStyle.feedbackField}>
                     <CardContent>
-                        <div> Author: {this.props.comment.first} {this.props.comment.last}<br/><p>{this.props.comment.comment}</p></div>
-                        <div>
-                            <Stars style={{fontSize:'55px', color: 'black', marginTop: '8px', float: 'left'}}/>
-                        </div>
-                        <div>
-                        <IconButton style={itemStyle.commentBtn}>
+                        <div> {moment(new Date(this.props.comment.date)).format("MMMM DD, YYYY")}</div><br/>
+                        <div> Author: {this.props.comment.first} {this.props.comment.last}<br/><strong>{this.props.comment.comment}</strong></div>
+                          <div style={{marginTop: '35px'}}>
+                          <Badge badgeContent={this.props.comment.like_count}>
+                            <Stars style={{fontSize:'55px', color: 'black', marginTop: '6px', float: 'left'}}/>
+                          </Badge>
+                          <IconButton style={itemStyle.commentBtn}>
                             <Delete onClick={this.deleteComment}/>
-                        </IconButton> 
+                          </IconButton> 
                         </div>
                     </CardContent>
                 </Card>

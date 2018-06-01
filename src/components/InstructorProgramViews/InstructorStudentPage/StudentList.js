@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StudentItem from './StudentItem';
 import { withStyles } from '@material-ui/core/styles';
+
 //Material UI Table
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,49 +11,21 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import red from '@material-ui/core/colors/red';
 import Paper from '@material-ui/core/Paper';
+import PropTypes from 'prop-types';
 
-const CustomTableCell = withStyles((theme) => ({
-	head: {
-		backgroundColor: theme.palette.common.black,
-		color: theme.palette.common.white,
-    textAlign: 'center',
-    fontSize: 15
-	},
-	body: {
-
-	}
+//Style properties for accounts table
+const CustomTableCell = withStyles(theme => ({
 }))(TableCell);
 
-
-  
-
-const styles = (theme) => ({
-	root: {
-		marginTop: theme.spacing.unit * 3,
-    overflowX: 'auto',
-    
-	},
-	table: {
-		 width: '60%',
-		marginLeft: '20%',
-		marginRight: '20%',
-
-},
-
-	row: {
-		'&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.background.default,
-   
-
-		}
+const styles = {
+  test: {
+	  width: '60%', 
   },
-  
- 
-});
-
-
- 
-
+  table: {
+	  display: 'flex',
+	  justifyContent: 'center',
+  }
+};
 
 const mapStateToProps = (state) => ({
 	state
@@ -72,9 +45,9 @@ class StudentList extends Component {
 		
 
 		return (
-			<div>
+			<div style={styles.table}>
 				{/* TABLE HEADER */}
-				<Table style={styles.table}>
+				<Table style={styles.test}>
 					<TableHead>
 						<TableRow>
 							<CustomTableCell>Student Name</CustomTableCell>
