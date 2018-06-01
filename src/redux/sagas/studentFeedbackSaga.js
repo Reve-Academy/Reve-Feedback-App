@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 function* studentFeedbackSaga(){
-    // yield takeEvery('ADD_COMMENT', addCommentSaga);
+    yield takeEvery('ADD_STUDENT_COMMENT', postCommentSaga);
     yield takeEvery('GET_STUDENT_COMMENT', getStudentCommentSaga);
     // yield takeEvery('STUDENT_FEEDBACK_PAGE', studentFeedbackPage);
 }
@@ -30,7 +30,7 @@ function* postCommentSaga(action){
     try{
         yield call(axios.post, '/api/studentFeedback', action.payload);
         yield put({
-            type:'GET_COMMENTS',
+            type:'GET_STUDENT_COMMENT',
         })
     } catch(error){
         console.log('error on post addComment: ', error);

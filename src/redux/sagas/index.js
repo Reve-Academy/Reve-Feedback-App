@@ -26,7 +26,6 @@ export default function* rootSaga() {
     weekSaga(),
     scheduleSaga(),
     // watchIncrementAsync()
-    studentFeedbackSaga(),
     forgotPasswordSaga()
   ]);
 }

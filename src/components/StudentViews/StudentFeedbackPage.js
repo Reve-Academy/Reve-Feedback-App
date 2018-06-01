@@ -39,14 +39,14 @@ class StudentFeedbackPage extends Component {
 	
 	postComment = () => {
 		this.props.dispatch({
-			type: 'ADD_COMMENT',
+			type: 'ADD_STUDENT_COMMENT',
 			payload: this.state
 		})
-		this.props.dispatch({
-			type: 'GET_STUDENT_EXPENSE',
-			payload: this.state
-		});
-		this.setState
+		// this.props.dispatch({
+		// 	type: 'GET_STUDENT_EXPENSE',
+		// 	payload: this.state
+		// });
+		// this.setState
 	}
 	
 	
