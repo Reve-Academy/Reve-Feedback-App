@@ -12,7 +12,6 @@ import studentFeedbackSaga from './studentFeedbackSaga';
 import forgotPasswordSaga from './forgotPasswordSaga'
 import weekSaga from './weekSaga';
 
-
 export default function* rootSaga() {
   yield all([
     userSaga(),
@@ -25,6 +24,7 @@ export default function* rootSaga() {
     weekSaga(),
     scheduleSaga(),
     // watchIncrementAsync()
-    forgotPasswordSaga()
+    forgotPasswordSaga(),
+    studentFeedbackSaga()
   ]);
 }
