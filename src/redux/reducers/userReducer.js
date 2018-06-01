@@ -4,7 +4,7 @@ import { USER_ACTIONS } from '../actions/userActions';
 const userName = (state = null, action) => {
   switch (action.type) {
     case USER_ACTIONS.SET_USER:
-      return {user: action.user.username, instructor: action.user.instructor} || state;
+      return {user: action.user.username, instructor: action.user.instructor, program: action.user.program_id} || state;
     case USER_ACTIONS.UNSET_USER:
       return null;
     default:
