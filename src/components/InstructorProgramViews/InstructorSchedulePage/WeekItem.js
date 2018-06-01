@@ -46,7 +46,7 @@ class WeekItem extends Component{
     }
 
     //function to dispatch action to save week
-    storeWeekId = (week) => {
+    storeWeekInfo = (week) => {
         this.props.dispatch({
             type: 'THIS_WEEK',
             payload: week.id
@@ -55,11 +55,15 @@ class WeekItem extends Component{
             type: 'WEEK_NUMBER',
             payload: week.number
         })
+        this.props.dispatch({
+            type: 'WEEK_THEME', 
+            payload: week.theme
+        })
     }
 
     render(){
         return(
-                <Button style={itemStyle.weekBtn} onClick={() => this.storeWeekId(this.props.week)}>{this.props.week.number}</Button>
+                <Button style={itemStyle.weekBtn} onClick={() => this.storeWeekInfo(this.props.week)}>{this.props.week.number}</Button>
         )
     }
 }

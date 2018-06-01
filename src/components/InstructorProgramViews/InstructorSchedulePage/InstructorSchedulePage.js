@@ -168,8 +168,9 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_FOCUS_INFO'
     });
+    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer)
     
-    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer) 
+   
   }
 
   componentDidUpdate() {
@@ -187,10 +188,15 @@ class InstructorSchedulePage extends Component {
 
     let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
 
+    let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
+    
+
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
       return (<WeekItem key={week.id} week={week}/>)
     })
+
+
 
     //set redux state equal to variable
     let allFocus = this.props.state.scheduleReducer.focusReducer;
@@ -244,7 +250,7 @@ class InstructorSchedulePage extends Component {
       content = (
         <div>
           <h1 className="ManageTitle">
-            SCHEDULE {this.props.state.scheduleReducer.thisWeekReducer.weekId}
+            SCHEDULE 
           </h1>
           <div style={itemStyle.centerContent}>{weekList}</div>
           <div style={itemStyle.centerContent}>
@@ -254,7 +260,8 @@ class InstructorSchedulePage extends Component {
           </div>
           <div style={itemStyle.centerContent}>
             <h2 className="ManageTitle">
-              {/* {weekTheme} */}
+              <strong>Theme: {weekTheme}</strong>
+              
             </h2>
             <div>
               <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
