@@ -42,29 +42,17 @@ class StudentFeedbackPage extends Component {
 			type: 'ADD_STUDENT_COMMENT',
 			payload: this.state
 		})
-		// this.props.dispatch({
-		// 	type: 'GET_STUDENT_EXPENSE',
-		// 	payload: this.state
-		// });
-		// this.setState
 	}
 	
-	
 	componentDidMount() {
-		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-		this.props.dispatch({ type: 'GET_STUDENT_COMMENT'});
-		// this.props.dispatch({ 
-		// 	type: 'GET_STUDENT_PROGRAM',
-		// 	payload: this.props.user.userName.program
-		// });
+		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER});
 	}
 
 
 	componentDidUpdate() {
 		if (!this.props.user.isLoading && this.props.user.userName === null) {
-			this.props.history.push('home');
-		}
-		this.setState
+			this.props.history.push('/home');
+		} 
 		
 	}
 
