@@ -254,6 +254,7 @@ class InstructorSchedulePage extends Component {
           <div style={itemStyle.centerContent}>
             <h2 className="ManageTitle">
               <strong>Theme of This Week Name</strong>
+              
             </h2>
             <div>
               <EditWeekForm/>

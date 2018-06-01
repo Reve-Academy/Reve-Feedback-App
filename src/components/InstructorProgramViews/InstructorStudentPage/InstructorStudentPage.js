@@ -33,8 +33,8 @@ class InstructorStudentPage extends Component {
       content = (      
          
         <div>
-      <h1>
-        INSTRUCTOR STUDENTS PAGE
+      <h1 className="ManageTitle">
+        STUDENTS
       </h1>
          
 
