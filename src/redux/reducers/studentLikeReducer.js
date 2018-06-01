@@ -11,7 +11,7 @@ const studentLikeReducer = (state = [], action) => {
 
 const getLikeReducer = (state = [], action) => {
 	switch (action.type) {
-		case 'SET_COMMENT_LIKE_REDUCER':
+		case 'FETCH_COMMENT_LIKE_REDUCER':
 			return action.payload;
 		default:
 			return state;

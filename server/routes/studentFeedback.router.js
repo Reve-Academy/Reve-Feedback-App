@@ -48,7 +48,6 @@ router.get('/weeks/', (req, res) => {
     //ROUTE FOR RECORDING LIKE (STAR CLICK)
 router.post('/likes/', (req, res) => {
 	if (req.isAuthenticated()) {
-		console.log('this is req.body,', req.body);
 		const queryText = `INSERT INTO "likes" ("person_id", "comment_id") VALUES ($1, $2);`;
 		pool.query(queryText, [req.user.id, req.body.id])
 			.then((result) => {
@@ -78,7 +77,6 @@ router.get('/likes/', (req, res) => {
 //ROUTE FOR POSTING COMMENTS INTO SERVER
 router.post('/',(req, res)=>{
     if(req.isAuthenticated()){
-        console.log('this is req.body,', req.body);
         let queryText=`INSERT INTO "comments" ("person_id", "comment", "date", "week_id") VALUES ($1, $2, $3, $4);`;
         pool.query(queryText, [req.user.id, req.body.newComment, req.body.date, req.body.week ]).then((result)=>{
             res.sendStatus(200);
@@ -92,10 +90,10 @@ router.post('/',(req, res)=>{
 
 //END ROUTE
 
-
+//ROUTE FOR UNLIKING COMMENT (UNCHECK STAR)
 router.delete('/:id', (req, res) => {
     if(req.isAuthenticated()) {
-        const queryText = `DELETE FROM "likes" WHERE id = $1`; 
+        const queryText = `DELETE FROM "likes" WHERE ("person_id", "comment_id") VALUES ($1, $2);`; 
         pool.query(queryText, [req.params.id])
         .then((result)=> {
             res.sendStatus(200);
@@ -108,5 +106,6 @@ router.delete('/:id', (req, res) => {
         res.sendStatus(403); 
     }
 });
+//END DELETE LIKE COMMENT ROUTE
 
 module.exports = router;

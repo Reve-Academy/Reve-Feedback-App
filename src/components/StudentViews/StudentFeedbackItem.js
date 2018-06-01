@@ -6,10 +6,7 @@ import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import outline_star from '../../styles/images/outline_star.png';
 import star from '../../styles/images/star.png';
-
-const mapStateToProps = (state) => ({
-	state
-});
+import StudentLikeItem from '../StudentViews/StudentLikeItem';
 
 const styles = (theme) => ({
 	paper: {
@@ -34,23 +31,27 @@ const itemStyle = {
 		border: '1px solid #D8441C'
 	}
 };
+const mapStateToProps = (state) => ({
+    
+	comment: state.comment
+});
 
 class StudentFeedbackItem extends Component {
-	constructor() {
-		super();
-	}
+    
+    state = {
+        open: false,
+        commentMethod: { 
+            person_id: this.props.person_id,
+            comment_id: this.props.comment_id
+            // bookmark_id: 
+        }
+    };
 
-    
-    
-  
-
-    
-    
     likeCommentMethod = () => {
 		console.log('Clicked');
 		this.props.dispatch({
-            type: 'SET_COMMENT_LIKE',
-            payload: this.props.comments
+            type: 'RECORD_COMMENT_LIKE',
+            payload: this.state.commentItem
 
         });
 
@@ -64,28 +65,30 @@ class StudentFeedbackItem extends Component {
     }
 
 	render() {
-        // let commentItem =this.props.comment.id
+        
+         let commentItem =this.props.comment_id
         let likeButton = null;
-    //     if (this.props.comment.find(function(val) {
-    //         return(val.comment_id === commentItem);
-    //     })
+        // if (this.props.comment.find(function(val) {
+        //     return(val.comment_id === commentItem);
+    //     // })
     // ){
-    //     likeButton = 
-    //     <img src={outline_star} onClick={this.unlikeCommentMethod} />
-    // }   
-    //     else{
-    //         likeButton =
-    //         <img src={star} onClick={this.likeCommentMethod} />
+        likeButton = 
+        <img src={outline_star} onClick={this.unlikeCommentMethod} />
+     
+        // else{
+        //     likeButton =
+        //     <img src={star} onClick={this.likeCommentMethod} />
 
 
-    //     } 
+        // 
+     
 
 		return (
 			<div>
 				<img
-					src={outline_star}
+                    src={outline_star}
 					onClick={() => {
-						this.likeCommentMethod();
+						this.likeCommentMethod()
 					}}
 				/>
 

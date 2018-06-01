@@ -16,9 +16,27 @@ const mapStateToProps = (state) => ({
 
 const itemStyle = {
 	centerContent: {
+		display: 'flex', 
+		justifyContent: 'center',
+	  },
+	centerContent: {
 		display: 'flex',
 		flexDirection: 'column'
-	}
+	},
+	btn: {
+		borderRadius: '15px',
+		border: '1px solid #D8441C',
+		margin: '10px',
+		maxHeight: '36px',    
+	  },
+	  commentArea: {
+		borderRadius: '15px',
+		border: '1px solid #D8441C',
+		fontSize: '25px',
+		width: '400px',
+		height: '100px',
+		outline: 'none',    
+	  }
 };
 
 class StudentFeedbackPage extends Component {
@@ -62,27 +80,26 @@ class StudentFeedbackPage extends Component {
 	}
 
 	render() {
-		console.log(this.state.comment_id)
 		let content = null;
 
 		let theComments = this.props.state.studentCommentReducer.studentCommentReducer.map((comments, i) => {
 			return <CommentsItem key={i} comments={comments} />;
 		});
 		let weekInfo = this.props.state.studentWeekInfoReducer.studentWeekInfoReducer.map((week) =>{
-			return <WeekItem key={week.id}  week={week} />
+			return <DayItem key={week.id}  week={week} />
 		})
 
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
 				<div>
-					<h1>STUDENT FEEDBACK</h1> <br />
+					<h1 className= "ManageTitle">STUDENT FEEDBACK</h1> <br />
 					{/* Feedback Container */}
 					<textarea
-						style={{ fontSize: '25px' }}
+						style={itemStyle.commentArea}
 						value={this.state.newComment}
 						onChange={this.handleComment}
 					/>
-					<button onClick={this.postComment}>SEND</button>
+					<Button style={itemStyle.btn} onClick={this.postComment}>SEND</Button>
 					<div style={{ display: 'flex', justifyContent: 'center' }}>
 						<div style={itemStyle.centerContent}>
 							{/* {studentComments} */}
