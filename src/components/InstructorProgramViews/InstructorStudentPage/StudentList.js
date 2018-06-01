@@ -55,7 +55,7 @@ class StudentList extends Component {
 							<CustomTableCell>Current Program</CustomTableCell>
 							<CustomTableCell>Team Name</CustomTableCell>
 							<CustomTableCell>Highschool</CustomTableCell>
-							 <CustomTableCell>Total Comments</CustomTableCell>
+							<CustomTableCell>Total Comments</CustomTableCell>
 						</TableRow>
 					</TableHead>
 					{listOfStudents}
