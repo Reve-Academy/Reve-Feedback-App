@@ -6,7 +6,6 @@ import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
 import outline_star from '../../styles/images/outline_star.png';
 import star from '../../styles/images/star.png';
-import StudentLikeItem from '../StudentViews/StudentLikeItem';
 
 const styles = (theme) => ({
 	paper: {
@@ -32,25 +31,28 @@ const itemStyle = {
 	}
 };
 const mapStateToProps = (state) => ({
-    
-	comment: state.comment
+    state,
 });
 
 class StudentFeedbackItem extends Component {
     
     state = {
         open: false,
-        commentMethod: { 
+        commentItem: { 
             person_id: this.props.person_id,
-            comment_id: this.props.comment_id
+            comment_id: this.props.comments.id
             // bookmark_id: 
         }
     };
 
+    componentDidMount(){
+        // this.props.dispatch({ type:  });
+    }
+
     likeCommentMethod = () => {
 		console.log('Clicked');
 		this.props.dispatch({
-            type: 'RECORD_COMMENT_LIKE',
+            type: 'ADD_STUDENT_COMMENT_LIKE',
             payload: this.state.commentItem
 
         });
@@ -60,37 +62,40 @@ class StudentFeedbackItem extends Component {
     unlikeCommentMethod = () => {
         this.props.dispatch({
             type: 'REMOVE_COMMENT_LIKE',
-            payload:this.state.likeItem
+            payload: this.state.commentItem.comment_id,
+            
         })
     }
 
 	render() {
         
-         let commentItem =this.props.comment_id
+        let commentItem =this.props.comment_id;
+        let commentsLikedId = this.props.commentsLiked.comment_id;
+        let itemId = this.props.comments.id;
         let likeButton = null;
-        // if (this.props.comment.find(function(val) {
-        //     return(val.comment_id === commentItem);
-    //     // })
-    // ){
+        // console.log(this.props);
+
+        
+        if (this.props.commentsLiked.find(function(val) {
+            // console.log(val.comment_id);
+            // console.log('each item', itemId);
+            return(val.comment_id === itemId);
+        })
+    ){
         likeButton = 
         <img src={outline_star} onClick={this.unlikeCommentMethod} />
      
-        // else{
-        //     likeButton =
-        //     <img src={star} onClick={this.likeCommentMethod} />
+        }else{
+            likeButton =
+            <img src={star} onClick={this.likeCommentMethod} />
+        }
 
-
-        // 
+        
      
 
 		return (
 			<div>
-				<img
-                    src={outline_star}
-					onClick={() => {
-						this.likeCommentMethod()
-					}}
-				/>
+                {likeButton}
 
 				<Card style={itemStyle.feedbackField}>
 					<CardContent>

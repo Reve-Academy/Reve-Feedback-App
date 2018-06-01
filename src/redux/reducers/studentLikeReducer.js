@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const studentLikeReducer = (state = [], action) => {
 	switch (action.type) {
-		case 'SET_LIKE_COMMENT_REDUCER':
+		case 'SET_COMMENT_LIKE_REDUCER':
 			return action.payload;
 		default:
 			return state;

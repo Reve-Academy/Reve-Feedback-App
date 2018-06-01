@@ -49,7 +49,7 @@ router.get('/weeks/', (req, res) => {
 router.post('/likes/', (req, res) => {
 	if (req.isAuthenticated()) {
 		const queryText = `INSERT INTO "likes" ("person_id", "comment_id") VALUES ($1, $2);`;
-		pool.query(queryText, [req.user.id, req.body.id])
+		pool.query(queryText, [req.user.id, req.body.comment_id])
 			.then((result) => {
 				res.sendStatus(200);
 			})
@@ -63,15 +63,19 @@ router.post('/likes/', (req, res) => {
 //END ROUTE
 
 router.get('/likes/', (req, res) => {
-	const queryText = `SELECT * FROM likes`;
+	if (req.isAuthenticated()) {
+	const queryText = `SELECT * FROM likes WHERE person_id = $1`;
 	pool
-		.query(queryText)
+		.query(queryText, [req.user.id])
 		.then((result) => {
 			res.send(result.rows);
 		})
 		.catch((error) => {
 			console.log('ERROR IN GET likes IN studentFeedback.router: ', error);
 		});
+	} else {
+		res.sendStatus(403);
+	}
 });
 
 //ROUTE FOR POSTING COMMENTS INTO SERVER
@@ -91,14 +95,14 @@ router.post('/',(req, res)=>{
 //END ROUTE
 
 //ROUTE FOR UNLIKING COMMENT (UNCHECK STAR)
-router.delete('/:id', (req, res) => {
+router.delete(`/likes/:id`, (req, res) => {
     if(req.isAuthenticated()) {
-        const queryText = `DELETE FROM "likes" WHERE ("person_id", "comment_id") VALUES ($1, $2);`; 
+        const queryText = `DELETE FROM "likes" WHERE "comment_id" = $1;`; 
         pool.query(queryText, [req.params.id])
         .then((result)=> {
             res.sendStatus(200);
         }).catch((err)=>{
-            console.log('ERROR DELETE /api/collection', err)
+            console.log('ERROR DELETE', err)
             res.sendStatus(500);
         });
     }

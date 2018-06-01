@@ -2,10 +2,10 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* studentFeedbackSaga() {
-	yield takeEvery('ADD_COMMENT', postCommentSaga);
+	yield takeEvery('ADD_STUDENT_COMMENT', postCommentSaga);
 	yield takeEvery('GET_STUDENT_COMMENT', getStudentCommentSaga);
-	yield takeEvery('RECORD_COMMENT_LIKE', postLikeSaga);
-	yield takeEvery('GET_COMMENT_LIKE', getLikeSaga);
+	yield takeEvery('ADD_STUDENT_COMMENT_LIKE', postLikeSaga);
+	yield takeEvery('GET_STUDENT_COMMENT_LIKE', getLikeSaga);
 	yield takeEvery('REMOVE_COMMENT_LIKE', deleteLikeSaga);
 	yield takeEvery('GET_WEEK_INFO', getWeekInfo);
 }
@@ -62,8 +62,7 @@ function* postLikeSaga(action) {
 	try {
 		const studentCommentLike = yield call(axios.post, `/api/studentFeedback/likes/`, action.payload);
 		yield put({
-			type: 'SET_COMMENT_LIKE_REDUCER',
-			payload: studentCommentLike.data
+			type: 'GET_STUDENT_COMMENT_LIKE'
 		});
 	} catch (error) {
 		console.log('error in getting comment: ', error);
@@ -72,14 +71,18 @@ function* postLikeSaga(action) {
 
 function* deleteLikeSaga(action) {
 	try {
-		const unlikeComment = yield call(axios.delete, `/api/studentFeedback/likes/`, action.payload.comment_id);
+		const unlikeComment = yield call(axios.delete, `/api/studentFeedback/likes/${action.payload}`);
 		yield put({
-			type: 'DELETE_LIKE_REDUCER',
-			payload: unlikeComment.data
+			type: 'GET_STUDENT_COMMENT_LIKE',
 		});
+
+		
 	} catch (error) {
-		console.log(' error in getting comment:', error);
+		console.log(' error in deleting like:', error);
 	}
 }
 
 export default studentFeedbackSaga;
+
+
+
