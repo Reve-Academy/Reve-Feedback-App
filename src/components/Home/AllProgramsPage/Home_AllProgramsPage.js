@@ -23,6 +23,9 @@ class Home_AllProgramsPage extends Component {
   
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.props.dispatch({
+      type: 'CLEAR_SCHEDULE'
+    })
   }
 
   //on logout, go to login page
