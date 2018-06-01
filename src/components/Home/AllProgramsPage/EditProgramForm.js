@@ -76,8 +76,8 @@ class EditProgramForm extends Component{
                     {/* Program Name */}
                     <TextField
                         id="programName"
-                        label={this.props.pItem.name}
-                        placeholder="New Program Title"
+                        label="Program Name"
+                        placeholder="Program Title"
                         margin="normal"
                         defaultValue={this.props.pItem.name}
                         onChange={this.handleChangeFor("name")}
