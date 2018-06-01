@@ -169,6 +169,7 @@ class InstructorSchedulePage extends Component {
       type: 'FETCH_FOCUS_INFO'
     });
     console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer)
+    
    
   }
 
@@ -187,10 +188,15 @@ class InstructorSchedulePage extends Component {
 
     let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
 
+    let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
+    
+
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
       return (<WeekItem key={week.id} week={week}/>)
     })
+
+
 
     //set redux state equal to variable
     let allFocus = this.props.state.scheduleReducer.focusReducer;
@@ -249,7 +255,7 @@ class InstructorSchedulePage extends Component {
           </div>
           <div style={itemStyle.centerContent}>
             <h2 className="ManageTitle">
-              <strong>Theme of This Week Name</strong>
+              <strong>{weekTheme}</strong>
               
             </h2>
             <div>
