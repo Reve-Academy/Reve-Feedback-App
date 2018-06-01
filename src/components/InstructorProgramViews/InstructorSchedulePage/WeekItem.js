@@ -18,6 +18,33 @@ const itemStyle = {
 
 class WeekItem extends Component{
 
+    componentDidMount() {
+        // If props exist when the component mounts, check for the week id
+        if(this.props && this.props.state && this.props.state.scheduleReducer) {
+            console.log('CURRENT PROPS', this.props);
+            if(this.props.state.scheduleReducer.thisWeekReducer.weekId == 0){
+                this.props.dispatch({
+                    type: 'THIS_WEEK',
+                    payload: this.props.state.scheduleReducer.weekReducer[0].id
+                })
+            }
+        }
+    }
+
+    // If props are updated after the component mounts, also check for the week id
+    shouldComponentUpdate = (nextProps, nextState) => {
+        if(nextProps.state.scheduleReducer.thisWeekReducer.weekId == 0){
+            console.log('NEXT PROPS', nextProps);
+
+            this.props.dispatch({
+                type: 'THIS_WEEK',
+                payload: nextProps.state.scheduleReducer.weekReducer[0].id
+            })
+            return false;
+        }
+        return true;
+    }
+
     //function to dispatch action to save week
     storeWeekId = (week) => {
         this.props.dispatch({

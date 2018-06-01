@@ -19,7 +19,7 @@ const focusReducer = (state= [], action) => {
     }
 }
 
-const thisWeekReducer = (state = {weekId: 1}, action) => {
+const thisWeekReducer = (state = {weekId: 0}, action) => {
     switch(action.type){
         case 'THIS_WEEK':
             return {weekId: action.payload};

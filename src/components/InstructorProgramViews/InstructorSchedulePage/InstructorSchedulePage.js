@@ -168,8 +168,8 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_FOCUS_INFO'
     });
-    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer)
-   
+    
+    console.log('WEEKINFO', this.props.state.scheduleReducer.weekReducer) 
   }
 
   componentDidUpdate() {
@@ -244,7 +244,7 @@ class InstructorSchedulePage extends Component {
       content = (
         <div>
           <h1 className="ManageTitle">
-            SCHEDULE
+            SCHEDULE {this.props.state.scheduleReducer.thisWeekReducer.weekId}
           </h1>
           <div style={itemStyle.centerContent}>{weekList}</div>
           <div style={itemStyle.centerContent}>

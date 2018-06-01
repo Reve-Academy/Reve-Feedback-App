@@ -21,6 +21,11 @@ function* programWeekSaga(action){
             type: 'SET_WEEKS',
             payload: weekResponse.data
         })
+
+        yield put({
+            type: 'THIS_WEEK',
+            payload: weekResponse.data[0].id
+          })
     } catch (err) {
         console.log('ERROR IN programWeekSaga: ', err);
     }
