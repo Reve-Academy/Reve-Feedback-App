@@ -68,16 +68,13 @@ class EditWeek extends Component {
     constructor(props){
         super(props);
         this.state = {
-        open: false,
-        // Sample state will be used to file and update existing week data
-        //   editProgram: {
-        //       id: this.props.pItem.id,
-        //       name: this.props.pItem.name,
-        //       active_program: this.props.pItem.active_program,
-        //       description: this.props.pItem.description,
-        //       start: this.props.pItem.start,
-        //       finish: this.props.pItem.finish
-        //   }
+            open: false,
+            editWeek: {
+                theme: '',
+                description: '',
+                weekId: this.props.weekNumber,
+                program_id: this.props.program_id
+            }
         }
     }
 
@@ -92,12 +89,21 @@ class EditWeek extends Component {
     // this handles editing property of each input field. note onBlur is when this is fired
     handleChangeFor = propertyName => (event) => {
     this.setState({
-        editProgram: {
-            ...this.state.editProgram,
+        editWeek: {
+            ...this.state.editWeek,
             [propertyName]: event.target.value
         }
     })   
     }
+
+    // FUNCTION FOR DISPATCHING ACTION TO PUT WEEK
+    putWeek = () => {
+        this.props.dispatch({
+            type: 'UPDATE_WEEK_SAGA',
+            payload: this.state.editWeek
+        })
+        this.handleClose()        
+    };
 
 // Sample dispatch will be used to update week
 //  FUNCTION FOR DISPATCHING ACTION TO PUT PROGRAM
@@ -138,7 +144,7 @@ class EditWeek extends Component {
                         placeholder="Week Title"
                         margin="normal"
                         // defaultValue={this.props.pItem.name}
-                        onChange={this.handleChangeFor("name")}
+                        onChange={this.handleChangeFor("theme")}
                     />
                     <br />
                     {/* Description of Program */}
@@ -150,6 +156,11 @@ class EditWeek extends Component {
                         // defaultValue={this.props.pItem.description}
                         onChange={this.handleChangeFor("description")}
                     />
+                    <Button
+                        onClick={this.putWeek}
+                    >
+                        Save
+                    </Button>
                 </div>
             </Modal>
             {/* End Modal Edit */}
