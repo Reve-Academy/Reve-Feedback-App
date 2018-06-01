@@ -14,25 +14,15 @@ import Paper from '@material-ui/core/Paper';
 
 //Style properties for accounts table
 const CustomTableCell = withStyles(theme => ({
-    // head: {
-    //   backgroundColor: '#D8441C',
-    //   color: theme.palette.common.white,
-    // },
-   
   }))(TableCell);
 
   const styles = {
-      
     test: {
-       
-        width: '60%',
-      
-          
+        width: '60%', 
     },
     table: {
         display: 'flex',
         justifyContent: 'center',
-
     }
 };
 
