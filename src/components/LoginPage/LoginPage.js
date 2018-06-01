@@ -127,7 +127,7 @@ class LoginPage extends Component {
             <li><span>Image 05</span></li>
             <li><span>Image 06</span></li>
         </ul>
-      <div>
+      <div class="login-content">
         <LoginNav />
         <div>
           {this.renderAlert()}
