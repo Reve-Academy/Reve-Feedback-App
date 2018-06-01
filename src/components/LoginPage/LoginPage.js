@@ -70,7 +70,7 @@ class LoginPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       this.props.history.push('/user');
     } else if (this.props.user.userName && this.props.user.userName.instructor === false) {
-      this.props.history.push('/StudentFeedback')
+      this.props.history.push(`/StudentFeedback/${this.props.user.userName.program}`)
     }
   }
 
