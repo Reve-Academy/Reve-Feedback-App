@@ -39,20 +39,24 @@ class StudentFeedbackPage extends Component {
 	
 	postComment = () => {
 		this.props.dispatch({
-			type: 'ADD_COMMENT',
+			type: 'ADD_STUDENT_COMMENT',
 			payload: this.state
 		})
-		this.props.dispatch({
-			type: 'GET_STUDENT_EXPENSE',
-			payload: this.state
-		});
-		this.setState
+		// this.props.dispatch({
+		// 	type: 'GET_STUDENT_EXPENSE',
+		// 	payload: this.state
+		// });
+		// this.setState
 	}
 	
 	
 	componentDidMount() {
 		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT'});
+		// this.props.dispatch({ 
+		// 	type: 'GET_STUDENT_PROGRAM',
+		// 	payload: this.props.user.userName.program
+		// });
 	}
 
 

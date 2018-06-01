@@ -34,6 +34,27 @@ router.get('/focus', (req, res) => {
     }
 });
 
+router.put('/weeks/:id', (req, res) => {
+    console.log(req.body);
+    
+    if (req.isAuthenticated()) {
+        let w = req.body;
+        let id = req.params.id
+        const queryText = `UPDATE weeks SET 
+            theme = $1,
+            description = $2
+            WHERE id = $3;`;
+        pool.query(queryText, [w.theme, w.description, id])
+            .then(result => { res.send(result.rows); })
+            .catch(err => {
+                console.log('Error completing PUT instructorSchedule in router', err);
+                res.sendStatus(500);
+            });
+    } else {
+        res.sendStatus(403);
+    }
+});
+
 /**
  * POST route template
  */
