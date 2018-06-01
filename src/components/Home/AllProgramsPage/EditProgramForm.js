@@ -38,7 +38,7 @@ class EditProgramForm extends Component{
         }
       }
 
-    // this handles editing property of each input field. note onBlur is when this is fired
+    // this handles editing property of each input field.
     handleChangeFor = propertyName => (event) => {
         this.setState({
             editProgram: {

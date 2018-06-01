@@ -45,11 +45,21 @@ const weekNumberReducer = (state = {weekNumber: 1}, action) => {
             return state;
     }
 }
+const weekThemeReducer = (state = {weekTheme: 'Brainstorming'}, action) => {
+    switch(action.type){
+        case 'WEEK_THEME':
+            return {weekTheme: action.payload};
+        default:
+            return state;
+    }
+}
+
 
 export default combineReducers({
     weekReducer,
     focusReducer,
     thisWeekReducer,
     viewFocusInfo,
-    weekNumberReducer
+    weekNumberReducer, 
+    weekThemeReducer
 })
