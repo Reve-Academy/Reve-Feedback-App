@@ -51,12 +51,12 @@ class StudentFeedbackPage extends Component {
 	
 	
 	componentDidMount() {
-		this.props.dispatch({ type: 'STUDENT_FEEDBACK_PAGE' });
+		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT'});
-		this.props.dispatch({ 
-			type: 'GET_STUDENT_PROGRAM',
-			payload: this.props.user.userName.program
-		});
+		// this.props.dispatch({ 
+		// 	type: 'GET_STUDENT_PROGRAM',
+		// 	payload: this.props.user.userName.program
+		// });
 	}
 
 
