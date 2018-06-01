@@ -57,6 +57,7 @@ class StudentFeedbackPage extends Component {
 	postComment = () => {
 		this.props.dispatch({
 			type: 'ADD_STUDENT_COMMENT',
+
 			payload: this.state.newComment,
 			date: moment().format('MM DD YYY')
 		});
@@ -76,8 +77,8 @@ class StudentFeedbackPage extends Component {
 
 	componentDidUpdate() {
 		if (!this.props.user.isLoading && this.props.user.userName === null) {
-			this.props.history.push('home');
-		}
+			this.props.history.push('/home');
+		} 
 	}
 
 	render() {

@@ -1,4 +1,4 @@
-import { call, put, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 
@@ -9,7 +9,7 @@ function* studentFeedbackSaga() {
 	yield takeEvery('GET_STUDENT_COMMENT_LIKE', getLikeSaga);
 	yield takeEvery('REMOVE_COMMENT_LIKE', deleteLikeSaga);
 	yield takeEvery('GET_WEEK_INFO', getWeekInfo);
-}
+
 
 function* getStudentCommentSaga() {
 	try {
@@ -22,6 +22,7 @@ function* getStudentCommentSaga() {
 		console.log('error in getting comment: ', error);
 	}
 }
+
 
 function* getWeekInfo() {
 	try {
