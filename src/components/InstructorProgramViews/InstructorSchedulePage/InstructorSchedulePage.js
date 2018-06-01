@@ -243,10 +243,6 @@ class InstructorSchedulePage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-        
-        
-
-
           <h1 className="ManageTitle">
             SCHEDULE
           </h1>
