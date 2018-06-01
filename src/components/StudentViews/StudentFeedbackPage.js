@@ -71,8 +71,6 @@ class StudentFeedbackPage extends Component {
 		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT' });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT_LIKE' });
-			payload: this.state
-		})
 	}
 
 	componentDidUpdate() {
