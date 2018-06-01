@@ -34,12 +34,17 @@ const mapStateToProps = (state) => ({
 class StudentList extends Component {
 	componentDidMount() {
 		// use component did mount to dispatch an action to request the studentList from the API
-		this.props.dispatch({ type: 'GET_STUDENT_LIST_SAGA' });
+		this.props.dispatch({ 
+			type: 'GET_STUDENT_LIST_SAGA'
+		});
 	}
 
 	render() {
+		console.log('THIS IS PARAMS', this.props.params)
 		// MAPPING OVER GET RESPONSE FROM GET STUDENT LIST REQUEST
-		let listOfStudents = this.props.state.studentListReducer.studentListReducer.map((student) => {
+		let filteredStudentReducer = this.props.state.studentListReducer.studentListReducer
+		let studentList = filteredStudentReducer.filter(student => student.program_id == this.props.params)
+		let listOfStudents = studentList.map((student) => {
 				return <StudentItem key={student.id} student={student} />;
 			});
 		

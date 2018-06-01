@@ -40,7 +40,7 @@ class InstructorStudentPage extends Component {
 
 
           {/* Students Container */}
-          <StudentList />
+          <StudentList params={this.props.match.params.program_id} />
 
           {/* End Students Container */}
         
