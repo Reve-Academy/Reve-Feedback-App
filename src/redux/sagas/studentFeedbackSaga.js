@@ -9,7 +9,7 @@ function* studentFeedbackSaga() {
 	yield takeEvery('GET_STUDENT_COMMENT_LIKE', getLikeSaga);
 	yield takeEvery('REMOVE_COMMENT_LIKE', deleteLikeSaga);
 	yield takeEvery('GET_WEEK_INFO', getWeekInfo);
-
+}
 
 function* getStudentCommentSaga() {
 	try {
