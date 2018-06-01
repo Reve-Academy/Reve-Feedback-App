@@ -14,6 +14,8 @@ const focusReducer = (state= [], action) => {
     switch(action.type){
         case 'SET_FOCUS_INFO':
             return action.payload;
+        case 'CLEAR_SCHEDULE':
+            return [];
         default:
             return state;
     }
