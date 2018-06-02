@@ -9,6 +9,7 @@ import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
 import DayItem from './DayItem';
 import { Button } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid';
 let moment = require('moment');
 
 
@@ -26,9 +27,11 @@ const itemStyle = ({
     display: 'flex', 
     justifyContent: 'center',
   },
-  centerComments: {
+  columnComments: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+  
+   
   },
   btn: {
     borderRadius: '15px',
@@ -131,11 +134,13 @@ class InstructorFeedbackPage extends Component {
             <Button style={itemStyle.btn} onClick={this.addComment}>SEND</Button>
           </div>
           {/* End Feedback Container */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={itemStyle.centerComments}>
+         
+          
+            <Grid container  >
               {studentComment}
-            </div>
-          </div>
+            </Grid>
+         
+        
         </div>
       );
     }
