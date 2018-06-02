@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 import { Star, Stars } from '@material-ui/icons';
 
 const styles = (theme) => ({
@@ -39,7 +40,12 @@ const itemStyle = {
 		color: 'D4D4D4', 
 		margin: '4px', 
 		padding: '3px'
-	}
+	},
+	commentCenter: {
+        display: 'flex', 
+        justifyContent: 'center'
+    }
+
 };
 const mapStateToProps = (state) => ({
     state,
@@ -104,6 +110,9 @@ class StudentFeedbackItem extends Component {
      
 
 		return (
+			<Grid style={itemStyle.commentCenter} item xs={12}>
+			<Grid  item xs={6} lg={6} >
+
 			<div>
                 {likeButton}
 
@@ -117,6 +126,9 @@ class StudentFeedbackItem extends Component {
 					</CardContent>
 				</Card>
 			</div>
+			</Grid>
+            </Grid>            
+
 		);
 	}
 }
