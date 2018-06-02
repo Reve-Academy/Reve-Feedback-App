@@ -134,18 +134,8 @@ class StudentSchedulePage extends Component {
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
 				<div>
-						<ul>
 
-							<li>
-								<Link to="/StudentFeedback">Feedback</Link>
-							</li>
-							<li>
-								<Link to="/StudentSchedule">Schedule</Link>
-							</li>
-						</ul>
-					
-
-					<h1>STUDENT SCHEDULE</h1>
+					<h1 className="ManageTitle">STUDENT SCHEDULE</h1>
 					{/* MODAL FOR INFO */}
 					<div>
             		<Modal
