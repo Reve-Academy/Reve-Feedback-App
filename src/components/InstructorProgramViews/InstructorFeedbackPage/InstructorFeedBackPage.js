@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
+
 //css import
 import './instructorFeedback.css'
 
@@ -12,10 +13,6 @@ import { Button } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 let moment = require('moment');
 
-
-
-
-
 //recieve from redux
 const mapStateToProps = state => ({
   user: state.user,
@@ -24,20 +21,18 @@ const mapStateToProps = state => ({
 
 const itemStyle = ({
   centerContent: {
-    display: 'flex', 
+    display: 'flex',
     justifyContent: 'center',
   },
   columnComments: {
     display: 'flex',
     flexDirection: 'column',
-  
-   
   },
   btn: {
     borderRadius: '15px',
     border: '1px solid #D8441C',
     margin: '10px',
-    maxHeight: '36px',    
+    maxHeight: '36px',
   },
   commentArea: {
     borderRadius: '15px',
@@ -45,15 +40,15 @@ const itemStyle = ({
     fontSize: '25px',
     width: '400px',
     height: '100px',
-    outline: 'none',    
+    outline: 'none',
   }
 })
 
 class InstructorFeedbackPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state={
-      newComment:''
+    this.state = {
+      newComment: ''
     }
   }
 
@@ -64,6 +59,9 @@ class InstructorFeedbackPage extends Component {
   }
 
   addComment = () => {
+    if(this.state.newComment == ''){
+      return;
+    } else{
     console.log('this is state', this.state);
     this.props.dispatch({
       type: 'ADD_COMMENT',
@@ -74,13 +72,14 @@ class InstructorFeedbackPage extends Component {
       }
     })
     this.setState({
-      newComment:'',
+      newComment: '',
     })
+  }
   }
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
-    this.props.dispatch({ 
+    this.props.dispatch({
       type: 'GET_FIRST_COMMENT',
       payload: this.props.match.params.program_id
     });
@@ -99,15 +98,12 @@ class InstructorFeedbackPage extends Component {
 
   render() {
     let content = null;
-
     let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
-
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<DayItem  key={week.id} week={week}/>)
+      return (<DayItem key={week.id} week={week} />)
     })
-    
-    let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment)=>{
-      return(<CommentItem key={comment.id} comment={comment}/>)
+    let studentComment = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comment) => {
+      return (<CommentItem key={comment.id} comment={comment} />)
     })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
@@ -121,11 +117,10 @@ class InstructorFeedbackPage extends Component {
             <h2 className="ManageTitle">
               <strong className="themeTitle">{weekTheme}</strong>
             </h2>
-          </div> 
+          </div>
           <h2 className="ManageTitle">
-              WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
+            WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
           </h2>
-          
           {/* Feedback Container */}
           <div style={itemStyle.centerContent}>
             <textarea style={itemStyle.commentArea} value={this.state.newComment} onChange={this.handleComment}></textarea>
@@ -134,20 +129,16 @@ class InstructorFeedbackPage extends Component {
             <Button style={itemStyle.btn} onClick={this.addComment}>SEND</Button>
           </div>
           {/* End Feedback Container */}
-         
-          
-            <Grid container  >
-              {studentComment}
-            </Grid>
-         
-        
+          <Grid container  >
+            {studentComment}
+          </Grid>
         </div>
       );
     }
 
     return (
       <div>
-       <InstructorNav program_id={this.props.match.params.program_id} program_name={this.props.match.params.program_name} />
+        <InstructorNav program_id={this.props.match.params.program_id} program_name={this.props.match.params.program_name} />
         {content}
       </div>
     );

@@ -79,7 +79,6 @@ class StudentComment extends Component {
                         <Card style={itemStyle.feedbackField}>
                             <CardContent><br />
                                 <p className="commentFont">{this.props.comment.comment}</p>
-
                                 <div style={{ float: 'right'}}>
                                     <IconButton style={itemStyle.commentBtn}>
                                         <Delete onClick={this.deleteComment} />
