@@ -36,8 +36,10 @@ class StudentNav extends Component {
 
 
   render(){
-		let studentSchedulePath = `/StudentSchedule/${this.props.program_id}/${this.props.program_name}`;
-		let studentFeedbackPath = `/StudentFeedback/${this.props.program_id}/${this.props.program_name}`;
+		let studentSchedulePath = `/StudentSchedule/${this.props.program_id}`;
+    let studentFeedbackPath = `/StudentFeedback/${this.props.program_id}`;
+    console.log(this.props);
+    
 
 		const { anchorEl } = this.state;    
 
@@ -67,12 +69,12 @@ class StudentNav extends Component {
 
       <ul>
         <li className="navItem">
-          <Link to="/StudentFeedback">
+          <Link to={studentFeedbackPath}>
             Feedback
           </Link>
         </li>
         <li className="navItem">
-          <Link to="/StudentSchedule">
+          <Link to={studentSchedulePath}>
             Schedule
           </Link>
         </li>
