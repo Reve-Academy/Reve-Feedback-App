@@ -18,8 +18,15 @@ class StudentNav extends Component {
 
   state = {
 		anchorEl: null,
-	};
-	
+  };
+  
+  componentDidMount() {
+    this.props.dispatch({ 
+      type: 'GET_PROGRAM_INFO',
+      payload: this.props.program_id
+    });
+  }
+
 	handleClick = event => {
 		this.setState({ anchorEl: event.currentTarget });
 	};
@@ -38,8 +45,6 @@ class StudentNav extends Component {
   render(){
 		let studentSchedulePath = `/StudentSchedule/${this.props.program_id}`;
     let studentFeedbackPath = `/StudentFeedback/${this.props.program_id}`;
-    console.log(this.props);
-    
 
 		const { anchorEl } = this.state;    
 
@@ -78,9 +83,9 @@ class StudentNav extends Component {
             Schedule
           </Link>
         </li>
-        <li className="navItem">
-          <Link to="/program">
-            Program Name
+        <li>
+          <Link className="programName" to={studentFeedbackPath}>
+            {this.props.state.studentProgramReducer.studentProgramReducer.name}
           </Link>
         </li>
       </ul>
