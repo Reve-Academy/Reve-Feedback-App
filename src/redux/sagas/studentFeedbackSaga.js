@@ -8,7 +8,8 @@ function* studentFeedbackSaga() {
 	yield takeEvery('ADD_STUDENT_COMMENT_LIKE', postLikeSaga);
 	yield takeEvery('GET_STUDENT_COMMENT_LIKE', getLikeSaga);
 	yield takeEvery('REMOVE_COMMENT_LIKE', deleteLikeSaga);
-	yield takeEvery('GET_WEEK_INFO', getWeekInfo);
+    yield takeEvery('GET_WEEK_INFO', getWeekInfo);
+    yield takeEvery('GET_PROGRAM_INFO', getProgramInfo);
 }
 
 function* getStudentCommentSaga() {
@@ -36,9 +37,22 @@ function* getWeekInfo() {
 	}
 }
 
+function* getProgramInfo(action) {
+	try {
+        const programResponse = yield call(axios.get, `/api/studentFeedback/program/${action.payload}`);
+        console.log('made it to get program response');
+        
+		yield put({
+			type: 'SET_PROGRAM_INFO',
+			payload: programResponse.data
+		});
+	} catch (error) {
+		console.log('error in getting comment: ', error);
+	}
+}
+
 function* postCommentSaga(action) {
 	try {
-		console.log('post comment payload: ', action.payload);
 		yield call(axios.post, '/api/studentFeedback', action.payload);
 		yield put({
 			type: 'SET_STUDENT_COMMENT_REDUCER'
