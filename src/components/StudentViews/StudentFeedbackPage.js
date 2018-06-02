@@ -6,7 +6,10 @@ import Button from '@material-ui/core/Button';
 import CommentsItem from './StudentFeedbackItem';
 import WeekItem from './StudentFeedbackItem';
 import DayItem from './DayItem';
+//css import
+import './studentFeedback.css'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
+import Grid from '@material-ui/core/Grid';
 import studentWeekInfoReducer from '../../redux/reducers/studentWeekInfoReducer';
 let moment = require('moment');
 
@@ -15,30 +18,31 @@ const mapStateToProps = (state) => ({
 	state
 });
 
-const itemStyle = {
+
+const itemStyle = ({
 	centerContent: {
-		display: 'flex',
-		justifyContent: 'center'
+	  display: 'flex',
+	  justifyContent: 'center',
 	},
-	centerContent: {
-		display: 'flex',
-		flexDirection: 'column'
+	columnComments: {
+	  display: 'flex',
+	  flexDirection: 'column',
 	},
 	btn: {
-		borderRadius: '15px',
-		border: '1px solid #D8441C',
-		margin: '10px',
-		maxHeight: '36px'
+	  borderRadius: '15px',
+	  border: '1px solid #D8441C',
+	  margin: '10px',
+	  maxHeight: '36px',
 	},
 	commentArea: {
-		borderRadius: '15px',
-		border: '1px solid #D8441C',
-		fontSize: '25px',
-		width: '400px',
-		height: '100px',
-		outline: 'none'
+	  borderRadius: '15px',
+	  border: '1px solid #D8441C',
+	  fontSize: '25px',
+	  width: '400px',
+	  height: '100px',
+	  outline: 'none',
 	}
-};
+  })
 
 class StudentFeedbackPage extends Component {
 	constructor(props) {
@@ -53,36 +57,55 @@ class StudentFeedbackPage extends Component {
 			newComment: event.target.value
 		});
 	};
-//ADD COMMENT TO SERVER
+	//ADD COMMENT TO SERVER
 	postComment = () => {
+		if(this.state.newComment == ''){
+			return;
+		  } else{
 		this.props.dispatch({
 			type: 'ADD_STUDENT_COMMENT',
-
-			payload: this.state.newComment,
-			date: moment().format('MM DD YYY')
+			payload: {
+				newComment: this.state.newComment,
+				date: moment().format("MM DD YYYY"),
+				week: this.props.state.instructorFeedBackReducer.weekIdReducer
+			  }
 		});
-
 		this.setState({
 			newComment: ''
 		});
+	}
 	};
-//GET LIKE AND COMMENT INFO FROM SERVER TO DOM
+
+
+	//GET LIKE AND COMMENT INFO FROM SERVER TO DOM
 	componentDidMount() {
 		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT' });
 		this.props.dispatch({ type: 'GET_STUDENT_COMMENT_LIKE' });
+		this.props.dispatch({
+			type: 'FETCH_PROGRAM_WEEKS',
+			payload: this.props.match.params
+		  })
+		  this.props.dispatch({
+			type: 'GET_FIRST_COMMENT',
+			payload: this.props.match.params.program_id
+		  });
 	}
 
 	componentDidUpdate() {
 		if (!this.props.user.isLoading && this.props.user.userName === null) {
 			this.props.history.push('/home');
-		} 
+		}
 	}
 
 	render() {
 		let content = null;
+		let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
+		let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
+			return (<DayItem key={week.id} week={week} />)
+		})
 
-		let theComments = this.props.state.studentCommentReducer.studentCommentReducer.map((comments, i) => {
+		let theComments = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comments, i) => {
 			return (
 				<CommentsItem
 					key={i}
@@ -99,6 +122,18 @@ class StudentFeedbackPage extends Component {
 			content = (
 				<div>
 					<h1 className="ManageTitle">STUDENT FEEDBACK</h1> <br />
+
+					<div style={itemStyle.centerContent}>{weekList}</div>
+					<div style={itemStyle.centerContent}>
+						<h2 className="ManageTitle">
+							<strong className="themeTitle">{weekTheme}</strong>
+						</h2>
+					</div>
+					<h2 className="ManageTitle">
+						WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
+					</h2>
+
+
 					<div style={itemStyle.centerContent}>
 						{/* {TEXT AREA} */}
 						<textarea
@@ -116,8 +151,9 @@ class StudentFeedbackPage extends Component {
 					<div style={{ display: 'flex', justifyContent: 'center' }}>
 						<div style={itemStyle.centerContent}>
 							{/* {studentComments} */}
-
+							<Grid container  >
 							{theComments}
+							</Grid>
 						</div>
 
 					</div>
