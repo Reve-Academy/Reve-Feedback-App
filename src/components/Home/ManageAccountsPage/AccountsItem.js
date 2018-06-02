@@ -39,16 +39,18 @@ const CustomTableCell = withStyles(theme => ({
     row: {
       '&:nth-of-type(odd)': {
         backgroundColor: theme.palette.background.default,
-      },
-      btn: {
-        borderRadius: '15px',
-        border: '1px solid #D8441C',
-        margin: '10px',
-        maxHeight: '36px',    
-      },
-    },
+      }
+    }
   });
-  
+
+  const itemStyle = ({
+    btn: {
+        borderRadius: '15px',
+        border: '1px solid #D4D4D4',
+        maxHeight: '36px',
+    }
+  })
+    
  
 
 
@@ -125,7 +127,7 @@ class AccountsItem extends Component {
                      <CustomTableCell>{this.props.aItem.name}</CustomTableCell>
                      <CustomTableCell>{this.props.aItem.high_school}</CustomTableCell>
                      <CustomTableCell>{this.props.aItem.team}</CustomTableCell>
-                     <CustomTableCell onClick={() => this.handleDelete()}><Button style={styles.btn} variant="outlined" color="primary" >Delete</Button></CustomTableCell>
+                     <CustomTableCell onClick={() => this.handleDelete()}><Button style={itemStyle.btn} variant="outlined" color="primary" >Delete</Button></CustomTableCell>
                 </TableRow>
                 </TableBody>
         )
