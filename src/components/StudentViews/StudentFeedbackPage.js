@@ -130,7 +130,6 @@ class StudentFeedbackPage extends Component {
 			<div>
 				<StudentNav
 					program_id={this.props.match.params.program_id}
-					program_name={this.props.match.params.program_name}
 				/>
 				{content}
 			</div>

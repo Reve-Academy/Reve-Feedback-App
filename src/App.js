@@ -66,11 +66,11 @@ const App = () => (
           component={InstructorStudentPage}
         />
         <Route
-          path="/StudentFeedback"
+          path="/StudentFeedback/:program_id"
           component={StudentFeedbackPage}
         />
         <Route
-          path="/StudentSchedule"
+          path="/StudentSchedule/:program_id"
           component={StudentSchedulePage}
         />
         <Route
