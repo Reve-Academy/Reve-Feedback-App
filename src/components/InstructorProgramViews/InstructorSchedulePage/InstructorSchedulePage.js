@@ -58,7 +58,9 @@ const itemStyle = ({
     right: "2px",
     top: 0,
     cursor: "pointer"
-  }
+  },
+  
+  
 })
 
 //Style properties for add new user modal
@@ -257,17 +259,19 @@ class InstructorSchedulePage extends Component {
               WEEK {weekNumber}
             </h2>
           </div>
-          <div style={itemStyle.centerContent}>
+         
         
             <div>
             <h2 className="ManageTitle"><strong className="themeTitle">{weekTheme}</strong></h2>
             </div>
-         
-            <div>
+
+        
+        
+           
              
               <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
-            </div>
-          </div>
+          
+         
 
           {/* Modals */}
           <div>
