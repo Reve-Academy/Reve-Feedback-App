@@ -16,7 +16,7 @@ class StudentSchedulePage extends Component {
 
 	componentDidUpdate() {
 		if (!this.props.user.isLoading && this.props.user.userName === null) {
-			this.props.history.push('home');
+			this.props.history.push('/home');
 		}
 	}
 
@@ -48,7 +48,7 @@ class StudentSchedulePage extends Component {
 
 		return (
 			<div>
-				<StudentNav />
+				<StudentNav program_id={this.props.match.params.program_id}/>
 				{content}
 			</div>
 		);
