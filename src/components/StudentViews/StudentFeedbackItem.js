@@ -40,7 +40,12 @@ const itemStyle = {
 		color: 'D4D4D4', 
 		margin: '4px', 
 		padding: '3px'
-	}
+	},
+	commentCenter: {
+        display: 'flex', 
+        justifyContent: 'center'
+    }
+
 };
 const mapStateToProps = (state) => ({
     state,
