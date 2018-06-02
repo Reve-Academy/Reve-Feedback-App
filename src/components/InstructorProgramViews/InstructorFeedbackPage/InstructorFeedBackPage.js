@@ -2,14 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
+//css import
+import './instructorFeedback.css'
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
 import CommentItem from './StudentCommentItem';
 import DayItem from './DayItem';
 import { Button } from '@material-ui/core'
+import Grid from '@material-ui/core/Grid';
 let moment = require('moment');
 
 
+
+
+
+//recieve from redux
 const mapStateToProps = state => ({
   user: state.user,
   state,
@@ -20,9 +27,11 @@ const itemStyle = ({
     display: 'flex', 
     justifyContent: 'center',
   },
-  centerComments: {
+  columnComments: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+  
+   
   },
   btn: {
     borderRadius: '15px',
@@ -95,6 +104,9 @@ class InstructorFeedbackPage extends Component {
 
   render() {
     let content = null;
+
+    let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
+
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
       return (<DayItem  key={week.id} week={week}/>)
     })
@@ -110,14 +122,15 @@ class InstructorFeedbackPage extends Component {
             FEEDBACK
           </h1>
           <div style={itemStyle.centerContent}>{weekList}</div>
+          <div style={itemStyle.centerContent}>
+            <h2 className="ManageTitle">
+              <strong className="themeTitle">{weekTheme}</strong>
+            </h2>
+          </div> 
           <h2 className="ManageTitle">
               WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
           </h2>
-          <div style={itemStyle.centerContent}>
-            <h2 className="ManageTitle">
-              <strong>Theme of This Week Name</strong>
-            </h2>
-          </div>  
+          
           {/* Feedback Container */}
           <div style={itemStyle.centerContent}>
             <textarea style={itemStyle.commentArea} value={this.state.newComment} onChange={this.handleComment}></textarea>
@@ -126,11 +139,13 @@ class InstructorFeedbackPage extends Component {
             <Button style={itemStyle.btn} onClick={this.addComment}>SEND</Button>
           </div>
           {/* End Feedback Container */}
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={itemStyle.centerComments}>
+         
+          
+            <Grid container  >
               {studentComment}
-            </div>
-          </div>
+            </Grid>
+         
+        
         </div>
       );
     }

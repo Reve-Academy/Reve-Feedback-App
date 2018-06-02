@@ -11,9 +11,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
 	const queryText = `SELECT comment, id, week_id, person_id FROM comments
         ORDER BY week_id DESC`;
-
-	pool
-		.query(queryText)
+	pool.query(queryText)
 		.then((result) => {
 			res.send(result.rows);
 		})
@@ -27,8 +25,7 @@ router.get('/', (req, res) => {
 //ROUTE FOR GETTING PROGRAM INFORMATION
 router.get('/weeks/', (req, res) => {
 	const queryText = `SELECT * FROM weeks`;
-	pool
-		.query(queryText)
+	pool.query(queryText)
 		.then((result) => {
 			res.send(result.rows);
 		})
@@ -65,8 +62,22 @@ router.post('/likes/', (req, res) => {
 router.get('/likes/', (req, res) => {
 	if (req.isAuthenticated()) {
 	const queryText = `SELECT * FROM likes WHERE person_id = $1`;
-	pool
-		.query(queryText, [req.user.id])
+	pool.query(queryText, [req.user.id])
+		.then((result) => {
+			res.send(result.rows);
+		})
+		.catch((error) => {
+			console.log('ERROR IN GET likes IN studentFeedback.router: ', error);
+		});
+	} else {
+		res.sendStatus(403);
+	}
+});
+
+router.get('/program/:id', (req, res) => {
+	if (req.isAuthenticated()) {
+	const queryText = `SELECT * FROM program WHERE id = $1`;
+	pool.query(queryText, [req.params.id])
 		.then((result) => {
 			res.send(result.rows);
 		})
@@ -99,7 +110,7 @@ router.delete(`/likes/:id`, (req, res) => {
     if(req.isAuthenticated()) {
         const queryText = `DELETE FROM "likes" WHERE "comment_id" = $1;`; 
         pool.query(queryText, [req.params.id])
-        .then((result)=> {
+        	.then((result)=> {
             res.sendStatus(200);
         }).catch((err)=>{
             console.log('ERROR DELETE', err)
