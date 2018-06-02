@@ -82,7 +82,7 @@ router.get('/likes/', (req, res) => {
 router.post('/',(req, res)=>{
     if(req.isAuthenticated()){
         let queryText=`INSERT INTO "comments" ("person_id", "comment", "date", "week_id") VALUES ($1, $2, $3, $4);`;
-        pool.query(queryText, [req.user.id, req.body.newComment, req.body.date, req.body.week ]).then((result)=>{
+        pool.query(queryText, [req.user.id, req.body.payload, req.body.date, req.body.week ]).then((result)=>{
             res.sendStatus(200);
         }).catch((err)=>{
             res.sendStatus(500);

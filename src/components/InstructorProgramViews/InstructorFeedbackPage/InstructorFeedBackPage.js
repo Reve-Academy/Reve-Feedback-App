@@ -54,19 +54,24 @@ class InstructorFeedbackPage extends Component {
     })
   }
 
+  
+
   addComment = () => {
-    console.log('this is state', this.state);
-    this.props.dispatch({
-      type: 'ADD_COMMENT',
-      payload: {
-        newComment: this.state.newComment,
-        date: moment().format("MM DD YYYY"),
-        week: this.props.state.instructorFeedBackReducer.weekIdReducer
-      }
-    })
-    this.setState({
-      newComment:'',
-    })
+    if(this.state.newComment == ''){
+      return;
+    } else {
+      this.props.dispatch({
+        type: 'ADD_COMMENT',
+        payload: {
+          newComment: this.state.newComment,
+          date: moment().format("MM DD YYYY"),
+          week: this.props.state.instructorFeedBackReducer.weekIdReducer
+        }
+      })
+      this.setState({
+        newComment:'',
+      })
+    } 
   }
 
   componentDidMount() {
