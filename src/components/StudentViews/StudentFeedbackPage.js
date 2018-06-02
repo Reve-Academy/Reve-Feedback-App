@@ -54,12 +54,15 @@ class StudentFeedbackPage extends Component {
 		});
 	};
 //ADD COMMENT TO SERVER
+
 	postComment = () => {
 		this.props.dispatch({
 			type: 'ADD_STUDENT_COMMENT',
-
-			payload: this.state.newComment,
-			date: moment().format('MM DD YYY')
+			payload: {
+				newComment: this.state.newComment,
+				date: moment().format('MM DD YYY'),
+				week: this.props.state.instructorFeedBackReducer.weekIdReducer
+			} 
 		});
 
 		this.setState({
