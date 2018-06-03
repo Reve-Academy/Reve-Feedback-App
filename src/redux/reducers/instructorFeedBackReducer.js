@@ -12,7 +12,9 @@ const allCommentsReducer = (state = [], action) =>{
 const weekIdReducer = (state = 0, action) =>{
     switch(action.type){
         case 'ID_FOR_THE_WEEK':
-            return action.payload
+            return action.payload;
+        case 'DEFAULT_ID':
+            return action.payload;
         default:
             return state
     }
@@ -21,7 +23,7 @@ const weekIdReducer = (state = 0, action) =>{
 const weekNumberReducer = (state = [1], action) =>{
     switch(action.type){
         case 'WEEK_ID_LOCALSTATE':
-            return action.payload
+            return action.payload;
         default:
             return state
     }

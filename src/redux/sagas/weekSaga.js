@@ -12,7 +12,7 @@ function* putWeekSaga(action) {
         yield call(axios.put, `/api/instructorschedule/weeks/update/${action.payload.weekId}`, action.payload);
 		yield put({
             type: 'FETCH_PROGRAM_WEEKS',
-            payload: action.payload
+            payload: action.payload,
 		});
 	} catch (error) {
 		console.log('get studentList error: ', error);

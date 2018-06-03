@@ -109,7 +109,7 @@ class AccountsItem extends Component {
 
         return (
             <TableBody>
-                <TableRow >
+                <TableRow hover>
                 <CustomTableCell style={itemStyle.dataCenter}>{this.props.aItem.last}</CustomTableCell>
                 <CustomTableCell style={itemStyle.dataCenter}>{this.props.aItem.first}</CustomTableCell>
                      <CustomTableCell style={itemStyle.dataCenter}>{instructor}</CustomTableCell>

@@ -38,6 +38,10 @@ function* programWeekSaga(action){
             type: 'WEEK_DESCRIPTION', 
             payload: weekResponse.data[0].description
         })
+        yield put({
+            type: 'DEFAULT_ID',
+            payload: weekResponse.data[0].id
+        })
     
     } catch (err) {
         console.log('ERROR IN programWeekSaga: ', err);
