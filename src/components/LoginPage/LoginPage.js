@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { triggerLogin, formError, clearError } from '../../redux/actions/loginActions';
 import LoginNav from '../Nav/LoginNav'
@@ -119,7 +119,7 @@ class LoginPage extends Component {
     
     return (
       <body id="page">
-      <ul class="cb-slideshow">
+      <ul className="cb-slideshow">
             <li><span>Image 01</span></li>
             <li><span>Image 02</span></li>
             <li><span>Image 03</span></li>
@@ -127,7 +127,7 @@ class LoginPage extends Component {
             <li><span>Image 05</span></li>
             <li><span>Image 06</span></li>
         </ul>
-      <div class="login-content">
+      <div className="login-content">
         <LoginNav />
         <div>
           {this.renderAlert()}

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import AccountsItem from '../../Home/ManageAccountsPage/AccountsItem';
 
 //Material-UI Table
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
+//import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+//import Paper from '@material-ui/core/Paper';
 
 //Style properties for accounts table
 const CustomTableCell = withStyles(theme => ({
@@ -18,12 +18,18 @@ const CustomTableCell = withStyles(theme => ({
 
   const styles = {
     test: {
-        width: '60%', 
+        width: '85%', 
     },
     table: {
         display: 'flex',
         justifyContent: 'center',
-    }
+    },
+
+  tableHead: {
+	textAlign: 'center',
+	padding: '10px',
+  },
+
 };
 
 
@@ -66,15 +72,15 @@ class AccountsList extends Component {
                 <Table style={styles.test}>
                 <TableHead>
                         <TableRow>
-                        <CustomTableCell>Last Name</CustomTableCell>
-                        <CustomTableCell>First Name</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>Last</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>First</CustomTableCell>
                         
-                        <CustomTableCell>Instructor</CustomTableCell>
-                        <CustomTableCell>Active</CustomTableCell>
-                        <CustomTableCell>Program</CustomTableCell>
-                        <CustomTableCell>High School</CustomTableCell>
-                        <CustomTableCell>Team</CustomTableCell>
-                        <CustomTableCell>Delete</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>Instructor</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>Active</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>Program</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>High School</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>Team</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>Delete</CustomTableCell>
                             </TableRow>
                     </TableHead>
                     {accounts}

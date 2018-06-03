@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 //import material-ui
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import Checkbox from '@material-ui/core/Checkbox';
+//import MenuItem from '@material-ui/core/MenuItem';
+//import InputLabel from '@material-ui/core/InputLabel';
+//import Select from '@material-ui/core/Select';
+//import Checkbox from '@material-ui/core/Checkbox';
 import { Typography } from '@material-ui/core';
 
 const mapStateToProps = state => ({

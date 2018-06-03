@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Modal from '@material-ui/core/Modal';
+//import Modal from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
-import { withStyles } from '@material-ui/core/styles';
-import { Delete, StarBorder, Star } from '@material-ui/icons';
+//import { withStyles } from '@material-ui/core/styles';
+import { Delete, Star } from '@material-ui/icons';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 let moment = require('moment');
@@ -62,7 +62,7 @@ class StudentComment extends Component {
         })
     }
     render() {
-        const { classes } = this.props;
+        //const { classes } = this.props;
         //const { spacing } = this.state;
         return (
             <Grid style={itemStyle.commentCenter} item xs={12}>

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import StudentNav from '../../components/Nav/StudentNav';
 import Button from '@material-ui/core/Button';
 import CommentsItem from './StudentFeedbackItem';
-import WeekItem from './StudentFeedbackItem';
+//import WeekItem from './StudentFeedbackItem';
 import DayItem from './DayItem';
 //css import
 import './studentFeedback.css'
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 import Grid from '@material-ui/core/Grid';
-import studentWeekInfoReducer from '../../redux/reducers/studentWeekInfoReducer';
+//import studentWeekInfoReducer from '../../redux/reducers/studentWeekInfoReducer';
 let moment = require('moment');
 
 const mapStateToProps = (state) => ({
@@ -59,7 +59,7 @@ class StudentFeedbackPage extends Component {
 	};
 	//ADD COMMENT TO SERVER
 	postComment = () => {
-		if(this.state.newComment == ''){
+		if(this.state.newComment === ''){
 			return;
 		  } else{
 		this.props.dispatch({
@@ -114,9 +114,9 @@ class StudentFeedbackPage extends Component {
 				/>
 			);
 		});
-		let weekInfo = this.props.state.studentWeekInfoReducer.studentWeekInfoReducer.map((week) => {
-			return <DayItem key={week.id} week={week} />;
-		});
+		// let weekInfo = this.props.state.studentWeekInfoReducer.studentWeekInfoReducer.map((week) => {
+		// 	return <DayItem key={week.id} week={week} />;
+		// });
 
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
