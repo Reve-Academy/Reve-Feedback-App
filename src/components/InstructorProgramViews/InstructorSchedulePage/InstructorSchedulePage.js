@@ -95,7 +95,7 @@ class InstructorSchedulePage extends Component {
     cols: 5,
     rowHeight: 70,
     maxRows: 5,
-    width: '100%',
+    width: '85%',
     onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
     compactType: null,
@@ -297,6 +297,7 @@ class InstructorSchedulePage extends Component {
           {/* end of modals */}
           {/* Schedule Container */}
           <div style={{backgroundColor: "#D4D4D4", height: '400px'}}>
+            <div style={itemStyle.centerContent}>
             <table id="scheduleTable">
             <thead>
               <tr id="tableHeader">
@@ -308,7 +309,10 @@ class InstructorSchedulePage extends Component {
               </tr>
             </thead>
             </table>
+            </div>
+            <div style={itemStyle.centerContent}>
             <ReactGridLayout
+              style={{width: '85%'}}
               layout={scheduleLayout}
               onDragStop={this.onLayoutChange}
               onResizeStop={this.onLayoutChange}
@@ -316,6 +320,7 @@ class InstructorSchedulePage extends Component {
             >
               {scheduleItem}
             </ReactGridLayout>
+            </div>
           </div>
           {/* End Schedule Container */}
           <div  style={itemStyle.centerContent}>
