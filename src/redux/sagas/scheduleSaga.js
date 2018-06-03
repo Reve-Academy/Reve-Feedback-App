@@ -30,6 +30,11 @@ function* programWeekSaga(action){
         })
 
         yield put({
+            type: 'SET_DEFAULT_WEEK_NUMBER',
+            payload: weekResponse.data[0].number
+        })
+
+        yield put({
             type: 'WEEK_THEME', 
             payload: weekResponse.data[0].theme
         })
