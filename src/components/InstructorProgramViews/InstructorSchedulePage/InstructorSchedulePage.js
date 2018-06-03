@@ -29,21 +29,21 @@ const mapStateToProps = state => ({
 
 const itemStyle = ({
   centerContent: {
-    display: 'flex', 
+    display: 'flex',
     justifyContent: 'center'
   },
   btn: {
     borderRadius: '15px',
     border: '1px solid #D8441C',
     margin: '10px',
-    maxHeight: '36px',    
+    maxHeight: '36px',
   },
   editBtn: {
     borderRadius: '15px',
     border: '1px solid #D4D4D4',
     margin: '15px',
-    maxHeight: '36px',  
-    color: 'black', 
+    maxHeight: '36px',
+    color: 'black',
   },
   weekBtn: {
     border: '1px solid #D4D4D4',
@@ -58,8 +58,8 @@ const itemStyle = ({
     top: 0,
     cursor: "pointer"
   },
-  
-  
+
+
 })
 
 //Style properties for add new user modal
@@ -83,7 +83,7 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     borderRadius: 25,
     border: '2px solid #595959',
-    outline: 'none',    
+    outline: 'none',
   },
 });
 //end styling properties 
@@ -96,7 +96,7 @@ class InstructorSchedulePage extends Component {
     rowHeight: 70,
     maxRows: 6,
     width: '100%',
-    onLayoutChange: function(){},
+    onLayoutChange: function () { },
     // This turns off compaction so you can place items wherever.
     compactType: null,
     preventCollision: true
@@ -114,12 +114,12 @@ class InstructorSchedulePage extends Component {
   }
 
   //function for changing layout
-  onLayoutChange = (newLayout) => {  
+  onLayoutChange = (newLayout) => {
     this.props.onLayoutChange(newLayout);
     this.props.dispatch({
       type: 'UPDATE_SCHEDULE',
       payload: {
-          layout: newLayout
+        layout: newLayout
       }
     })
     console.log('newLayout: ', newLayout);
@@ -150,14 +150,14 @@ class InstructorSchedulePage extends Component {
       payload: focus
     })
   };
-  
+
   //on click of outside modal, close modal
   handleCloseInfo = () => {
     this.setState({ infoOpen: false });
   };
 
   componentDidMount() {
-    
+
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({
       type: 'FETCH_PROGRAM_WEEKS',
@@ -166,8 +166,8 @@ class InstructorSchedulePage extends Component {
     this.props.dispatch({
       type: 'FETCH_FOCUS_INFO'
     });
-    
-   
+
+
   }
 
   componentDidUpdate() {
@@ -178,7 +178,7 @@ class InstructorSchedulePage extends Component {
 
 
   render() {
-    
+
     let content = null;
 
     const { classes } = this.props;
@@ -188,11 +188,11 @@ class InstructorSchedulePage extends Component {
     let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
 
     let weekDescription = this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription
-    
+
 
     //map for displaying weeks buttons
     let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
-      return (<WeekItem key={week.id} week={week}/>)
+      return (<WeekItem key={week.id} week={week} />)
     })
 
 
@@ -208,14 +208,14 @@ class InstructorSchedulePage extends Component {
       return (
         <div key={item.f_id} className="ian">
           <span
-          style={itemStyle.removeStyle}
-          onClick={()=> this.onRemoveFocus({item})}
+            style={itemStyle.removeStyle}
+            onClick={() => this.onRemoveFocus({ item })}
           >
-          x
+            x
           </span>
           <span className="text">{item.name}</span>
-          <br/>
-          <Button color="primary" onClick={() => this.handleInfoModal({item})}>View Info</Button>
+          <br />
+          <Button color="primary" onClick={() => this.handleInfoModal({ item })}>View Info</Button>
         </div>
       );
     })
@@ -233,80 +233,69 @@ class InstructorSchedulePage extends Component {
 
     let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
       return (<div key={info.id}>
-              <h3>Strategy: {info.title}</h3>
-              <p>{info.summary}</p>
-              <h3>Resources</h3>
-              <p>{info.link}</p>
-            </div>)
+        <h3>Strategy: {info.title}</h3>
+        <p>{info.summary}</p>
+        <h3>Resources</h3>
+        <p>{info.link}</p>
+      </div>)
     })
 
     //let themeWeekId = this.props.state.scheduleReducer.thisWeekReducer.weekId;
     //let weekThemeItems = this.props.state.scheduleReducer.weekReducer.filter(function(element) {
-     // return (element.id === themeWeekId);
+    // return (element.id === themeWeekId);
     //});
-    
+
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <h1 className="ManageTitle">
-            SCHEDULE 
-          </h1>
+
+          <p style={{ fontSize: '20px', color: '#D8441C' }} className="ManageTitle">
+            WEEK {weekNumber}
+          </p>
           <div style={itemStyle.centerContent}>{weekList}</div>
           <div style={itemStyle.centerContent}>
-            <h2 className="ManageTitle">
-              WEEK {weekNumber}
-            </h2>
-          </div>
-         
-        
-          <div>
-            <h2 className="ManageTitle"><strong className="themeTitle">{weekTheme}</strong></h2>
-          </div>
-          <div>
-            <p className="ManageTitle">{weekDescription}</p>
-          </div>
 
+          </div>
+          <p className="ManageTitle" style={{ fontSize: '30px' }}><strong className="themeTitle">{weekTheme}</strong></p>
+          <p style={{ padding: '0px', maring: '0px' }} className="ManageTitle">{weekDescription}</p>
           <EditWeekForm program_id={this.props.match.params.program_id} />
-          
-         
-
           {/* Modals */}
           <div>
             <Modal
-            aria-labelledby="Add New Focus"
-            open={this.state.focusOpen}
-            onClose={this.handleCloseFocus}
+              aria-labelledby="Add New Focus"
+              open={this.state.focusOpen}
+              onClose={this.handleCloseFocus}
             >
-            <div style={getModalStyle()} className={classes.paper}>
-              <AddFocusForm />
-            </div>
+              <div style={getModalStyle()} className={classes.paper}>
+                <AddFocusForm />
+              </div>
             </Modal>
           </div>
 
           <div>
             <Modal
-            aria-labelledby="Focus Info"
-            open={this.state.infoOpen}
-            onClose={this.handleCloseInfo}
+              aria-labelledby="Focus Info"
+              open={this.state.infoOpen}
+              onClose={this.handleCloseInfo}
             >
-            <div style={getModalStyle()} className={classes.paper}>
-              {focusInfo}
-            </div>
+              <div style={getModalStyle()} className={classes.paper}>
+                {focusInfo}
+              </div>
             </Modal>
           </div>
           {/* end of modals */}
           {/* Schedule Container */}
-          <div style={{backgroundColor: "#D4D4D4", height: '400px'}}>
+          <div style={{ backgroundColor: "#D4D4D4", height: '400px' }}>
             <table id="scheduleTable">
-            <thead>
-              <tr id="tableHeader">
-                <th style={{width: '20%'}}>Monday</th>
-                <th style={{width: '20%'}}>Tuesday</th>
-                <th style={{width: '20%'}}>Wednesday</th>
-                <th style={{width: '20%'}}>Thursday</th>
-                <th style={{width: '20%'}}>Friday</th>
-              </tr>
-            </thead>
+              <thead>
+                <tr id="tableHeader">
+                  <th style={{ width: '20%' }}>Monday</th>
+                  <th style={{ width: '20%' }}>Tuesday</th>
+                  <th style={{ width: '20%' }}>Wednesday</th>
+                  <th style={{ width: '20%' }}>Thursday</th>
+                  <th style={{ width: '20%' }}>Friday</th>
+                </tr>
+              </thead>
             </table>
             <ReactGridLayout
               layout={scheduleLayout}
@@ -318,7 +307,7 @@ class InstructorSchedulePage extends Component {
             </ReactGridLayout>
           </div>
           {/* End Schedule Container */}
-          <div  style={itemStyle.centerContent}>
+          <div style={itemStyle.centerContent}>
             <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateFocusModal}>Add Focus</Button>
           </div>
         </div>

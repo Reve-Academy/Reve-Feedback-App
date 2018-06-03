@@ -9,7 +9,7 @@ const router = express.Router();
 
  //ROUTE FOR GETTING/LOADING COMMENTS ONTO DOM FROM SERVER
 router.get('/', (req, res) => {
-	const queryText = `SELECT "comments"."comment", "comments"."id", "comments"."week_id", "comments"."person_id", "person"."instructor", "comments"."date", "person"."first", "person"."last" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" ORDER BY week_id DESC;`;
+	const queryText = `SELECT "comments"."comment", "comments"."id", "comments"."week_id", "comments"."person_id", "person"."instructor", "comments"."date", "person"."first", "person"."last" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" ORDER BY "comments"."date" DESC;`;
 	pool.query(queryText)
 		.then((result) => {
 			res.send(result.rows);
