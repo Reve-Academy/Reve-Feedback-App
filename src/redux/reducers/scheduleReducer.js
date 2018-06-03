@@ -47,6 +47,7 @@ const weekNumberReducer = (state = {weekNumber: 1}, action) => {
             return state;
     }
 }
+
 const weekThemeReducer = (state = {weekTheme: 'Brainstorming'}, action) => {
     switch(action.type){
         case 'WEEK_THEME':
@@ -56,6 +57,14 @@ const weekThemeReducer = (state = {weekTheme: 'Brainstorming'}, action) => {
     }
 }
 
+const weekDescriptionReducer = (state = {weekDescription: 'description'}, action) => {
+    switch(action.type){
+        case 'WEEK_DESCRIPTION':
+            return {weekDescription: action.payload};
+        default:
+            return state;
+    }
+}
 
 export default combineReducers({
     weekReducer,
@@ -63,5 +72,6 @@ export default combineReducers({
     thisWeekReducer,
     viewFocusInfo,
     weekNumberReducer, 
-    weekThemeReducer
+    weekThemeReducer,
+    weekDescriptionReducer
 })
