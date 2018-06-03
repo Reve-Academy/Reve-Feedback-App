@@ -30,6 +30,7 @@ const styles = {
   tableHead: {
 	textAlign: 'center',
 	padding: '10px',
+	color: '#D8441C'
   },
 };
 
