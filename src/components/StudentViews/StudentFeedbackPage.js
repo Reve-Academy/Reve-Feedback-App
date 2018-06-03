@@ -85,11 +85,11 @@ class StudentFeedbackPage extends Component {
 		this.props.dispatch({
 			type: 'FETCH_PROGRAM_WEEKS',
 			payload: this.props.match.params
-		  })
-		  this.props.dispatch({
+		})
+		this.props.dispatch({
 			type: 'GET_FIRST_COMMENT',
 			payload: this.props.match.params.program_id
-		  });
+		});
 	}
 
 	componentDidUpdate() {

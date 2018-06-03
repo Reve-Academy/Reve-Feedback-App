@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StudentNav from '../../components/Nav/StudentNav';
+import DayItem from './DayItem';
 
 //library import
 import RGL, { WidthProvider } from 'react-grid-layout';
@@ -116,6 +117,10 @@ class StudentSchedulePage extends Component {
 
 	componentDidMount() {
 		this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+		this.props.dispatch({
+			type: 'FETCH_PROGRAM_WEEKS',
+			payload: this.props.match.params
+		})
 	}
 
 	componentDidUpdate() {
@@ -126,6 +131,12 @@ class StudentSchedulePage extends Component {
 
 	render() {
 		let content = null;
+		let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
+		let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
+			return (<DayItem key={week.id} week={week} />)
+		})
+
+    let weekDescription = this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription		
 
 		const { classes } = this.props;
 
@@ -134,6 +145,16 @@ class StudentSchedulePage extends Component {
 				<div>
 
 					<h1 className="ManageTitle">STUDENT SCHEDULE</h1>
+					<div style={itemStyle.centerContent}>{weekList}</div>
+					<div>
+						<h2 className="ManageTitle">
+							<strong className="themeTitle">{weekTheme}</strong>
+						</h2>
+						<div>
+							<p className="ManageTitle">{weekDescription}</p>
+						</div>
+					</div>
+
 					{/* MODAL FOR INFO */}
 					<div>
 						<Modal
