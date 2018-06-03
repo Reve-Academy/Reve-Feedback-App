@@ -136,16 +136,16 @@ class StudentSchedulePage extends Component {
 					<h1 className="ManageTitle">STUDENT SCHEDULE</h1>
 					{/* MODAL FOR INFO */}
 					<div>
-            		<Modal
-            			aria-labelledby="Focus Info"
-            			open={this.state.infoOpen}
-            			onClose={this.handleCloseInfo}
-            		>
-            			<div style={getModalStyle()} className={classes.paper}>
-              			<p>Hello</p>
-            			</div>
-            		</Modal>
-         			</div>
+						<Modal
+							aria-labelledby="Focus Info"
+							open={this.state.infoOpen}
+							onClose={this.handleCloseInfo}
+						>
+							<div style={getModalStyle()} className={classes.paper}>
+								<p>Hello</p>
+							</div>
+						</Modal>
+					</div>
 
 					<div>
 					<table id="scheduleTable">
