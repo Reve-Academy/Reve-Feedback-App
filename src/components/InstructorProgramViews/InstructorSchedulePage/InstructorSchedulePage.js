@@ -265,7 +265,7 @@ class InstructorSchedulePage extends Component {
             <p className="ManageTitle">{weekDescription}</p>
           </div>
 
-          <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
+          <EditWeekForm program_id={this.props.match.params.program_id} />
           
          
 
