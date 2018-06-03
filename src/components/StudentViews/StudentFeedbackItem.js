@@ -19,11 +19,11 @@ const styles = (theme) => ({
 const itemStyle = {
 	feedbackField: {
 		padding: '10px',
-		margin: '10px',
-		border: '1px solid #D8441C',
-		borderRadius: '25px',
-
-		marginRight: '45px'
+        marginBottom: '30px',
+        border: '1px solid #D8441C',
+        borderRadius: '25px',
+        width: '400',
+        marginRight: '80px'
 	},
 	btn: {
 		borderRadius: '15px',
@@ -120,7 +120,7 @@ class StudentFeedbackItem extends Component {
 
 
 		return (
-			<Grid style={{ width: '100%' }} style={itemStyle.commentCenter} item xs={12}>
+			<Grid style={itemStyle.commentCenter} item xs={12}>
 				<Grid item xs={10} sm={8}>
 					<div >
  						
