@@ -43,6 +43,8 @@ const weekNumberReducer = (state = {weekNumber: 1}, action) => {
     switch(action.type){
         case 'WEEK_NUMBER':
             return {weekNumber: action.payload};
+        case 'SET_DEFAULT_WEEK_NUMBER':
+            return {weekNumber: action.payload};
         default:
             return state;
     }
