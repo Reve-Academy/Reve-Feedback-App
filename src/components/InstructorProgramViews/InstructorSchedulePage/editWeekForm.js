@@ -105,6 +105,8 @@ class EditWeek extends Component {
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT WEEK
     putWeek = () => {
+        console.log(this.state.editWeek);
+        
         this.props.dispatch({
             type: 'UPDATE_WEEK_SAGA',
             payload: this.state.editWeek
