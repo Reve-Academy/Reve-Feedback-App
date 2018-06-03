@@ -1,7 +1,6 @@
 // react, redux imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import AddFocusForm from './AddFocusForm';
 import EditWeekForm from './editWeekForm';
 
@@ -242,10 +241,10 @@ class InstructorSchedulePage extends Component {
       };
     })
 
-    let themeWeekId = this.props.state.scheduleReducer.thisWeekReducer.weekId;
-    let weekThemeItems = this.props.state.scheduleReducer.weekReducer.filter(function(element) {
-      return (element.id === themeWeekId);
-    });
+    //let themeWeekId = this.props.state.scheduleReducer.thisWeekReducer.weekId;
+    //let weekThemeItems = this.props.state.scheduleReducer.weekReducer.filter(function(element) {
+     // return (element.id === themeWeekId);
+    //});
     
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
