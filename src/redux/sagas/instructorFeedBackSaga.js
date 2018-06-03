@@ -35,7 +35,6 @@ function* getAllCommentSaga(action){
 
 function* addCommentSaga(action){
     try{
-        console.log('post comment payload: ', action.payload);
         yield call(axios.post, '/api/instructorFeedback', action.payload);
         yield put({
             type:'GET_COMMENTS',
@@ -48,7 +47,6 @@ function* addCommentSaga(action){
 
 function* deleteCommentSaga(action){
     try{
-        console.log('deleting comment id number: ', action.payload.item.id);
         yield call(axios.delete, `/api/instructorFeedback/${action.payload.item.id}`)
         yield put({
             type: 'GET_COMMENTS',
@@ -58,7 +56,6 @@ function* deleteCommentSaga(action){
         console.log('Error in delete comment saga: ', error)
     }
 }
-
 
 
 

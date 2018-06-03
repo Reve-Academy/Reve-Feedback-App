@@ -5,48 +5,30 @@ import { withStyles } from '@material-ui/core/styles';
 //Material UI Table
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
+//import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 // MATERIAL UI TABLE STYLING
 
 const CustomTableCell = withStyles((theme) => ({
-	head: {
-		backgroundColor: theme.palette.common.red,
-		color: theme.palette.common.white,
-		fontSize: 12,
-		fontStyle: 'bold'
-	},
-	body: {
-		fontSize: 18,
-		textAlign: 'center',
-		marginLeft: 20,
 
-	}
 }))(TableCell);
 
-const styles = (theme) => ({
-	root: {
-		marginTop: theme.spacing.unit * 3,
-		overflowX: 'auto',
-	
+const styles = {
+	test: {
+		width: '60%', 
 	},
 	table: {
-		minWidth: 700,
-		marginLeft: 20,
-		width: '60%',
-
-	
+		display: 'flex',
+		justifyContent: 'center',
 	},
-	row: {
-		'&:nth-of-type(odd)': {
-			backgroundColor: theme.palette.background.default,
-			// textAlign: 'left'
-		}
+	dataCenter: {
+	  textAlign: 'center',
+	  padding: '10px',
 	},
 
-	
-});
+  };
+
 
 // END MATERIAL UI TABLE STYLING
 
@@ -55,26 +37,22 @@ const mapStateToProps = (state) => ({
 });
 
 class StudentItem extends Component {
-	constructor(props) {
-		super(props);
-	}
+	
 
 	render() {
 		console.log(this.props);
-		const { classes } = this.props;
+		
 
 		// STUDENT DATA TABLE
 		return (
 			<TableBody>
 				<TableRow>
-					<CustomTableCell>
-						{this.props.student.first} {this.props.student.last}
-					</CustomTableCell>
-					<CustomTableCell>{this.props.student.email}</CustomTableCell>
-					<CustomTableCell>{this.props.student.program_id}</CustomTableCell>
-					<CustomTableCell>{this.props.student.team}</CustomTableCell>
-					<CustomTableCell>{this.props.student.high_school}</CustomTableCell>
-					<CustomTableCell>{this.props.student.total_comments}</CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.first} </CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.last}</CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.username}</CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.team}</CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.high_school}</CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.total_comments}</CustomTableCell>
 				</TableRow>
 			</TableBody>
 		);

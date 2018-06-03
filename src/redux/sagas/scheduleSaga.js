@@ -8,6 +8,7 @@ function* scheduleSaga(){
     yield takeEvery('ADD_FOCUS', addFocusSaga);
     yield takeEvery('DELETE_FOCUS', deleteFocusSaga);
     yield takeEvery('GET_INFO', getInfoSaga);
+    yield takeEvery('UPDATE_WEEK_SAGA', updateWeekSaga);    
 }
 
 //saga for getting weeks for that program
@@ -108,5 +109,18 @@ function* getInfoSaga(action){
         console.log('ERROR IN getInfoSaga: ', err);    
     }
 }
+
+function* updateWeekSaga(action){
+    try{
+        yield call(axios.put, `/api/instructorSchedule/Weeks`, action.payload);
+        yield put({
+            type: 'FETCH_PROGRAM_WEEKS',
+            payload: action.payload
+        })
+    } catch(err) {
+        console.log('ERROR IN updateWeekSaga: ', err);    
+    }
+}
+
 
 export default scheduleSaga;

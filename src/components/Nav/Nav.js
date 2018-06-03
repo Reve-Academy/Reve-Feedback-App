@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import { Avatar, IconButton } from '@material-ui/core';
+//import Button from '@material-ui/core/Button';
+//import { Avatar, IconButton } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import { triggerLogout } from '../../redux/actions/loginActions';
 import Menu from '@material-ui/core/Menu';

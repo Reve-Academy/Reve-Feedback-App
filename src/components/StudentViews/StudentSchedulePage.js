@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import StudentNav from '../../components/Nav/StudentNav';
 
 //library import
@@ -9,7 +8,6 @@ import RGL, { WidthProvider } from 'react-grid-layout';
 //material-ui imports
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 

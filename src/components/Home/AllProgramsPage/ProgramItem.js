@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import EditProgramForm from './EditProgramForm';
 
 import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
+//import Grid from '@material-ui/core/Grid';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
@@ -43,6 +43,13 @@ const itemStyle = ({
 	  margin: '10px',
 	  border: '1px solid #D8441C',
 	  borderRadius: '25px',
+  },
+  inactiveCard: {
+    padding: '10px',
+	  margin: '10px',
+	  border: '1px solid #D4D4D4',
+    borderRadius: '25px',
+    backgroundColor: '#F4F4F4'
   },
   btn: {
     borderRadius: '15px',
@@ -114,13 +121,22 @@ class ProgramItem extends Component {
     }
     // End Activation Button
 
+    // Avctivation Styling
+    let cardStyle;
+    if ( this.props.pItem.active_program === true ){
+      cardStyle = (itemStyle.reveCard) 
+    } else {
+      cardStyle = (itemStyle.inactiveCard) 
+    }
+    // End Activation Styling
+
     const { classes } = this.props;    
 
     return(
       <div>
 
         {/* Card Container */}
-        <Card style={itemStyle.reveCard}>
+        <Card style={cardStyle}>
           <CardContent>
             <Typography 
               variant="headline" 

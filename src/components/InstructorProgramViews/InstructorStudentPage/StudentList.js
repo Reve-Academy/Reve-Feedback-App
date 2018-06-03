@@ -5,13 +5,13 @@ import { withStyles } from '@material-ui/core/styles';
 
 //Material UI Table
 import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
+//import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import red from '@material-ui/core/colors/red';
-import Paper from '@material-ui/core/Paper';
-import PropTypes from 'prop-types';
+//import red from '@material-ui/core/colors/red';
+//import Paper from '@material-ui/core/Paper';
+//import PropTypes from 'prop-types';
 
 //Style properties for accounts table
 const CustomTableCell = withStyles(theme => ({
@@ -19,12 +19,18 @@ const CustomTableCell = withStyles(theme => ({
 
 const styles = {
   test: {
-	  width: '60%', 
+	  width: '85%', 
   },
   table: {
 	  display: 'flex',
 	  justifyContent: 'center',
-  }
+  },
+ 
+
+  tableHead: {
+	textAlign: 'center',
+	padding: '10px',
+  },
 };
 
 const mapStateToProps = (state) => ({
@@ -46,21 +52,22 @@ class StudentList extends Component {
 		let studentList = filteredStudentReducer.filter(student => student.program_id == this.props.params)
 		let listOfStudents = studentList.map((student) => {
 				return <StudentItem key={student.id} student={student} />;
+				
 			});
 		
-
+			console.log('list of students:', listOfStudents)
 		return (
 			<div style={styles.table}>
 				{/* TABLE HEADER */}
 				<Table style={styles.test}>
 					<TableHead>
 						<TableRow>
-							<CustomTableCell>Student Name</CustomTableCell>
-							<CustomTableCell>Email</CustomTableCell>
-							<CustomTableCell>Current Program</CustomTableCell>
-							<CustomTableCell>Team Name</CustomTableCell>
-							<CustomTableCell>Highschool</CustomTableCell>
-							<CustomTableCell>Total Comments</CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>First</CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>Last </CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>Email</CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>Team Name</CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>Highschool</CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>Total Comments</CustomTableCell>
 						</TableRow>
 					</TableHead>
 					{listOfStudents}

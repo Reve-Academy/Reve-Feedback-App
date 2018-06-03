@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import InstructorNav from '../../Nav/InstructorNav';
 import StudentList from '../InstructorStudentPage/StudentList';
 import { USER_ACTIONS } from '../../../redux/actions/userActions';

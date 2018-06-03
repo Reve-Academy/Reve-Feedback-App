@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import Card from '@material-ui/core/Card';
-import Grid from '@material-ui/core/Grid';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
+//import Card from '@material-ui/core/Card';
+//import Grid from '@material-ui/core/Grid';
+//import CardContent from '@material-ui/core/CardContent';
+//import CardActions from '@material-ui/core/CardActions';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+
 import TextField from '@material-ui/core/TextField';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
@@ -34,6 +35,10 @@ const styles = theme => ({
         padding: theme.spacing.unit * 4,
         outline: 'none',
     },
+    centerEditBtn: {
+        width: '100%',
+        justifyContent: 'center'
+      }
 });
 
 const itemStyle = ({
@@ -54,12 +59,11 @@ const itemStyle = ({
     editBtn: {
         borderRadius: '15px',
         border: '1px solid #D4D4D4',
-        margin: '15px',
+        marginBottom: '10px',
         maxHeight: '36px',  
         color: 'black', 
         display: 'flex', 
         justifyContent: 'center'
-        
     },
 })
 
@@ -101,6 +105,8 @@ class EditWeek extends Component {
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT WEEK
     putWeek = () => {
+        console.log(this.state.editWeek);
+        
         this.props.dispatch({
             type: 'UPDATE_WEEK_SAGA',
             payload: this.state.editWeek
@@ -125,22 +131,25 @@ class EditWeek extends Component {
     return(
         
         <div>
-            <br/>
+           <div style={itemStyle.centerContent}>
          
             <Button style={itemStyle.editBtn} onClick={this.handleEditWeek} variant="outlined" color="primary">Edit Week</Button>
-            
+            </div>
+           
             {/* Modal Edit */}
             <Modal
             aria-labelledby="Edit Program"
             open={this.state.open}
             onClose={this.handleClose}
             > 
+            
                 <div 
                     style={getModalStyle()} 
                     className={classes.paper}
                 >
+                
                     <Typography variant="headline" component="h2">
-                        Edit WeeK
+                        Edit Week
                     </Typography>
                     {/* Program Name */}
                     <TextField
