@@ -124,7 +124,7 @@ class StudentFeedbackItem extends Component {
 				<Grid item xs={10} sm={8}>
 					<div >
  						
-					{/* {commentInfo}  */}
+					<p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
 						<div style={{ float: 'left', marginRight: '15px', }}>
 							{likeButton}
 						</div>
