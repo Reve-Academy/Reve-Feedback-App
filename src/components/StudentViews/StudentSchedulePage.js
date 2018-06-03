@@ -136,7 +136,8 @@ class StudentSchedulePage extends Component {
 			return (<DayItem key={week.id} week={week} />)
 		})
 
-    let weekDescription = this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription		
+		let weekDescription = this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription	
+		let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber	
 
 		const { classes } = this.props;
 
@@ -147,6 +148,9 @@ class StudentSchedulePage extends Component {
 					<h1 className="ManageTitle">STUDENT SCHEDULE</h1>
 					<div style={itemStyle.centerContent}>{weekList}</div>
 					<div>
+            <h2 className="ManageTitle">
+              WEEK {weekNumber}
+            </h2>
 						<h2 className="ManageTitle">
 							<strong className="themeTitle">{weekTheme}</strong>
 						</h2>
