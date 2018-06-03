@@ -48,6 +48,8 @@ const weekNumberReducer = (state = {weekNumber: 1}, action) => {
     }
 }
 
+
+
 const weekThemeReducer = (state = {weekTheme: 'Brainstorming'}, action) => {
     switch(action.type){
         case 'WEEK_THEME':

@@ -183,6 +183,7 @@ class InstructorSchedulePage extends Component {
     const { classes } = this.props;
 
     let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
+    console.log('hello this is weekNumber: ', weekNumber );
 
     let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
 
@@ -265,7 +266,7 @@ class InstructorSchedulePage extends Component {
             <p className="ManageTitle">{weekDescription}</p>
           </div>
 
-          <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
+          <EditWeekForm program_id={this.props.match.params.program_id} />
           
          
 

@@ -34,12 +34,12 @@ router.get('/focus', (req, res) => {
     }
 });
 
-router.put('/weeks/:id', (req, res) => {
+router.put('/weeks/update/:id', (req, res) => {
     console.log(req.body);
     
     if (req.isAuthenticated()) {
-        let w = req.body;
-        let id = req.params.id
+        let w = req.body.updatedWeek;
+        let id = req.body.weekId;
         const queryText = `UPDATE weeks SET 
             theme = $1,
             description = $2

@@ -48,6 +48,10 @@ class DayItem extends Component {
             type: 'WEEK_DESCRIPTION',
             payload: week.description
         })
+        this.props.dispatch({
+            type:'ID_FOR_THE_WEEK',
+            payload: week.id
+        })
     }
    
 

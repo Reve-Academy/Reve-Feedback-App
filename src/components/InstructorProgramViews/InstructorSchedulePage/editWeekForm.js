@@ -79,12 +79,11 @@ class EditWeek extends Component {
             editWeek: {
                 theme: '',
                 description: '',
-                weekId: this.props.weekNumber,
                 program_id: this.props.program_id
             }
         }
     }
-
+    
     handleEditWeek = () => {
         this.setState({ open: true });
     };
@@ -98,7 +97,8 @@ class EditWeek extends Component {
     this.setState({
         editWeek: {
             ...this.state.editWeek,
-            [propertyName]: event.target.value
+            [propertyName]: event.target.value,
+            weekId: this.props.weekNumber,
         }
     })   
     }
@@ -109,7 +109,11 @@ class EditWeek extends Component {
         
         this.props.dispatch({
             type: 'UPDATE_WEEK_SAGA',
-            payload: this.state.editWeek
+            payload: {
+            updatedWeek: this.state.editWeek,
+            weekId: this.props.state.scheduleReducer.thisWeekReducer.weekId,
+            program_id: this.props.program_id
+            }
         })
         this.handleClose()        
     };
@@ -125,7 +129,8 @@ class EditWeek extends Component {
 
 
   render() {
-
+    console.log('edit week form', this.props.program_id);
+    
     const { classes } = this.props;    
 
     return(
