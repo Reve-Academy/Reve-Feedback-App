@@ -23,49 +23,26 @@ const itemStyle = ({
 
 class DayItem extends Component {
 
-    componentDidMount() {
-        // If props exist when the component mounts, check for the week id
-        if(this.props && this.props.state && this.props.state.instructorFeedBackReducer) {
-            console.log('CURRENT PROPS', this.props);
-            if(this.props.state.instructorFeedBackReducer.weekIdReducer === 0){
-                this.props.dispatch({
-                    type: 'ID_FOR_THE_WEEK',
-                    payload: this.props.state.scheduleReducer.weekReducer[0].id
-                })
-            }
-        }
-    }
-    
-    // If props are updated after the component mounts, also check for the week id
-    shouldComponentUpdate = (nextProps, nextState) => {
-        if(nextProps.state.instructorFeedBackReducer.weekIdReducer === 0){
-            console.log('NEXT PROPS', nextProps);
-
-            this.props.dispatch({
-                type: 'ID_FOR_THE_WEEK',
-                payload: nextProps.state.scheduleReducer.weekReducer[0].id
-            })
-            return false;
-        }
-        return true;
-    }
-
-    newComment = () =>{
+    newComment = (week) =>{
         this.props.dispatch({
             type:'GET_COMMENTS',
-            payload: this.props.week.id
+            payload: week.id
         })
         this.props.dispatch({
             type:'WEEK_ID_LOCALSTATE',
-            payload: this.props.week.number
+            payload: week.number
         })
         this.props.dispatch({
-            type:'ID_FOR_THE_WEEK',
-            payload: this.props.week.id
+            type: 'THIS_WEEK',
+            payload: week.id
+        })
+        this.props.dispatch({
+            type: 'WEEK_NUMBER',
+            payload: week.number
         })
         this.props.dispatch({
             type: 'WEEK_THEME', 
-            payload: this.props.week.theme
+            payload: week.theme
         })
     
     }
@@ -73,7 +50,7 @@ class DayItem extends Component {
 
     render(){
         return(
-            <Button style={itemStyle.weekBtn} onClick={this.newComment}>{this.props.week.number} </Button>
+            <Button style={itemStyle.weekBtn} onClick={() => this.newComment(this.props.week)}>{this.props.week.number} </Button>
         )
     }
 }
