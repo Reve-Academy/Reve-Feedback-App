@@ -63,7 +63,7 @@ class StudentComment extends Component {
         //const { spacing } = this.state;
         return (
             <Grid style={itemStyle.commentCenter} item xs={12}>
-                <Grid  item xs={10} sm={8} lg={6} >
+                <Grid item xs={10} sm={8}>
 
                     <div >
                         <p style={{ marginLeft: '90px' }} className="commentDates">{this.props.comment.first} {this.props.comment.last} | <i className="commentNamesAndDates">{moment(new Date(this.props.comment.date)).format("MMMM DD, YYYY")}</i></p>
