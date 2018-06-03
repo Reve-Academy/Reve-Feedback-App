@@ -85,8 +85,8 @@ class StudentFeedbackPage extends Component {
 		this.props.dispatch({
 			type: 'FETCH_PROGRAM_WEEKS',
 			payload: this.props.match.params
-		  })
-		  this.props.dispatch({
+		})
+		this.props.dispatch({
 			type: 'GET_FIRST_COMMENT',
 			payload: this.props.match.params.program_id
 		  });
@@ -133,6 +133,9 @@ class StudentFeedbackPage extends Component {
 					<h2 className="ManageTitle">
 						WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
 					</h2>
+					<div>
+						<p className="ManageTitle">{this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription}</p>
+					</div>
 
 
 					<div style={itemStyle.centerContent}>
