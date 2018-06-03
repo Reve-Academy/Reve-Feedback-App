@@ -116,10 +116,6 @@ class InstructorSchedulePage extends Component {
   //function for changing layout
   onLayoutChange = (newLayout) => {  
     this.props.onLayoutChange(newLayout);
-    // this.setState({
-    //   ...this.state,
-    //   layout: newLayout
-    // })
     this.props.dispatch({
       type: 'UPDATE_SCHEDULE',
       payload: {
@@ -205,15 +201,6 @@ class InstructorSchedulePage extends Component {
     //filter so that only correct focus are on DOM
     let focusList = allFocus.filter(focus => focus.week_id === this.props.state.scheduleReducer.thisWeekReducer.weekId);
 
-    let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
-      return (<div key={info.id}>
-              <h3>Strategy: {info.title}</h3>
-              <p>{info.summary}</p>
-              <h3>Resources</h3>
-              <p>{info.link}</p>
-            </div>)
-    })
-
     //map for getting filtered schedule items from reducer
     //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
     let scheduleItem = focusList.map((item) => {
@@ -241,6 +228,15 @@ class InstructorSchedulePage extends Component {
         h: item.h,
         i: item.f_id.toString()
       };
+    })
+
+    let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
+      return (<div key={info.id}>
+              <h3>Strategy: {info.title}</h3>
+              <p>{info.summary}</p>
+              <h3>Resources</h3>
+              <p>{info.link}</p>
+            </div>)
     })
 
     //let themeWeekId = this.props.state.scheduleReducer.thisWeekReducer.weekId;

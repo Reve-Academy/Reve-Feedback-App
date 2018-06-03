@@ -9,6 +9,8 @@ import RGL, { WidthProvider } from 'react-grid-layout';
 //material-ui imports
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+// import '../InstructorProgramViews/InstructorSchedulePage/instructorSchedule.css;'
 
 import { USER_ACTIONS } from '../../redux/actions/userActions';
 
@@ -121,6 +123,9 @@ class StudentSchedulePage extends Component {
 			type: 'FETCH_PROGRAM_WEEKS',
 			payload: this.props.match.params
 		})
+		this.props.dispatch({
+			type: 'FETCH_FOCUS_INFO'
+		  });
 	}
 
 	componentDidUpdate() {
@@ -131,6 +136,7 @@ class StudentSchedulePage extends Component {
 
 	render() {
 		let content = null;
+		const { classes } = this.props;
 		let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
 		let weekList = this.props.state.scheduleReducer.weekReducer.map((week) => {
 			return (<DayItem key={week.id} week={week} />)
@@ -139,7 +145,43 @@ class StudentSchedulePage extends Component {
 		let weekDescription = this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription	
 		let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber	
 
-		const { classes } = this.props;
+
+    //set redux state equal to variable
+    let allFocus = this.props.state.scheduleReducer.focusReducer;
+    //filter so that only correct focus are on DOM
+    let focusList = allFocus.filter(focus => focus.week_id === this.props.state.scheduleReducer.thisWeekReducer.weekId);
+
+    //map for getting filtered schedule items from reducer
+    //KEY IS SUPER IMPORTANT, MUST MATCH i IN SCHEDULE LAYOUT
+    let scheduleItem = focusList.map((item) => {
+      return (
+        <div key={item.f_id} className="ian">
+          <span className="text">{item.name}</span>
+          <br/>
+          <Button color="primary" onClick={() => this.handleInfoModal({item})}>View Info</Button>
+        </div>
+      );
+    })
+
+    //map for placing schedule items on grid list
+    let scheduleLayout = focusList.map((item, i) => {
+      return {
+        x: item.x,
+        y: item.y,
+        w: item.w,
+        h: item.h,
+        i: item.f_id.toString()
+      };
+    })
+
+    let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
+      return (<div key={info.id}>
+              <h3>Strategy: {info.title}</h3>
+              <p>{info.summary}</p>
+              <h3>Resources</h3>
+              <p>{info.link}</p>
+            </div>)
+    })
 
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
@@ -167,7 +209,7 @@ class StudentSchedulePage extends Component {
 							onClose={this.handleCloseInfo}
 						>
 							<div style={getModalStyle()} className={classes.paper}>
-								<p>Hello</p>
+								{focusInfo}
 							</div>
 						</Modal>
 					</div>
@@ -185,12 +227,12 @@ class StudentSchedulePage extends Component {
             			</thead>
             		</table>
 					<ReactGridLayout
-              		// layout={}
+              		layout={scheduleLayout}
 					isDraggable={false}
 					isResizable={false}
               		{...this.props}
             		>
-              			<p>Hi</p>
+              			{scheduleItem}
             		</ReactGridLayout>
 					</div>
 				</div>
