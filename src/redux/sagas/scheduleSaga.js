@@ -118,7 +118,7 @@ function* getInfoSaga(action){
 
 function* updateWeekSaga(action){
     try{
-        yield call(axios.put, `/api/instructorSchedule/Weeks`, action.payload);
+        yield call(axios.put, `/api/instructorSchedule/weeks`, action.payload);
         yield put({
             type: 'FETCH_PROGRAM_WEEKS',
             payload: action.payload

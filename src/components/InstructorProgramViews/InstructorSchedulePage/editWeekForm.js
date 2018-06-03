@@ -111,7 +111,7 @@ class EditWeek extends Component {
             type: 'UPDATE_WEEK_SAGA',
             payload: this.state.editWeek
         })
-        this.handleClose()        
+        this.handleClose()    
     };
 
 // Sample dispatch will be used to update week

@@ -40,6 +40,7 @@ router.put('/weeks/:id', (req, res) => {
     if (req.isAuthenticated()) {
         let w = req.body;
         let id = req.params.id
+        console.log('ID', id)
         const queryText = `UPDATE weeks SET 
             theme = $1,
             description = $2
