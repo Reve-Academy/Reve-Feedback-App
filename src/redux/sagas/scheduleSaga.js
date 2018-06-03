@@ -26,10 +26,16 @@ function* programWeekSaga(action){
         yield put({
             type: 'THIS_WEEK',
             payload: weekResponse.data[0].id
-          })
-         yield put({
+        })
+
+        yield put({
             type: 'WEEK_THEME', 
             payload: weekResponse.data[0].theme
+        })
+
+        yield put({
+            type: 'WEEK_DESCRIPTION', 
+            payload: weekResponse.data[0].description
         })
     
     } catch (err) {
