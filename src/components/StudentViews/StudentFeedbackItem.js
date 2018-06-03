@@ -56,7 +56,7 @@ class StudentFeedbackItem extends Component {
 	state = {
 		open: false,
 		commentItem: {
-			person_id: this.props.person_id,
+			person_id: this.props.comments.person_id,
 			comment_id: this.props.comments.id
 		}
 	};
@@ -68,7 +68,10 @@ class StudentFeedbackItem extends Component {
 		console.log('Clicked');
 		this.props.dispatch({
 			type: 'ADD_STUDENT_COMMENT_LIKE',
-			payload: this.state.commentItem
+			payload: {
+				person_id: this.props.comments.person_id,
+				comment_id: this.props.comments.id
+			}
 
 		});
 
@@ -79,16 +82,13 @@ class StudentFeedbackItem extends Component {
 	unlikeCommentMethod = () => {
 		this.props.dispatch({
 			type: 'REMOVE_COMMENT_LIKE',
-			payload: this.state.commentItem.comment_id,
-
+			payload: this.props.comments.id,
 		})
 	}
 	//END UNLIKE LOGIC
 
 	render() {
-
-		let commentItem = this.props.comment_id;
-		let commentsLikedId = this.props.commentsLiked.comment_id;
+		
 		let itemId = this.props.comments.id;
 		let likeButton = null;
 		let commentInfo;
