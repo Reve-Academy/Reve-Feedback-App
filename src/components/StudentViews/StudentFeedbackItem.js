@@ -91,6 +91,7 @@ class StudentFeedbackItem extends Component {
 		let commentsLikedId = this.props.commentsLiked.comment_id;
 		let itemId = this.props.comments.id;
 		let likeButton = null;
+		let commentInfo;
 		
 
 		if (this.props.commentsLiked.find(function (val) {
@@ -106,16 +107,17 @@ class StudentFeedbackItem extends Component {
 		}
 
 
+	
 
-		// if (this.props.comments.instructor == false) {
-		// 	commentInfo = (
-		// 		<p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
-		// 	)
-		// } else {
-		// 	commentInfo = (
-		// 		<p style={{ marginLeft: '70px' }} className="commentDates"> {this.props.comments.first} {this.props.comments.last} | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
-		// 	)
-		// }
+		if (this.props.comments.instructor == false) {
+			commentInfo = (
+				<p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
+			)
+		} else {
+			commentInfo = (
+				<p style={{ marginLeft: '70px' }} className="commentDates"> {this.props.comments.first} {this.props.comments.last} | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
+			)
+		}
 
 
 
@@ -123,8 +125,8 @@ class StudentFeedbackItem extends Component {
 			<Grid style={itemStyle.commentCenter} item xs={12}>
 				<Grid item xs={10} sm={8}>
 					<div >
- 						
-					<p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
+ 						{commentInfo}
+					{/* <p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p> */}
 						<div style={{ float: 'left', marginRight: '15px', }}>
 							{likeButton}
 						</div>

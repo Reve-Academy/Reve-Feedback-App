@@ -106,6 +106,7 @@ class StudentFeedbackPage extends Component {
 			return (<DayItem key={week.id} week={week} />)
 		})
 
+		// console.log('instructor placement', this.props.state.studentCommentReducer.studentCommentReducer	)
 		let theComments = this.props.state.instructorFeedBackReducer.allCommentsReducer.map((comments, i) => {
 			return (
 				<CommentsItem
