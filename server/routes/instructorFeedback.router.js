@@ -30,7 +30,7 @@ router.get('/first/', (req, res) => {
 router.get('/comment/', (req, res) => {
     const weekNumber = req.query.id;
     console.log(weekNumber);
-    const queryText = `SELECT COUNT("likes"."person_id") as "like_count", "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."username" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" JOIN "weeks" ON "weeks"."id" = "comments"."week_id" LEFT JOIN "likes" ON "likes"."comment_id" = "comments"."id" WHERE "week_id" = $1 GROUP BY "comments"."id", "person"."id"  ORDER BY id DESC;`
+    const queryText = `SELECT COUNT("likes"."person_id") as "like_count", "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."username", "person"."instructor" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" JOIN "weeks" ON "weeks"."id" = "comments"."week_id" LEFT JOIN "likes" ON "likes"."comment_id" = "comments"."id" WHERE "week_id" = $1 GROUP BY "comments"."id", "person"."id"  ORDER BY id DESC;`
     pool.query(queryText, [weekNumber])
         .then(result => { res.send(result.rows); })
         .catch(err => {
