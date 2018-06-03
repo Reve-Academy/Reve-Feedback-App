@@ -90,7 +90,6 @@ class StudentFeedbackPage extends Component {
 			type: 'GET_FIRST_COMMENT',
 			payload: this.props.match.params.program_id
 		});
-		console.log('COMMENT STATUSES:', this.props)
 	}
 
 	componentDidUpdate() {
