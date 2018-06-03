@@ -8,7 +8,15 @@ import Home_AllProgramsPage from '../../Home/AllProgramsPage/Home_AllProgramsPag
 
 
 import { USER_ACTIONS } from '../../../redux/actions/userActions';
-import { TextField, Button, Card } from '@material-ui/core';
+import { 
+    TextField, 
+    Button, 
+    Card, 
+    FormControl, 
+    Select, 
+    InputLabel, 
+    Input 
+  } from '@material-ui/core';
 
 
 
@@ -27,6 +35,7 @@ const itemStyle = ({
   btn: {
     borderRadius: '15px',
     border: '1px solid #D8441C',
+    margin: '15px'
   },
   centerColumn: {
     display: 'flex',
@@ -52,7 +61,9 @@ class NewProgramPage extends Component {
         finish:'',
         weeks:'',
         active_program:true,
-      }
+      },
+      weeksArray: [],
+      weeksDisplayed: 30
     }
   }
 
@@ -66,6 +77,7 @@ class NewProgramPage extends Component {
       })
     }
   }
+
   createNewProgram = event => {
     event.preventDefault();
     this.props.dispatch({
@@ -87,6 +99,7 @@ class NewProgramPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
+    this.weeksToDisplay()
   }
   componentDidUpdate() {
     if (!this.props.user.isLoading && this.props.user.userName === null) {
@@ -94,10 +107,19 @@ class NewProgramPage extends Component {
     }
   }
 
+  weeksToDisplay = () => {
+    for ( let a = 0; this.state.weeksDisplayed > this.state.weeksArray.length; a+=1 ) {
+      this.state.weeksArray.push(a+1)
+    }
+  }
 
   render() {
 
     let content = null;
+
+    let weekOption = this.state.weeksArray.map((week) => {
+      return (<option value={week}>{week}</option>)
+    })
 
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
@@ -107,12 +129,11 @@ class NewProgramPage extends Component {
           <div style={itemStyle.centerContent}>
           
             <ul>
-            <li style={{border: '2px solid #a0a0a0', margin: '0px 0px 0px -2px'}}>
+              <li style={{border: '2px solid #a0a0a0', margin: '0px 0px 0px -2px'}}>
                 <Link to="/newProgram" >
                   NEW PROGRAM
                 </Link>
               </li>
-            
               <li style={{border: '2px solid #a0a0a0'}}>
                 <Link to="/manageAccounts" >
                   Manage Accounts
@@ -124,7 +145,7 @@ class NewProgramPage extends Component {
                 </Link>
               </li>
             </ul>
-          
+
           </div>
           </div>
 
@@ -152,6 +173,23 @@ class NewProgramPage extends Component {
                   />
                 </div>
                 <div style={itemStyle.inputFields}>
+                  <FormControl >
+                    <InputLabel>Weeks</InputLabel>
+                    <Select
+                      native
+                      value={this.state.newProgram.weeks}
+                      onChange={this.handleNewProgram('weeks')}
+                      style={{width: '80px'}}                    
+                      inputProps={{
+                        id: 'select weeks',
+                      }}
+                    >
+                      <option value={1}/>
+                      {weekOption}
+                    </Select>
+                  </FormControl>
+                </div>
+                <div style={itemStyle.inputFields}>
                   <TextField 
                     placeholder="mm/dd/yyyy" 
                     type="date"
@@ -167,14 +205,6 @@ class NewProgramPage extends Component {
                     margin="normal"
                     value={this.state.newProgram.finish} 
                     onChange={this.handleNewProgram('finish')}
-                  />
-                </div>
-                <div style={itemStyle.inputFields}>
-                  <TextField 
-                    label="Number of weeks" 
-                    margin="normal"
-                    value={this.state.newProgram.weeks} 
-                    onChange={this.handleNewProgram('weeks')}
                   />
                 </div>
                 <div style={itemStyle.centerContent}>
