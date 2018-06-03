@@ -128,5 +128,4 @@ function* getInfoSaga(action){
 
 
 
-
 export default scheduleSaga;
