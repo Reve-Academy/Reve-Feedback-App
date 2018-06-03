@@ -189,6 +189,8 @@ class InstructorSchedulePage extends Component {
     let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
 
     let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
+
+    let weekDescription = this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription
     
 
     //map for displaying weeks buttons
@@ -260,15 +262,14 @@ class InstructorSchedulePage extends Component {
           </div>
          
         
-            <div>
+          <div>
             <h2 className="ManageTitle"><strong className="themeTitle">{weekTheme}</strong></h2>
-            </div>
+          </div>
+          <div>
+            <p className="ManageTitle">{weekDescription}</p>
+          </div>
 
-        
-        
-           
-             
-              <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
+          <EditWeekForm program_id={this.props.match.params.program_id} weekNumber={weekNumber}/>
           
          
 
