@@ -79,7 +79,7 @@ class EditWeek extends Component {
             editWeek: {
                 theme: '',
                 description: '',
-                weekId: this.props.weekNumber,
+                weekId: '',
                 program_id: this.props.program_id
             }
         }
@@ -98,7 +98,8 @@ class EditWeek extends Component {
     this.setState({
         editWeek: {
             ...this.state.editWeek,
-            [propertyName]: event.target.value
+            [propertyName]: event.target.value,
+            weekId: this.props.weekNumber,
         }
     })   
     }

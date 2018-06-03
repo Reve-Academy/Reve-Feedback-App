@@ -183,6 +183,7 @@ class InstructorSchedulePage extends Component {
     const { classes } = this.props;
 
     let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
+    console.log('hello this is weekNumber: ', weekNumber );
 
     let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
 
