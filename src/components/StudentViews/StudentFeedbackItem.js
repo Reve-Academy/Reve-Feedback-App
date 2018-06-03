@@ -4,8 +4,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Modal from '@material-ui/core/Modal';
 import { withStyles } from '@material-ui/core/styles';
-import outline_star from '../../styles/images/outline_star.png';
-import star from '../../styles/images/star.png';
+import Grid from '@material-ui/core/Grid';
+import { Star, Stars } from '@material-ui/icons';
 
 const styles = (theme) => ({
 	paper: {
@@ -28,6 +28,18 @@ const itemStyle = {
 	btn: {
 		borderRadius: '15px',
 		border: '1px solid #D8441C'
+	},
+	likedBtn: {
+		fontSize: '55px', 
+		color: '#D8441C'
+	},
+	likeBtn: {
+		border: '1px solid #D4D4D4', 
+		borderRadius: '50%', 
+		fontSize: '39px', 
+		color: 'D4D4D4', 
+		margin: '4px', 
+		padding: '3px'
 	}
 };
 const mapStateToProps = (state) => ({
@@ -82,17 +94,20 @@ class StudentFeedbackItem extends Component {
         })
     ){
         likeButton = 
-        <img src={outline_star} onClick={this.unlikeCommentMethod} />
+        <Stars style={itemStyle.likedBtn} onClick={this.unlikeCommentMethod} />
      
         }else{
             likeButton =
-            <img src={star} onClick={this.likeCommentMethod} />
+            <Star style={itemStyle.likeBtn} onClick={this.likeCommentMethod} />
         }
 
         
      
 
 		return (
+			<Grid style={itemStyle.commentCenter} item xs={12}>
+			<Grid  item xs={6} lg={6} >
+
 			<div>
                 {likeButton}
 
@@ -106,6 +121,9 @@ class StudentFeedbackItem extends Component {
 					</CardContent>
 				</Card>
 			</div>
+			</Grid>
+            </Grid>            
+
 		);
 	}
 }

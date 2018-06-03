@@ -54,9 +54,10 @@ function* getProgramInfo(action) {
 function* postCommentSaga(action) {
 	try {
 		yield call(axios.post, '/api/studentFeedback', action.payload);
-		// yield put({
-		// 	type: 'SET_STUDENT_COMMENT_REDUCER'
-		// });
+		yield put({
+			type: 'GET_COMMENTS',
+			payload: action.payload.week
+		});
 	} catch (error) {
 		console.log('error on post addComment: ', error);
 	}
