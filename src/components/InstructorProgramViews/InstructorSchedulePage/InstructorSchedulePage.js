@@ -94,7 +94,7 @@ class InstructorSchedulePage extends Component {
     items: 50,
     cols: 5,
     rowHeight: 70,
-    maxRows: 6,
+    maxRows: 5,
     width: '100%',
     onLayoutChange: function(){},
     // This turns off compaction so you can place items wherever.
@@ -157,6 +157,7 @@ class InstructorSchedulePage extends Component {
   };
 
   componentDidMount() {
+    
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.props.dispatch({
       type: 'FETCH_PROGRAM_WEEKS',

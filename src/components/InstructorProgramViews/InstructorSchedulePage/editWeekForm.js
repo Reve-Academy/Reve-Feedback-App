@@ -115,7 +115,7 @@ class EditWeek extends Component {
             program_id: this.props.program_id
             }
         })
-        this.handleClose()        
+        this.handleClose()    
     };
 
 // Sample dispatch will be used to update week
