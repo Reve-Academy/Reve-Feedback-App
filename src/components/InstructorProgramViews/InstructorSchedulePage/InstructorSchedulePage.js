@@ -94,7 +94,7 @@ class InstructorSchedulePage extends Component {
     items: 50,
     cols: 5,
     rowHeight: 70,
-    maxRows: 6,
+    maxRows: 5,
     width: '100%',
     onLayoutChange: function () { },
     // This turns off compaction so you can place items wherever.
@@ -184,6 +184,7 @@ class InstructorSchedulePage extends Component {
     const { classes } = this.props;
 
     let weekNumber = this.props.state.scheduleReducer.weekNumberReducer.weekNumber
+    console.log('hello this is weekNumber: ', weekNumber );
 
     let weekTheme = this.props.state.scheduleReducer.weekThemeReducer.weekTheme
 

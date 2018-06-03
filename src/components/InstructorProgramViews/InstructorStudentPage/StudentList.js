@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 //import red from '@material-ui/core/colors/red';
 //import Paper from '@material-ui/core/Paper';
 //import PropTypes from 'prop-types';
+import TableSortLabel from '@material-ui/core/TableSortLabel';
 
 //Style properties for accounts table
 const CustomTableCell = withStyles(theme => ({
@@ -39,6 +40,9 @@ const mapStateToProps = (state) => ({
 });
 
 class StudentList extends Component {
+	createSortHandler = property => event => {
+		this.props.onRequestSort(event, property);
+	};
 	componentDidMount() {
 		// use component did mount to dispatch an action to request the studentList from the API
 		this.props.dispatch({ 
@@ -47,6 +51,7 @@ class StudentList extends Component {
 	}
 
 	render() {
+		const { order, orderBy} = this.props;
 		console.log('THIS IS PARAMS', this.props.params)
 		// MAPPING OVER GET RESPONSE FROM GET STUDENT LIST REQUEST
 		let filteredStudentReducer = this.props.state.studentListReducer.studentListReducer
@@ -63,12 +68,29 @@ class StudentList extends Component {
 				<Table style={styles.test}>
 					<TableHead>
 						<TableRow>
-							<CustomTableCell style={styles.tableHead}>First</CustomTableCell>
-							<CustomTableCell style={styles.tableHead}>Last </CustomTableCell>
-							<CustomTableCell style={styles.tableHead}>Email</CustomTableCell>
-							<CustomTableCell style={styles.tableHead}>Team Name</CustomTableCell>
-							<CustomTableCell style={styles.tableHead}>Highschool</CustomTableCell>
-							<CustomTableCell style={styles.tableHead}>Total Comments</CustomTableCell>
+							<CustomTableCell style={styles.tableHead}>
+								<TableSortLabel onClick={this.createSortHandler()}>First</TableSortLabel>
+							</CustomTableCell>
+		
+							<CustomTableCell style={styles.tableHead}> 
+								<TableSortLabel onClick={this.createSortHandler()}>Last</TableSortLabel>
+							</CustomTableCell>
+
+							<CustomTableCell style={styles.tableHead}>
+								<TableSortLabel onClick={this.createSortHandler()}>Email</TableSortLabel>
+							</CustomTableCell>
+
+							<CustomTableCell style={styles.tableHead}>
+								<TableSortLabel onClick={this.createSortHandler()}>Team Name</TableSortLabel>
+							</CustomTableCell>
+
+							<CustomTableCell style={styles.tableHead}>
+								<TableSortLabel onClick={this.createSortHandler()}>Highschool</TableSortLabel>
+							</CustomTableCell>
+
+							<CustomTableCell style={styles.tableHead}>
+								<TableSortLabel onClick={this.createSortHandler()}>Total Comments</TableSortLabel>
+							</CustomTableCell>
 						</TableRow>
 					</TableHead>
 					{listOfStudents}

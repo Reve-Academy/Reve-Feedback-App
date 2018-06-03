@@ -57,6 +57,8 @@ class InstructorFeedbackPage extends Component {
     })
   }
 
+  
+
   addComment = () => {
     if (this.state.newComment === '') {
       return;

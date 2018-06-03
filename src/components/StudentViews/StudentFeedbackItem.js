@@ -109,14 +109,14 @@ class StudentFeedbackItem extends Component {
 
 	
 
-		if (this.props.comments.instructor == false) {
-			commentInfo = (
-				<p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
-			)
-		} else {
+		if (this.props.comments.instructor === true) {
 			commentInfo = (
 				<p style={{ marginLeft: '70px' }} className="commentDates"> {this.props.comments.first} {this.props.comments.last} | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
 			)
+		} else {
+			commentInfo = (
+				<p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
+			)	
 		}
 
 

@@ -97,7 +97,8 @@ class EditWeek extends Component {
     this.setState({
         editWeek: {
             ...this.state.editWeek,
-            [propertyName]: event.target.value
+            [propertyName]: event.target.value,
+            weekId: this.props.weekNumber,
         }
     })   
     }
