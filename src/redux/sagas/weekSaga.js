@@ -6,9 +6,10 @@ function* weekSaga() {
 }
 
 function* putWeekSaga(action) {
+    console.log('this is putWeekSaga', action.payload);
     
 	try {
-		yield call(axios.put, `/api/instructorschedule/weeks/${action.payload.weekId}`, action.payload);
+        yield call(axios.put, `/api/instructorschedule/weeks/update/${action.payload.weekId}`, action.payload);
 		yield put({
             type: 'FETCH_PROGRAM_WEEKS',
             payload: action.payload,

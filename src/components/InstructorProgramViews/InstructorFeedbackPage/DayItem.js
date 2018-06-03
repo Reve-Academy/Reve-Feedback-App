@@ -66,6 +66,11 @@ class DayItem extends Component {
             type: 'WEEK_THEME', 
             payload: this.props.week.theme
         })
+        this.props.dispatch({
+            type: 'WEEK_DESCRIPTION',
+            payload: this.props.week.description
+        })
+    
     }
     render() {
         return(
