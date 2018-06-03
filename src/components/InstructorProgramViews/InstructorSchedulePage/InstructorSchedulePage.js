@@ -93,7 +93,7 @@ class InstructorSchedulePage extends Component {
     className: "layout",
     items: 50,
     cols: 5,
-    rowHeight: 50,
+    rowHeight: 70,
     maxRows: 6,
     width: '100%',
     onLayoutChange: function(){},

@@ -44,7 +44,10 @@ class DayItem extends Component {
             type: 'WEEK_THEME', 
             payload: week.theme
         })
-    
+        this.props.dispatch({
+            type: 'WEEK_DESCRIPTION',
+            payload: week.description
+        })
     }
    
 
