@@ -21,28 +21,28 @@ const mapStateToProps = (state) => ({
 
 const itemStyle = ({
 	centerContent: {
-	  display: 'flex',
-	  justifyContent: 'center',
+		display: 'flex',
+		justifyContent: 'center',
 	},
 	columnComments: {
-	  display: 'flex',
-	  flexDirection: 'column',
+		display: 'flex',
+		flexDirection: 'column',
 	},
 	btn: {
-	  borderRadius: '15px',
-	  border: '1px solid #D8441C',
-	  margin: '10px',
-	  maxHeight: '36px',
+		borderRadius: '15px',
+		border: '1px solid #D8441C',
+		margin: '10px',
+		maxHeight: '36px',
 	},
 	commentArea: {
-	  borderRadius: '15px',
-	  border: '1px solid #D8441C',
-	  fontSize: '25px',
-	  width: '400px',
-	  height: '100px',
-	  outline: 'none',
+		borderRadius: '15px',
+		border: '1px solid #D8441C',
+		fontSize: '25px',
+		width: '400px',
+		height: '100px',
+		outline: 'none',
 	}
-  })
+})
 
 class StudentFeedbackPage extends Component {
 	constructor(props) {
@@ -59,21 +59,21 @@ class StudentFeedbackPage extends Component {
 	};
 	//ADD COMMENT TO SERVER
 	postComment = () => {
-		if(this.state.newComment === ''){
+		if (this.state.newComment === '') {
 			return;
-		  } else{
-		this.props.dispatch({
-			type: 'ADD_STUDENT_COMMENT',
-			payload: {
-				newComment: this.state.newComment,
-				date: moment().format("MM DD YYYY"),
-				week: this.props.state.instructorFeedBackReducer.weekIdReducer
-			  }
-		});
-		this.setState({
-			newComment: ''
-		});
-	}
+		} else {
+			this.props.dispatch({
+				type: 'ADD_STUDENT_COMMENT',
+				payload: {
+					newComment: this.state.newComment,
+					date: moment().format("MM DD YYYY"),
+					week: this.props.state.instructorFeedBackReducer.weekIdReducer
+				}
+			});
+			this.setState({
+				newComment: ''
+			});
+		}
 	};
 
 
@@ -90,6 +90,7 @@ class StudentFeedbackPage extends Component {
 			type: 'GET_FIRST_COMMENT',
 			payload: this.props.match.params.program_id
 		});
+		console.log('COMMENT STATUSES:', this.props)
 	}
 
 	componentDidUpdate() {
@@ -149,15 +150,10 @@ class StudentFeedbackPage extends Component {
 							SEND
 						</Button>
 					</div>
-					<div style={{ display: 'flex', justifyContent: 'center' }}>
-						<div style={itemStyle.centerContent}>
-							{/* {studentComments} */}
-							<Grid container  >
-							{theComments}
-							</Grid>
-						</div>
-
-					</div>
+					{/* {studentComments} */}
+					<Grid container  >
+						{theComments}
+					</Grid>
 					{/* End Feedback Container */}
 				</div>
 			);

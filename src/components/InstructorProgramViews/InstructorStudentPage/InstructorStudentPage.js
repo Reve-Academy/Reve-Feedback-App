@@ -32,8 +32,9 @@ class InstructorStudentPage extends Component {
       content = (      
          
         <div>
-      <h1 className="ManageTitle">
-        STUDENTS
+      <h1 style={{color: '#D8441C'}}className="ManageTitle">
+      <strong>{this.props.match.params.program_name}</strong>
+      <br/>STUDENTS
       </h1>
          
 
