@@ -110,19 +110,13 @@ class InstructorFeedbackPage extends Component {
     if (this.props.user.userName && this.props.user.userName.instructor) {
       content = (
         <div>
-          <h1 className="ManageTitle">
-            FEEDBACK
-          </h1>
-          <div style={itemStyle.centerContent}>{weekList}</div>
-         
-          <h2 className="ManageTitle">
+          <p style={{fontSize: '20px', color: '#D8441C'}} className="ManageTitle">
             WEEK {this.props.state.instructorFeedBackReducer.weekNumberReducer}
-          </h2>
-          <div style={itemStyle.centerContent}>
-            <h2 className="ManageTitle">
-              <strong className="themeTitle">{weekTheme}</strong>
-            </h2>
-          </div>
+          </p>
+          <div style={itemStyle.centerContent}>{weekList}</div>
+          
+          <p className="ManageTitle" style={{fontSize: '30px'}}><strong className="themeTitle">{weekTheme}</strong></p>
+    
           <p className="ManageTitle">{this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription}</p>
           {/* Feedback Container */}
           <div style={itemStyle.centerContent}>

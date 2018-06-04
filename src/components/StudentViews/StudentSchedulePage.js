@@ -186,18 +186,15 @@ class StudentSchedulePage extends Component {
 		if (this.props.user.userName && this.props.user.userName.instructor === false) {
 			content = (
 				<div>
-
-					<h1 className="ManageTitle">STUDENT SCHEDULE</h1>
+<p  style={{fontSize: '20px', color: '#D8441C'}} className="ManageTitle">WEEK {weekNumber}</p>
 					<div style={itemStyle.centerContent}>{weekList}</div>
 					<div>
-            <h2 className="ManageTitle">
-              WEEK {weekNumber}
-            </h2>
+            
 						<h2 className="ManageTitle">
 							<strong className="themeTitle">{weekTheme}</strong>
 						</h2>
 						<div>
-							<p className="ManageTitle">{weekDescription}</p>
+							<p style={{marginBottom: '100px'}}className="ManageTitle">{weekDescription}</p>
 						</div>
 					</div>
 
@@ -219,11 +216,11 @@ class StudentSchedulePage extends Component {
 					<table id="scheduleTable">
             			<thead>
               				<tr id="tableHeader">
-                				<th style={{width: '20%'}}>Monday</th>
-                				<th style={{width: '20%'}}>Tuesday</th>
-                				<th style={{width: '20%'}}>Wednesday</th>
-                				<th style={{width: '20%'}}>Thursday</th>
-                				<th style={{width: '20%'}}>Friday</th>
+                				<th style={{fontFamily: 'lato', width: '20%'}}>Monday</th>
+                				<th style={{fontFamily: 'lato', width: '20%'}}>Tuesday</th>
+                				<th style={{fontFamily: 'lato', width: '20%'}}>Wednesday</th>
+                				<th style={{fontFamily: 'lato', width: '20%'}}>Thursday</th>
+                				<th style={{fontFamily: 'lato', width: '20%'}}>Friday</th>
               				</tr>
             			</thead>
             		</table>
