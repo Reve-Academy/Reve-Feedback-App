@@ -18,7 +18,7 @@ router.get('/weeks/', (req, res) => {
 
 router.get('/first/', (req, res) => {
     const firstWeek = req.query.id;
-    const queryText = `SELECT COUNT("likes"."person_id") as "like_count", "comments"."id" as "commentId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id","weeks"."program_id", "weeks"."number", "person"."first", "person"."last",  "person"."instructor" FROM "weeks" JOIN "comments" ON "weeks"."id" = "comments"."week_id" JOIN "person" ON "person"."id" = "comments"."person_id" LEFT JOIN "likes" ON "likes"."comment_id" = "comments"."id" WHERE "weeks"."program_id"= $1 AND "number" = 1 GROUP BY "comments"."id", "person"."id", "weeks"."id" ORDER BY id DESC;`
+    const queryText = `SELECT COUNT("likes"."person_id") as "like_count", "comments"."id" as "commentId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id","weeks"."program_id", "weeks"."number", "person"."first", "person"."last",  "person"."instructor" FROM "weeks" JOIN "comments" ON "weeks"."id" = "comments"."week_id" JOIN "person" ON "person"."id" = "comments"."person_id" LEFT JOIN "likes" ON "likes"."comment_id" = "comments"."id" WHERE "weeks"."program_id"= $1 AND "number" = 1 GROUP BY "comments"."id", "person"."id", "weeks"."id" ORDER BY "comments"."date" DESC;`
     pool.query(queryText, [firstWeek])
         .then(result => { res.send(result.rows); })
         .catch(err => {
@@ -30,7 +30,7 @@ router.get('/first/', (req, res) => {
 router.get('/comment/', (req, res) => {
     const weekNumber = req.query.id;
     console.log(weekNumber);
-    const queryText = `SELECT COUNT("likes"."person_id") as "like_count", "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."username", "person"."instructor" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" JOIN "weeks" ON "weeks"."id" = "comments"."week_id" LEFT JOIN "likes" ON "likes"."comment_id" = "comments"."id" WHERE "week_id" = $1 GROUP BY "comments"."id", "person"."id"  ORDER BY id DESC;`
+    const queryText = `SELECT COUNT("likes"."person_id") as "like_count", "person"."id" as "userId", "comments"."id", "comments"."person_id", "comments"."comment","comments"."date","comments"."week_id", "person"."username", "person"."first", "person"."last", "person"."username", "person"."instructor" FROM "person" JOIN "comments" ON "person"."id" = "comments"."person_id" JOIN "weeks" ON "weeks"."id" = "comments"."week_id" LEFT JOIN "likes" ON "likes"."comment_id" = "comments"."id" WHERE "week_id" = $1 GROUP BY "comments"."id", "person"."id"  ORDER BY "comments"."date" DESC;`
     pool.query(queryText, [weekNumber])
         .then(result => { res.send(result.rows); })
         .catch(err => {

@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET route 
   router.get('/', (req, res) => {
-    const queryText = `SELECT person.*, count (comments.person_id) AS total_comments FROM person LEFT JOIN comments ON person.id=comments.person_id GROUP BY person.id`;
+    const queryText = `SELECT person.*, count (comments.person_id) AS total_comments FROM person LEFT JOIN comments ON person.id=comments.person_id GROUP BY person.id ORDER BY "person"."last" ASC;`;
     pool.query(queryText)
         .then(result => { res.send(result.rows); })
         .catch(err => {
