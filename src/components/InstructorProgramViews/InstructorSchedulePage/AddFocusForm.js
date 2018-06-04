@@ -87,6 +87,7 @@ class AddFocusForm extends Component{
                 week: this.props.state.scheduleReducer.thisWeekReducer 
             }
         })
+        this.props.handleCloseFocus();
     }
 
 
