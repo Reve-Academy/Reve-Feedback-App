@@ -97,6 +97,19 @@ class NewProgramPage extends Component {
     
   }
 
+  demoButton = event => {
+    this.setState({
+      newProgram:{
+        name:'Great Program',
+        description:'Long description',
+        start:'09/25/2018',
+        finish:'12/03/2018',
+        weeks: 9,
+        active_program:true,
+      }
+    })
+  }
+
   componentDidMount() {
     this.props.dispatch({ type: USER_ACTIONS.FETCH_USER });
     this.weeksToDisplay()
@@ -214,6 +227,7 @@ class NewProgramPage extends Component {
                   >
                     Create Program
                   </Button>
+                  <h3 style={{color: "white", fontSize: "20px"}} onClick={this.demoButton}>*</h3>
                 </div>
               </div>
             </Card>

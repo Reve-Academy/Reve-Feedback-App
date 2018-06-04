@@ -20,16 +20,20 @@ const mapStateToProps = state => ({
 
 //Modal Styling
 const styles = theme => ({
-    
     sendBtn: {
       borderRadius: '15px',
       border: '1px solid #D8441C',
       marginTop: '30px',
       maxHeight: '36px',  
     },
-    
-    
-  });
+});
+
+const itemStyle = ({
+    centerContent: {
+      display: 'flex',
+      justifyContent: 'center'
+    }
+  })
 
 
 class AddStudentForm extends Component{
@@ -73,6 +77,20 @@ class AddStudentForm extends Component{
                 username: '',
                 team: '',
                 program: '',
+
+            }
+        })
+    };
+
+    demoButton = () => {
+        this.setState({
+            newStudent: {
+                ...this.state.newStudent,
+                first: 'Sam',
+                last: 'Trapskin',
+                username: 'samtrapskin@gmail.com',
+                team: '3M Technical',
+                program: 'Spring 2018',
 
             }
         })
@@ -129,6 +147,7 @@ class AddStudentForm extends Component{
                     value={this.state.newStudent.team}
                  />
                 <br />
+                <br />
                 <InputLabel>Select Program   </InputLabel>
                 <Select
                     onChange={this.handleChangeFor("program")}
@@ -143,10 +162,13 @@ class AddStudentForm extends Component{
                 </MenuItem>
                 {programMenuItem}
                 </Select>
-                <br />
-                <Button className={classes.sendBtn} variant="outlined" color="primary" onClick={() => this.addStudent()}>
-                    Send Student Email
-                </Button>
+                
+                <div style={itemStyle.centerContent}>
+                    <Button className={classes.sendBtn} variant="outlined" color="primary" onClick={() => this.addStudent()}>
+                        Send Student Email
+                    </Button>
+                    <h3 style={{color: "white", fontSize: "20px"}} onClick={this.demoButton}>*</h3>
+                </div>
             </div>
         )
     }
