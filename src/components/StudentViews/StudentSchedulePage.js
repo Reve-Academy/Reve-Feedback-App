@@ -194,7 +194,7 @@ class StudentSchedulePage extends Component {
 							<strong className="themeTitle">{weekTheme}</strong>
 						</h2>
 						<div>
-							<p style={{marginBottom: '100px'}}className="ManageTitle">{weekDescription}</p>
+							<p style={{marginBottom: '30px'}}className="ManageTitle">{weekDescription}</p>
 						</div>
 					</div>
 
@@ -235,6 +235,8 @@ class StudentSchedulePage extends Component {
             		>
               			{scheduleItem}
             		</ReactGridLayout>
+					</div>
+					<div style={{height: '60px'}}>
 					</div>
 					</div>
 				</div>
