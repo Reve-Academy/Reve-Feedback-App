@@ -87,7 +87,7 @@ class StudentSchedulePage extends Component {
 		cols: 5,
 		rowHeight: 70,
 		maxRows: 5,
-		width: '100%',
+		width: '85%',
 		onLayoutChange: function(){},
 		// This turns off compaction so you can place items wherever.
 		compactType: null,
@@ -212,6 +212,7 @@ class StudentSchedulePage extends Component {
 					</div>
 
 					<div>
+					<div style={itemStyle.centerContent}>
 					<table id="scheduleTable">
             			<thead>
               				<tr id="tableHeader">
@@ -223,7 +224,10 @@ class StudentSchedulePage extends Component {
               				</tr>
             			</thead>
             		</table>
+					</div>
+					<div style={itemStyle.centerContent}>
 					<ReactGridLayout
+					style={{width: '85%'}}
               		layout={scheduleLayout}
 					isDraggable={false}
 					isResizable={false}
@@ -231,6 +235,7 @@ class StudentSchedulePage extends Component {
             		>
               			{scheduleItem}
             		</ReactGridLayout>
+					</div>
 					</div>
 				</div>
 			);
