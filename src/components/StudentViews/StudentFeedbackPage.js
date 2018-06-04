@@ -135,7 +135,7 @@ class StudentFeedbackPage extends Component {
 					<div>
 						<p className="ManageTitle">{this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription}</p>
 					</div>
-
+					<br/>
 
 					<div style={itemStyle.centerContent}>
 						{/* {TEXT AREA} */}

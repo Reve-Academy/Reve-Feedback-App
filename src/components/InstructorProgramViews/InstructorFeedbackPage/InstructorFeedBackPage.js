@@ -115,9 +115,10 @@ class InstructorFeedbackPage extends Component {
           </p>
           <div style={itemStyle.centerContent}>{weekList}</div>
           
-          <p className="ManageTitle" style={{fontSize: '30px', margin: '0px'}}><strong className="themeTitle">{weekTheme}</strong></p>
+          <p className="ManageTitle" style={{fontSize: '30px'}}><strong className="themeTitle">{weekTheme}</strong></p>
     
           <p className="ManageTitle" style={{bottomMargin: '0px'}}>{this.props.state.scheduleReducer.weekDescriptionReducer.weekDescription}</p>
+          <br/>
           {/* Feedback Container */}
           <div style={itemStyle.centerContent}>
             <textarea style={itemStyle.commentArea} value={this.state.newComment} onChange={this.handleComment}></textarea>

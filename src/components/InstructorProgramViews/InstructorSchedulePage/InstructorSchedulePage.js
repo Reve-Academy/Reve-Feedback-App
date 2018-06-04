@@ -254,7 +254,7 @@ class InstructorSchedulePage extends Component {
             WEEK {weekNumber}
           </p>
           <div style={itemStyle.centerContent}>{weekList}</div>
-          <p className="ManageTitle" style={{ fontSize: '30px', margin: '0px' }}><strong className="themeTitle">{weekTheme}</strong></p>
+          <p className="ManageTitle" style={{ fontSize: '30px' }}><strong className="themeTitle">{weekTheme}</strong></p>
           <p style={{ padding: '0px' }} className="ManageTitle">{weekDescription}</p><br/>
           <EditWeekForm program_id={this.props.match.params.program_id} />
           <br/>
