@@ -267,9 +267,10 @@ class InstructorSchedulePage extends Component {
               open={this.state.focusOpen}
               onClose={this.handleCloseFocus}
             >
-              <div style={getModalStyle()} className={classes.paper}>
-                <AddFocusForm />
-              </div>
+            <div style={getModalStyle()} className={classes.paper}>
+              <AddFocusForm 
+            handleCloseFocus={this.handleCloseFocus} />
+            </div>
             </Modal>
           </div>
 

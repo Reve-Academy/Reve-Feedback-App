@@ -16,6 +16,11 @@ const itemStyle = ({
     btn: {
       borderRadius: '15px',
       border: '1px solid #D8441C',
+      height: '36px'
+    },
+    centerContent: {
+        display: 'flex',
+        justifyContent: 'center'
     }
 })
 
@@ -87,6 +92,29 @@ class AddFocusForm extends Component{
                 week: this.props.state.scheduleReducer.thisWeekReducer 
             }
         })
+        this.props.handleCloseFocus();
+    }
+
+    demoButton = () => {
+        this.setState({
+            newFocus: {
+                name: 'SEO',
+                summary: 'This is a lot of stuff',
+                x: 0,
+                y: 0,
+                w: 1,
+                h: 2
+            },
+            newStrategy: {
+                title: 'Jumping jacks',
+                summary: 'Running',
+                focusId: ''
+            },
+            newResource: {
+                link: 'www.google.com',
+                strategyId: ''
+            }
+        });
     }
 
 
@@ -152,7 +180,10 @@ class AddFocusForm extends Component{
                     value={this.state.newResource.link}
                 />
                 <br />
-                <Button style={itemStyle.btn} onClick={() => this.addNewFocus()} variant="outlined" color="primary" type="submit">Add Focus</Button>
+                <div style={itemStyle.centerContent}>
+                    <Button style={itemStyle.btn} onClick={() => this.addNewFocus()} variant="outlined" color="primary" type="submit">Add Focus</Button>
+                    <h3 style={{color: "white", }} onClick={this.demoButton}>*</h3>
+                </div>
             {/* </form>           */}
             </div>
             </div>
