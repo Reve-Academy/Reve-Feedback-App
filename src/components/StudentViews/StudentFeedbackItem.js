@@ -111,7 +111,7 @@ class StudentFeedbackItem extends Component {
 
 		if (this.props.comments.instructor === true) {
 			commentInfo = (
-				<p style={{ marginLeft: '70px' }} className="commentDates"> {this.props.comments.first} {this.props.comments.last} | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
+				<p style={{ marginLeft: '70px' }} className="commentInstructorDates"> Instructor: {this.props.comments.first} {this.props.comments.last} | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p>
 			)
 		} else {
 			commentInfo = (
@@ -126,7 +126,7 @@ class StudentFeedbackItem extends Component {
 				<Grid item xs={10} sm={8}>
 					<div >
  						{commentInfo}
-					{/* <p style={{ marginLeft: '70px' }} className="commentDates"> Student comment | <i className="commentNamesAndDates">{moment(new Date(this.props.comments.date)).format("MMMM DD, YYYY")}</i></p> */}
+					
 						<div style={{ float: 'left', marginRight: '15px', }}>
 							{likeButton}
 						</div>
