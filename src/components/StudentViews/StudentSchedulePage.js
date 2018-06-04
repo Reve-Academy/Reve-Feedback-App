@@ -176,9 +176,9 @@ class StudentSchedulePage extends Component {
 
     let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
       return (<div key={info.id}>
-              <h3>Strategy: {info.title}</h3>
+              <h3 style={{fontFamily: 'lato'}}>Strategy: {info.title}</h3>
               <p>{info.summary}</p>
-              <h3>Resources</h3>
+              <h3 style={{fontFamily: 'lato'}}>Resources</h3>
               <p>{info.link}</p>
             </div>)
     })

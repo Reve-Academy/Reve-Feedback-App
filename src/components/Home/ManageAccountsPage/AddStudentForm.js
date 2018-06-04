@@ -89,7 +89,7 @@ class AddStudentForm extends Component{
                 first: 'Sam',
                 last: 'Trapskin',
                 username: 'samtrapskin@gmail.com',
-                team: '3M Technical',
+                team: '3M Technical Project',
                 program: 'Spring 2018',
 
             }

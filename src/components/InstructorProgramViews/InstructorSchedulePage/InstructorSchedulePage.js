@@ -234,9 +234,9 @@ class InstructorSchedulePage extends Component {
 
     let focusInfo = this.props.state.scheduleReducer.viewFocusInfo.map((info) => {
       return (<div key={info.id}>
-        <h3>Strategy: {info.title}</h3>
+        <h3 style={{fontFamily: 'lato'}}>Strategy: {info.title}</h3>
         <p>{info.summary}</p>
-        <h3>Resources</h3>
+        <h3 style={{fontFamily: 'lato'}}>Resources</h3>
         <p>{info.link}</p>
       </div>)
     })
@@ -286,16 +286,16 @@ class InstructorSchedulePage extends Component {
           </div>
           {/* end of modals */}
           {/* Schedule Container */}
-          <div style={{backgroundColor: "#D4D4D4", height: '400px'}}>
+          <div style={{ height: '400px'}}>
             <div style={itemStyle.centerContent}>
             <table id="scheduleTable">
               <thead>
                 <tr id="tableHeader">
-                  <th style={{ width: '20%' }}>Monday</th>
-                  <th style={{ width: '20%' }}>Tuesday</th>
-                  <th style={{ width: '20%' }}>Wednesday</th>
-                  <th style={{ width: '20%' }}>Thursday</th>
-                  <th style={{ width: '20%' }}>Friday</th>
+                  <th style={{fontFamily: 'lato', width: '20%' }}>Monday</th>
+                  <th style={{fontFamily: 'lato', width: '20%' }}>Tuesday</th>
+                  <th style={{fontFamily: 'lato', width: '20%' }}>Wednesday</th>
+                  <th style={{fontFamily: 'lato', width: '20%' }}>Thursday</th>
+                  <th style={{fontFamily: 'lato', width: '20%' }}>Friday</th>
                 </tr>
               </thead>
             </table>
