@@ -254,12 +254,10 @@ class InstructorSchedulePage extends Component {
             WEEK {weekNumber}
           </p>
           <div style={itemStyle.centerContent}>{weekList}</div>
-          <div style={itemStyle.centerContent}>
-
-          </div>
-          <p className="ManageTitle" style={{ fontSize: '30px' }}><strong className="themeTitle">{weekTheme}</strong></p>
-          <p style={{ padding: '0px', maring: '0px' }} className="ManageTitle">{weekDescription}</p>
+          <p className="ManageTitle" style={{ fontSize: '30px', margin: '0px' }}><strong className="themeTitle">{weekTheme}</strong></p>
+          <p style={{ padding: '0px' }} className="ManageTitle">{weekDescription}</p><br/>
           <EditWeekForm program_id={this.props.match.params.program_id} />
+          <br/>
           {/* Modals */}
           <div>
             <Modal
@@ -314,8 +312,12 @@ class InstructorSchedulePage extends Component {
             </div>
           </div>
           {/* End Schedule Container */}
+          <br/>
+          <br/>
           <div style={itemStyle.centerContent}>
             <Button style={itemStyle.btn} variant="outlined" color="primary" onClick={this.handleCreateFocusModal}>Add Focus</Button>
+          </div>
+          <div style={{height: '60px'}}>
           </div>
         </div>
       );
