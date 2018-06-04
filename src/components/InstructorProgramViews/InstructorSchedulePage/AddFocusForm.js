@@ -90,6 +90,10 @@ class AddFocusForm extends Component{
         this.props.handleCloseFocus();
     }
 
+    demoButton = () => {
+        
+    }
+
 
     render(){
         return(
