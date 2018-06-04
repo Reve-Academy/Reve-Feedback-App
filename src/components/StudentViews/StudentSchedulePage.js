@@ -188,7 +188,6 @@ class StudentSchedulePage extends Component {
 				<div>
 <p  style={{fontSize: '20px', color: '#D8441C'}} className="ManageTitle">WEEK {weekNumber}</p>
 					<div style={itemStyle.centerContent}>{weekList}</div>
-					<div>
             
 						<h2 className="ManageTitle">
 							<strong className="themeTitle">{weekTheme}</strong>
@@ -196,7 +195,6 @@ class StudentSchedulePage extends Component {
 						<div>
 							<p style={{marginBottom: '30px'}}className="ManageTitle">{weekDescription}</p>
 						</div>
-					</div>
 
 					{/* MODAL FOR INFO */}
 					<div>
