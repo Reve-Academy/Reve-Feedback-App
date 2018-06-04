@@ -99,15 +99,15 @@ class AddFocusForm extends Component{
         this.setState({
             newFocus: {
                 name: 'SEO',
-                summary: 'This is a lot of stuff',
+                summary: 'Search Engine Optimization',
                 x: 0,
                 y: 0,
                 w: 1,
                 h: 2
             },
             newStrategy: {
-                title: 'Jumping jacks',
-                summary: 'Running',
+                title: 'Google Activity',
+                summary: 'SEO',
                 focusId: ''
             },
             newResource: {

@@ -86,9 +86,9 @@ class AddStudentForm extends Component{
         this.setState({
             newStudent: {
                 ...this.state.newStudent,
-                first: 'Sam',
+                first: 'Amanda',
                 last: 'Trapskin',
-                username: 'samtrapskin@gmail.com',
+                username: 'amandaTrapskin@gmail.com',
                 team: '3M Technical Project',
                 program: 'Spring 2018',
 
