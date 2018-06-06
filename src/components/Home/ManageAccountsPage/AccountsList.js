@@ -79,7 +79,7 @@ class AccountsList extends Component {
                         <CustomTableCell style={styles.tableHead}>Admin</CustomTableCell>
                         <CustomTableCell style={styles.tableHead}>Active</CustomTableCell>
                         <CustomTableCell style={styles.tableHead}>Program</CustomTableCell>
-                        <CustomTableCell style={styles.tableHead}>High School</CustomTableCell>
+                        <CustomTableCell style={styles.tableHead}>School</CustomTableCell>
                         <CustomTableCell style={styles.tableHead}>Team</CustomTableCell>
                         <CustomTableCell style={styles.tableHead}>Delete</CustomTableCell>
                             </TableRow>
