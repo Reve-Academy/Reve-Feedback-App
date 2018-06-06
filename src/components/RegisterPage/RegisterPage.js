@@ -122,8 +122,9 @@ class RegisterPage extends Component {
 							<TextField className="inputColor"
 								id="highschoolInput"
 								margin="normal"
-								label="High School"
-								placeholder="High School"
+								label="School"
+								placeholder="
+								School"
 								onChange={this.handleInputChangeFor('high_school')}
 								value={this.state.high_school}
 							/>
