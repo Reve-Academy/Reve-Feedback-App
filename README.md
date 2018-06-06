@@ -1,85 +1,169 @@
-# Express/Passport with React
-This version uses React to control the login requests and redirection in coordination with client-side routing.
+# Rêve Voices Application
 
-We **STONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+Link on Heroku: 
 
-## Prerequisites
+## Technologies and Frameworks Used
+Material-UI/core
+Express
+Node.js
+Moment.js
+Passport.js
+postgreSQL
+React, Redux
+Nodemailer, xoauth2
 
-Before you get started, make sure you have the following software installed on your computer:
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve academy which includes the sensitive login information.
+
+### Prerequisites
+
+Link to software that is required to install the app.
 
 - [Node.js](https://nodejs.org/en/)
-- [PostrgeSQL](https://www.postgresql.org/)
-- [Nodemon](https://nodemon.io/)
+- [Express.is](https://expressjs.com/)
+- [postgreSQL](https://www.postgresql.org/download/)
 
-## Create database and table
+### Installing
 
-Create a new database called `reveAcademy` and create a `person` table:
+1. To get the development enviroment running, copy this table into the postgreSQL queries: 
 
-```SQL
-CREATE TABLE person (
-    id SERIAL PRIMARY KEY,
-    username VARCHAR (80) UNIQUE NOT NULL,
-    password VARCHAR (1000) NOT NULL
+```sql
+CREATE TABLE program (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR (250) NOT NULL,
+	active_program BOOLEAN DEFAULT TRUE,
+	description VARCHAR (5000),
+	start TIMESTAMP,
+	finish TIMESTAMP
 );
+
+CREATE TABLE person (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR (80) UNIQUE NOT NULL,
+    password VARCHAR (1000) NOT NULL,
+    first VARCHAR (100),
+    last VARCHAR (100),
+    photo VARCHAR (250),
+    high_school VARCHAR (200) DEFAULT 'Pending...',
+    instructor BOOLEAN DEFAULT FALSE,
+    active_profile BOOLEAN DEFAULT TRUE,
+    program_id INT REFERENCES program ON DELETE SET NULL,
+    team VARCHAR (100), 
+	token VARCHAR (100)
+);
+
+CREATE TABLE weeks (
+	id SERIAL PRIMARY KEY,
+	number INT,
+	theme VARCHAR (250),
+	description VARCHAR (5000),
+	program_id INT REFERENCES program ON DELETE CASCADE,
+	current_week BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE comments(
+	id SERIAL PRIMARY KEY,
+	person_id INT REFERENCES person ON DELETE CASCADE,
+	comment VARCHAR (500),
+	date TIMESTAMP,
+	week_id INT REFERENCES weeks ON DELETE CASCADE
+);
+
+CREATE TABLE likes (
+	person_id INT REFERENCES person ON DELETE CASCADE,
+	comment_id INT REFERENCES comments ON DELETE CASCADE
+);
+
+CREATE TABLE focus(
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100),
+	summary VARCHAR(5000),
+	week_id INT REFERENCES weeks ON DELETE CASCADE,
+	x INT,
+	y INT,
+	w INT,
+	h INT
+);
+
+CREATE TABLE strategies(
+	id SERIAL PRIMARY KEY,
+	title VARCHAR (100),
+	summary VARCHAR (1000),
+	focus_id INT REFERENCES focus ON DELETE CASCADE
+);
+
+CREATE TABLE resources (
+	id SERIAL PRIMARY KEY,
+	link VARCHAR (500),
+	strategy_id INT REFERENCES strategies ON DELETE CASCADE
+);
+
 ```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+2. To download all the required dependancies in the package.json run: 
+```
+npm install
+```
+3. To run the development environment on your local machine, in the terminal run: 
+```
+npm run server
+```
+4. Then open a second tab in the terminal and run: 
+```
+npm run client
+```
+5. Create a .env file as a root file in the application. Copy and paste the API keys into the file. There should be 4 keys copied which are detailed in the deployment document. The 4 keys are SERVER_SESSION_SECRET, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN
 
-## Download (Don't Clone) This Repository
+## Login Information
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+Now that the application is running on your local machine, you are sent to a login page. There are two types of login accounts (Student and Admin). Admin's have the ability to update any account to an admin account. 
 
-## Development Setup Instructions
+The Rêve Voices email: reveacademy.register@gmail.com
+Password information to access this new email is detailed on the deployment document and should be backed up with an email and phone number. The password should be changed immediately. This is the email that will send out registration emails to new accounts.
 
-* Run `npm install`
-* Create a `.env` file at the root of the project and paste this line into the file:
-    ```
-    SERVER_SESSION_SECRET=superDuperSecret
-    ```
-    While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm run dev`
-* Navigate to `localhost:3000`
+In order to log in to the application, sign in with the new Rêve email: reveacademy.register@gmail.com
+The password to access the application is detailed in the deployment document and should should be changed immediately using the 'Forgot your password' option.
 
-## Debugging
+## Screen Shot
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run dev:client`. Start the debugging server by selecting the Debug button.
+[]
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+## Documentation
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
+### Completed Features
 
-## Linting
+High level list of items completed.
 
-The Airbnb ESLint for react is a part of this project. If you would like to take advantage of this in VS Code, you can add the `ESLint` extension. Click the `Extensions` button (the button right below the `Debug`) and search for `ESLint`. Click `install` for the first result and then click `Reload`. Then it should be all set up!
+- [x] Admin's are able to create new users by sending a link to student emails
+- [x] New users are able to register for their account by the email link sent to them
+- [x] Users are able to change their password
+- [x] Admin's are able to update user information on the "Manage Accounts" page
+- [x] Admin's are able to add and update programs 
+- [x] Admin's are able to create week schedules and view student comments 
+- [x] Students are able to add comments to specific weeks in their program 
+- [x] Students are able to view their program schedules
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+### Next Steps
+- [ ] Allow Admin's to edit what team and program students are in
+- [ ] Allow Admin's to sort their search for student's on the manage accounts page (This list will grow as more user's are added and there needs to be some function to sort this information)
+- [ ] Sort deactivated student accounts separately from active accounts
+- [ ] Allow Admin's to add and edit week themes and descriptions
 
-## Production Build
 
-This is the build Heroku will run, but during development, you will likely not need to use it.
+## Creators of this Application: 
 
-* Start postgres if not running already by using `brew services start postgresql`
-* Run `npm start`
-* Navigate to `localhost:5000`
+Ian Carthey github.com/iancarthey
+Tenzin Chosang github.com/Tenzin1993
+Kam Kubesh github.com/KKubesh
+Melody Massard github.com/Melody8988
+Sam Trapskin github.com/Samtrapskin
 
-## Lay of the Land
+## Acknowledgments
 
-* `src/` contains the React application
-* `public/` contains static assets for the client-side
-* `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-* `server/` contains the Express App
+For login authentication we used this repo with begin working with Passport.js:
+https://github.com/PrimeAcademy/prime-solo-project/tree/sql-starter
 
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Herkoku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
