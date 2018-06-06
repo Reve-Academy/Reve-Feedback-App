@@ -14,7 +14,7 @@ CREATE TABLE person (
     first VARCHAR (100),
     last VARCHAR (100),
     photo VARCHAR (250),
-    high_school VARCHAR (200) DEFAULT 'Pending',
+    high_school VARCHAR (200) DEFAULT 'Pending...',
     instructor BOOLEAN DEFAULT FALSE,
     active_profile BOOLEAN DEFAULT TRUE,
     program_id INT REFERENCES program ON DELETE SET NULL,

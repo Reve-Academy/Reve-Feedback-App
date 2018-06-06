@@ -79,7 +79,8 @@ class EditWeek extends Component {
             editWeek: {
                 theme: '',
                 description: '',
-                program_id: this.props.program_id
+                program_id: this.props.program_id,
+               
             }
         }
     }
@@ -105,7 +106,8 @@ class EditWeek extends Component {
 
     // FUNCTION FOR DISPATCHING ACTION TO PUT WEEK
     putWeek = () => {
-        console.log(this.state.editWeek);
+        console.log('weekId', this.props.state.scheduleReducer);
+
         
         this.props.dispatch({
             type: 'UPDATE_WEEK_SAGA',

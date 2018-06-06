@@ -10,7 +10,7 @@ import manageAccountsSaga from './manageAccountsSaga';
 import scheduleSaga from './scheduleSaga';
 import studentFeedbackSaga from './studentFeedbackSaga';
 import forgotPasswordSaga from './forgotPasswordSaga'
-//import weekSaga from './weekSaga';
+import weekSaga from './weekSaga';
 
 export default function* rootSaga() {
   yield all([
@@ -21,7 +21,7 @@ export default function* rootSaga() {
     instructorFeedBackSaga(),
     studentListSaga(),
     manageAccountsSaga(),
-    //weekSaga(),
+    weekSaga(),
     scheduleSaga(),
     // watchIncrementAsync()
     forgotPasswordSaga(),
