@@ -68,7 +68,7 @@ router.post('/', (req, res)=> {
         to: req.body.username,
         subject: "Rêve Academy - Create Your Account!",
         generateTextFromHTML: true,
-        html: `<h3 className="ManageTitle" >Click the link below to finish registering with Rêve Voices!</h3><br /><href>http://localhost:3000/register/` + passwordToken + `</href>`, 
+        html: `<h3 className="ManageTitle" >Click the link below to finish registering with Rêve Voices!</h3><br /><href>https://revevoices.herokuapp.com/register/` + passwordToken + `</href>`, 
       };
 
     let queryText = `INSERT into "person" ("first", "last", "username", "team", "password", "program_id", "token") VALUES ($1, $2, $3, $4, $5, $6, $7);`

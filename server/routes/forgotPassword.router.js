@@ -48,7 +48,7 @@ router.put('/:username', (req, res, next) => {
         to: req.params.username,
         subject: "Rêve Academy - Reset Password!",
         generateTextFromHTML: true,
-        html: `<h3 className="ManageTitle">Click the link below to reset your password!</h3><br /><href>http://localhost:3000/resetPassword/` + newToken + `</href>`,
+        html: `<h3 className="ManageTitle">Click the link below to reset your password!</h3><br /><href>https://revevoices.herokuapp.com/resetPassword/` + newToken + `</href>`,
     };
 
     const queryText = `UPDATE "person" SET "token" = $1 WHERE "username" = $2;`

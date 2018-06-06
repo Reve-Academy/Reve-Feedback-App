@@ -1,6 +1,6 @@
 # Rêve Voices Application
 
-Link on Heroku: 
+Link to Heroku: revevoices.herokuapp.com/user
 
 ## Technologies and Frameworks Used
 * Material-UI/core
