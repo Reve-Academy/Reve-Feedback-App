@@ -15,7 +15,7 @@ Nodemailer, xoauth2
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve academy which includes the sensitive login information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve Academy which includes the sensitive login information.
 
 ### Prerequisites
 
@@ -164,6 +164,6 @@ Sam Trapskin github.com/Samtrapskin
 
 ## Acknowledgments
 
-For login authentication we used this repo with begin working with Passport.js:
+For login authentication we used this repo to begin working with Passport.js:
 https://github.com/PrimeAcademy/prime-solo-project/tree/sql-starter
 
