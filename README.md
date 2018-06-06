@@ -3,14 +3,14 @@
 Link on Heroku: 
 
 ## Technologies and Frameworks Used
-Material-UI/core
-Express
-Node.js
-Moment.js
-Passport.js
-postgreSQL
-React, Redux
-Nodemailer, xoauth2
+* Material-UI/core
+* Express
+* Node.js
+* Moment.js
+* Passport.js
+* postgreSQL
+* React, Redux
+* Nodemailer, xoauth2
 
 
 ## Getting Started
@@ -126,9 +126,13 @@ Password information to access this new email is detailed on the deployment docu
 In order to log in to the application, sign in with the new Rêve email: reveacademy.register@gmail.com
 The password to access the application is detailed in the deployment document and should should be changed immediately using the 'Forgot your password' option.
 
-## Screen Shot
+## Screen Shots
 
-[]
+Feedback View: 
+![Screenshot](ScreenShotReveFeedback.png)
+
+Calendar View: 
+![Screenshot](ScreenShotReveSchedule.png)
 
 ## Documentation
 
@@ -156,11 +160,11 @@ High level list of items completed.
 
 ## Creators of this Application: 
 
-Ian Carthey github.com/iancarthey
-Tenzin Chosang github.com/Tenzin1993
-Kam Kubesh github.com/KKubesh
-Melody Massard github.com/Melody8988
-Sam Trapskin github.com/Samtrapskin
+* Ian Carthey github.com/iancarthey
+* Tenzin Chosang github.com/Tenzin1993
+* Kam Kubesh github.com/KKubesh
+* Melody Massard github.com/Melody8988
+* Sam Trapskin github.com/Samtrapskin
 
 ## Acknowledgments
 
