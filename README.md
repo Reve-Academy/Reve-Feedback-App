@@ -3,14 +3,14 @@
 Link on Heroku: 
 
 ## Technologies and Frameworks Used
-Material-UI/core
-Express
-Node.js
-Moment.js
-Passport.js
-postgreSQL
-React, Redux
-Nodemailer, xoauth2
+* Material-UI/core
+* Express
+* Node.js
+* Moment.js
+* Passport.js
+* postgreSQL
+* React, Redux
+* Nodemailer, xoauth2
 
 
 ## Getting Started
@@ -156,11 +156,11 @@ High level list of items completed.
 
 ## Creators of this Application: 
 
-Ian Carthey github.com/iancarthey
-Tenzin Chosang github.com/Tenzin1993
-Kam Kubesh github.com/KKubesh
-Melody Massard github.com/Melody8988
-Sam Trapskin github.com/Samtrapskin
+* Ian Carthey github.com/iancarthey
+* Tenzin Chosang github.com/Tenzin1993
+* Kam Kubesh github.com/KKubesh
+* Melody Massard github.com/Melody8988
+* Sam Trapskin github.com/Samtrapskin
 
 ## Acknowledgments
 
