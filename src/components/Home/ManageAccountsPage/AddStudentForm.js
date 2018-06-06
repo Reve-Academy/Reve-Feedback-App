@@ -87,7 +87,7 @@ class AddStudentForm extends Component{
             newStudent: {
                 ...this.state.newStudent,
                 first: 'Amanda',
-                last: 'Trapskin',
+                last: 'Olson',
                 username: 'amandaTrapskin@gmail.com',
                 team: '3M Technical Project',
                 program: 'Spring 2018',

@@ -100,10 +100,10 @@ class NewProgramPage extends Component {
   demoButton = event => {
     this.setState({
       newProgram:{
-        name:'2019 Spring Session',
+        name:'2018 Summer Session',
         description:'Developing Program',
-        start:'2019-02-05',
-        finish:'2019-05-25',
+        start:'2018-02-05',
+        finish:'2018-05-25',
         weeks: 9,
         active_program:true,
       }

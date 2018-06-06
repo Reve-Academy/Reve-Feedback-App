@@ -69,11 +69,11 @@ class StudentList extends Component {
 					<TableHead>
 						<TableRow>
 							<CustomTableCell style={styles.tableHead}>
-								<TableSortLabel onClick={this.createSortHandler()}>First</TableSortLabel>
+								<TableSortLabel onClick={this.createSortHandler()}>Last</TableSortLabel>
 							</CustomTableCell>
 		
 							<CustomTableCell style={styles.tableHead}> 
-								<TableSortLabel onClick={this.createSortHandler()}>Last</TableSortLabel>
+								<TableSortLabel onClick={this.createSortHandler()}>First</TableSortLabel>
 							</CustomTableCell>
 
 							<CustomTableCell style={styles.tableHead}>
@@ -85,7 +85,7 @@ class StudentList extends Component {
 							</CustomTableCell>
 
 							<CustomTableCell style={styles.tableHead}>
-								<TableSortLabel onClick={this.createSortHandler()}>Highschool</TableSortLabel>
+								<TableSortLabel onClick={this.createSortHandler()}>School</TableSortLabel>
 							</CustomTableCell>
 
 							<CustomTableCell style={styles.tableHead}>

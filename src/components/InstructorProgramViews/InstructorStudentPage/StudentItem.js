@@ -47,8 +47,8 @@ class StudentItem extends Component {
 		return (
 			<TableBody>
 				<TableRow hover>
-					<CustomTableCell style={styles.dataCenter}>{this.props.student.first} </CustomTableCell>
-					<CustomTableCell style={styles.dataCenter}>{this.props.student.last}</CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.last} </CustomTableCell>
+					<CustomTableCell style={styles.dataCenter}>{this.props.student.first}</CustomTableCell>
 					<CustomTableCell style={styles.dataCenter}>{this.props.student.username}</CustomTableCell>
 					<CustomTableCell style={styles.dataCenter}>{this.props.student.team}</CustomTableCell>
 					<CustomTableCell style={styles.dataCenter}>{this.props.student.high_school}</CustomTableCell>
