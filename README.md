@@ -120,19 +120,27 @@ npm run client
 
 Now that the application is running on your local machine, you are sent to a login page. There are two types of login accounts (Student and Admin). Admin's have the ability to update any account to an admin account. 
 
-The Rêve Voices email: reveacademy.register@gmail.com
-Password information to access this new email is detailed on the deployment document and should be backed up with an email and phone number. The password should be changed immediately. This is the email that will send out registration emails to new accounts.
+Because this application is set up specifically for Rêve Academy, they have been issued specific email and login information. The email currently being used is: reveacademy.register@gmail.com
 
-In order to log in to the application, sign in with the new Rêve email: reveacademy.register@gmail.com
-The password to access the application is detailed in the deployment document and should should be changed immediately using the 'Forgot your password' option.
+
+In order to make this specific to your local machine, you will need to consider two things: 
+1. The link sent to new users is currently under the revevoices.herokuapp.com/user, you will need to change this to your localhost. 
+2. You will need to manually change login information in the postgreSQL database. Create a new query in the "person table with your personal email. Set the password manually, and set yourself as an admin. Then, in the application you will need to go through the "Forgot your password?" process, send an email to yourself, click the link specific to your local machine, and reset your password. Then, you will have access to the application as an instructor. You will need a second email to view the student side of the application. 
+****If this is not working, check that you have the correct variables in your .env file - that they match the values in the manageAccounts.router.js file. 
 
 ## Screen Shots
 
+
 Student Feedback View 
+
+
 ![Screenshot](ScreenShotReveFeedback.png)
 
 Student Calendar View
+
+
 ![Screenshot](ScreenShotReveSchedule.png)
+
 
 ## Documentation
 
