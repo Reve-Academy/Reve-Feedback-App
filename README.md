@@ -26,6 +26,7 @@ Link to software that is required to install the app.
 - [postgreSQL](https://www.postgresql.org/download/)
 
 ### Installing
+
 1. To get the development enviroment running, create a database in postgreSQL called reveAcademy. (This is set in the pool.js file)
 1. Copy this table into the postgreSQL queries: 
 
@@ -123,7 +124,8 @@ CLIENT_ID = yourGmailClientIdHere
 CLIENT_SECRET = yourClientSecretHere
 REFRESH_TOKEN = yourRefreshTokenHere
 ```
-8. UPDATE EMAIL 
+8. You will need to update the email in two places in the code (forgotPassword.router and manageAccounts.router) to your email. 
+9. The link sent to new users is currently under the revevoices.herokuapp.com/user, you will need to change this to your localhost. 
 
 ## Login Information
 
@@ -131,11 +133,17 @@ Now that the application is running on your local machine, you are sent to a log
 
 Because this application is set up specifically for Rêve Academy, they have been issued specific email and login information. The email currently being used is: reveacademy.register@gmail.com
 
+In order to make this specific to your local machine, you will need to create an inital admin account in the database: 
 
-In order to make this specific to your local machine, you will need to consider two things: 
-1. The link sent to new users is currently under the revevoices.herokuapp.com/user, you will need to change this to your localhost. 
-2. You will need to manually change login information in the postgreSQL database. Create a new query in the "person table with your personal email. Set the password manually, and set yourself as an admin. Then, in the application you will need to go through the "Forgot your password?" process, send an email to yourself, click the link specific to your local machine, and reset your password. Then, you will have access to the application as an instructor. You will need a second email to view the student side of the application. 
-****If this is not working, check that you have the correct variables in your .env file - that they match the values in the manageAccounts.router.js file. 
+```sql
+Insert into "person ("username", "password", "instructor") VALUES ("yourEmail", "anyValue", "true")
+```
+- the username must be your email, the password can be anything at this moment because it will be updated, and instructor must be set to true. 
+
+2. Then, in the application you will need to go through the "Forgot your password?" process, send an email to yourself, click the link specific to your local machine, and reset your password. Then, you will have access to the application as an instructor. 
+3. To create a student account, create a program, click on the manage accounts tab, and click "Create User" here, you will input an email and the student's information and the student will get a registration link. 
+
+****If this is not working, check that you have the correct variables in your .env file 
 
 ## Screen Shots
 
