@@ -126,9 +126,13 @@ Password information to access this new email is detailed on the deployment docu
 In order to log in to the application, sign in with the new Rêve email: reveacademy.register@gmail.com
 The password to access the application is detailed in the deployment document and should should be changed immediately using the 'Forgot your password' option.
 
-## Screen Shot
+## Screen Shots
 
-[]
+Student Feedback View 
+![Screenshot](ScreenShotReveFeedback.png)
+
+Student Calendar View
+![Screenshot](ScreenShotReveSchedule.png)
 
 ## Documentation
 
@@ -152,6 +156,8 @@ High level list of items completed.
 - [ ] Allow Admin's to sort their search for student's on the manage accounts page (This list will grow as more user's are added and there needs to be some function to sort this information)
 - [ ] Sort deactivated student accounts separately from active accounts
 - [ ] Allow Admin's to add and edit week themes and descriptions
+- [ ] Adjust Styling for mobile 
+
 
 
 ## Creators of this Application: 
