@@ -114,7 +114,8 @@ npm run server
 ```
 npm run client
 ```
-5. Create a .env file as a root file in the application. Copy and paste the API keys into the file. There should be 4 keys copied which are detailed in the deployment document. The 4 keys are SERVER_SESSION_SECRET, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN
+5. Create a .env file as a root file in the application. Copy and paste the API keys into the file. There should be 4 keys copied which are detailed in the deployment document. The 4 keys are SERVER_SESSION_SECRET, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN. 
+***In order to recieve these keys, you will need to set up your own Gmail API OAuth and replace the current email address with your own. 
 
 ## Login Information
 
@@ -142,9 +143,6 @@ Student Calendar View
 ![Screenshot](ScreenShotReveSchedule.png)
 
 
-## Documentation
-
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
 
 ### Completed Features
 
