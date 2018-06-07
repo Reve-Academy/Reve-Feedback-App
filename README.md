@@ -15,7 +15,7 @@ Link to Heroku: revevoices.herokuapp.com/user
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve Academy which includes the sensitive login information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve Academy which includes the sensitive login information. In order to create your own login information, you will need to set up an account with the Gmail OAuth API. To help, directions to set that up have been linked in this document process.
 
 ### Prerequisites
 
@@ -26,8 +26,8 @@ Link to software that is required to install the app.
 - [postgreSQL](https://www.postgresql.org/download/)
 
 ### Installing
-
-1. To get the development enviroment running, copy this table into the postgreSQL queries: 
+1. To get the development enviroment running, create a database in postgreSQL called reveAcademy. (This is set in the pool.js file)
+1. Copy this table into the postgreSQL queries: 
 
 ```sql
 CREATE TABLE program (
@@ -114,8 +114,16 @@ npm run server
 ```
 npm run client
 ```
-5. Create a .env file as a root file in the application. Copy and paste the API keys into the file. There should be 4 keys copied which are detailed in the deployment document. The 4 keys are SERVER_SESSION_SECRET, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN. 
-***In order to recieve these keys, you will need to set up your own Gmail API OAuth and replace the current email address with your own. 
+6. You must set up your own OAuth gmail and aquire a CLIENT_ID, CLIENT_SECRET, and REFRESH_TOKEN from the gmail API. Here is the set of directions that we used to set this up: http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html
+
+7. Create a .env file as a root file in the application. Copy and paste the API keys into the file. The 3 keys are the CLIENT_ID, CLIENT_SECRET, and REFRESH_TOKEN that you aquired from gmail. You also need to create a SERVER_SESSION_SECRET variable with a random, secure string. After these steps, you're .env file should look like this: 
+```
+SERVER_SESSION_SECRET = yourRandonStringHere
+CLIENT_ID = yourGmailClientIdHere
+CLIENT_SECRET = yourClientSecretHere
+REFRESH_TOKEN = yourRefreshTokenHere
+```
+8. UPDATE EMAIL 
 
 ## Login Information
 
