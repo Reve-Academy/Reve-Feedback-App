@@ -15,7 +15,7 @@ Link to Heroku: revevoices.herokuapp.com/user
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve Academy which includes the sensitive login information.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. These directions are specific to the deployment document given to Rêve Academy which includes the sensitive login information. In order to create your own login information, you will need to set up an account with the Gmail OAuth API. To help, directions to set that up have been linked in this document process.
 
 ### Prerequisites
 
@@ -27,7 +27,8 @@ Link to software that is required to install the app.
 
 ### Installing
 
-1. To get the development enviroment running, copy this table into the postgreSQL queries: 
+1. To get the development enviroment running, create a database in postgreSQL called reveAcademy. (This is set in the pool.js file)
+1. Copy this table into the postgreSQL queries: 
 
 ```sql
 CREATE TABLE program (
@@ -114,25 +115,50 @@ npm run server
 ```
 npm run client
 ```
-5. Create a .env file as a root file in the application. Copy and paste the API keys into the file. There should be 4 keys copied which are detailed in the deployment document. The 4 keys are SERVER_SESSION_SECRET, CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN
+6. You must set up your own OAuth gmail and aquire a CLIENT_ID, CLIENT_SECRET, and REFRESH_TOKEN from the gmail API. Here is the set of directions that we used to set this up: http://masashi-k.blogspot.com/2013/06/sending-mail-with-gmail-using-xoauth2.html
+
+7. Create a .env file as a root file in the application. Copy and paste the API keys into the file. The 3 keys are the CLIENT_ID, CLIENT_SECRET, and REFRESH_TOKEN that you aquired from gmail. You also need to create a SERVER_SESSION_SECRET variable with a random, secure string. After these steps, you're .env file should look like this: 
+```
+SERVER_SESSION_SECRET = yourRandonStringHere
+CLIENT_ID = yourGmailClientIdHere
+CLIENT_SECRET = yourClientSecretHere
+REFRESH_TOKEN = yourRefreshTokenHere
+```
+8. You will need to update the email in two places in the code (forgotPassword.router and manageAccounts.router) to your email. 
+9. The link sent to new users is currently under the revevoices.herokuapp.com/user, you will need to change this to your localhost. 
 
 ## Login Information
 
 Now that the application is running on your local machine, you are sent to a login page. There are two types of login accounts (Student and Admin). Admin's have the ability to update any account to an admin account. 
 
-The Rêve Voices email: reveacademy.register@gmail.com
-Password information to access this new email is detailed on the deployment document and should be backed up with an email and phone number. The password should be changed immediately. This is the email that will send out registration emails to new accounts.
+Because this application is set up specifically for Rêve Academy, they have been issued specific email and login information. The email currently being used is: reveacademy.register@gmail.com
 
-In order to log in to the application, sign in with the new Rêve email: reveacademy.register@gmail.com
-The password to access the application is detailed in the deployment document and should should be changed immediately using the 'Forgot your password' option.
+In order to make this specific to your local machine, you will need to create an inital admin account in the database: 
 
-## Screen Shot
+```sql
+Insert into "person ("username", "password", "instructor") VALUES ("yourEmail", "anyValue", "true")
+```
+- the username must be your email, the password can be anything at this moment because it will be updated, and instructor must be set to true. 
 
-[]
+2. Then, in the application you will need to go through the "Forgot your password?" process, send an email to yourself, click the link specific to your local machine, and reset your password. Then, you will have access to the application as an instructor. 
+3. To create a student account, create a program, click on the manage accounts tab, and click "Create User" here, you will input an email and the student's information and the student will get a registration link. 
 
-## Documentation
+****If this is not working, check that you have the correct variables in your .env file 
 
-Link to a read-only version of your scope document or other relevant documentation here (optional). Remove if unused.
+## Screen Shots
+
+
+Student Feedback View 
+
+
+![Screenshot](ScreenShotReveFeedback.png)
+
+Student Calendar View
+
+
+![Screenshot](ScreenShotReveSchedule.png)
+
+
 
 ### Completed Features
 
@@ -152,6 +178,8 @@ High level list of items completed.
 - [ ] Allow Admin's to sort their search for student's on the manage accounts page (This list will grow as more user's are added and there needs to be some function to sort this information)
 - [ ] Sort deactivated student accounts separately from active accounts
 - [ ] Allow Admin's to add and edit week themes and descriptions
+- [ ] Adjust Styling for mobile 
+
 
 
 ## Creators of this Application: 
